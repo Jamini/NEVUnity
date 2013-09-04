@@ -50,4 +50,4 @@
 	if(num_recovered > drones_list.len * 0.75)
 		command_alert("The drone wing has moved off.", "Rogue drone alert")
 	else
-		command_alert("The drone wing has broken off its persuit.", "Rogue drone alert")
+		command_alert("The drone wing has broken off its pursuit.", "Rogue drone alert")
