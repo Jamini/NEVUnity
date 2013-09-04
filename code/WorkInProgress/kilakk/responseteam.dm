@@ -100,7 +100,7 @@ var/global/admin_emergency_team = 0 // Used for admin-spawned response teams
 		candidates -= chosen
 		members += chosen
 
-	command_alert("Sensors indicate that [station_name()] has entered Code Red and is in need of assistance. We will prepare and dispatch an emergency response team to deal with the situation.", "NMV Icarus Command")
+	command_alert("Sensors indicate that [station_name()] has entered Code Red and is in need of assistance. We will prepare and dispatch an emergency response team to deal with the situation.", "NMV Troia Command")
 
 	for(var/obj/effect/landmark/L in landmarks_list)
 		if(L.name == "Response Team")

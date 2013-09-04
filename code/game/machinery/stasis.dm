@@ -99,6 +99,9 @@
 			for(var/obj/item/W in occupant) //remove everything they are wearing
 			//ID's or PDA's, Jumpsuits, Headset, and Implants are deleted
 				if(istype(W, /obj/item/weapon/card)|| istype(W, /obj/item/device/pda)||istype(W, /obj/item/weapon/implant)|| istype(W, /obj/item/clothing/under)|| istype(W,/obj/item/device/radio/headset))
+					if(istype(W, /obj/item/device/pda))
+						for(var/obj/item/weapon/card/X in W)
+							del(X)
 					del(W)
 				occupant.drop_from_inventory(W)
 		//free up their job slot
@@ -112,7 +115,12 @@
 			for(var/datum/data/record/T in data_core.security)
 				if ((T.fields["name"] == occupant.real_name))
 					del(T)
-
+			for(var/datum/data/record/S in data_core.locked)
+				if ((S.fields["name"] == occupant.real_name))
+					del(S)
 			del(src.occupant)//delete the mob
+			var/obj/item/device/radio/intercom/a = new /obj/item/device/radio/intercom(null)
+			a.autosay("[occupant.real_name] has entered stasis.", "Stasis Management Computer")
 			src.icon_state = "scanner_0"
+
 		return

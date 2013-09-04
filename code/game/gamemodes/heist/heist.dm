@@ -26,7 +26,7 @@ var/global/vox_kills = 0 //Used to check the Inviolate.
 
 /datum/game_mode/heist/announce()
 	world << "<B>The current game mode is - Heist!</B>"
-	world << "<B>An unidentified bluespace signature has slipped past the Icarus and is approaching [station_name()]!</B>"
+	world << "<B>An unidentified bluespace signature is approaching [station_name()]!</B>"
 	world << "Whoever they are, they're likely up to no good. Protect the crew and station resources against this dastardly threat!"
 	world << "<B>Raiders:</B> Loot [station_name()] for anything and everything you need."
 	world << "<B>Personnel:</B> Repel the raiders and their low, low prices and/or crossbows."
