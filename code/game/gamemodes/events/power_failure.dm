@@ -1,7 +1,7 @@
 
 /proc/power_failure(var/announce = 1)
 	if(announce)
-		command_alert("Abnormal activity detected in [station_name()]'s powernet. As a precautionary measure, the station's power will be shut off for an indeterminate duration.", "Critical Power Failure")
+		command_alert("Abnormal activity detected in [station_name()]'s powernet. As a precautionary measure, the ship's power will be shut off for an indeterminate duration.", "Critical Power Failure")
 		for(var/mob/M in player_list)
 			M << sound('sound/AI/poweroff.ogg')
 	for(var/obj/machinery/power/smes/S in world)

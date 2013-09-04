@@ -174,7 +174,7 @@
 	supervisors = "the warden"
 	selection_color = "#ffeef0"
 	access = list(access_security, access_sec_doors, access_brig, access_court,access_psychiatrist)
-	minimal_access = list(access_security, access_sec_doors, access_brig,access_court, access_psychiatrist)
+	minimal_access = list(access_security, access_sec_doors, access_brig,access_court, access_psychiatrist, access_medical)
 	alt_titles = list("Psychologist","Psychiatrist","Negotiator")
 	equip(var/mob/living/carbon/human/H)
 		if(!H)	return 0

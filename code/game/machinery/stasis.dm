@@ -109,18 +109,11 @@
 			job_master.FreeRole(job)
 			//check objectives TODO
 			//delete them from datacore
-			for(var/datum/data/record/R in data_core.medical)
+			for(var/datum/data/record/R in data_core)
 				if ((R.fields["name"] == occupant.real_name))
-					del(R)
-			for(var/datum/data/record/T in data_core.security)
-				if ((T.fields["name"] == occupant.real_name))
-					del(T)
-			for(var/datum/data/record/S in data_core.locked)
-				if ((S.fields["name"] == occupant.real_name))
-					del(S)
-			del(src.occupant)//delete the mob
+					R.fields["rank"] = "In Stasis"
 			var/obj/item/device/radio/intercom/a = new /obj/item/device/radio/intercom(null)
 			a.autosay("[occupant.real_name] has entered stasis.", "Stasis Management Computer")
 			src.icon_state = "scanner_0"
-
+			del(src.occupant)//delete the mob
 		return
