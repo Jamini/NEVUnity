@@ -249,10 +249,20 @@ var/global/list/autolathe_recipes_hidden = list( \
 
 
 	Topic(href, href_list)
-		if(..())
-			return
-		usr.set_machine(src)
+		..()
+		usr.machine = src
 		src.add_fingerprint(usr)
+		if(href_list["removeContainer"])
+			var/obj/item/weapon/storage/container = locate(href_list["removeContainer"])
+			container.loc = src.loc
+			container.layer = initial(container.layer)
+		if(href_list["modifyOutputAmount"])
+			var/outputAmount = text2num(input(usr,"Amount:","Enter new quantity to create",""))
+			if(!busy)
+				if(outputAmount < 1)
+					outputAmount = 1
+			else
+				usr << "\red The autolathe is busy. Please wait for completion of previous operation."
 		if (!busy)
 			if(href_list["make"])
 				var/turf/T = get_step(src.loc, get_dir(src,usr))
