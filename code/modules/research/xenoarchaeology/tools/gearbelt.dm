@@ -25,4 +25,5 @@
 		"/obj/item/clothing/glasses",
 		"/obj/item/weapon/wrench",
 		"/obj/item/weapon/storage/box/excavation",
-		"/obj/item/weapon/anobattery")
+		"/obj/item/weapon/anobattery",
+		"/obj/item/weapon/pickaxe/hand")

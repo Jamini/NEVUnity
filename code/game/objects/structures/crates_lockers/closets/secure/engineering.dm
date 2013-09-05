@@ -124,12 +124,12 @@
 /obj/structure/closet/secure_closet/electrician_personal
 	name = "Electrician's Locker"
 	req_access = list(access_power)
-	icon_state = "secureeng1"
-	icon_closed = "secureeng"
-	icon_locked = "secureeng1"
-	icon_opened = "secureengopen"
-	icon_broken = "secureengbroken"
-	icon_off = "secureengoff"
+	icon_state = "secureelec1"
+	icon_closed = "secureelec"
+	icon_locked = "secureelec1"
+	icon_opened = "secureelecopen"
+	icon_broken = "secureelecbroken"
+	icon_off = "secureelecoff"
 
 
 	New()

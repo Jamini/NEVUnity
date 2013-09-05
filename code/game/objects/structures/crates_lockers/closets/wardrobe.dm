@@ -156,7 +156,7 @@
 	icon_closed = "yellow"
 
 /obj/structure/closet/wardrobe/atmospherics_yellow/New()
-	new /obj/item/clothing/under/rank/atmospheric_technician(src)
+	new /obj/item/clothing/under/rank/electrician(src)
 	new /obj/item/clothing/under/rank/atmospheric_technician(src)
 	new /obj/item/clothing/under/rank/atmospheric_technician(src)
 	new /obj/item/clothing/shoes/black(src)

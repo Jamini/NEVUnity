@@ -3,7 +3,7 @@
 	desc = "It's a high visibility jumpsuit given to those engineers insane enough to achieve the rank of \"Chief engineer\". It has minor radiation shielding."
 	name = "chief engineer's jumpsuit"
 	icon_state = "chiefengineer"
-	item_state = "g_suit"
+	item_state = "engi_suit"
 	color = "chief"
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 10)
 	flags = FPRINT | TABLEPASS
@@ -23,6 +23,15 @@
 	item_state = "engi_suit"
 	color = "engine"
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 10)
+	flags = FPRINT | TABLEPASS
+
+/obj/item/clothing/under/rank/electrician
+	desc = "It's an orange high visibility jumpsuit worn by electricians. It is mildly insulated."
+	name = "engineer's jumpsuit"
+	icon_state = "electrician"
+	item_state = "engi_suit"
+	color = "electrician"
+	armor = list(melee = 0, bullet = 0, laser = 0,energy = 10, bomb = 0, bio = 0, rad = 0)
 	flags = FPRINT | TABLEPASS
 
 /obj/item/clothing/under/rank/roboticist

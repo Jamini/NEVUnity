@@ -1,4 +1,4 @@
-#define REACTOR_HEAT_COEFFICIENT 3
+#define REACTOR_HEAT_COEFFICIENT 4
 #define REACTOR_MAX_ENERGY_TRANSFER 4000
 #define REACTOR_HEAT_CAPACITY 5000
 /obj/machinery/unityreactor/
@@ -15,7 +15,7 @@
 	var/MAX_ENERGY = 500 //How strong this can be
 	var/event_chance = 15 //Prob for event each tick
 	var/temperature = 273	//measured in kelvin, if this exceeds 1200 the core goes critical and explodes
-	var/max_temp = 450
+	var/max_temp = 600
 
 /obj/machinery/unityreactor/process()
 	pulse() //Emits power
@@ -66,7 +66,7 @@
 					H << "\blue You look directly into The [src.name], good thing you had your protective eyewear on!"
 					return
 		M << "\red You look directly into The [src.name] and feel strange."
-		M.hallucination += energy/((get_dist(M,src)**2))
+		M.hallucination += energy/((get_dist(M,src)))
 		for(var/mob/O in viewers(M, null))
 			O.show_message(text("\red <B>[] twitches erratically!</B>", M), 1)
 
@@ -124,9 +124,12 @@
 	if(src.temperature < src.max_temp)
 		src.temperature += heat_added/REACTOR_HEAT_CAPACITY
 	if(temperature > 400)
-		world << "Warning, core is overheating!"
-	if(temperature > 600)
-		world << "Reactor core has overloaded!"
+		if(prob(33))
+			var/obj/item/device/radio/intercom/a = new /obj/item/device/radio/intercom(null)
+			a.autosay("Warning, core is overheating.", "[station_name()] Power System Automated Annoucement")
+	if(temperature > 500)
+		var/obj/item/device/radio/intercom/a = new /obj/item/device/radio/intercom(null)
+		a.autosay("Reactor core is at critical temperatures. Explosion imminent. Have a nice day.", "[station_name()] Power System Automated Annoucement")
 		explosion(src.loc, 7,10,15,30)
 		empulse(src.loc, 21, 42)
 		del(src)
