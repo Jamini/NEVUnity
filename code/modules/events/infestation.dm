@@ -1,13 +1,9 @@
 #define LOC_KITCHEN 0
 #define LOC_ATMOS 1
 #define LOC_INCIN 2
-#define LOC_CHAPEL 3
-#define LOC_LIBRARY 4
-#define LOC_HYDRO 5
-#define LOC_VAULT 6
-#define LOC_CONSTR 7
-#define LOC_TECH 8
-#define LOC_ASSEMBLY 9
+#define LOC_LIBRARY 3
+#define LOC_HYDRO 4
+#define LOC_CONSTR 5
 
 #define VERM_MICE 0
 #define VERM_LIZARDS 1
@@ -23,7 +19,7 @@
 
 /datum/event/infestation/start()
 
-	location = rand(0,9)
+	location = rand(0,5)
 	var/list/turf/simulated/floor/turfs = list()
 	var/spawn_area_type
 	switch(location)
@@ -34,29 +30,17 @@
 			spawn_area_type = /area/atmos
 			locstring = "atmospherics"
 		if(LOC_INCIN)
-			spawn_area_type = /area/maintenance/incinerator
-			locstring = "the incinerator"
-		if(LOC_CHAPEL)
-			spawn_area_type = /area/chapel/main
-			locstring = "the chapel"
+			spawn_area_type = /area/maintenance/disposal
+			locstring = "the mass driver"
 		if(LOC_LIBRARY)
-			spawn_area_type = /area/library
-			locstring = "the library"
+			spawn_area_type = /area/crew_quarters
+			locstring = "the dormitories"
 		if(LOC_HYDRO)
 			spawn_area_type = /area/hydroponics
 			locstring = "hydroponics"
-		if(LOC_VAULT)
-			spawn_area_type = /area/security/nuke_storage
-			locstring = "the vault"
 		if(LOC_CONSTR)
 			spawn_area_type = /area/construction
 			locstring = "the construction area"
-		if(LOC_TECH)
-			spawn_area_type = /area/storage/tech
-			locstring = "technical storage"
-		if(LOC_ASSEMBLY)
-			spawn_area_type = /area/assembly/assembly_line
-			locstring = "the unused assembly line"
 
 	//world << "looking for [spawn_area_type]"
 	for(var/areapath in typesof(spawn_area_type))
@@ -92,7 +76,7 @@
 			turfs.Remove(T)
 			num--
 
-			
+
 			if(vermin == VERM_SPIDERS)
 				var/obj/effect/spider/spiderling/S = new(T)
 				S.amount_grown = -1

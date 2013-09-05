@@ -103,7 +103,7 @@
 /obj/machinery/optable/process()
 	check_victim()
 
-/obj/machinery/optable/proc/take_victim(mob/living/carbon/human/H, mob/living/carbon/user as mob)
+/obj/machinery/optable/proc/take_victim(mob/living/carbon/H, mob/living/carbon/user as mob)
 	if (H == user)
 		user.visible_message("[user] climbs on the operating table.","You climb on the operating table.")
 	else
@@ -135,10 +135,9 @@
 
 /obj/machinery/optable/attackby(obj/item/weapon/W as obj, mob/living/carbon/user as mob)
 	if (istype(W, /obj/item/weapon/grab))
-		if(ishuman(W:affecting))
-			take_victim(W:affecting,usr)
-			del(W)
-			return
+		take_victim(W:affecting,usr)
+		del(W)
+		return
 	user.drop_item()
 	if(W && W.loc)
 		W.loc = src.loc

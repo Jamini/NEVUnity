@@ -124,7 +124,7 @@
 	if(src.temperature < src.max_temp)
 		src.temperature += heat_added/REACTOR_HEAT_CAPACITY
 	if(temperature > 400)
-		if(prob(33))
+		if(prob(5))
 			var/obj/item/device/radio/intercom/a = new /obj/item/device/radio/intercom(null)
 			a.autosay("Warning, core is overheating.", "[station_name()] Power System Automated Annoucement")
 	if(temperature > 500)
