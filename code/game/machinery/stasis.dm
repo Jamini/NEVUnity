@@ -115,5 +115,31 @@
 			var/obj/item/device/radio/intercom/a = new /obj/item/device/radio/intercom(null)
 			a.autosay("[occupant.real_name] has entered stasis.", "Stasis Management Computer")
 			src.icon_state = "scanner_0"
+/*			for(var/mob/traitor in player_list)
+				for(var/datum/objective/objectives in traitor)
+					if(objectives.target == src.occupant.mind) //This isn't returning true or we aren't reaching this
+						a.autosay("DEBUG: TRAITOR OBJECTIVE MATCHES DESPAWNIGNG MOB","DEBUG")
+						del(objectives)
+						switch(rand(1,100))
+							if(1 to 33)
+								var/datum/objective/demote/demote_objective = new
+								demote_objective.owner = traitor.mind
+								demote_objective.find_target()
+								traitor.mind.objectives += demote_objective
+							if(34 to 50)
+								var/datum/objective/brig/brig_objective = new
+								brig_objective.owner = traitor.mind
+								brig_objective.find_target()
+								traitor.mind.objectives += brig_objective
+							if(51 to 66)
+								var/datum/objective/harm/harm_objective = new
+								harm_objective.owner = traitor.mind
+								harm_objective.find_target()
+								traitor.mind.objectives += harm_objective
+							else
+								var/datum/objective/steal/steal_objective = new
+								steal_objective.owner = traitor.mind
+								steal_objective.find_target()
+								traitor.mind.objectives += steal_objective */
 			del(src.occupant)//delete the mob
 		return
