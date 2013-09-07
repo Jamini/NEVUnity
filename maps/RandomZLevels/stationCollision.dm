@@ -134,7 +134,7 @@ var/sc_safecode5 = "[rand(0,9)]"
 			"}
 
 /obj/item/weapon/paper/sc_safehint_paper_shuttle
-	info = {"<b>Target:</b> Research-station Epsilon<br>
+	info = {"<b>Target:</b> Exploration Ship Epsilon<br>
 			<b>Objective:</b> Prototype weaponry. The captain likely keeps them locked in her safe.<br>
 			<br>
 			Our on-board spy has learned the code and has hidden away a few copies of the code around the station. Unfortunatly he has been captured by security

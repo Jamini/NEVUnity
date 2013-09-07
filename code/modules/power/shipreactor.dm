@@ -106,7 +106,7 @@
 /obj/machinery/unityreactor/proc/heat()
 
 	var/heat_added = energy*REACTOR_HEAT_COEFFICIENT
-	var/datum/gas_mixture/env = loc.return_air()
+	var/datum/gas_mixture/env = src.loc.return_air()
 	var/environmental_temp = env.temperature
 	var/temperature_difference = abs(environmental_temp-temperature)
 	var/datum/gas_mixture/removed = loc.remove_air(env.total_moles*0.25)

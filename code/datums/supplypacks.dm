@@ -523,7 +523,7 @@ var/list/all_supply_groups = list("Operations","Security","Hospitality","Enginee
 	group = "Engineering"
 
 /datum/supply_packs/engine/PA
-	name = "Suppermatter Reactor Core Crate"
+	name = "Supermatter Reactor Core Crate"
 	cost = 40
 	contains = list(/obj/machinery/unityreactor)
 	containertype = /obj/structure/closet/crate/secure/large
