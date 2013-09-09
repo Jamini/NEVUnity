@@ -673,21 +673,6 @@ datum
 			required_reagents = list("toxin" = 1, "water" = 4)
 			result_amount = 5
 
-		rukralium
-			name = "Rukralium"
-			result = null
-			required_reagents = list("sodium" = 1, "water" = 1)
-			result_amount = 2
-
-			on_reaction(var/datum/reagents/holder, var/created_volume)
-
-
-				var/location = get_turf(holder.my_atom)
-
-				for(var/mob/M in viewers(5, location))
-					M << "\red You can hear Rukral crying in the distance"
-				return
-
 
 /////////////////////////////////////OLD SLIME CORE REACTIONS ///////////////////////////////
 /*
