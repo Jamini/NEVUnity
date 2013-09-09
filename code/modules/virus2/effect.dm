@@ -320,7 +320,7 @@
 	stage = 2
 	activate(var/mob/living/carbon/mob,var/multiplier)
 		mob << "<span class='notice'>You feel a rush of energy inside you!</span>"
-		if (mob.reagents.get_reagent_amount("hyperzine") < 30)
+		if (mob.reagents.get_reagent_amount("hyperzine") < 6)
 			mob.reagents.add_reagent("hyperzine", 10)
 		if (prob(30))
 			mob.jitteriness += 10

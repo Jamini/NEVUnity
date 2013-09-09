@@ -4,6 +4,7 @@
 	desc = "A special helmet designed for work in a hazardous, low-pressure environment. Has radiation shielding."
 	icon_state = "rig0-engineering"
 	item_state = "eng_helm"
+	var/department = 0
 	armor = list(melee = 40, bullet = 5, laser = 20,energy = 5, bomb = 35, bio = 100, rad = 80)
 	allowed = list(/obj/item/device/flashlight)
 	var/brightness_on = 4 //luminosity when on
@@ -35,7 +36,8 @@
 			user.SetLuminosity(user.luminosity - brightness_on)
 //			user.UpdateLuminosity()
 			SetLuminosity(brightness_on)
-
+/obj/item/clothing/head/helmet/space/rig/proc/get_department()
+	return department
 
 
 /obj/item/clothing/suit/space/rig
@@ -43,12 +45,14 @@
 	desc = "A special suit that protects against hazardous, low pressure environments. Has radiation shielding."
 	icon_state = "rig-engineering"
 	item_state = "eng_hardsuit"
+	var/department = 0
 	slowdown = 1
 	armor = list(melee = 40, bullet = 5, laser = 20,energy = 5, bomb = 35, bio = 100, rad = 80)
 	allowed = list(/obj/item/device/flashlight,/obj/item/weapon/tank,/obj/item/weapon/storage/bag/ore,/obj/item/device/t_scanner,/obj/item/weapon/pickaxe, /obj/item/weapon/rcd)
 	heat_protection = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 	max_heat_protection_temperature = SPACE_SUIT_MAX_HEAT_PROTECITON_TEMPERATURE
-
+/obj/item/clothing/suit/space/rig/proc/get_department()
+	return department
 
 //Chief Engineer's rig
 /obj/item/clothing/head/helmet/space/rig/elite
@@ -56,6 +60,7 @@
 	desc = "An advanced helmet designed for work in a hazardous, low pressure environment. Shines with a high polish."
 	icon_state = "rig0-white"
 	item_state = "ce_helm"
+	department = 5
 	color = "white"
 	armor = list(melee = 40, bullet = 5, laser = 25,energy = 5, bomb = 40, bio = 100, rad = 100)
 
@@ -64,6 +69,7 @@
 	name = "advanced hardsuit"
 	desc = "An advanced suit that protects against hazardous, low pressure environments. Shines with a high polish."
 	item_state = "ce_hardsuit"
+	department = 5
 	armor = list(melee = 40, bullet = 5, laser = 25,energy = 5, bomb = 40, bio = 100, rad = 100)
 
 //Mining rig
@@ -72,12 +78,14 @@
 	desc = "A special helmet designed for work in a hazardous, low pressure environment. Has reinforced plating."
 	icon_state = "rig0-mining"
 	item_state = "mining_helm"
+	department = 3
 	color = "mining"
 	armor = list(melee = 60, bullet = 5, laser = 10,energy = 5, bomb = 20, bio = 100, rad = 60)
 
 /obj/item/clothing/suit/space/rig/mining
 	icon_state = "rig-mining"
 	name = "mining hardsuit"
+	department = 3
 	desc = "A special suit that protects against hazardous, low pressure environments. Has reinforced plating."
 	item_state = "mining_hardsuit"
 	armor = list(melee = 60, bullet = 5, laser = 10,energy = 5, bomb = 20, bio = 100, rad = 60)
@@ -89,6 +97,7 @@
 	desc = "An advanced helmet designed for work in special operations. Property of Gorlex Marauders."
 	icon_state = "rig0-syndi"
 	item_state = "syndie_helm"
+	department = 6
 	color = "syndi"
 	armor = list(melee = 60, bullet = 50, laser = 30,energy = 15, bomb = 35, bio = 100, rad = 60)
 	siemens_coefficient = 0.6
@@ -119,6 +128,7 @@
 	armor = list(melee = 60, bullet = 50, laser = 30, energy = 15, bomb = 35, bio = 100, rad = 60)
 	allowed = list(/obj/item/device/flashlight,/obj/item/weapon/tank,/obj/item/weapon/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/weapon/melee/baton,/obj/item/weapon/melee/energy/sword,/obj/item/weapon/handcuffs)
 	siemens_coefficient = 0.6
+	department = 6
 
 
 //Wizard Rig
@@ -143,7 +153,6 @@
 	armor = list(melee = 40, bullet = 20, laser = 20,energy = 20, bomb = 35, bio = 100, rad = 60)
 	siemens_coefficient = 0.7
 
-
 //Medical Rig
 /obj/item/clothing/head/helmet/space/rig/medical
 	name = "medical hardsuit helmet"
@@ -152,6 +161,7 @@
 	item_state = "medical_helm"
 	color = "medical"
 	armor = list(melee = 20, bullet = 5, laser = 10,energy = 5, bomb = 15, bio = 100, rad = 60)
+	department = 2
 
 /obj/item/clothing/suit/space/rig/medical
 	icon_state = "rig-medical"
@@ -161,6 +171,7 @@
 	allowed = list(/obj/item/device/flashlight,/obj/item/weapon/tank,/obj/item/weapon/storage/firstaid,/obj/item/device/healthanalyzer,/obj/item/stack/medical)
 	slowdown = 0
 	armor = list(melee = 20, bullet = 5, laser = 10,energy = 5, bomb = 15, bio = 100, rad = 60)
+	department = 2
 
 	//Security
 /obj/item/clothing/head/helmet/space/rig/security
@@ -171,6 +182,7 @@
 	color = "sec"
 	armor = list(melee = 60, bullet = 10, laser = 30, energy = 5, bomb = 15, bio = 100, rad = 10)
 	siemens_coefficient = 0.7
+	department = 4
 
 /obj/item/clothing/suit/space/rig/security
 	icon_state = "rig-sec"
@@ -180,6 +192,7 @@
 	armor = list(melee = 60, bullet = 10, laser = 30, energy = 5, bomb = 15, bio = 100, rad = 10)
 	allowed = list(/obj/item/weapon/gun,/obj/item/device/flashlight,/obj/item/weapon/tank,/obj/item/weapon/melee/baton)
 	siemens_coefficient = 0.7
+	department = 4
 
 
 //Atmospherics Rig (BS12)
@@ -191,6 +204,7 @@
 	color = "atmos"
 	armor = list(melee = 40, bullet = 0, laser = 0, energy = 0, bomb = 25, bio = 100, rad = 0)
 	max_heat_protection_temperature = FIRE_HELMET_MAX_HEAT_PROTECITON_TEMPERATURE
+	department = 1
 
 /obj/item/clothing/suit/space/rig/atmos
 	desc = "A special suit that protects against hazardous, low pressure environments. Has reduced radiation shielding to allow for greater mobility."
@@ -199,3 +213,4 @@
 	item_state = "atmos_hardsuit"
 	armor = list(melee = 40, bullet = 0, laser = 0, energy = 0, bomb = 25, bio = 100, rad = 0)
 	max_heat_protection_temperature = FIRESUIT_MAX_HEAT_PROTECITON_TEMPERATURE
+	department = 1

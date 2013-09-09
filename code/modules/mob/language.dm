@@ -55,7 +55,7 @@
 	name = "Sol Common"
 	desc = "A bastardized hybrid of informal English and elements of Mandarin Chinese; the common language of the Sol system."
 	key = "1"
-	flags = RESTRICTED
+	speech_verb = "mutters"
 
 // Galactic common languages (systemwide accepted standards).
 /datum/language/trader
