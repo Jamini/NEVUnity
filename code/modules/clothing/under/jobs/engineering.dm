@@ -27,7 +27,7 @@
 
 /obj/item/clothing/under/rank/electrician
 	desc = "It's an orange high visibility jumpsuit worn by electricians. It is mildly insulated."
-	name = "engineer's jumpsuit"
+	name = "electrician's jumpsuit"
 	icon_state = "electrician"
 	item_state = "engi_suit"
 	color = "electrician"

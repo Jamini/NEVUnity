@@ -419,6 +419,39 @@ datum/objective/brig
 				return 1
 			return 0
 		return 0
+//Get a crewmember demoted
+datum/objective/demote
+	find_target()
+		..()
+		if(target && target.current)
+			explanation_text = "[target.current.real_name], the [target.assigned_role] knows too much. Have [target.current] demoted to assistant."
+		else
+			explanation_text = "Free Objective"
+		return target
+
+	find_target_by_role(role, role_type=0)
+		..(role, role_type)
+		if(target && target.current)
+			explanation_text = "[target.current.real_name], the [!role_type ? target.assigned_role : target.special_role] knows too much. Have [target.current] demoted to assistant."
+		else
+			explanation_text = "Free Objective"
+		return target
+
+	check_completion()
+		if(target && target.current && istype(target,/mob/living/carbon/human))
+			var/obj/item/weapon/card/id/I = target.current:wear_id
+			if(istype(I, /obj/item/device/pda))
+				var/obj/item/device/pda/P = I
+				I = P.id
+
+			if(!istype(I)) return 1
+
+			if(I.assignment == "Assistant")
+				return 1
+			else
+				return 0
+		return 1
+
 
 // Harm a crew member, making an example of them
 datum/objective/harm

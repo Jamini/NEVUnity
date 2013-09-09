@@ -249,7 +249,7 @@
 		icon_state = "grenade"
 
 /obj/item/weapon/grenade/chem_grenade/cleaner
-	name = "Cleaner Grenade"
+	name = "cleaner Grenade"
 	desc = "BLAM!-brand foaming space cleaner. In a special applicator for rapid cleaning of wide areas."
 	stage = 2
 	path = 1

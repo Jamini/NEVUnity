@@ -13,6 +13,7 @@
 	var/tail                     // Name of tail image in species effects icon file.
 	var/language                 // Default racial language, if any.
 	var/attack_verb = "punch"    // Empty hand hurt intent verb.
+	var/punch_damage = 0 //Extra empty hand attack damage
 	var/mutantrace               // Safeguard due to old code.
 
 	var/breath_type = "oxygen"   // Non-oxygen gas breathed, if any.
@@ -52,7 +53,15 @@
 	primitive = /mob/living/carbon/monkey/unathi
 	darksight = 3
 
-	flags = WHITELISTED | HAS_LIPS | HAS_UNDERWEAR | HAS_TAIL
+	cold_level_1 = 280 //default 260 - lower is better
+	cold_level_2 = 220 //default 200
+	cold_level_3 = 130 //default 120
+
+	heat_level_1 = 420 //default 360 - Higher is better
+	heat_level_2 = 480 // default 400
+	heat_level_3 = 1100 //Default 1000
+
+	flags = HAS_SKIN_TONE | WHITELISTED | HAS_LIPS | HAS_UNDERWEAR | HAS_TAIL
 
 /datum/species/tajaran
 	name = "Tajaran"
@@ -61,19 +70,20 @@
 	language = "Siik'tajr"
 	tail = "tajtail"
 	attack_verb = "scratch"
+	punch_damage = 5
 	darksight = 8
 
-	cold_level_1 = 200
-	cold_level_2 = 140
-	cold_level_3 = 80
+	cold_level_1 = 200 //default 260
+	cold_level_2 = 140 //default 200
+	cold_level_3 = 80 //default 120
 
-	heat_level_1 = 330
-	heat_level_2 = 380
-	heat_level_3 = 800
+	heat_level_1 = 330 //default 360
+	heat_level_2 = 380 //default 400
+	heat_level_3 = 800 //default 1000
 
 	primitive = /mob/living/carbon/monkey/tajara
 
-	flags = WHITELISTED | HAS_LIPS | HAS_UNDERWEAR | HAS_TAIL
+	flags = HAS_SKIN_TONE | WHITELISTED | HAS_LIPS | HAS_UNDERWEAR | HAS_TAIL
 
 /datum/species/skrell
 	name = "Skrell"
@@ -82,7 +92,7 @@
 	language = "Skrellian"
 	primitive = /mob/living/carbon/monkey/skrell
 
-	flags = WHITELISTED | HAS_LIPS | HAS_UNDERWEAR
+	flags = HAS_SKIN_TONE | WHITELISTED | HAS_LIPS | HAS_UNDERWEAR
 
 /datum/species/vox
 	name = "Vox"
@@ -108,17 +118,18 @@
 	deform = 'icons/mob/human_races/r_def_plant.dmi'
 	language = "Rootspeak"
 	attack_verb = "slash"
+	punch_damage = 3
 	primitive = /mob/living/carbon/monkey/diona
 
 	warning_low_pressure = 50
-	hazard_low_pressure = -1
+	hazard_low_pressure = 0
 
-	cold_level_1 = 50
-	cold_level_2 = -1
-	cold_level_3 = -1
+	cold_level_1 = 240
+	cold_level_2 = 180
+	cold_level_3 = 120
 
-	heat_level_1 = 2000
-	heat_level_2 = 3000
-	heat_level_3 = 4000
+	heat_level_1 = 300
+	heat_level_2 = 350
+	heat_level_3 = 770
 
-	flags = WHITELISTED | NO_BREATHE | REQUIRE_LIGHT | NON_GENDERED | NO_SCAN | IS_PLANT | RAD_ABSORB
+	flags = NO_BREATHE | REQUIRE_LIGHT | NON_GENDERED | NO_SCAN | IS_PLANT | RAD_ABSORB

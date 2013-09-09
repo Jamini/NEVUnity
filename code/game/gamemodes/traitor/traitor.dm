@@ -78,10 +78,18 @@
 
 /datum/game_mode/proc/forge_traitor_objectives(var/datum/mind/traitor)
 	if(istype(traitor.current, /mob/living/silicon))
-		var/datum/objective/assassinate/kill_objective = new
-		kill_objective.owner = traitor
-		kill_objective.find_target()
-		traitor.objectives += kill_objective
+		switch(rand(1,100))
+			if(1 to 50)
+				var/datum/objective/harm/harm_objective = new
+				harm_objective.owner = traitor
+				harm_objective.find_target()
+				traitor.objectives += harm_objective
+			if(51 to 100)
+				var/datum/objective/brig/brig_objective = new
+				brig_objective.owner = traitor
+				brig_objective.find_target()
+				traitor.objectives += brig_objective
+
 
 		var/datum/objective/survive/survive_objective = new
 		survive_objective.owner = traitor
@@ -95,10 +103,10 @@
 	else
 		switch(rand(1,100))
 			if(1 to 33)
-				var/datum/objective/assassinate/kill_objective = new
-				kill_objective.owner = traitor
-				kill_objective.find_target()
-				traitor.objectives += kill_objective
+				var/datum/objective/demote/demote_objective = new
+				demote_objective.owner = traitor
+				demote_objective.find_target()
+				traitor.objectives += demote_objective
 			if(34 to 50)
 				var/datum/objective/brig/brig_objective = new
 				brig_objective.owner = traitor
@@ -115,12 +123,16 @@
 				steal_objective.find_target()
 				traitor.objectives += steal_objective
 		switch(rand(1,100))
-			if(1 to 100)
+			if(1 to 33)
 				if (!(locate(/datum/objective/escape) in traitor.objectives))
 					var/datum/objective/escape/escape_objective = new
 					escape_objective.owner = traitor
 					traitor.objectives += escape_objective
-
+			if(34 to 100)
+				if (!(locate(/datum/objective/survive) in traitor.objectives))
+					var/datum/objective/survive/survive_objective = new
+					survive_objective.owner = traitor
+					traitor.objectives += survive_objective
 			else
 				if (!(locate(/datum/objective/hijack) in traitor.objectives))
 					var/datum/objective/hijack/hijack_objective = new
