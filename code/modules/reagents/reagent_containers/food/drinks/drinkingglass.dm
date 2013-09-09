@@ -450,6 +450,11 @@
 					icon_state = "rewriter"
 					name = "Rewriter"
 					desc = "The secert of the sanctuary of the Libarian..."
+				if("nanocap")
+					icon_state = "nanocap"
+					name = "Nanotrasen Nightcap"
+					desc = "All the departments rolled into one delicious drink!"
+
 				else
 					icon_state ="glass_brown"
 					name = "Glass of ..what?"
