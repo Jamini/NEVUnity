@@ -16,8 +16,9 @@
 		if(env)
 			var/datum/gas/sleeping_agent/trace_gas = new
 			env.trace_gases += trace_gas
-			trace_gas.moles = rand(2,15)
+			trace_gas.moles = pick(0, 0, 0.1, rand())
 			env.update_values()
+
 
 
 /datum/artifact_effect/gassleeping/DoEffectAura()
