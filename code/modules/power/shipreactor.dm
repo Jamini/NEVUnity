@@ -1,4 +1,4 @@
-#define REACTOR_HEAT_COEFFICIENT 4
+#define REACTOR_HEAT_COEFFICIENT 10
 #define REACTOR_MAX_ENERGY_TRANSFER 4000
 #define REACTOR_HEAT_CAPACITY 5000
 /obj/machinery/unityreactor/
@@ -16,12 +16,19 @@
 	var/event_chance = 15 //Prob for event each tick
 	var/temperature = 273	//measured in kelvin, if this exceeds 1200 the core goes critical and explodes
 	var/max_temp = 600
+	var/datum/gas_mixture/env = null
+	var/toxrange = 10
+	var/toxdamage = 4
+	var/radiation = 15
+	var/radiationmin = 3
 
 /obj/machinery/unityreactor/process()
-	pulse() //Emits power
-	heat() //Emits heat and explodes if it gets too hot!
-	if(prob(event_chance))//Chance for it to run a special event TODO:Come up with one or two more that fit
-		event()
+	if(loc)
+		env = loc.return_air()
+		pulse() //Emits power
+		heat() //Emits heat and explodes if it gets too hot!
+		if(prob(event_chance))//Chance for it to run a special event TODO:Come up with one or two more that fit
+			event()
 	return
 
 
@@ -43,10 +50,6 @@
 
 
 /obj/machinery/unityreactor/proc/toxmob()
-	var/toxrange = 10
-	var/toxdamage = 4
-	var/radiation = 15
-	var/radiationmin = 3
 	if (src.energy>200)
 		toxdamage = round(((src.energy-150)/50)*4,1)
 		radiation = round(((src.energy-150)/50)*5,1)
@@ -106,7 +109,6 @@
 /obj/machinery/unityreactor/proc/heat()
 
 	var/heat_added = energy*REACTOR_HEAT_COEFFICIENT
-	var/datum/gas_mixture/env = src.loc.return_air()
 	var/environmental_temp = env.temperature
 	var/temperature_difference = abs(environmental_temp-temperature)
 	var/datum/gas_mixture/removed = loc.remove_air(env.total_moles*0.25)
@@ -127,7 +129,7 @@
 		if(prob(5))
 			var/obj/item/device/radio/intercom/a = new /obj/item/device/radio/intercom(null)
 			a.autosay("Warning, core is overheating.", "[station_name()] Power System Automated Annoucement")
-	if(temperature > 500)
+	if(temperature > 425)
 		var/obj/item/device/radio/intercom/a = new /obj/item/device/radio/intercom(null)
 		a.autosay("Reactor core is at critical temperatures. Explosion imminent. Have a nice day.", "[station_name()] Power System Automated Annoucement")
 		explosion(src.loc, 7,10,15,30)

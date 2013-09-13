@@ -2,7 +2,7 @@
 
 #define XENOARCH_SPAWN_CHANCE 0.5
 #define XENOARCH_SPREAD_CHANCE 15
-#define ARTIFACT_SPAWN_CHANCE 20
+#define ARTIFACT_SPAWN_CHANCE 80
 
 /turf/simulated/mineral //wall piece
 	name = "Rock"
@@ -126,6 +126,7 @@
 
 			//dont create artifact machinery in animal or plant digsites, or if we already have one
 			if(!artifact_find && digsite != 1 && digsite != 2 && prob(ARTIFACT_SPAWN_CHANCE))
+//			if(!artifact_find && prob(ARTIFACT_SPAWN_CHANCE))
 				artifact_find = new()
 				artifact_spawning_turfs.Add(src)
 

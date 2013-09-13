@@ -97,7 +97,20 @@
 	item_state = "rig-taj-med"
 	color = "rig-taj-med"
 	species_restricted = list("Tajaran")
+//Tajaran Mining Hardsuit
+/obj/item/clothing/head/helmet/space/rig/mining/tajara/
+	desc = "A special helmet designed for work in a hazardous, low pressure environment. Has reinforced plating. This one doesn't look like it was made for humans."
+	icon_state = "rig0-taj-helmet-mining"
+	item_state = "rig0-taj-helmet-mining"
+	color = "taj-helmet-med"
+	species_restricted = list("Tajaran")
 
+/obj/item/clothing/suit/space/rig/mining/tajara/
+	desc = "A special suit designed for work in a hazardous, low pressure environment. Has reinforced plating. This one doesn't look like it was made for humans."
+	icon_state = "rig-taj-mining"
+	item_state = "rig-taj-mining"
+	color = "rig-taj-mining"
+	species_restricted = list("Tajaran")
 //Tajaran Wizard Hardsuit
 /obj/item/clothing/head/helmet/space/rig/wizard/tajara/
 	desc = "A bizarre gem-encrusted helmet that radiates magical energies. It doesn't look like it was made for a human."
@@ -115,43 +128,38 @@
 
 //Skrell space gear. Sleek like a wetsuit.
 
-/obj/item/clothing/head/helmet/space/skrell
-	name = "Skrellian helmet"
-	desc = "Smoothly contoured and polished to a shine. Still looks like a fishbowl."
-	armor = list(melee = 20, bullet = 20, laser = 50,energy = 50, bomb = 50, bio = 100, rad = 100)
-	max_heat_protection_temperature = SPACE_SUIT_MAX_HEAT_PROTECITON_TEMPERATURE
+/obj/item/clothing/head/helmet/space/rig/skrell
+	desc = "A helmet of skrellian design that is smoothly contoured and polished to a shine. It appears to have radiation shielding."
+	icon_state = "skrell_suit_black"
+	item_state = "skrell_suit_black"
+	color = "skrell_suit_black"
 	species_restricted = list("Skrell","Human")
 
-/obj/item/clothing/head/helmet/space/skrell/white
+/obj/item/clothing/suit/space/rig/skrell
+	desc = "A wetsuit of skrellian design with reinforced plating seamlessly attached to it. It appears to have radiation shielding."
+	icon_state = "skrell_suit_black"
+	item_state = "skrell_suit_black"
+	color = "skrell_suit_black"
+	species_restricted = list("Skrell","Human")
+
+/obj/item/clothing/head/helmet/space/rig/elite/skrell
+	desc = "A high-ranking helmet of skrellian design that is smoothly contoured and polished to a shine. It appears to have enhanced radiation shielding."
 	icon_state = "skrell_helmet_white"
 	item_state = "skrell_helmet_white"
 	color = "skrell_helmet_white"
-
-/obj/item/clothing/head/helmet/space/skrell/black
-	icon_state = "skrell_suit_black"
-	item_state = "skrell_suit_black"
-	color = "skrell_suit_black"
-
-/obj/item/clothing/suit/space/skrell
-	name = "Skrellian hardsuit"
-	desc = "Seems like a wetsuit with reinforced plating seamlessly attached to it. Very chic."
-	armor = list(melee = 20, bullet = 20, laser = 50,energy = 50, bomb = 50, bio = 100, rad = 100)
-	allowed = list(/obj/item/device/flashlight,/obj/item/weapon/tank,/obj/item/weapon/storage/bag/ore,/obj/item/device/t_scanner,/obj/item/weapon/pickaxe, /obj/item/weapon/rcd)
-	heat_protection = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
-	max_heat_protection_temperature = SPACE_SUIT_MAX_HEAT_PROTECITON_TEMPERATURE
 	species_restricted = list("Skrell","Human")
 
-/obj/item/clothing/suit/space/skrell/white
+/obj/item/clothing/suit/space/rig/elite/skrell/
+	desc = "A wetsuit of skrellian design with reinforced plating seamlessly attached to it. It appears to have enhanced radiation shielding."
 	icon_state = "skrell_suit_white"
 	item_state = "skrell_suit_white"
 	color = "skrell_suit_white"
+	species_restricted = list("Skrell","Human")
 
-/obj/item/clothing/suit/space/skrell/black
-	icon_state = "skrell_suit_black"
-	item_state = "skrell_suit_black"
-	color = "skrell_suit_black"
 
 //Unathi space gear. Huge and restrictive.
+
+
 
 /obj/item/clothing/head/helmet/space/unathi
 	armor = list(melee = 40, bullet = 30, laser = 30,energy = 15, bomb = 35, bio = 100, rad = 50)
@@ -174,7 +182,7 @@
 	max_heat_protection_temperature = SPACE_SUIT_MAX_HEAT_PROTECITON_TEMPERATURE
 	species_restricted = list("Unathi")
 
-/obj/item/clothing/suit/space/unathi/rig_cheap
+/obj/item/clothing/suit/space/rig/security/unathi/
 	name = "NT breacher chassis"
 	desc = "A cheap NT knock-off of a Unathi battle-rig. Looks like a fish, moves like a fish, steers like a cow."
 	icon_state = "rig-unathi-cheap"
