@@ -23,6 +23,12 @@ obj/structure/door_assembly
 		glass_type = "/glass_command"
 		airlock_type = "/command"
 
+	door_assembly_coma
+		base_icon_state = "coma"
+		base_name = "Command Airlock"
+		glass_type = "/glass_commandalt"
+		airlock_type = "/commandalt"
+
 	door_assembly_sec
 		base_icon_state = "sec"
 		base_name = "Security Airlock"
@@ -34,6 +40,12 @@ obj/structure/door_assembly
 		base_name = "Engineering Airlock"
 		glass_type = "/glass_engineering"
 		airlock_type = "/engineering"
+
+	door_assembly_hyd
+		base_icon_state = "hyd"
+		base_name = "Hydroponics Airlock"
+		glass_type = "/glass_hydroponics"
+		airlock_type = "/hydroponics"
 
 	door_assembly_min
 		base_icon_state = "min"

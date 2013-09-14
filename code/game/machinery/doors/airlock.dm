@@ -99,6 +99,11 @@ Airlock index -> wire color are { 9, 4, 6, 7, 5, 8, 1, 2, 3 }.
 	icon = 'icons/obj/doors/Doorcom.dmi'
 	assembly_type = /obj/structure/door_assembly/door_assembly_com
 
+/obj/machinery/door/airlock/commandalt
+	name = "Airlock"
+	icon = 'icons/obj/doors/Doorcomalt.dmi'
+	assembly_type = /obj/structure/door_assembly/door_assembly_coma
+
 /obj/machinery/door/airlock/security
 	name = "Airlock"
 	icon = 'icons/obj/doors/Doorsec.dmi'
@@ -123,6 +128,11 @@ Airlock index -> wire color are { 9, 4, 6, 7, 5, 8, 1, 2, 3 }.
 	name = "External Airlock"
 	icon = 'icons/obj/doors/Doorext.dmi'
 	assembly_type = /obj/structure/door_assembly/door_assembly_ext
+
+/obj/machinery/door/airlock/hydroponics
+	name = "Airlock"
+	icon = 'icons/obj/doors/doorhydro.dmi'
+	assembly_type = /obj/structure/door_assembly/door_assembly_hyd
 
 /obj/machinery/door/airlock/glass
 	name = "Glass Airlock"
@@ -166,11 +176,25 @@ Airlock index -> wire color are { 9, 4, 6, 7, 5, 8, 1, 2, 3 }.
 	assembly_type = /obj/structure/door_assembly/door_assembly_com
 	glass = 1
 
+/obj/machinery/door/airlock/glass_commandalt
+	name = "Maintenance Hatch"
+	icon = 'icons/obj/doors/doorcomaltglass.dmi'
+	opacity = 0
+	assembly_type = /obj/structure/door_assembly/door_assembly_coma
+	glass = 1
+
 /obj/machinery/door/airlock/glass_engineering
 	name = "Maintenance Hatch"
 	icon = 'icons/obj/doors/Doorengglass.dmi'
 	opacity = 0
 	assembly_type = /obj/structure/door_assembly/door_assembly_eng
+	glass = 1
+
+/obj/machinery/door/airlock/glass_hydroponics
+	name = "Maintenance Hatch"
+	icon = 'icons/obj/doors/doorhydroglass.dmi'
+	opacity = 0
+	assembly_type = /obj/structure/door_assembly/door_assembly_hyd
 	glass = 1
 
 /obj/machinery/door/airlock/glass_security

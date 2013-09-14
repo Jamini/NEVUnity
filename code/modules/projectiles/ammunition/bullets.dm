@@ -90,6 +90,20 @@
 	projectile_type = "/obj/item/projectile/energy/dart"
 	m_amt = 12500
 
+/obj/item/ammo_casing/rocket
+	name = "rocket shell"
+	desc = "A high explosive designed to be fired from a launcher."
+	icon_state = "rocketshell"
+	projectile_type = "/obj/item/missile"
+	caliber = "rocket"
+
+/obj/item/ammo_casing/emprocket
+	name = "emp rocket"
+	desc = "A specialty designed warhead modified to release ion pulses instead of explosions."
+	icon_state = "emprocketshell"
+	projectile_type = "/obj/item/projectile/ion"
+	caliber = "rocket"
+
 /obj/item/ammo_casing/a762
 	desc = "A 7.62 bullet casing."
 	caliber = "a762"
