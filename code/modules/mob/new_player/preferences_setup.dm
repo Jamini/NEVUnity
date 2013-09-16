@@ -207,7 +207,7 @@ datum/preferences
 							clothes_s.Blend(new /icon('icons/mob/back.dmi', "satchel-norm"), ICON_OVERLAY)
 						if(4)
 							clothes_s.Blend(new /icon('icons/mob/back.dmi', "satchel"), ICON_OVERLAY)
-				if(BARTENDER)
+/*				if(BARTENDER)
 					clothes_s = new /icon('icons/mob/uniform.dmi', "ba_suit_s")
 					clothes_s.Blend(new /icon('icons/mob/feet.dmi', "black"), ICON_UNDERLAY)
 					clothes_s.Blend(new /icon('icons/mob/suit.dmi', "armor"), ICON_OVERLAY)
@@ -229,7 +229,7 @@ datum/preferences
 						if(3)
 							clothes_s.Blend(new /icon('icons/mob/back.dmi', "satchel-hyd"), ICON_OVERLAY)
 						if(4)
-							clothes_s.Blend(new /icon('icons/mob/back.dmi', "satchel"), ICON_OVERLAY)
+							clothes_s.Blend(new /icon('icons/mob/back.dmi', "satchel"), ICON_OVERLAY) */
 				if(CHEF)
 					clothes_s = new /icon('icons/mob/uniform.dmi', "chef_s")
 					clothes_s.Blend(new /icon('icons/mob/feet.dmi', "black"), ICON_UNDERLAY)
@@ -308,7 +308,7 @@ datum/preferences
 							clothes_s.Blend(new /icon('icons/mob/back.dmi', "satchel-norm"), ICON_OVERLAY)
 						if(4)
 							clothes_s.Blend(new /icon('icons/mob/back.dmi', "satchel"), ICON_OVERLAY)
-				if(CHAPLAIN)
+/*				if(CHAPLAIN)
 					clothes_s = new /icon('icons/mob/uniform.dmi', "chapblack_s")
 					clothes_s.Blend(new /icon('icons/mob/feet.dmi', "black"), ICON_UNDERLAY)
 					switch(backbag)
@@ -338,6 +338,7 @@ datum/preferences
 						if(4)
 							clothes_s.Blend(new /icon('icons/mob/back.dmi', "satchel"), ICON_OVERLAY)
 
+*/
 		else if(job_medsci_high)
 			switch(job_medsci_high)
 				if(RD)
@@ -398,7 +399,7 @@ datum/preferences
 							clothes_s.Blend(new /icon('icons/mob/back.dmi', "satchel-med"), ICON_OVERLAY)
 						if(4)
 							clothes_s.Blend(new /icon('icons/mob/back.dmi', "satchel"), ICON_OVERLAY)
-				if(GENETICIST)
+/*				if(GENETICIST)
 					clothes_s = new /icon('icons/mob/uniform.dmi', "geneticswhite_s")
 					clothes_s.Blend(new /icon('icons/mob/feet.dmi', "white"), ICON_UNDERLAY)
 					clothes_s.Blend(new /icon('icons/mob/suit.dmi', "labcoat_gen_open"), ICON_OVERLAY)
@@ -421,6 +422,7 @@ datum/preferences
 							clothes_s.Blend(new /icon('icons/mob/back.dmi', "satchel-vir"), ICON_OVERLAY)
 						if(4)
 							clothes_s.Blend(new /icon('icons/mob/back.dmi', "satchel"), ICON_OVERLAY)
+*/
 				if(ROBOTICIST)
 					clothes_s = new /icon('icons/mob/uniform.dmi', "robotics_s")
 					clothes_s.Blend(new /icon('icons/mob/feet.dmi', "black"), ICON_UNDERLAY)

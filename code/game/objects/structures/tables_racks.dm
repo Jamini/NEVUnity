@@ -178,6 +178,22 @@
 					icon_state = "reinf_tabledir2"
 				if(6)
 					icon_state = "reinf_tabledir3"
+		else if(istype(src,/obj/structure/table/grungetable))
+			switch(table_type)
+				if(0)
+					icon_state = "grunge_table"
+				if(1)
+					icon_state = "grunge_1tileendtable"
+				if(2)
+					icon_state = "grunge_1tilethick"
+				if(3)
+					icon_state = "grunge_tabledir"
+				if(4)
+					icon_state = "grunge_middle"
+				if(5)
+					icon_state = "grunge_tabledir2"
+				if(6)
+					icon_state = "grunge_tabledir3"
 		else if(istype(src,/obj/structure/table/woodentable))
 			switch(table_type)
 				if(0)
@@ -338,6 +354,15 @@
 	desc = "Do not apply fire to this. Rumour says it burns easily."
 	icon_state = "wood_table"
 	parts = /obj/item/weapon/table_parts/wood
+
+/*
+ * Grungy tables
+  */
+/obj/structure/table/grungetable
+	name = "grungy table"
+	desc = "Somehow you get the feeling this hasn't been cleaned in awhile..."
+	icon_state = "grunge_table"
+	parts = /obj/item/weapon/table_parts/reinforced
 
 /*
  * Reinforced tables

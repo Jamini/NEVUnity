@@ -129,10 +129,10 @@
 	keyslot2 = new /obj/item/device/encryptionkey/heads/cmo
 
 /obj/item/device/radio/headset/heads/hop
-	name = "head of personnel's headset"
-	desc = "The headset of the guy who will one day be captain. Channels are as follows: :u - supply, :c - command, :s - security"
-	icon_state = "com_headset"
-	item_state = "headset"
+	name = "first officer's headset"
+	desc = "The headset of the guy who drives the ship and grants access. Channels are as follows: :u - supply, :c - command, :s - security"
+	icon_state = "communication"
+	item_state = "earset"
 	keyslot2 = new /obj/item/device/encryptionkey/heads/hop
 /*
 /obj/item/device/radio/headset/headset_mine
