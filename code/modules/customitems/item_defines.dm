@@ -891,6 +891,12 @@
 	icon_state = "retpoluniform"
 	color = "retpoluniform"
 
+/obj/item/device/fluff/omnitool
+	name = "omnitool"
+	desc = "A multipurpose diagnostic and manufacturing tool used for a variety of tasks."
+	icon = 'custom_items.dmi'
+	icon_state = "omnitool"
+
 //////////// Weapons ////////////
 
 ///// Well-used baton - Oen'g Issek - Donofnyc3
