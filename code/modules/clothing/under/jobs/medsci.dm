@@ -53,11 +53,19 @@
 	flags = FPRINT | TABLEPASS
 
 /obj/item/clothing/under/rank/virologist
-	desc = "It's made of a special fiber that gives special protection against biohazards. It has a virologist rank stripe on it."
-	name = "virologist's jumpsuit"
+	desc = "It's made of a special fiber that gives special protection against biohazards. It has a xenobiologist rank stripe on it."
+	name = "xenobiologist's jumpsuit"
 	icon_state = "virology"
 	item_state = "w_suit"
 	color = "virologywhite"
+	permeability_coefficient = 0.50
+	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
+/obj/item/clothing/under/rank/xenoarch
+	desc = "It's made of a special fiber that gives special protection against biohazards. It has a xenoarchologists rank stripe on it."
+	name = "xenoarchologist's jumpsuit"
+	icon_state = "xenoarch"
+	item_state = "w_suit"
+	color = "xenoswhite"
 	permeability_coefficient = 0.50
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
 

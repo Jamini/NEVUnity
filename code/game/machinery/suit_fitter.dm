@@ -16,7 +16,7 @@
 	name = "Hardsuit Modification Unit"
 	desc = "An industrial U-Mod-It unit designed to adjust all kinds of space suits."
 	icon = 'icons/obj/suitstorage.dmi'
-	icon_state = "suitstorage000010000"//order is [has helmet][has suit][has human][is open][is locked][is UV cycling][is powered][is dirty/broken] [is superUVcycling]
+	icon_state = "suitstorage000010100"//order is [has helmet][has suit][has human][is open][is locked][is UV cycling][is powered][is dirty/broken] [is superUVcycling]
 	anchored = 1
 	density = 1
 	var/obj/item/clothing/suit/space/rig/SUIT

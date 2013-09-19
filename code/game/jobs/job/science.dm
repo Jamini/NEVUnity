@@ -76,7 +76,7 @@
 	equip(var/mob/living/carbon/human/H)
 		if(!H)	return 0
 		H.equip_to_slot_or_del(new /obj/item/device/radio/headset/headset_sci(H), slot_l_ear)
-		H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/scientist(H), slot_w_uniform)
+		H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/xenoarch(H), slot_w_uniform)
 		H.equip_to_slot_or_del(new /obj/item/clothing/shoes/white(H), slot_shoes)
 		H.equip_to_slot_or_del(new /obj/item/device/pda/toxins(H), slot_belt)
 		H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat/science(H), slot_wear_suit)
@@ -103,7 +103,7 @@
 	equip(var/mob/living/carbon/human/H)
 		if(!H) return 0
 		H.equip_to_slot_or_del(new /obj/item/device/radio/headset/headset_sci(H), slot_l_ear)
-		H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/scientist(H), slot_w_uniform)
+		H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/virologist(H), slot_w_uniform)
 		H.equip_to_slot_or_del(new /obj/item/clothing/shoes/white(H), slot_shoes)
 		H.equip_to_slot_or_del(new /obj/item/device/pda/toxins(H), slot_belt)
 		H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat/science(H), slot_wear_suit)

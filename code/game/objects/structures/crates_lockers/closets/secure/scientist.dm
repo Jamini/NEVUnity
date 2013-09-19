@@ -51,17 +51,17 @@
 /obj/structure/closet/secure_closet/xenobiologist
 	name = "Xenobiologist's Locker"
 	req_access = list(access_xenobiology)
-	icon_state = "secureres1"
-	icon_closed = "secureres"
-	icon_locked = "secureres1"
-	icon_opened = "secureresopen"
-	icon_broken = "secureresbroken"
+	icon_state = "securebio1"
+	icon_closed = "securebio"
+	icon_locked = "securebio1"
+	icon_opened = "securebioopen"
+	icon_broken = "securebiobroken"
 	icon_off = "secureresoff"
 
 	New()
 		..()
 		sleep(2)
-		new /obj/item/clothing/under/rank/scientist(src)
+		new /obj/item/clothing/under/rank/virologist(src)
 		//new /obj/item/clothing/suit/labcoat/science(src)
 		new /obj/item/clothing/suit/storage/labcoat(src)
 		new /obj/item/clothing/shoes/white(src)
@@ -76,16 +76,16 @@
 /obj/structure/closet/secure_closet/xenoarchaeologist
 	name = "Xenoarchaeologist's Locker"
 	req_access = list(access_xenoarch)
-	icon_state = "secureres1"
-	icon_closed = "secureres"
-	icon_locked = "secureres1"
-	icon_opened = "secureresopen"
-	icon_broken = "secureresbroken"
-	icon_off = "secureresoff"
+	icon_state = "securearch1"
+	icon_closed = "securearch"
+	icon_locked = "securearch1"
+	icon_opened = "securearchopen"
+	icon_broken = "securearchbroken"
+	icon_off = "securearchoff"
 	New()
 		..()
 		sleep(2)
-		new /obj/item/clothing/under/rank/scientist(src)
+		new /obj/item/clothing/under/rank/xenoarch(src)
 		//new /obj/item/clothing/suit/labcoat/science(src)
 		new /obj/item/clothing/suit/storage/labcoat(src)
 		new /obj/item/clothing/shoes/white(src)
