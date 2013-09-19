@@ -3475,5 +3475,14 @@ datum
 				..()
 				return
 
+		ethanol/nanocap
+			name = "Nanotrasen Nightcap"
+			id = "nanocap"
+			description = "Nanotrasens finest combined into one glorious drink!"
+			color = "#AF1BE0" // rgb: 175, 27, 224
+			boozepwr = 5
+			
+				
+
 // Undefine the alias for REAGENTS_EFFECT_MULTIPLER
 #undef REM
