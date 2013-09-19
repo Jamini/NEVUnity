@@ -1954,5 +1954,12 @@ datum
 			required_reagents = list("spacemountainwind" = 1, "coffee" = 1)
 			result_amount = 2
 
+		nanocap
+			name = "Nanotrasen Nightcap"
+			id = "nanocap"
+			result = "nanocap"
+			required_reagents = list("singulo" = 1, "doctorsdelight" = 1, "beepskysmash" = 1, "toxinsspecial" = 1)
+			result_amount = 4
+
 
 
