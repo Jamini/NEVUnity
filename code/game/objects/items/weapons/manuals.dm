@@ -575,7 +575,7 @@
 
 /obj/item/weapon/book/manual/security_space_law
 	name = "Space Law"
-	desc = "A set of Nanotrasen guidelines for keeping law and order on their space stations."
+	desc = "A set of Nanotrasen guidelines for keeping law and order on their facilities."
 	icon_state = "bookSpaceLaw"
 	author = "Nanotrasen"
 	title = "Space Law"

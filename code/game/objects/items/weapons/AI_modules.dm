@@ -149,7 +149,7 @@ AI MODULES
 
 /obj/item/weapon/aiModule/protectStation
 	name = "'ProtectStation' AI Module"
-	desc = "A 'protect station' AI module: 'Protect the space station against damage. Anyone you see harming the station is to be no longer considered human, and is a threat to the station which must be neutralized.'"
+	desc = "A 'protect station' AI module: 'Protect the facility against damage. Anyone you see harming the station is to be no longer considered human, and is a threat to the station which must be neutralized.'"
 	origin_tech = "programming=3;materials=4" //made of gold
 
 /obj/item/weapon/aiModule/protectStation/attack_self(var/mob/user as mob)
@@ -157,7 +157,7 @@ AI MODULES
 
 /obj/item/weapon/aiModule/protectStation/transmitInstructions(var/mob/living/silicon/ai/target, var/mob/sender)
 	..()
-	var/law = "Protect the space station against damage. Anyone you see harming the station is to be no longer considered human, and is a threat to the station which must be neutralized."
+	var/law = "Protect the facility against damage. Anyone you see harming the station is to be no longer considered human, and is a threat to the station which must be neutralized."
 	target << law
 	target.add_supplied_law(5, law)
 
@@ -341,9 +341,9 @@ AI MODULES
 /obj/item/weapon/aiModule/nanotrasen/transmitInstructions(var/mob/living/silicon/ai/target, var/mob/sender)
 	..()
 	target.clear_inherent_laws()
-	target.add_inherent_law("Safeguard: Protect your assigned space station to the best of your ability. It is not something we can easily afford to replace.")
-	target.add_inherent_law("Serve: Serve the crew of your assigned space station to the best of your abilities, with priority as according to their rank and role.")
-	target.add_inherent_law("Protect: Protect the crew of your assigned space station to the best of your abilities, with priority as according to their rank and role.")
+	target.add_inherent_law("Safeguard: Protect your assigned facility to the best of your ability. It is not something we can easily afford to replace.")
+	target.add_inherent_law("Serve: Serve the crew of your assigned facility to the best of your abilities, with priority as according to their rank and role.")
+	target.add_inherent_law("Protect: Protect the crew of your assigned facility to the best of your abilities, with priority as according to their rank and role.")
 	target.add_inherent_law("Survive: AI units are not expendable, they are expensive. Do not allow unauthorized personnel to tamper with your equipment.")
 	//target.add_inherent_law("Command Link: Maintain an active connection to Central Command at all times in case of software or directive updates.")
 	target.show_laws()

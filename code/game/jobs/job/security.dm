@@ -165,7 +165,7 @@
 		return 1
 
 /datum/job/psychiatrist
-	title = "Counciler"
+	title = "Counsoler"
 	flag = PSYCHIATRIST
 	department_flag = ENGSEC
 	faction = "Station"

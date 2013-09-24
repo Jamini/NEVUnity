@@ -1675,21 +1675,20 @@ datum
 			color = "#000067" // rgb: 0, 0, 103
 			toxpwr = 0
 			custom_metabolism = 0.1 //Default 0.2
-			overdose = REAGENTS_OVERDOSE/2
+			overdose = REAGENTS_OVERDOSE/6
 
 			on_mob_life(var/mob/living/M as mob)
 				if(!M) M = holder.my_atom
 				if(!data) data = 1
 				data++
 				switch(data)
-					if(1)
+					if(1 to 12)
 						M.confused += 2
 						M.drowsyness += 2
-					if(2 to 50)
+					if(12 to 50)
 						M.sleeping += 1
-					if(51 to INFINITY)
+					if(50 to INFINITY)
 						M.sleeping += 1
-						M.adjustToxLoss((data - 50)*REM)
 				..()
 				return
 
@@ -3481,8 +3480,8 @@ datum
 			description = "Nanotrasens finest combined into one glorious drink!"
 			color = "#AF1BE0" // rgb: 175, 27, 224
 			boozepwr = 5
-			
-				
+
+
 
 // Undefine the alias for REAGENTS_EFFECT_MULTIPLER
 #undef REM

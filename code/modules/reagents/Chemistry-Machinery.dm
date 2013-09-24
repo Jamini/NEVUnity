@@ -776,16 +776,16 @@
 		/obj/item/stack/sheet/mineral/clown = list("banana" = 20),
 		/obj/item/stack/sheet/mineral/silver = list("silver" = 20),
 		/obj/item/stack/sheet/mineral/gold = list("gold" = 20),
-		/obj/item/weapon/grown/nettle = list("sacid" = 0),
-		/obj/item/weapon/grown/deathnettle = list("pacid" = 0),
+		/obj/item/weapon/grown/nettle = list("sacid" = 5),
+		/obj/item/weapon/grown/deathnettle = list("pacid" = 5),
 
 		//Blender Stuff
-		/obj/item/weapon/reagent_containers/food/snacks/grown/soybeans = list("soymilk" = 0),
-		/obj/item/weapon/reagent_containers/food/snacks/grown/tomato = list("ketchup" = 0),
-		/obj/item/weapon/reagent_containers/food/snacks/grown/corn = list("cornoil" = 0),
-		/obj/item/weapon/reagent_containers/food/snacks/grown/wheat = list("flour" = -5),
-		/obj/item/weapon/reagent_containers/food/snacks/grown/ricestalk = list("rice" = -5),
-		/obj/item/weapon/reagent_containers/food/snacks/grown/cherries = list("cherryjelly" = 0),
+		/obj/item/weapon/reagent_containers/food/snacks/grown/soybeans = list("soymilk" = 5),
+		/obj/item/weapon/reagent_containers/food/snacks/grown/tomato = list("ketchup" = 5),
+		/obj/item/weapon/reagent_containers/food/snacks/grown/corn = list("cornoil" = 5),
+		/obj/item/weapon/reagent_containers/food/snacks/grown/wheat = list("flour" = 5),
+		/obj/item/weapon/reagent_containers/food/snacks/grown/ricestalk = list("rice" = 5),
+		/obj/item/weapon/reagent_containers/food/snacks/grown/cherries = list("cherryjelly" = 5),
 		/obj/item/weapon/reagent_containers/food/snacks/grown/plastellium = list("plasticide" = 5),
 
 
@@ -802,16 +802,16 @@
 	var/list/juice_items = list (
 
 		//Juicer Stuff
-		/obj/item/weapon/reagent_containers/food/snacks/grown/tomato = list("tomatojuice" = 0),
-		/obj/item/weapon/reagent_containers/food/snacks/grown/carrot = list("carrotjuice" = 0),
-		/obj/item/weapon/reagent_containers/food/snacks/grown/berries = list("berryjuice" = 0),
-		/obj/item/weapon/reagent_containers/food/snacks/grown/banana = list("banana" = 0),
-		/obj/item/weapon/reagent_containers/food/snacks/grown/potato = list("potato" = 0),
-		/obj/item/weapon/reagent_containers/food/snacks/grown/lemon = list("lemonjuice" = 0),
-		/obj/item/weapon/reagent_containers/food/snacks/grown/orange = list("orangejuice" = 0),
-		/obj/item/weapon/reagent_containers/food/snacks/grown/lime = list("limejuice" = 0),
-		/obj/item/weapon/reagent_containers/food/snacks/watermelonslice = list("watermelonjuice" = 0),
-		/obj/item/weapon/reagent_containers/food/snacks/grown/poisonberries = list("poisonberryjuice" = 0),
+		/obj/item/weapon/reagent_containers/food/snacks/grown/tomato = list("tomatojuice" = 5),
+		/obj/item/weapon/reagent_containers/food/snacks/grown/carrot = list("carrotjuice" = 5),
+		/obj/item/weapon/reagent_containers/food/snacks/grown/berries = list("berryjuice" = 5),
+		/obj/item/weapon/reagent_containers/food/snacks/grown/banana = list("banana" = 5),
+		/obj/item/weapon/reagent_containers/food/snacks/grown/potato = list("potato" = 5),
+		/obj/item/weapon/reagent_containers/food/snacks/grown/lemon = list("lemonjuice" = 5),
+		/obj/item/weapon/reagent_containers/food/snacks/grown/orange = list("orangejuice" = 5),
+		/obj/item/weapon/reagent_containers/food/snacks/grown/lime = list("limejuice" = 5),
+		/obj/item/weapon/reagent_containers/food/snacks/watermelonslice = list("watermelonjuice" = 5),
+		/obj/item/weapon/reagent_containers/food/snacks/grown/poisonberries = list("poisonberryjuice" = 5),
 	)
 
 

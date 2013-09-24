@@ -112,6 +112,51 @@
 
 	weapon1 = /obj/item/weapon/gun/projectile/automatic/c20r
 
+/mob/living/simple_animal/hostile/vox/
+	name = "Vox Raider"
+	desc = "Kikikikikiki!."
+	turns_per_move = 5
+	response_help = "pokes the"
+	response_disarm = "shoves the"
+	response_harm = "hits the"
+	speed = 4
+	stop_automated_movement_when_pulled = 0
+	maxHealth = 100
+	health = 100
+	harm_intent_damage = 5
+	melee_damage_lower = 10
+	melee_damage_upper = 10
+	attacktext = "punches"
+	a_intent = "harm"
+	var/corpse = /obj/effect/landmark/mobcorpse/vox
+	var/weapon1 = /obj/item/weapon/crossbow
+	wall_smash = 0
+	faction = "vox"
+	status_flags = CANPUSH
+	min_oxy = 0
+	max_oxy = 0
+	min_tox = 0
+	max_tox = 0
+	min_co2 = 0
+	max_co2 = 0
+	min_n2 = 0
+	max_n2 = 0
+	ranged = 1
+	rapid = 0
+	icon_state = "voxspace"
+	icon_living = "voxspace"
+	projectiletype = /obj/item/projectile/bullet/weakbullet2
+	projectilesound = 'sound/weapons/bladeslice.ogg'
+
+/mob/living/simple_animal/hostile/vox/Die()
+	..()
+	if(corpse)
+		new corpse (src.loc)
+	if(weapon1)
+		new weapon1 (src.loc)
+	del src
+	return
+
 /mob/living/simple_animal/hostile/syndicate/ranged/space
 	icon_state = "syndicaterangedpsace"
 	icon_living = "syndicaterangedpsace"

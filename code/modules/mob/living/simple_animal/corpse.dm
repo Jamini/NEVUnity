@@ -11,6 +11,7 @@
 	name = "Unknown"
 	var/mobname = "Unknown"  //Unused now but it'd fuck up maps to remove it now
 	var/corpseuniform = null //Set this to an object path to have the slot filled with said object on the corpse.
+	var/isvox = 0
 	var/corpsesuit = null
 	var/corpseshoes = null
 	var/corpsegloves = null
@@ -31,7 +32,11 @@
 	createCorpse()
 
 /obj/effect/landmark/mobcorpse/proc/createCorpse() //Creates a mob and checks for gear in each slot before attempting to equip it.
-	var/mob/living/carbon/human/M = new /mob/living/carbon/human (src.loc)
+	var/mob/living/carbon/human/M
+	if(isvox)
+		M = new /mob/living/carbon/human/vox (src.loc)
+	else
+		M = new /mob/living/carbon/human (src.loc)
 	M.real_name = src.name
 	M.stat = 2 //Kills the new mob
 	if(src.corpseuniform)
@@ -83,6 +88,19 @@
 
 
 //List of different corpse types
+/obj/effect/landmark/mobcorpse/vox
+	name = "Vox Raider"
+	isvox = 1
+	corpseuniform = /obj/item/clothing/under/vox/vox_robes
+	corpsesuit = /obj/item/clothing/suit/space/vox/carapace
+	corpseshoes = /obj/item/clothing/shoes/magboots/vox
+	corpsegloves = /obj/item/clothing/gloves/yellow/vox
+	corpseradio = /obj/item/device/radio/headset
+	corpsemask = /obj/item/clothing/mask/gas
+	corpsehelmet = /obj/item/clothing/head/helmet/space/vox/carapace
+	corpseid = 1
+	corpseidjob = "Totally Legit Human"
+	corpseidaccess = "Syndicate"
 
 /obj/effect/landmark/mobcorpse/syndicatesoldier
 	name = "Syndicate Operative"
