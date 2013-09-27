@@ -61,31 +61,113 @@ turf/simulated/wall/impassable_rock
 
 //corpses and possibly other decorative items
 
-/obj/effect/landmark/corpse/alien
-	mutantrace = "lizard"
+/obj/effect/landmark/aliencorpse
+	name = "Unknown"
+	var/mobname = "Unknown"  //Unused now but it'd fuck up maps to remove it now
+	var/corpseuniform = null //Set this to an object path to have the slot filled with said object on the corpse.
+	var/corpsesuit = null
+	var/corpseshoes = null
+	var/corpsegloves = null
+	var/corpseradio = null
+	var/corpseglasses = null
+	var/corpsemask = null
+	var/corpsehelmet = null
+	var/corpsebelt = null
+	var/corpsepocket1 = null
+	var/corpsepocket2 = null
+	var/corpseback = null
+	var/corpseid = 0     //Just set to 1 if you want them to have an ID
+	var/corpseidjob = null // Needs to be in quotes, such as "Clown" or "Chef." This just determines what the ID reads as, not their access
+	var/corpseidaccess = null //This is for access. See access.dm for which jobs give what access. Again, put in quotes. Use "Captain" if you want it to be all access.
+	var/corpseidicon = null //For setting it to be a gold, silver, centcomm etc ID
+	var/mutantrace = "vox"
 
-/obj/effect/landmark/corpse/alien/cargo
-	name = "Cargo Technician"
-	corpseuniform = /obj/item/clothing/under/rank/cargo
-	corpseradio = /obj/item/device/radio/headset/headset_cargo
-	corpseid = 1
-	corpseidjob = "Cargo Technician"
-	corpseidaccess = "Quartermaster"
+/obj/effect/landmark/aliencorpse/initialize()
+	createCorpse()
 
-/obj/effect/landmark/corpse/alien/laborer
-	name = "Laborer"
-	corpseuniform = /obj/item/clothing/under/overalls
-	corpseradio = /obj/item/device/radio/headset/headset_eng
-	corpseback = /obj/item/weapon/storage/backpack/industrial
+/obj/effect/landmark/aliencorpse/proc/createCorpse() //Creates a mob and checks for gear in each slot before attempting to equip it.
+	var/mob/living/carbon/human/vox/M = new /mob/living/carbon/human/vox (src.loc)
+	M.dna.mutantrace = mutantrace
+	M.real_name = src.name
+	M.death(1) //Kills the new mob
+	if(src.corpseuniform)
+		M.equip_to_slot_or_del(new src.corpseuniform(M), slot_w_uniform)
+	if(src.corpsesuit)
+		M.equip_to_slot_or_del(new src.corpsesuit(M), slot_wear_suit)
+	if(src.corpseshoes)
+		M.equip_to_slot_or_del(new src.corpseshoes(M), slot_shoes)
+	if(src.corpsegloves)
+		M.equip_to_slot_or_del(new src.corpsegloves(M), slot_gloves)
+	if(src.corpseradio)
+		M.equip_to_slot_or_del(new src.corpseradio(M), slot_l_ear)
+	if(src.corpseglasses)
+		M.equip_to_slot_or_del(new src.corpseglasses(M), slot_glasses)
+	if(src.corpsemask)
+		M.equip_to_slot_or_del(new src.corpsemask(M), slot_wear_mask)
+	if(src.corpsehelmet)
+		M.equip_to_slot_or_del(new src.corpsehelmet(M), slot_head)
+	if(src.corpsebelt)
+		M.equip_to_slot_or_del(new src.corpsebelt(M), slot_belt)
+	if(src.corpsepocket1)
+		M.equip_to_slot_or_del(new src.corpsepocket1(M), slot_r_store)
+	if(src.corpsepocket2)
+		M.equip_to_slot_or_del(new src.corpsepocket2(M), slot_l_store)
+	if(src.corpseback)
+		M.equip_to_slot_or_del(new src.corpseback(M), slot_back)
+	if(src.corpseid == 1)
+		var/obj/item/weapon/card/id/W = new(M)
+		W.name = "[M.real_name]'s ID Card"
+		var/datum/job/jobdatum
+		for(var/jobtype in typesof(/datum/job))
+			var/datum/job/J = new jobtype
+			if(J.title == corpseidaccess)
+				jobdatum = J
+				break
+		if(src.corpseidicon)
+			W.icon_state = corpseidicon
+		if(src.corpseidaccess)
+			if(jobdatum)
+				W.access = jobdatum.get_access()
+			else
+				W.access = list()
+		if(corpseidjob)
+			W.assignment = corpseidjob
+		W.registered_name = M.real_name
+		M.equip_to_slot_or_del(W, slot_wear_id)
+	del(src)
+
+
+/obj/effect/landmark/aliencorpse/raider
+	name = "Vox Raider"
+	corpseuniform = /obj/item/clothing/under/vox/vox_robes
+	corpseradio = /obj/item/device/radio/headset/syndicate
+	corpsesuit = /obj/item/clothing/suit/space/vox/carapace
 	corpsebelt = /obj/item/weapon/storage/belt/utility/full
-	corpsehelmet = /obj/item/clothing/head/hardhat
-	corpseid = 1
-	corpseidjob = "Laborer"
-	corpseidaccess = "Engineer"
+	corpsehelmet = /obj/item/clothing/head/helmet/space/vox/carapace
+	corpsegloves = /obj/item/clothing/gloves/yellow/vox
+	corpseshoes = /obj/item/clothing/shoes/magboots/vox
+	corpseid = 0
 
-/obj/effect/landmark/corpse/alien/testsubject
-	name = "Unfortunate Test Subject"
-	corpseuniform = /obj/item/clothing/under/color/white
+/obj/effect/landmark/aliencorpse/medic
+	name = "Vox Medic"
+	corpseuniform = /obj/item/clothing/under/vox/vox_robes
+	corpseradio = /obj/item/device/radio/headset/syndicate
+	corpsesuit = /obj/item/clothing/suit/space/vox/medic
+	corpsebelt = /obj/item/weapon/storage/belt/utility/full
+	corpsehelmet = /obj/item/clothing/head/helmet/space/vox/medic
+	corpsegloves = /obj/item/clothing/gloves/yellow/vox
+	corpseshoes = /obj/item/clothing/shoes/magboots/vox
+	corpseid = 0
+
+/obj/effect/landmark/aliencorpse/engie
+	name = "Vox Engineer"
+	corpseuniform = /obj/item/clothing/under/vox/vox_robes
+	corpseradio = /obj/item/device/radio/headset/syndicate
+	corpsesuit = /obj/item/clothing/suit/space/vox/pressure
+	corpsebelt = /obj/item/weapon/storage/belt/utility/full
+	corpsehelmet = /obj/item/clothing/head/helmet/space/vox/pressure
+	corpsegloves = /obj/item/clothing/gloves/yellow/vox
+	corpseshoes = /obj/item/clothing/shoes/magboots/vox
 	corpseid = 0
 
 /obj/effect/landmark/corpse/overseer
@@ -321,147 +403,108 @@ Alien plants should do something if theres a lot of poison
 	damage = 20
 	damage_type = BRUTE
 
-/obj/effect/critter/fleshmonster
+/obj/item/projectile/slimeglob
+	icon = 'projectiles.dmi'
+	icon_state = "toxin"
+	damage = 20
+	damage_type = BRUTE
+
+/mob/living/simple_animal/hostile/fleshmonster
 	name = "Fleshy Horror"
 	desc = "A grotesque, shambling fleshy horror... was this once a... a person?"
 	icon = 'icons/mob/mob.dmi'
 	icon_state = "horror"
-/*
-	health = 120
-	max_health = 120
-	aggressive = 1
-	defensive = 1
-	wanderer = 1
-	opensdoors = 1
-	atkcarbon = 1
-	atksilicon = 1
-	atkcritter = 1
-	atksame = 0
-	atkmech = 1
-	firevuln = 0.5
-	brutevuln = 1
-	seekrange = 25
-	armor = 15
-	melee_damage_lower = 12
-	melee_damage_upper = 17
-	angertext = "shambles"
-	attacktext = "slashes"
-	var/ranged = 0
-	var/rapid = 0
-	proc
-		Shoot(var/target, var/start, var/user, var/bullet = 0)
-		OpenFire(var/thing)//bluh ill rename this later or somethin
+	icon_living = "horror"
+	icon_dead = "horror"
+	health = 160
+	maxHealth = 240
+	melee_damage_lower = 8
+	melee_damage_upper = 12
+	attacktext = "claws"
+	projectilesound = 'sound/weapons/bite.ogg'
+	projectiletype = /obj/item/projectile/neurotox
+	faction = "flesh"
+	min_oxy = 0
+	max_oxy = 0
+	min_tox = 0
+	max_tox = 0
+	min_co2 = 0
+	max_co2 = 0
+	min_n2 = 0
+	max_n2 = 0
+	minbodytemp = 0
+	speed = 4
+	ranged = 0
 
-
-	Die()
-		if (!src.alive) return
-		src.alive = 0
-		walk_to(src,0)
-		src.visible_message("<b>[src]</b> disintegrates into mush!")
-		playsound(loc, 'sound/voice/hiss6.ogg', 80, 1, 1)
-		var/turf/Ts = get_turf(src)
-		new /obj/effect/decal/cleanable/blood(Ts)
-		del(src)
-
-	seek_target()
-		src.anchored = 0
-		var/T = null
-		for(var/mob/living/C in view(src.seekrange,src))//TODO: mess with this
-			if (src.target)
-				src.task = "chasing"
-				break
-			if((C.name == src.oldtarget_name) && (world.time < src.last_found + 100)) continue
-			if(istype(C, /mob/living/carbon/) && !src.atkcarbon) continue
-			if(istype(C, /mob/living/silicon/) && !src.atksilicon) continue
-			if(C.health < 0) continue
-			if(istype(C, /mob/living/carbon/) && src.atkcarbon)
-				if(C:mind)
-					if(C:mind:special_role == "H.I.V.E")
-						continue
-				src.attack = 1
-			if(istype(C, /mob/living/silicon/) && src.atksilicon)
-				if(C:mind)
-					if(C:mind:special_role == "H.I.V.E")
-						continue
-				src.attack = 1
-			if(src.attack)
-				T = C
-				break
-
-		if(!src.attack)
-			for(var/obj/effect/critter/C in view(src.seekrange,src))
-				if(istype(C, /obj/effect/critter) && !src.atkcritter) continue
-				if(C.health <= 0) continue
-				if(istype(C, /obj/effect/critter) && src.atkcritter)
-					if((istype(C, /obj/effect/critter/hivebot) && !src.atksame) || (C == src))	continue
-					T = C
-					break
-
-			for(var/obj/mecha/M in view(src.seekrange,src))
-				if(istype(M, /obj/mecha) && !src.atkmech) continue
-				if(M.health <= 0) continue
-				if(istype(M, /obj/mecha) && src.atkmech) src.attack = 1
-				if(src.attack)
-					T = M
-					break
-
-		if(src.attack)
-			src.target = T
-			src.oldtarget_name = T:name
-			if(src.ranged)
-				OpenFire(T)
-				return
-			src.task = "chasing"
-		return
-
-
-	OpenFire(var/thing)
-		src.target = thing
-		src.oldtarget_name = thing:name
-		for(var/mob/O in viewers(src, null))
-			O.show_message("\red <b>[src]</b> spits a glob at [src.target]!", 1)
-
-		var/tturf = get_turf(target)
-		if(rapid)
-			spawn(1)
-				Shoot(tturf, src.loc, src)
-			spawn(4)
-				Shoot(tturf, src.loc, src)
-			spawn(6)
-				Shoot(tturf, src.loc, src)
-		else
-			Shoot(tturf, src.loc, src)
-
-		src.attack = 0
-		sleep(12)
-		seek_target()
-		src.task = "thinking"
-		return
-
-
-	Shoot(var/target, var/start, var/user, var/bullet = 0)
-		if(target == start)
-			return
-
-		var/obj/item/projectile/slimeglob/A = new /obj/item/projectile/slimeglob(user:loc)
-		playsound(user, 'sound/weapons/bite.ogg', 100, 1)
-
-		if(!A)	return
-
-		if (!istype(target, /turf))
-			del(A)
-			return
-		A.current = target
-		A.yo = target:y - start:y
-		A.xo = target:x - start:x
-		spawn( 0 )
-			A.process()
-		return
-*/
-
-obj/effect/critter/fleshmonster/fleshslime
+/mob/living/simple_animal/hostile/fleshmonster/fleshslime
 	name = "Flesh Slime"
 	icon = 'biocraps.dmi'
 	icon_state = "livingflesh"
 	desc = "A creature that appears to be made out of living tissue strewn together haphazardly. Some kind of liquid bubbles from its maw."
-	//ranged = 1
+	ranged = 1
+	health = 120
+
+/mob/living/simple_animal/hostile/fleshmonster/Die()
+	..()
+	visible_message("<b>[src]</b> disintegrates into mush!")
+	new /obj/effect/decal/remains/xeno(src.loc)
+	playsound(loc, 'sound/voice/hiss6.ogg', 80, 1, 1)
+	del src
+	return
+
+//machinery and lore objects
+
+/obj/machinery/computer/personal
+	name = "Personal Log Computer"
+	icon = 'computer.dmi'
+	icon_state = "medlaptop"
+	circuit = "/obj/item/weapon/circuitboard/research_shuttle"
+
+/obj/machinery/computer/personal/dorms
+	name = "Personal Log Computer"
+	desc = "An old-model laptop that bears the science emblem of a corporation you've not heard of. It is faded and has dried blood splattered across the screen."
+	icon = 'computer.dmi'
+	icon_state = "medlaptop"
+	circuit = "/obj/item/weapon/circuitboard/research_shuttle"
+
+/obj/machinery/computer/personal/dorms/attack_hand(user as mob)
+	src.add_fingerprint(usr)
+	var/dat = "<center>Czerka Corporation</center><br> <center>Dr. Thomas Johnson</center><br><br>Stardate: April 22, 2435<br><br> We couldn't stop it. It's spread through the ship and has taken many of my colleagues. All we could do was watch in horror as it slaughtered our friends and co-workers.<br><br>Those damned abominations. I told Doctor Michaels that powering up the gateway on dubious coordinates pilfered from ancient artifacts was not a safe thing to do on a ship with as small of a guard as this one.<br><br>But it doesn't matter now. Delilah and I have locked ourselves in our room and plan to spend our last hours together.If anyone finds this, please. Destroy this ship.<br><br>Don't let them spread back to civilization."
+
+	user << browse("[dat]", "window=logs;size=800x400")
+
+/obj/machinery/computer/personal/gateway
+	name = "Personal Log Computer"
+	desc = "An old laptop that appears hardwired into a multitude of servers and electronics beneath the table. It bears the science emblem of a corporation you've not heard of."
+	icon = 'computer.dmi'
+	icon_state = "medlaptop"
+	circuit = "/obj/item/weapon/circuitboard/research_shuttle"
+
+/obj/machinery/computer/personal/gateway/attack_hand(user as mob)
+	src.add_fingerprint(usr)
+	var/dat = "<center>Czerka Corporation</center><br> <center>Testing Facility</center><br><br>Stardate: February 12, 2435<br><br> The gateway has been experiencing odd energy fluctuations since we sent the last team through, and we've received no contact since.<br><br>All encrypted radio channels have fallen silent and the men have gone off of our ship's scanning systems. But the Director still has high hopes for them - after all, they were the best mercenaries the company could hire for us.<br><br>That said, since they've gone through we've been receiving odd artefacts in return, some we've been sending to the labs. One interesting find of specific value was what appeared to be some sort of flesh-like growth that had spawned through the portal.<br><br>The tissue seems to have some sort of regenerative stasis, and appears close to the human genetic structure, so it could have serious applications in the medical field.<br><br>But for now, we'll simply continue testing until told otherwise. Admittedly, the mercenary commander aboard our ship is causing quite the ruckus over his lost men, which is making it quite hard to work at all."
+
+	user << browse("[dat]", "window=logs;size=800x400")
+
+/obj/machinery/computer/personal/captain
+	name = "Personal Log Computer"
+	desc = "A laptop that is embossed with gold and black. It seems important."
+	icon = 'computer.dmi'
+	icon_state = "medlaptop"
+	circuit = "/obj/item/weapon/circuitboard/research_shuttle"
+
+/obj/machinery/computer/personal/captain/attack_hand(user as mob)
+	src.add_fingerprint(usr)
+	var/dat = "<center>Czerka Corporation</center><br> <center>Captain Amelie Roselle</center><br><br>Stardate: May 30, 2435<br><br> They tried to take our position again. Lost another one of the greenhorns to them. They dragged him off, bleeding, kicking and screaming into the darkness beyond. Could almost swear I could heard them tearing his flesh off in chunks.<br><br>We're getting a steady supply of metal salvage from the surrounding asteroids, but sending parties to the airlock to gather it is proving more dangerous. The creatures have seemingly nigh-endless numbers and we're losing good men every day.<br><br>Medical supplies are running low and we keep getting pelted by rocks. Engineering said we lost the starboard thruster after a particularly nasty collision, and we don't have the manpower to fix it. Best we don't, though.<br><br>We're going to send a team into the reactor to overload and detonate it. We can't risk these things finding a way to maneuver this ship. They managed to fly off in the shuttle, but the rocks stopped them that time.<br><br>I don't think we'll be so lucky if they try again."
+
+	user << browse("[dat]", "window=logs;size=800x400")
+
+/obj/item/weapon/paper/asteroid
+	name = "paper - 'Farewell"
+	info = {"Well, I guess this is it for me. I don't think I can take a few more steps without my intestines spilling out of my side.<br>
+	Those things took me on their shuttle when they were going to lift off. Don't know why, don't really care this point. They're shit at piloting because we just flew face-first into a rock. Think I've still got some of that chair in my gut.<br>
+	Now it's just me, a smoking wreck, a punctured space suit and a bunch of broken gear. Guess this is how I spend my final moments. Cold and alone in space. Got some salvaged engineering-grade tape from the wreck and tried to patch my suit. Internal pressure systems are failing.<br>
+	I hope someone finds this. I hope someone does, and blows up that disgusting ship with all of those things on it. Those people used to be my friends, my co-workers before they were changed. Sometimes I swear I could still see the light in their eyes. Like they knew what was going on, but how they were powerless to stop it.<br>
+	For now, I think I'm just going to go lay down. There's some medical gear I managed to pull out of the wreck. Fitting I curl up and die in a cryo tube than to those things.<br>
+	<br>
+	I'm sorry I couldn't come home like I promised, Mateo. I love you."}
