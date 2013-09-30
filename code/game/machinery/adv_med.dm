@@ -5,7 +5,7 @@
 	var/mob/living/carbon/occupant
 	var/locked
 	name = "Body Scanner"
-	icon = 'Cryogenic2.dmi'
+	icon = 'icons/obj/Cryogenic2.dmi'
 	icon_state = "body_scanner_0"
 	density = 1
 	anchored = 1
@@ -167,7 +167,7 @@
 	var/delete
 	var/temphtml
 	name = "Body Scanner Console"
-	icon = 'Cryogenic2.dmi'
+	icon = 'icons/obj/Cryogenic2.dmi'
 	icon_state = "body_scannerconsole"
 	density = 1
 	anchored = 1
@@ -264,6 +264,25 @@
 					for(var/datum/disease/D in occupant.viruses)
 						if(!D.hidden[SCANNER])
 							dat += text("<font color='red'><B>Warning: [D.form] Detected</B>\nName: [D.name].\nType: [D.spread].\nStage: [D.stage]/[D.max_stages].\nPossible Cure: [D.cure]</FONT><BR>")
+
+					var/implnts = ""
+					for(var/obj/item/weapon/implant/I in occupant)
+						if(I in occupant)
+							if(I.implanted)
+								if(istype(I, /obj/item/weapon/implant/death_alarm))
+									implnts += "<font color='blue'>death alarm</font><br>"
+								if(istype(I, /obj/item/weapon/implant/loyalty))
+									implnts += "<font color='blue'>loyalty</font><br>"
+								if(istype(I, /obj/item/weapon/implant/chem))
+									implnts += "<font color='red'>chemical</font><br>"
+								if(istype(I, /obj/item/weapon/implant/tracking))
+									implnts += "<font color='red'>tracking</font><br>"
+
+					if(implnts)
+						dat += "<br>"
+						dat += "Detected implants: <br>"
+
+						dat += implnts
 
 					dat += "<HR><table border='1'>"
 					dat += "<tr>"

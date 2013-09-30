@@ -30,6 +30,8 @@ var/global/list/autolathe_recipes = list( \
 		new /obj/item/weapon/cautery(),\
 		new /obj/item/weapon/reagent_containers/glass/beaker(), \
 		new /obj/item/weapon/reagent_containers/glass/beaker/large(), \
+		new /obj/item/weapon/reagent_containers/glass/beaker/vial(), \
+		new /obj/item/weapon/reagent_containers/syringe(), \
 		new /obj/item/ammo_casing/shotgun/blank(), \
 		new /obj/item/ammo_casing/shotgun/beanbag(), \
 		new /obj/item/ammo_magazine/c38(), \
@@ -40,6 +42,7 @@ var/global/list/autolathe_recipes = list( \
 		new /obj/item/device/radio/off(), \
 		new /obj/item/device/assembly/infra(), \
 		new /obj/item/device/assembly/timer(), \
+		new /obj/item/device/assembly/prox_sensor(), \
 		new /obj/item/weapon/light/tube(), \
 		new /obj/item/weapon/light/bulb(), \
 		new /obj/item/ashtray/glass(), \
@@ -249,20 +252,10 @@ var/global/list/autolathe_recipes_hidden = list( \
 
 
 	Topic(href, href_list)
-		..()
-		usr.machine = src
+		if(..())
+			return
+		usr.set_machine(src)
 		src.add_fingerprint(usr)
-		if(href_list["removeContainer"])
-			var/obj/item/weapon/storage/container = locate(href_list["removeContainer"])
-			container.loc = src.loc
-			container.layer = initial(container.layer)
-		if(href_list["modifyOutputAmount"])
-			var/outputAmount = text2num(input(usr,"Amount:","Enter new quantity to create",""))
-			if(!busy)
-				if(outputAmount < 1)
-					outputAmount = 1
-			else
-				usr << "\red The autolathe is busy. Please wait for completion of previous operation."
 		if (!busy)
 			if(href_list["make"])
 				var/turf/T = get_step(src.loc, get_dir(src,usr))
