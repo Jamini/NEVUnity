@@ -840,9 +840,14 @@
 
 /obj/item/clothing/shoes/magboots/fluff/susan_harris_1 //sniperyeti: Susan Harris
 	name = "Susan's Magboots"
-	desc = "A objcolorful pair of magboots with the name Susan Harris clearly written on the back."
+	desc = "A colorful pair of magboots with the name Susan Harris clearly written on the back."
 	icon = 'custom_items.dmi'
 	icon_state = "atmosmagboots0"
+
+/obj/item/clothing/shoes/jackboots/fluff/kerbal
+	name = "Steel-Toed work boots"
+	desc = "A pair of heavy, steel-toed work boots. They have a polished shine to them."
+
 
 //////////// Sets ////////////
 
@@ -896,6 +901,18 @@
 	desc = "A multipurpose diagnostic and manufacturing tool used for a variety of tasks."
 	icon = 'custom_items.dmi'
 	icon_state = "omnitool"
+
+/obj/item/clothing/mask/gas/oimask
+	name = "Tribal mask"
+	desc = "A gasmask painted with Unathi tribal markings"
+	icon_state = "oimask"
+	item_state = "oimask"
+
+/obj/item/clothing/mask/gas/slave
+	name = "A slave collar"
+	desc = "A slave collar fitted with an ominous, blinking, red light. Probably explodes."
+	icon_state = "mathuscollar"
+	item_state = "mathuscollar"
 
 //////////// Weapons ////////////
 

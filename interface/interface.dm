@@ -35,7 +35,7 @@
 	set name = "hotkeys-help"
 	set category = "OOC"
 
-	var/hotkey_mode = {"<font color='purple'>
+	var/hotkey_mode = {"<font gamecolor='purple'>
 Hotkey-Mode: (hotkey-mode must be on)
 \tTAB = toggle hotkey-mode
 \ta = left
@@ -56,7 +56,7 @@ Hotkey-Mode: (hotkey-mode must be on)
 \t4 = harm-intent
 </font>"}
 
-	var/other = {"<font color='purple'>
+	var/other = {"<font gamecolor='purple'>
 Any-Mode: (hotkey doesn't need to be on)
 \tCtrl+a = left
 \tCtrl+s = down
@@ -81,7 +81,7 @@ Any-Mode: (hotkey doesn't need to be on)
 \tEND = throw
 </font>"}
 
-	var/admin = {"<font color='purple'>
+	var/admin = {"<font gamecolor='purple'>
 Admin:
 \tF5 = Aghost (admin-ghost)
 \tF6 = player-panel-new
