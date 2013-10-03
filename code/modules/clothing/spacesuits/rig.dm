@@ -9,7 +9,7 @@
 	allowed = list(/obj/item/device/flashlight)
 	var/brightness_on = 4 //luminosity when on
 	var/on = 0
-	objcolor = "engineering" //Determines used sprites: rig[on]-[color] and rig[on]-[color]2 (lying down sprite)
+	objcolor = "engineering" //Determines used sprites: rig[on]-[objcolor] and rig[on]-[objcolor]2 (lying down sprite)
 	icon_action_button = "action_hardhat"
 	heat_protection = HEAD
 	max_heat_protection_temperature = SPACE_SUIT_MAX_HEAT_PROTECITON_TEMPERATURE
