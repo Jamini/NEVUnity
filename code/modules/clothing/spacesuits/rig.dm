@@ -19,8 +19,8 @@
 			user << "You cannot turn the light on while in this [user.loc]" //To prevent some lighting anomalities.
 			return
 		on = !on
-		icon_state = "rig[on]-[color]"
-//		item_state = "rig[on]-[color]"
+		icon_state = "rig[on]-[objcolor]"
+//		item_state = "rig[on]-[objcolor]"
 
 		if(on)	user.SetLuminosity(user.luminosity + brightness_on)
 		else	user.SetLuminosity(user.luminosity - brightness_on)
