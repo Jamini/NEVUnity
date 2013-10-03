@@ -10,59 +10,59 @@
 	throw_speed = 7
 	throw_range = 15
 	m_amt = 60
-	color = "cargo"
+	objcolor = "cargo"
 	pressure_resistance = 2
 	attack_verb = list("stamped")
 
 /obj/item/weapon/stamp/captain
 	name = "captain's rubber stamp"
 	icon_state = "stamp-cap"
-	color = "captain"
+	objcolor = "captain"
 
 /obj/item/weapon/stamp/hop
 	name = "head of personnel's rubber stamp"
 	icon_state = "stamp-hop"
-	color = "hop"
+	objcolor = "hop"
 
 /obj/item/weapon/stamp/hos
 	name = "warden's rubber stamp"
 	icon_state = "stamp-hos"
-	color = "hosred"
+	objcolor = "hosred"
 
 /obj/item/weapon/stamp/ce
 	name = "chief engineer's rubber stamp"
 	icon_state = "stamp-ce"
-	color = "chief"
+	objcolor = "chief"
 
 /obj/item/weapon/stamp/rd
 	name = "research director's rubber stamp"
 	icon_state = "stamp-rd"
-	color = "director"
+	objcolor = "director"
 
 /obj/item/weapon/stamp/cmo
 	name = "chief medical officer's rubber stamp"
 	icon_state = "stamp-cmo"
-	color = "medical"
+	objcolor = "medical"
 
 /obj/item/weapon/stamp/denied
 	name = "\improper DENIED rubber stamp"
 	icon_state = "stamp-deny"
-	color = "redcoat"
+	objcolor = "redcoat"
 
 /obj/item/weapon/stamp/clown
 	name = "clown's rubber stamp"
 	icon_state = "stamp-clown"
-	color = "clown"
+	objcolor = "clown"
 
 /obj/item/weapon/stamp/internalaffairs
 	name = "internal affairs rubber stamp"
 	icon_state = "stamp-intaff"
-	color = "intaff"
+	objcolor = "intaff"
 
 /obj/item/weapon/stamp/centcomm
 	name = "centcomm rubber stamp"
 	icon_state = "stamp-cent"
-	color = "centcomm"
+	objcolor = "centcomm"
 
 
 /obj/item/weapon/stamp/attack_paw(mob/user as mob)

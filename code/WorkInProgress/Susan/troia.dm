@@ -11,7 +11,7 @@
 	desc = "It's made of a slightly sturdier material than standard jumpsuits, to allow for robust protection."
 	icon_state = "troiacamo"
 	item_state = "troiacamo"
-	color = "troiacamo"
+	objcolor = "troiacamo"
 	armor = list(melee = 10, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
 	flags = FPRINT | TABLEPASS
 
@@ -21,7 +21,7 @@
 	desc = "A standard issue helmet for NanoTrasen marine detachments."
 	icon_state = "helm-marine"
 	item_state = "helm-marine"
-	color = "helm-marine"
+	objcolor = "helm-marine"
 	armor = list(melee = 60, bullet = 50, laser = 30,energy = 15, bomb = 30, bio = 100, rad = 60)
 	var/obj/machinery/camera/camera
 

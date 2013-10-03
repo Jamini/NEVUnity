@@ -9,7 +9,7 @@
 	var/valve_open = 0
 	var/release_pressure = ONE_ATMOSPHERE
 
-	var/color = "yellow"
+	var/cancolor = "yellow"
 	var/can_label = 1
 	var/filled = 0.5
 	pressure_resistance = 7*ONE_ATMOSPHERE
@@ -21,42 +21,42 @@
 /obj/machinery/portable_atmospherics/canister/sleeping_agent
 	name = "Canister: \[N2O\]"
 	icon_state = "redws"
-	color = "redws"
+	cancolor = "redws"
 	can_label = 0
 /obj/machinery/portable_atmospherics/canister/nitrogen
 	name = "Canister: \[N2\]"
 	icon_state = "red"
-	color = "red"
+	cancolor = "red"
 	can_label = 0
 /obj/machinery/portable_atmospherics/canister/oxygen
 	name = "Canister: \[O2\]"
 	icon_state = "blue"
-	color = "blue"
+	cancolor = "blue"
 	can_label = 0
 /obj/machinery/portable_atmospherics/canister/toxins
 	name = "Canister \[Toxin (Bio)\]"
 	icon_state = "orange"
-	color = "orange"
+	cancolor = "orange"
 	can_label = 0
 /obj/machinery/portable_atmospherics/canister/carbon_dioxide
 	name = "Canister \[CO2\]"
 	icon_state = "black"
-	color = "black"
+	cancolor = "black"
 	can_label = 0
 /obj/machinery/portable_atmospherics/canister/air
 	name = "Canister \[Air\]"
 	icon_state = "grey"
-	color = "grey"
+	cancolor = "grey"
 	can_label = 0
 
 /obj/machinery/portable_atmospherics/canister/update_icon()
 	src.overlays = 0
 
 	if (src.destroyed)
-		src.icon_state = text("[]-1", src.color)
+		src.icon_state = text("[]-1", src.cancolor)
 
 	else
-		icon_state = "[color]"
+		icon_state = "[cancolor]"
 		if(holding)
 			overlays += "can-open"
 
@@ -245,12 +245,12 @@ Release Pressure: <A href='?src=\ref[src];pressure_adj=-1000'>-</A> <A href='?sr
 				if (holding)
 					release_log += "Valve was <b>closed</b> by [usr], stopping the transfer into the [holding]<br>"
 				else
-					release_log += "Valve was <b>closed</b> by [usr], stopping the transfer into the <font color='red'><b>air</b></font><br>"
+					release_log += "Valve was <b>closed</b> by [usr], stopping the transfer into the <font cancolor='red'><b>air</b></font><br>"
 			else
 				if (holding)
 					release_log += "Valve was <b>opened</b> by [usr], starting the transfer into the [holding]<br>"
 				else
-					release_log += "Valve was <b>opened</b> by [usr], starting the transfer into the <font color='red'><b>air</b></font><br>"
+					release_log += "Valve was <b>opened</b> by [usr], starting the transfer into the <font cancolor='red'><b>air</b></font><br>"
 			valve_open = !valve_open
 
 		if (href_list["remove_tank"])
@@ -267,7 +267,7 @@ Release Pressure: <A href='?src=\ref[src];pressure_adj=-1000'>-</A> <A href='?sr
 
 		if (href_list["relabel"])
 			if (can_label)
-				var/list/colors = list(\
+				var/list/cancolors = list(\
 					"\[N2O\]" = "redws", \
 					"\[N2\]" = "red", \
 					"\[O2\]" = "blue", \
@@ -276,10 +276,10 @@ Release Pressure: <A href='?src=\ref[src];pressure_adj=-1000'>-</A> <A href='?sr
 					"\[Air\]" = "grey", \
 					"\[CAUTION\]" = "yellow", \
 				)
-				var/label = input("Choose canister label", "Gas canister") as null|anything in colors
+				var/label = input("Choose canister label", "Gas canister") as null|anything in cancolors
 				if (label)
-					src.color = colors[label]
-					src.icon_state = colors[label]
+					src.cancolor = cancolors[label]
+					src.icon_state = cancolors[label]
 					src.name = "Canister: [label]"
 		src.updateUsrDialog()
 		src.add_fingerprint(usr)

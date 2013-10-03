@@ -159,7 +159,7 @@
 	icon = 'icons/obj/power.dmi'
 	icon_state = "coil_red"
 	var/amount = MAXCOIL
-	color = "red"
+	objcolor = "red"
 	desc = "A coil of power cable."
 	throwforce = 10
 	w_class = 2.0
@@ -181,14 +181,14 @@
 	..()
 	src.amount = length
 	if (param_color)
-		color = param_color
+		objcolor = param_color
 	pixel_x = rand(-2,2)
 	pixel_y = rand(-2,2)
 	updateicon()
 
 /obj/item/weapon/cable_coil/proc/updateicon()
 	if (!color)
-		color = pick("red", "yellow", "blue", "green")
+		objcolor = pick("red", "yellow", "blue", "green")
 	if(amount == 1)
 		icon_state = "coil_[color]1"
 		name = "cable piece"
@@ -490,7 +490,7 @@ obj/structure/cable/proc/cableColor(var/colorC)
 	var/color_n = "red"
 	if(colorC)
 		color_n = colorC
-	color = color_n
+	cablecolor = color_n
 	switch(colorC)
 		if("red")
 			icon = 'icons/obj/power_cond_red.dmi'
@@ -520,35 +520,35 @@ obj/structure/cable/proc/cableColor(var/colorC)
 	updateicon()
 
 /obj/item/weapon/cable_coil/yellow
-	color = "yellow"
+	objcolor = "yellow"
 	icon_state = "coil_yellow"
 
 /obj/item/weapon/cable_coil/blue
-	color = "blue"
+	objcolor = "blue"
 	icon_state = "coil_blue"
 
 /obj/item/weapon/cable_coil/green
-	color = "green"
+	objcolor = "green"
 	icon_state = "coil_green"
 
 /obj/item/weapon/cable_coil/pink
-	color = "pink"
+	objcolor = "pink"
 	icon_state = "coil_pink"
 
 /obj/item/weapon/cable_coil/orange
-	color = "orange"
+	objcolor = "orange"
 	icon_state = "coil_orange"
 
 /obj/item/weapon/cable_coil/cyan
-	color = "cyan"
+	objcolor = "cyan"
 	icon_state = "coil_cyan"
 
 /obj/item/weapon/cable_coil/white
-	color = "white"
+	objcolor = "white"
 	icon_state = "coil_white"
 
 /obj/item/weapon/cable_coil/random/New()
-	color = pick("red","yellow","green","blue","pink")
+	objcolor = pick("red","yellow","green","blue","pink")
 	icon_state = "coil_[color]"
 	..()
 

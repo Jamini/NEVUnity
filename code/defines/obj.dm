@@ -64,11 +64,11 @@
 		var/dat = {"
 		<head><style>
 			.manifest {border-collapse:collapse;}
-			.manifest td, th {border:1px solid [monochrome?"black":"#DEF; background-color:white; color:black"]; padding:.25em}
-			.manifest th {height: 2em; [monochrome?"border-top-width: 3px":"background-color: #48C; color:white"]}
-			.manifest tr.head th { [monochrome?"border-top-width: 1px":"background-color: #488;"] }
+			.manifest td, th {border:1px solid [monochrome?"black":"#DEF; background-cablecolor:white; cablecolor:black"]; padding:.25em}
+			.manifest th {height: 2em; [monochrome?"border-top-width: 3px":"background-cablecolor: #48C; cablecolor:white"]}
+			.manifest tr.head th { [monochrome?"border-top-width: 1px":"background-cablecolor: #488;"] }
 			.manifest td:first-child {text-align:right}
-			.manifest tr.alt td {[monochrome?"border-top-width: 2px":"background-color: #DEF"]}
+			.manifest tr.alt td {[monochrome?"border-top-width: 2px":"background-cablecolor: #DEF"]}
 		</style></head>
 		<table class="manifest" width='350px'>
 		<tr class='head'><th>Name</th><th>Rank</th><th>Activity</th></tr>
@@ -197,35 +197,35 @@
 	var/d1 = 0
 	var/d2 = 1
 	layer = 2.44 //Just below unary stuff, which is at 2.45 and above pipes, which are at 2.4
-	var/color = "red"
+	var/cablecolor = "red"
 	var/obj/structure/powerswitch/power_switch
 
 /obj/structure/cable/yellow
-	color = "yellow"
+	cablecolor = "yellow"
 	icon = 'icons/obj/power_cond_yellow.dmi'
 
 /obj/structure/cable/green
-	color = "green"
+	cablecolor = "green"
 	icon = 'icons/obj/power_cond_green.dmi'
 
 /obj/structure/cable/blue
-	color = "blue"
+	cablecolor = "blue"
 	icon = 'icons/obj/power_cond_blue.dmi'
 
 /obj/structure/cable/pink
-	color = "pink"
+	cablecolor = "pink"
 	icon = 'icons/obj/power_cond_pink.dmi'
 
 /obj/structure/cable/orange
-	color = "orange"
+	cablecolor = "orange"
 	icon = 'icons/obj/power_cond_orange.dmi'
 
 /obj/structure/cable/cyan
-	color = "cyan"
+	cablecolor = "cyan"
 	icon = 'icons/obj/power_cond_cyan.dmi'
 
 /obj/structure/cable/white
-	color = "white"
+	cablecolor = "white"
 	icon = 'icons/obj/power_cond_white.dmi'
 
 /obj/effect/projection

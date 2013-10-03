@@ -9,7 +9,7 @@
 	allowed = list(/obj/item/device/flashlight)
 	var/brightness_on = 4 //luminosity when on
 	var/on = 0
-	color = "engineering" //Determines used sprites: rig[on]-[color] and rig[on]-[color]2 (lying down sprite)
+	objcolor = "engineering" //Determines used sprites: rig[on]-[color] and rig[on]-[color]2 (lying down sprite)
 	icon_action_button = "action_hardhat"
 	heat_protection = HEAD
 	max_heat_protection_temperature = SPACE_SUIT_MAX_HEAT_PROTECITON_TEMPERATURE
@@ -61,7 +61,7 @@
 	icon_state = "rig0-white"
 	item_state = "ce_helm"
 	department = 5
-	color = "white"
+	objcolor = "white"
 	armor = list(melee = 40, bullet = 5, laser = 25,energy = 5, bomb = 40, bio = 100, rad = 100)
 
 /obj/item/clothing/suit/space/rig/elite
@@ -79,7 +79,7 @@
 	icon_state = "rig0-mining"
 	item_state = "mining_helm"
 	department = 3
-	color = "mining"
+	objcolor = "mining"
 	armor = list(melee = 60, bullet = 5, laser = 10,energy = 5, bomb = 20, bio = 100, rad = 60)
 
 /obj/item/clothing/suit/space/rig/mining
@@ -98,7 +98,7 @@
 	icon_state = "rig0-syndi"
 	item_state = "syndie_helm"
 	department = 6
-	color = "syndi"
+	objcolor = "syndi"
 	armor = list(melee = 60, bullet = 50, laser = 30,energy = 15, bomb = 35, bio = 100, rad = 60)
 	siemens_coefficient = 0.6
 	var/obj/machinery/camera/camera
@@ -137,7 +137,7 @@
 	desc = "A bizarre gem-encrusted helmet that radiates magical energies."
 	icon_state = "rig0-wiz"
 	item_state = "wiz_helm"
-	color = "wiz"
+	objcolor = "wiz"
 	unacidable = 1 //No longer shall our kind be foiled by lone chemists with spray bottles!
 	armor = list(melee = 40, bullet = 20, laser = 20,energy = 20, bomb = 35, bio = 100, rad = 60)
 	siemens_coefficient = 0.7
@@ -159,7 +159,7 @@
 	desc = "A special helmet designed for work in a hazardous, low pressure environment. Has minimal armor for maximum mobility."
 	icon_state = "rig0-medical"
 	item_state = "medical_helm"
-	color = "medical"
+	objcolor = "medical"
 	armor = list(melee = 20, bullet = 5, laser = 10,energy = 5, bomb = 15, bio = 100, rad = 60)
 	department = 2
 
@@ -179,7 +179,7 @@
 	desc = "A special helmet designed for work in a hazardous, low pressure environment. Has an additional layer of armor."
 	icon_state = "rig0-sec"
 	item_state = "sec_helm"
-	color = "sec"
+	objcolor = "sec"
 	armor = list(melee = 60, bullet = 10, laser = 30, energy = 5, bomb = 15, bio = 100, rad = 10)
 	siemens_coefficient = 0.7
 	department = 4
@@ -201,7 +201,7 @@
 	name = "atmospherics hardsuit helmet"
 	icon_state = "rig0-atmos"
 	item_state = "atmos_helm"
-	color = "atmos"
+	objcolor = "atmos"
 	armor = list(melee = 40, bullet = 0, laser = 0, energy = 0, bomb = 25, bio = 100, rad = 0)
 	max_heat_protection_temperature = FIRE_HELMET_MAX_HEAT_PROTECITON_TEMPERATURE
 	department = 1

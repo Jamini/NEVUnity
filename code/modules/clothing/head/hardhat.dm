@@ -6,7 +6,7 @@
 	item_state = "hardhat0_yellow"
 	var/brightness_on = 4 //luminosity when on
 	var/on = 0
-	color = "yellow" //Determines used sprites: hardhat[on]_[color] and hardhat[on]_[color]2 (lying down sprite)
+	objcolor = "yellow" //Determines used sprites: hardhat[on]_[color] and hardhat[on]_[color]2 (lying down sprite)
 	armor = list(melee = 30, bullet = 5, laser = 20,energy = 10, bomb = 20, bio = 10, rad = 20)
 	flags_inv = 0
 	icon_action_button = "action_hardhat"
@@ -39,12 +39,12 @@
 /obj/item/clothing/head/hardhat/orange
 	icon_state = "hardhat0_orange"
 	item_state = "hardhat0_orange"
-	color = "orange"
+	objcolor = "orange"
 
 /obj/item/clothing/head/hardhat/red
 	icon_state = "hardhat0_red"
 	item_state = "hardhat0_red"
-	color = "red"
+	objcolor = "red"
 	name = "firefighter helmet"
 	flags = FPRINT | TABLEPASS | STOPSPRESSUREDMAGE
 	heat_protection = HEAD
@@ -53,7 +53,7 @@
 /obj/item/clothing/head/hardhat/white
 	icon_state = "hardhat0_white"
 	item_state = "hardhat0_white"
-	color = "white"
+	objcolor = "white"
 	flags = FPRINT | TABLEPASS | STOPSPRESSUREDMAGE
 	heat_protection = HEAD
 	max_heat_protection_temperature = FIRE_HELMET_MAX_HEAT_PROTECITON_TEMPERATURE
@@ -61,5 +61,5 @@
 /obj/item/clothing/head/hardhat/dblue
 	icon_state = "hardhat0_dblue"
 	item_state = "hardhat0_dblue"
-	color = "dblue"
+	objcolor = "dblue"
 

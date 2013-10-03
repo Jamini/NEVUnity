@@ -207,7 +207,7 @@ var/global/chicken_count = 0
 	attacktext = "kicks"
 	health = 10
 	var/eggsleft = 0
-	var/color
+//	var/color
 	pass_flags = PASSTABLE
 	small = 1
 

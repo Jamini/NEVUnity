@@ -272,14 +272,14 @@
 	name = "pink swimsuit"
 	desc = "A rather skimpy pink swimsuit."
 	icon_state = "stripper_p_under"
-	color = "stripper_p"
+	objcolor = "stripper_p"
 	siemens_coefficient = 1
 
 /obj/item/clothing/under/stripper/stripper_green
 	name = "green swimsuit"
 	desc = "A rather skimpy green swimsuit."
 	icon_state = "stripper_g_under"
-	color = "stripper_g"
+	objcolor = "stripper_g"
 	siemens_coefficient = 1
 
 /obj/item/clothing/suit/stripper/stripper_pink
@@ -300,7 +300,7 @@
 	name = "the mankini"
 	desc = "No honest man would wear this abomination"
 	icon_state = "mankini"
-	color = "mankini"
+	objcolor = "mankini"
 	siemens_coefficient = 1
 
 /obj/item/clothing/suit/xenos
@@ -319,33 +319,33 @@
 	name = "black swimsuit"
 	desc = "An oldfashioned black swimsuit."
 	icon_state = "swim_black"
-	color = "swim_black"
+	objcolor = "swim_black"
 	siemens_coefficient = 1
 
 /obj/item/clothing/under/swimsuit/blue
 	name = "blue swimsuit"
 	desc = "An oldfashioned blue swimsuit."
 	icon_state = "swim_blue"
-	color = "swim_blue"
+	objcolor = "swim_blue"
 	siemens_coefficient = 1
 
 /obj/item/clothing/under/swimsuit/purple
 	name = "purple swimsuit"
 	desc = "An oldfashioned purple swimsuit."
 	icon_state = "swim_purp"
-	color = "swim_purp"
+	objcolor = "swim_purp"
 	siemens_coefficient = 1
 
 /obj/item/clothing/under/swimsuit/green
 	name = "green swimsuit"
 	desc = "An oldfashioned green swimsuit."
 	icon_state = "swim_green"
-	color = "swim_green"
+	objcolor = "swim_green"
 	siemens_coefficient = 1
 
 /obj/item/clothing/under/swimsuit/red
 	name = "red swimsuit"
 	desc = "An oldfashioned red swimsuit."
 	icon_state = "swim_red"
-	color = "swim_red"
+	objcolor = "swim_red"
 	siemens_coefficient = 1

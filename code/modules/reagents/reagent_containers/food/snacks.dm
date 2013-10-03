@@ -64,8 +64,8 @@
 
 				if(!do_mob(user, M)) return
 
-				M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been fed [src.name] by [user.name] ([user.ckey]) Reagents: [reagentlist(src)]</font>")
-				user.attack_log += text("\[[time_stamp()]\] <font color='red'>Fed [src.name] by [M.name] ([M.ckey]) Reagents: [reagentlist(src)]</font>")
+				M.attack_log += text("\[[time_stamp()]\] <font objcolor='orange'>Has been fed [src.name] by [user.name] ([user.ckey]) Reagents: [reagentlist(src)]</font>")
+				user.attack_log += text("\[[time_stamp()]\] <font objcolor='red'>Fed [src.name] by [M.name] ([M.ckey]) Reagents: [reagentlist(src)]</font>")
 				log_attack("[user.name] ([user.ckey]) fed [M.name] ([M.ckey]) with [src.name] Reagents: [reagentlist(src)] (INTENT: [uppertext(user.a_intent)])")
 
 				for(var/mob/O in viewers(world.view, user))
@@ -455,46 +455,46 @@
 			var/clr = C.colourName
 
 			if(!(clr in list("blue","green","mime","orange","purple","rainbow","red","yellow")))
-				usr << "\blue The egg refuses to take on this color!"
+				usr << "\blue The egg refuses to take on this objcolor!"
 				return
 
-			usr << "\blue You color \the [src] [clr]"
+			usr << "\blue You objcolor \the [src] [clr]"
 			icon_state = "egg-[clr]"
-			color = clr
+			objcolor = clr
 		else
 			..()
 
 /obj/item/weapon/reagent_containers/food/snacks/egg/blue
 	icon_state = "egg-blue"
-	color = "blue"
+	objcolor = "blue"
 
 /obj/item/weapon/reagent_containers/food/snacks/egg/green
 	icon_state = "egg-green"
-	color = "green"
+	objcolor = "green"
 
 /obj/item/weapon/reagent_containers/food/snacks/egg/mime
 	icon_state = "egg-mime"
-	color = "mime"
+	objcolor = "mime"
 
 /obj/item/weapon/reagent_containers/food/snacks/egg/orange
 	icon_state = "egg-orange"
-	color = "orange"
+	objcolor = "orange"
 
 /obj/item/weapon/reagent_containers/food/snacks/egg/purple
 	icon_state = "egg-purple"
-	color = "purple"
+	objcolor = "purple"
 
 /obj/item/weapon/reagent_containers/food/snacks/egg/rainbow
 	icon_state = "egg-rainbow"
-	color = "rainbow"
+	objcolor = "rainbow"
 
 /obj/item/weapon/reagent_containers/food/snacks/egg/red
 	icon_state = "egg-red"
-	color = "red"
+	objcolor = "red"
 
 /obj/item/weapon/reagent_containers/food/snacks/egg/yellow
 	icon_state = "egg-yellow"
-	color = "yellow"
+	objcolor = "yellow"
 
 /obj/item/weapon/reagent_containers/food/snacks/friedegg
 	name = "Fried egg"

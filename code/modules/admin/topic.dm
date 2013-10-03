@@ -1026,7 +1026,7 @@
 		M.loc = prison_cell
 		if(istype(M, /mob/living/carbon/human))
 			var/mob/living/carbon/human/prisoner = M
-			prisoner.equip_to_slot_or_del(new /obj/item/clothing/under/color/orange(prisoner), slot_w_uniform)
+			prisoner.equip_to_slot_or_del(new /obj/item/clothing/under/objcolor/orange(prisoner), slot_w_uniform)
 			prisoner.equip_to_slot_or_del(new /obj/item/clothing/shoes/orange(prisoner), slot_shoes)
 
 		M << "\red You have been sent to the prison station!"
@@ -1813,7 +1813,7 @@
 								W.layer = initial(W.layer)
 						//teleport person to cell
 						H.loc = pick(prisonwarp)
-						H.equip_to_slot_or_del(new /obj/item/clothing/under/color/orange(H), slot_w_uniform)
+						H.equip_to_slot_or_del(new /obj/item/clothing/under/objcolor/orange(H), slot_w_uniform)
 						H.equip_to_slot_or_del(new /obj/item/clothing/shoes/orange(H), slot_shoes)
 					else
 						//teleport security person

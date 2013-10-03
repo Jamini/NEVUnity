@@ -4,7 +4,7 @@
 	name = "fingerless gloves"
 	icon_state = "fingerless"
 	item_state = "fingerless"
-	color="fingerless"
+	objcolor="fingerless"
 	species_restricted = list("Tajaran","Skrell","Human","Unathi")
 
 /obj/item/clothing/gloves/yellow/reinforced
@@ -12,7 +12,7 @@
 	name = "Reinforced Insulated Gloves"
 	icon_state = "yreinforced"
 	item_state = "yreinforced"
-	color="yreinforced."
+	objcolor="yreinforced."
 	species_restricted = list("Tajaran","Unathi")
 
 /obj/item/clothing/gloves/latex/reinforced
@@ -27,14 +27,14 @@
 	desc = "A special helmet designed for work in a hazardous, low-pressure environment. Has radiation shielding. This one doesn't look like it was made for humans."
 	icon_state = "rig0-taj-helmet"
 	item_state = "rig0-taj-helmet"
-	color = "taj-helmet"
+	objcolor = "taj-helmet"
 	species_restricted = list("Tajaran")
 
 /obj/item/clothing/suit/space/rig/tajara
 	desc = "A special suit that protects against hazardous, low pressure environments. Has radiation shielding. This one doesn't look like it was made for humans."
 	icon_state = "rig-taj"
 	item_state = "rig-taj"
-	color = "rig-taj-atmos"
+	objcolor = "rig-taj-atmos"
 	species_restricted = list("Tajaran")
 
 //Tajaran Atmospheric Hardsuits
@@ -43,14 +43,14 @@
 	desc = "A special helmet designed for work in a hazardous, low-pressure environment. Has reduced radiation shielding and protective plating to allow for greater mobility. This one doesn't look like it was made for humans."
 	icon_state = "rig0-taj-helmet-atmos"
 	item_state = "rig0-taj-helmet-atmos"
-	color = "taj-helmet-atmos"
+	objcolor = "taj-helmet-atmos"
 	species_restricted = list("Tajaran")
 
 /obj/item/clothing/suit/space/rig/atmos/tajara
 	desc = "A special suit that protects against hazardous, low pressure environments. Has reduced radiation shielding and protective plating to allow for greater mobility. This one doesn't look like it was made for humans."
 	icon_state = "rig-taj-atmos"
 	item_state = "rig-taj-atmos"
-	color = "rig-taj-atmos"
+	objcolor = "rig-taj-atmos"
 	species_restricted = list("Tajaran")
 
 //Nasir's baby
@@ -58,14 +58,14 @@
 	desc = "A special helmet designed for work in a hazardous, low-pressure environment. Has enhanced radiation shielding. This one doesn't look like it was made for humans. Just looking at it makes you want to go \"Nnngh!\""
 	icon_state = "rig0-taj-helmet-white"
 	item_state = "rig0-taj-helmet-white"
-	color = "taj-helmet-white"
+	objcolor = "taj-helmet-white"
 	species_restricted = list("Tajaran")
 
 /obj/item/clothing/suit/space/rig/elite/tajara
 	desc = "A special suit that protects against hazardous, low pressure environments. Has enhanced radiation shielding. This one doesn't look like it was made for humans.Just looking at it makes you want to go \"Nnngh!\""
 	icon_state = "rig-taj-white"
 	item_state = "rig-taj-white"
-	color = "rig-taj-white"
+	objcolor = "rig-taj-white"
 	species_restricted = list("Tajaran")
 
 //Tajaran Security Hardsuit
@@ -73,14 +73,14 @@
 	desc = "A special helmet designed for work in a hazardous, low-pressure environment. Has an additional layer of armor. This one doesn't look like it was made for humans."
 	icon_state = "rig0-taj-helmet-sec"
 	item_state = "rig0-taj-helmet-sec"
-	color = "taj-helmet-sec"
+	objcolor = "taj-helmet-sec"
 	species_restricted = list("Tajaran")
 
 /obj/item/clothing/suit/space/rig/security/tajara/
 	desc = "A special suit that protects against hazardous, low pressure environments. Has an additional layer of armor. This one doesn't look like it was made for humans."
 	icon_state = "rig-taj-sec"
 	item_state = "rig-taj-sec"
-	color = "rig-taj-sec"
+	objcolor = "rig-taj-sec"
 	species_restricted = list("Tajaran")
 
 //Tajaran Medical Hardsuit
@@ -88,42 +88,42 @@
 	desc = "A special helmet designed for work in a hazardous, low-pressure environment. Has minimal armor for maximum mobility. This one doesn't look like it was made for humans."
 	icon_state = "rig0-taj-helmet-med"
 	item_state = "rig0-taj-helmet-med"
-	color = "taj-helmet-med"
+	objcolor = "taj-helmet-med"
 	species_restricted = list("Tajaran")
 
 /obj/item/clothing/suit/space/rig/medical/tajara/
 	desc = "A special suit that protects against hazardous, low pressure environments. Has minimal armor for maximum mobility. This one doesn't look like it was made for humans."
 	icon_state = "rig-taj-med"
 	item_state = "rig-taj-med"
-	color = "rig-taj-med"
+	objcolor = "rig-taj-med"
 	species_restricted = list("Tajaran")
 //Tajaran Mining Hardsuit
 /obj/item/clothing/head/helmet/space/rig/mining/tajara/
 	desc = "A special helmet designed for work in a hazardous, low pressure environment. Has reinforced plating. This one doesn't look like it was made for humans."
 	icon_state = "rig0-taj-helmet-mining"
 	item_state = "rig0-taj-helmet-mining"
-	color = "taj-helmet-med"
+	objcolor = "taj-helmet-med"
 	species_restricted = list("Tajaran")
 
 /obj/item/clothing/suit/space/rig/mining/tajara/
 	desc = "A special suit designed for work in a hazardous, low pressure environment. Has reinforced plating. This one doesn't look like it was made for humans."
 	icon_state = "rig-taj-mining"
 	item_state = "rig-taj-mining"
-	color = "rig-taj-mining"
+	objcolor = "rig-taj-mining"
 	species_restricted = list("Tajaran")
 //Tajaran Wizard Hardsuit
 /obj/item/clothing/head/helmet/space/rig/wizard/tajara/
 	desc = "A bizarre gem-encrusted helmet that radiates magical energies. It doesn't look like it was made for a human."
 	icon_state = "rig0-taj-helmet-wiz"
 	item_state = "rig0-taj-helmet-wiz"
-	color = "taj-helmet-wiz"
+	objcolor = "taj-helmet-wiz"
 	species_restricted = list("Tajaran")
 
 /obj/item/clothing/suit/space/rig/wizard/tajara/
 	desc = "A bizarre gem-encrusted suit that radiates magical energies. It doesn't looklook like it was made for a human."
 	icon_state = "rig-taj-wiz"
 	item_state = "rig-taj-wiz"
-	color = "rig-taj-wiz"
+	objcolor = "rig-taj-wiz"
 	species_restricted = list("Tajaran")
 
 //Skrell space gear. Sleek like a wetsuit.
@@ -132,28 +132,28 @@
 	desc = "A helmet of skrellian design that is smoothly contoured and polished to a shine. It appears to have radiation shielding."
 	icon_state = "skrell_suit_black"
 	item_state = "skrell_suit_black"
-	color = "skrell_suit_black"
+	objcolor = "skrell_suit_black"
 	species_restricted = list("Skrell","Human")
 
 /obj/item/clothing/suit/space/rig/skrell
 	desc = "A wetsuit of skrellian design with reinforced plating seamlessly attached to it. It appears to have radiation shielding."
 	icon_state = "skrell_suit_black"
 	item_state = "skrell_suit_black"
-	color = "skrell_suit_black"
+	objcolor = "skrell_suit_black"
 	species_restricted = list("Skrell","Human")
 
 /obj/item/clothing/head/helmet/space/rig/elite/skrell
 	desc = "A high-ranking helmet of skrellian design that is smoothly contoured and polished to a shine. It appears to have enhanced radiation shielding."
 	icon_state = "skrell_helmet_white"
 	item_state = "skrell_helmet_white"
-	color = "skrell_helmet_white"
+	objcolor = "skrell_helmet_white"
 	species_restricted = list("Skrell","Human")
 
 /obj/item/clothing/suit/space/rig/elite/skrell/
 	desc = "A wetsuit of skrellian design with reinforced plating seamlessly attached to it. It appears to have enhanced radiation shielding."
 	icon_state = "skrell_suit_white"
 	item_state = "skrell_suit_white"
-	color = "skrell_suit_white"
+	objcolor = "skrell_suit_white"
 	species_restricted = list("Skrell","Human")
 
 
@@ -173,7 +173,7 @@
 	desc = "Hey! Watch it with that thing! It's a knock-off of a Unathi battle-helm, and that spike could put someone's eye out."
 	icon_state = "unathi_helm_cheap"
 	item_state = "unathi_helm_cheap"
-	color = "unathi_helm_cheap"
+	objcolor = "unathi_helm_cheap"
 
 /obj/item/clothing/suit/space/unathi
 	armor = list(melee = 40, bullet = 30, laser = 30,energy = 15, bomb = 35, bio = 100, rad = 50)
@@ -194,14 +194,14 @@
 	desc = "Weathered, ancient and battle-scarred. The helmet is too."
 	icon_state = "unathi_breacher"
 	item_state = "unathi_breacher"
-	color = "unathi_breacher"
+	objcolor = "unathi_breacher"
 
 /obj/item/clothing/suit/space/unathi/breacher
 	name = "breacher chassis"
 	desc = "Huge, bulky and absurdly heavy. It must be like wearing a tank."
 	icon_state = "unathi_breacher"
 	item_state = "unathi_breacher"
-	color = "unathi_breacher"
+	objcolor = "unathi_breacher"
 	slowdown = 1
 
 // Vox space gear (vaccuum suit, low pressure armour)
@@ -277,14 +277,14 @@
 	name = "alien clothing"
 	desc = "This doesn't look very comfortable."
 	icon_state = "vox-casual-1"
-	color = "vox-casual-1"
+	objcolor = "vox-casual-1"
 	item_state = "vox-casual-1"
 
 /obj/item/clothing/under/vox/vox_robes
 	name = "alien robes"
 	desc = "Weird and flowing!"
 	icon_state = "vox-casual-2"
-	color = "vox-casual-2"
+	objcolor = "vox-casual-2"
 	item_state = "vox-casual-2"
 
 /obj/item/clothing/gloves/yellow/vox
@@ -294,7 +294,7 @@
 	item_state = "gloves-vox"
 	siemens_coefficient = 0
 	permeability_coefficient = 0.05
-	color="gloves-vox"
+	objcolor="gloves-vox"
 	species_restricted = list("Vox")
 
 /obj/item/clothing/shoes/magboots/vox

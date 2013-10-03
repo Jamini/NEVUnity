@@ -11,7 +11,7 @@
 
 	New()
 		..()
-		for(var/U in typesof(/obj/item/clothing/under/color)-(/obj/item/clothing/under/color))
+		for(var/U in typesof(/obj/item/clothing/under/objcolor)-(/obj/item/clothing/under/objcolor))
 			var/obj/item/clothing/under/V = new U
 			src.clothing_choices += V
 

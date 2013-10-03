@@ -21,7 +21,7 @@
 	desc = "These look pretty fancy."
 	icon_state = "latex"
 	item_state = "lgloves"
-	color="mime"
+	objcolor="mime"
 
 	redcoat
-		color = "redcoat"		//Exists for washing machines. Is not different from white gloves in any way.
+		objcolor = "redcoat"		//Exists for washing machines. Is not different from white gloves in any way.

@@ -4,7 +4,7 @@
 	icon_state = "cargosoft"
 	flags = FPRINT|TABLEPASS|HEADCOVERSEYES
 	item_state = "helmet"
-	color = "cargo"
+	objcolor =  "cargo"
 	var/flipped = 0
 	siemens_coefficient = 0.9
 
@@ -31,64 +31,64 @@
 	name = "red cap"
 	desc = "It's a baseball hat in a tasteless red colour."
 	icon_state = "redsoft"
-	color = "red"
+	objcolor =  "red"
 
 /obj/item/clothing/head/soft/blue
 	name = "blue cap"
 	desc = "It's a baseball hat in a tasteless blue colour."
 	icon_state = "bluesoft"
-	color = "blue"
+	objcolor =  "blue"
 
 /obj/item/clothing/head/soft/green
 	name = "green cap"
 	desc = "It's a baseball hat in a tasteless green colour."
 	icon_state = "greensoft"
-	color = "green"
+	objcolor =  "green"
 
 /obj/item/clothing/head/soft/yellow
 	name = "yellow cap"
 	desc = "It's a baseball hat in a tasteless yellow colour."
 	icon_state = "yellowsoft"
-	color = "yellow"
+	objcolor =  "yellow"
 
 /obj/item/clothing/head/soft/grey
 	name = "grey cap"
 	desc = "It's a baseball hat in a tasteful grey colour."
 	icon_state = "greysoft"
-	color = "grey"
+	objcolor =  "grey"
 
 /obj/item/clothing/head/soft/orange
 	name = "orange cap"
 	desc = "It's a baseball hat in a tasteless orange colour."
 	icon_state = "orangesoft"
-	color = "orange"
+	objcolor =  "orange"
 
 /obj/item/clothing/head/soft/mime
 	name = "white cap"
 	desc = "It's a baseball hat in a tasteless white colour."
 	icon_state = "mimesoft"
-	color = "mime"
+	objcolor =  "mime"
 
 /obj/item/clothing/head/soft/purple
 	name = "purple cap"
 	desc = "It's a baseball hat in a tasteless purple colour."
 	icon_state = "purplesoft"
-	color = "purple"
+	objcolor =  "purple"
 
 /obj/item/clothing/head/soft/rainbow
 	name = "rainbow cap"
 	desc = "It's a baseball hat in a bright rainbow of colors."
 	icon_state = "rainbowsoft"
-	color = "rainbow"
+	objcolor =  "rainbow"
 
 /obj/item/clothing/head/soft/sec
 	name = "security cap"
 	desc = "It's baseball hat in tasteful red colour."
 	icon_state = "secsoft"
-	color = "sec"
+	objcolor =  "sec"
 
 /obj/item/clothing/head/soft/sec/corp
 	name = "corporate security cap"
 	desc = "It's baseball hat in corpotate colours."
 	icon_state = "corpsoft"
-	color = "corp"
+	objcolor =  "corp"
