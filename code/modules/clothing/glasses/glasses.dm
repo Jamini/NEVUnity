@@ -144,6 +144,7 @@
 	name = "HUDSunglasses"
 	desc = "Sunglasses with a HUD."
 	icon_state = "sunhud"
+	origin_tech = "magnets=4;combat=3"
 	var/obj/item/clothing/glasses/hud/security/hud = null
 
 	New()

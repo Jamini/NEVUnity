@@ -1379,7 +1379,7 @@ datum/design/decloner
 	name = "Decloner"
 	desc = "Your opponent will bubble into a messy pile of goop."
 	id = "decloner"
-	req_tech = list("combat" = 8, "materials" = 7, "biotech" = 5, "powerstorage" = 6)
+	req_tech = list("combat" = 5, "materials" = 6, "biotech" = 5, "powerstorage" = 5)
 	build_type = PROTOLATHE
 	materials = list("$gold" = 5000,"$uranium" = 10000, "mutagen" = 40)
 	build_path = "/obj/item/weapon/gun/energy/decloner"
@@ -1469,6 +1469,25 @@ datum/design/stunshell
 	build_type = PROTOLATHE
 	materials = list("$metal" = 4000)
 	build_path = "/obj/item/ammo_casing/shotgun/stunshell"
+
+datum/design/esmg
+	name = "Energy SMG"
+	desc = "An advanced, military grade energy-based weapon with two settings: Stun and kill."
+	id = "esmg"
+	req_tech = list("combat" = 5, "magnets" = 3, "powerstorage" = 4)
+	build_type = PROTOLATHE
+	materials = list("$metal" = 800, "$glass" = 800, "$diamond" = 1000)
+	build_path = "/obj/item/weapon/gun/energy/smg"
+
+datum/design/plasmapistol
+	name = "Plasma Pistol"
+	desc = "Experimental and highly valuable. Assigned to military forces."
+	id = "ppistol"
+	req_tech = list("combat" = 6, "magnets" = 4, "powerstorage" = 5, "plasma" = 4)
+	build_type = PROTOLATHE
+	materials = list("$metal" = 1000, "$glass" = 1000, "$plasma" = 1000, "$silver" = 500, "$gold" = 500)
+	build_path = "/obj/item/weapon/gun/energy/plasma"
+
 
 /////////////////////////////////////////
 /////////////////Mining//////////////////
@@ -1574,6 +1593,16 @@ datum/design/security_hud
 	build_type = PROTOLATHE
 	materials = list("$metal" = 50, "$glass" = 50)
 	build_path = "/obj/item/clothing/glasses/hud/security"
+	locked = 1
+
+datum/design/secglasses
+	name = "HUDSunglasses"
+	desc = "Sunglasses with a HUD."
+	id = "secglasses"
+	req_tech = list("magnets" = 4, "combat" = 3)
+	build_type = PROTOLATHE
+	materials = list("$metal" = 100, "$glass" = 50, "$silver" = 50)
+	build_path = "/obj/item/clothing/glasses/sunglasses/sechud"
 	locked = 1
 
 /////////////////////////////////////////

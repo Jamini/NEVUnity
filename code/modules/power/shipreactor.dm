@@ -51,8 +51,8 @@
 
 /obj/machinery/unityreactor/proc/toxmob()
 	if (src.energy>200)
-		toxdamage = round(((src.energy-150)/50)*4,1)
-		radiation = round(((src.energy-150)/50)*5,1)
+		toxdamage = round(((src.energy-50)/25)*4,1)
+		radiation = round(((src.energy-50)/25)*5,1)
 		radiationmin = round((radiation/5),1)//
 	for(var/mob/living/M in view(toxrange, src.loc))
 		M.apply_effect(rand(radiationmin,radiation), IRRADIATE)

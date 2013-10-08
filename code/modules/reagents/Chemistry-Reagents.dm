@@ -1892,14 +1892,10 @@ datum
 							holder.remove_reagent("frostoil", 5)
 						if(istype(M, /mob/living/carbon/slime))
 							M.bodytemperature += rand(5,20)
-					if(15 to 25)
+					if(15 to INFINITY)
 						M.bodytemperature += 10 * TEMPERATURE_DAMAGE_COEFFICIENT
 						if(istype(M, /mob/living/carbon/slime))
 							M.bodytemperature += rand(10,20)
-					if(25 to INFINITY)
-						M.bodytemperature += 15 * TEMPERATURE_DAMAGE_COEFFICIENT
-						if(istype(M, /mob/living/carbon/slime))
-							M.bodytemperature += rand(15,20)
 				holder.remove_reagent(src.id, FOOD_METABOLISM)
 				data++
 				..()
@@ -1988,15 +1984,10 @@ datum
 							holder.remove_reagent("capsaicin", 5)
 						if(istype(M, /mob/living/carbon/slime))
 							M.bodytemperature -= rand(5,20)
-					if(15 to 25)
+					if(15 to INFINITY)
 						M.bodytemperature -= 10 * TEMPERATURE_DAMAGE_COEFFICIENT
 						if(istype(M, /mob/living/carbon/slime))
 							M.bodytemperature -= rand(10,20)
-					if(25 to INFINITY)
-						M.bodytemperature -= 15 * TEMPERATURE_DAMAGE_COEFFICIENT
-						if(prob(1)) M.emote("shiver")
-						if(istype(M, /mob/living/carbon/slime))
-							M.bodytemperature -= rand(15,20)
 				data++
 				holder.remove_reagent(src.id, FOOD_METABOLISM)
 				..()
