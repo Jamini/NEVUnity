@@ -19,6 +19,22 @@
 	icon_state = "psychbed"
 	var/mob/living/buckled_mob
 
+/obj/structure/stool/bed/couch
+	name = "couch"
+	desc = "A comfy couch, ideal for laying on."
+	icon_state = "couchblack"
+
+
+/obj/structure/stool/bed/couch/New()
+	src.verbs -= /atom/movable/verb/pull
+	if(src.dir == NORTH || src.dir == WEST)
+		src.layer = FLY_LAYER
+	else
+		src.layer = OBJ_LAYER
+	..()
+	return
+
+
 /obj/structure/stool/bed/alien
 	name = "resting contraption"
 	desc = "This looks similar to contraptions from earth. Could aliens be stealing our technology?"

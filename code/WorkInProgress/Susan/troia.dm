@@ -66,7 +66,7 @@
 
 	charge_cost = 50 //How much energy is needed to fire.
 	projectile_type = "/obj/item/projectile/energy/electrode"
-	origin_tech = "combat=6;magnets=3"
+	origin_tech = "combat=5;magnets=3"
 	modifystate = "esmgstun"
 
 	var/mode = 0 //0 = stun, 1 = kill
@@ -93,14 +93,14 @@
 
 /obj/item/weapon/gun/energy/plasma
 	name = "plasma pistol"
-	desc = "Experimental and highly valuable. Assigned only to military forces."
+	desc = "Experimental and highly valuable. Assigned to military forces."
 	icon_state = "plasmastun100"
 	item_state = null	//so the human update icon uses the icon_state instead.
 	fire_sound = 'sound/weapons/Taser.ogg'
 
 	charge_cost = 100 //How much energy is needed to fire.
 	projectile_type = "/obj/item/projectile/energy/electrode"
-	origin_tech = "combat=7;plasma=6"
+	origin_tech = "combat=6;plasma=4"
 	modifystate = "plasmastun"
 
 	var/mode = 0 //0 = stun, 1 = kill

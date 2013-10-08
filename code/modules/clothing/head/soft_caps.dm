@@ -20,10 +20,10 @@
 		if(usr.canmove && !usr.stat && !usr.restrained())
 			src.flipped = !src.flipped
 			if(src.flipped)
-				icon_state = "[color]soft_flipped"
+				icon_state = "[objcolor]soft_flipped"
 				usr << "You flip the hat backwards."
 			else
-				icon_state = "[color]soft"
+				icon_state = "[objcolor]soft"
 				usr << "You flip the hat back in normal position."
 			usr.update_inv_head()	//so our mob-overlays update
 
