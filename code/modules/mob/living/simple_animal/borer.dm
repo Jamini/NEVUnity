@@ -45,6 +45,8 @@
 	var/truename                            // Name used for brainworm-speak.
 	var/mob/living/captive_brain/host_brain // Used for swapping control of the body back and forth.
 	var/controlling                         // Used in human death check.
+	var/damageprob = 5
+	var/controldelay = 300
 
 /mob/living/simple_animal/borer/Life()
 
@@ -54,7 +56,7 @@
 			if(chemicals < 250)
 				chemicals++
 			if(controlling)
-				if(prob(5))
+				if(damageprob)
 					host.adjustBrainLoss(rand(1,2))
 
 				if(prob(host.brainloss/20))
@@ -142,7 +144,7 @@
 
 	src << "You begin delicately adjusting your connection to the host brain..."
 
-	spawn(300+(host.brainloss*5))
+	spawn(controldelay+(host.brainloss*5))
 
 		if(!host || !src || controlling) return
 
