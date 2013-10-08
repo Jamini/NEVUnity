@@ -89,12 +89,12 @@
 					dat += "<A href='?src=\ref[src];action=activate'>Activate Biogenerator!</A><BR>"
 					dat += "<A href='?src=\ref[src];action=detach'>Detach Container</A><BR><BR>"
 					dat += "Food<BR>"
-					dat += "<A href='?src=\ref[src];action=create;item=milk;cost=20'>10 milk</A> <FONT COLOR=blue>(20)</FONT><BR>"
-					dat += "<A href='?src=\ref[src];action=create;item=meat;cost=50'>Slab of meat</A> <FONT COLOR=blue>(50)</FONT><BR>"
+					dat += "<A href='?src=\ref[src];action=create;item=milk;cost=20'>10 milk</A> <FONT COLOR=blue>(20)</FONT> | <A href='?src=\ref[src];action=create;item=milk100;cost=200'>100 milk</A><BR>"
+					dat += "<A href='?src=\ref[src];action=create;item=meat;cost=50'>Slab of meat</A> <FONT COLOR=blue>(50)</FONT> | <A href='?src=\ref[src];action=create;item=meat5;cost=250'>x5</A> | <A href='?src=\ref[src];action=create;item=meat10;cost=500'>x10</A><BR>"
 					dat += "Nutrient<BR>"
-					dat += "<A href='?src=\ref[src];action=create;item=ez;cost=10'>E-Z-Nutrient</A> <FONT COLOR=blue>(10)</FONT> | <A href='?src=\ref[src];action=create;item=ez5;cost=50'>x5</A><BR>"
-					dat += "<A href='?src=\ref[src];action=create;item=l4z;cost=20'>Left 4 Zed</A> <FONT COLOR=blue>(20)</FONT> | <A href='?src=\ref[src];action=create;item=l4z5;cost=100'>x5</A><BR>"
-					dat += "<A href='?src=\ref[src];action=create;item=rh;cost=25'>Robust Harvest</A> <FONT COLOR=blue>(25)</FONT> | <A href='?src=\ref[src];action=create;item=rh5;cost=125'>x5</A><BR>"
+					dat += "<A href='?src=\ref[src];action=create;item=ez;cost=10'>E-Z-Nutrient</A> <FONT COLOR=blue>(10)</FONT> | <A href='?src=\ref[src];action=create;item=ez5;cost=50'>x5</A> | <A href='?src=\ref[src];action=create;item=ez10;cost=100'>x10</A><BR>"
+					dat += "<A href='?src=\ref[src];action=create;item=l4z;cost=20'>Left 4 Zed</A> <FONT COLOR=blue>(20)</FONT> | <A href='?src=\ref[src];action=create;item=l4z5;cost=100'>x5</A> | <A href='?src=\ref[src];action=create;item=l4z10;cost=200'>x10</A><BR>"
+					dat += "<A href='?src=\ref[src];action=create;item=rh;cost=25'>Robust Harvest</A> <FONT COLOR=blue>(25)</FONT> | <A href='?src=\ref[src];action=create;item=rh5;cost=125'>x5</A> | <A href='?src=\ref[src];action=create;item=rh10;cost=250'>x10</A><BR>"
 					dat += "Leather<BR>"
 					dat += "<A href='?src=\ref[src];action=create;item=wallet;cost=100'>Wallet</A> <FONT COLOR=blue>(100)</FONT><BR>"
 					dat += "<A href='?src=\ref[src];action=create;item=gloves;cost=250'>Botanical gloves</A> <FONT COLOR=blue>(250)</FONT><BR>"
@@ -157,10 +157,29 @@
 	updateUsrDialog()
 	points -= cost
 	sleep(30)
-	switch(item)
+	switch(item) //I'm a lazy ass in coding. but I give players what they want. Someone compress this code a bit, please.-JMoldy
 		if("milk")
 			beaker.reagents.add_reagent("milk",10)
+		if("milk100")
+			beaker.reagents.add_reagent("milk",100)
 		if("meat")
+			new/obj/item/weapon/reagent_containers/food/snacks/meat(src.loc)
+		if("meat5")
+			new/obj/item/weapon/reagent_containers/food/snacks/meat(src.loc)
+			new/obj/item/weapon/reagent_containers/food/snacks/meat(src.loc)
+			new/obj/item/weapon/reagent_containers/food/snacks/meat(src.loc)
+			new/obj/item/weapon/reagent_containers/food/snacks/meat(src.loc)
+			new/obj/item/weapon/reagent_containers/food/snacks/meat(src.loc)
+		if("meat10")
+			new/obj/item/weapon/reagent_containers/food/snacks/meat(src.loc)
+			new/obj/item/weapon/reagent_containers/food/snacks/meat(src.loc)
+			new/obj/item/weapon/reagent_containers/food/snacks/meat(src.loc)
+			new/obj/item/weapon/reagent_containers/food/snacks/meat(src.loc)
+			new/obj/item/weapon/reagent_containers/food/snacks/meat(src.loc)
+			new/obj/item/weapon/reagent_containers/food/snacks/meat(src.loc)
+			new/obj/item/weapon/reagent_containers/food/snacks/meat(src.loc)
+			new/obj/item/weapon/reagent_containers/food/snacks/meat(src.loc)
+			new/obj/item/weapon/reagent_containers/food/snacks/meat(src.loc)
 			new/obj/item/weapon/reagent_containers/food/snacks/meat(src.loc)
 		if("ez")
 			new/obj/item/nutrient/ez(src.loc)
@@ -174,13 +193,46 @@
 			new/obj/item/nutrient/ez(src.loc)
 			new/obj/item/nutrient/ez(src.loc)
 			new/obj/item/nutrient/ez(src.loc)
+		if("ez10")
+			new/obj/item/nutrient/ez(src.loc)
+			new/obj/item/nutrient/ez(src.loc)
+			new/obj/item/nutrient/ez(src.loc)
+			new/obj/item/nutrient/ez(src.loc)
+			new/obj/item/nutrient/ez(src.loc)
+			new/obj/item/nutrient/ez(src.loc)
+			new/obj/item/nutrient/ez(src.loc)
+			new/obj/item/nutrient/ez(src.loc)
+			new/obj/item/nutrient/ez(src.loc)
+			new/obj/item/nutrient/ez(src.loc)
 		if("l4z5")
 			new/obj/item/nutrient/l4z(src.loc)
 			new/obj/item/nutrient/l4z(src.loc)
 			new/obj/item/nutrient/l4z(src.loc)
 			new/obj/item/nutrient/l4z(src.loc)
 			new/obj/item/nutrient/l4z(src.loc)
+		if("l4z10")
+			new/obj/item/nutrient/l4z(src.loc)
+			new/obj/item/nutrient/l4z(src.loc)
+			new/obj/item/nutrient/l4z(src.loc)
+			new/obj/item/nutrient/l4z(src.loc)
+			new/obj/item/nutrient/l4z(src.loc)
+			new/obj/item/nutrient/l4z(src.loc)
+			new/obj/item/nutrient/l4z(src.loc)
+			new/obj/item/nutrient/l4z(src.loc)
+			new/obj/item/nutrient/l4z(src.loc)
+			new/obj/item/nutrient/l4z(src.loc)
 		if("rh5")
+			new/obj/item/nutrient/rh(src.loc)
+			new/obj/item/nutrient/rh(src.loc)
+			new/obj/item/nutrient/rh(src.loc)
+			new/obj/item/nutrient/rh(src.loc)
+			new/obj/item/nutrient/rh(src.loc)
+		if("rh10")
+			new/obj/item/nutrient/rh(src.loc)
+			new/obj/item/nutrient/rh(src.loc)
+			new/obj/item/nutrient/rh(src.loc)
+			new/obj/item/nutrient/rh(src.loc)
+			new/obj/item/nutrient/rh(src.loc)
 			new/obj/item/nutrient/rh(src.loc)
 			new/obj/item/nutrient/rh(src.loc)
 			new/obj/item/nutrient/rh(src.loc)
