@@ -9,7 +9,7 @@
 	siemens_coefficient = 0.9
 
 	dropped()
-		src.icon_state = "[color]soft"
+		src.icon_state = "[objcolor]soft"
 		src.flipped=0
 		..()
 

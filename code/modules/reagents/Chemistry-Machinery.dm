@@ -1066,6 +1066,8 @@
 			var/amount = allowed[r_id]
 			if(amount <= 0)
 				if(amount == 0)
+					if (O.reagents != null && O.reagents.has_reagent(r_id))
+						beaker.reagents.add_reagent(r_id,min(O.reagents.get_reagent_amount(r_id), space))
 					if (O.reagents != null && O.reagents.has_reagent("nutriment"))
 						beaker.reagents.add_reagent(r_id, min(O.reagents.get_reagent_amount("nutriment"), space))
 						O.reagents.remove_reagent("nutriment", min(O.reagents.get_reagent_amount("nutriment"), space))
@@ -1073,7 +1075,7 @@
 					if (O.reagents != null && O.reagents.has_reagent("nutriment"))
 						beaker.reagents.add_reagent(r_id, min(round(O.reagents.get_reagent_amount("nutriment")*abs(amount)), space))
 						O.reagents.remove_reagent("nutriment", min(O.reagents.get_reagent_amount("nutriment"), space))
-
+					beaker.reagents.add_reagent(r_id,min(amount, space))
 			else
 				O.reagents.trans_id_to(beaker, r_id, min(amount, space))
 
