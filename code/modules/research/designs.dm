@@ -1483,7 +1483,7 @@ datum/design/plasmapistol
 	name = "Plasma Pistol"
 	desc = "Experimental and highly valuable. Assigned to military forces."
 	id = "ppistol"
-	req_tech = list("combat" = 6, "magnets" = 4, "powerstorage" = 5, "plasma" = 4)
+	req_tech = list("combat" = 6, "magnets" = 4, "powerstorage" = 5, "plasmatech" = 4)
 	build_type = PROTOLATHE
 	materials = list("$metal" = 1000, "$glass" = 1000, "$plasma" = 1000, "$silver" = 500, "$gold" = 500)
 	build_path = "/obj/item/weapon/gun/energy/plasma"

@@ -3,7 +3,7 @@
 #define GAS 3
 
 /obj/machinery/chem_dispenser
-	name = "Chem Dispenser"
+	name = "chem dispenser"
 	density = 1
 	anchored = 1
 	icon = 'icons/obj/chemical.dmi'
@@ -21,12 +21,11 @@
 
 /obj/machinery/chem_dispenser/proc/recharge()
 	if(stat & (BROKEN|NOPOWER)) return
-	var/addenergy = 1
+	var/addenergy = 2
 	var/oldenergy = energy
 	energy = min(energy + addenergy, max_energy)
 	if(energy != oldenergy)
-		use_power(1500) // This thing uses up alot of power (this is still low as shit for creating reagents from thin air)
-		nanomanager.update_uis(src) // update all UIs attached to src
+		use_power(3000) // This thing uses up alot of power (this is still low as shit for creating reagents from thin air)
 
 /obj/machinery/chem_dispenser/power_change()
 	if(powered())
@@ -34,7 +33,6 @@
 	else
 		spawn(rand(0, 15))
 			stat |= NOPOWER
-	nanomanager.update_uis(src) // update all UIs attached to src
 
 /obj/machinery/chem_dispenser/process()
 
@@ -67,82 +65,74 @@
 	del(src)
 	return
 
-/obj/machinery/chem_dispenser/ui_interact(mob/user, ui_key = "main")
-	if(stat & (BROKEN|NOPOWER)) return
-	if(user.stat || user.restrained()) return
-
-	var/data[0]
-
-	data["amount"] = amount
-	data["energy"] = energy
-	data["maxEnergy"] = max_energy
-
-	data["isBeakerLoaded"] = beaker ? 1 : 0
-
-
-	var beakerContents[0]
-	var beakerCurrentVolume = 0
-	if(beaker && beaker:reagents && beaker:reagents.reagent_list.len)
-		for(var/datum/reagent/R in beaker:reagents.reagent_list)
-			beakerContents.Add(list(list("name" = R.name, "volume" = R.volume))) // list in a list because Byond merges the first list...
-			beakerCurrentVolume += R.volume
-	data["beakerContents"] = beakerContents
-
+/obj/machinery/chem_dispenser/proc/updateWindow(mob/user as mob)
+	winset(user, "chemdispenser.energy", "text=\"Energy: [src.energy]\"")
+	winset(user, "chemdispenser.amount", "text=\"Amount: [src.amount]\"")
 	if (beaker)
-		data["beakerCurrentVolume"] = beakerCurrentVolume
-		data["beakerMaxVolume"] = beaker:volume
+		winset(user, "chemdispenser.eject", "text=\"Eject beaker\"")
 	else
-		data["beakerCurrentVolume"] = null
-		data["beakerMaxVolume"] = null
-
-	var chemicals[0]
-	for (var/re in dispensable_reagents)
+		winset(user, "chemdispenser.eject", "text=\"\[Insert beaker\]\"")
+/obj/machinery/chem_dispenser/proc/initWindow(mob/user as mob)
+	var/i = 0
+	var/list/nameparams = params2list(winget(user, "chemdispenser_reagents.template_name", "pos;size;type;image;image-mode"))
+	var/list/buttonparams = params2list(winget(user, "chemdispenser_reagents.template_dispense", "pos;size;type;image;image-mode;text;is-flat"))
+	for(var/re in dispensable_reagents)
 		var/datum/reagent/temp = chemical_reagents_list[re]
 		if(temp)
-			chemicals.Add(list(list("title" = temp.name, "id" = temp.id, "commands" = list("dispense" = temp.id)))) // list in a list because Byond merges the first list...
-	data["chemicals"] = chemicals
+			var/list/newparams1 = nameparams.Copy()
+			var/list/newparams2 = buttonparams.Copy()
+			var/posy = 8 + 40 * i
+			newparams1["pos"] = text("8,[posy]")
+			newparams2["pos"] = text("248,[posy]")
+			newparams1["parent"] = "chemdispenser_reagents"
+			newparams2["parent"] = "chemdispenser_reagents"
+			newparams1["text"] = temp.name
+			newparams2["command"] = text("skincmd \"chemdispenser;[temp.id]\"")
+			winset(user, "chemdispenser_reagent_name[i]", list2params(newparams1))
+			winset(user, "chemdispenser_reagent_dispense[i]", list2params(newparams2))
+			i++
+	winset(user, "chemdispenser_reagents", "size=340x[8 + 40 * i]")
 
-	//user << list2json(data)
+/obj/machinery/chem_dispenser/SkinCmd(mob/user as mob, var/data as text)
+	if(stat & (BROKEN|NOPOWER)) return
+	if(usr.stat || usr.restrained()) return
+	if(!in_range(src, usr)) return
 
-	var/datum/nanoui/ui = nanomanager.get_open_ui(user, src, ui_key)
-	if (!ui)
-		ui = new(user, src, ui_key, "chem_dispenser.tmpl", "Chem Dispenser 5000", 370, 605)
-		// When the UI is first opened this is the data it will use
-		ui.set_initial_data(data)
-		ui.open()
+	usr.set_machine(src)
+
+	if (data == "amountc")
+		var/num = input("Enter desired output amount", "Amount", "30") as num
+		if (num)
+			amount = text2num(num)
+	else if (data == "eject")
+		if (src.beaker)
+			var/obj/item/weapon/reagent_containers/glass/B = src.beaker
+			B.loc = src.loc
+			src.beaker = null
+	else if (copytext(data, 1, 7) == "amount")
+		if (text2num(copytext(data, 7)))
+			amount = text2num(copytext(data, 7))
 	else
-		// The UI is already open so push the new data to it
-		ui.push_data(data)
-		return
-
-/obj/machinery/chem_dispenser/Topic(href, href_list)
-	if(stat & (NOPOWER|BROKEN))
-		return 0 // don't update UIs attached to this object
-
-	if(href_list["amount"])
-		amount = round(text2num(href_list["amount"]), 5) // round to nearest 5
-		if (amount < 0) // Since the user can actually type the commands himself, some sanity checking
-			amount = 0
-		if (amount > 100)
-			amount = 100
-
-	if(href_list["dispense"])
-		if (dispensable_reagents.Find(href_list["dispense"]) && beaker != null)
+		if (dispensable_reagents.Find(data) && beaker != null)
 			var/obj/item/weapon/reagent_containers/glass/B = src.beaker
 			var/datum/reagents/R = B.reagents
 			var/space = R.maximum_volume - R.total_volume
 
-			R.add_reagent(href_list["dispense"], min(amount, energy * 10, space))
+			R.add_reagent(data, min(amount, energy * 10, space))
 			energy = max(energy - min(amount, energy * 10, space) / 10, 0)
 
-	if(href_list["ejectBeaker"])
-		if(beaker)
-			var/obj/item/weapon/reagent_containers/glass/B = beaker
-			B.loc = loc
-			beaker = null
+	amount = round(amount, 10) // Chem dispenser doesnt really have that much prescion
+	if (amount < 0) // Since the user can actually type the commands himself, some sanity checking
+		amount = 0
+	if (amount > 100)
+		amount = 100
 
-	add_fingerprint(usr)
-	return 1 // update UIs attached to this object
+	for(var/mob/player in player_list)
+		if (player.machine == src && player.client)
+			updateWindow(player)
+
+	src.add_fingerprint(usr)
+	return
 
 /obj/machinery/chem_dispenser/attackby(var/obj/item/weapon/reagent_containers/glass/B as obj, var/mob/user as mob)
 	if(isrobot(user))
@@ -159,7 +149,9 @@
 	user.drop_item()
 	B.loc = src
 	user << "You add the beaker to the machine!"
-	nanomanager.update_uis(src) // update all UIs attached to src
+	for(var/mob/player in player_list)
+		if (player.machine == src && player.client)
+			updateWindow(player)
 
 /obj/machinery/chem_dispenser/attack_ai(mob/user as mob)
 	return src.attack_hand(user)
@@ -170,8 +162,13 @@
 /obj/machinery/chem_dispenser/attack_hand(mob/user as mob)
 	if(stat & BROKEN)
 		return
+	user.set_machine(src)
 
-	ui_interact(user)
+	initWindow(user)
+	updateWindow(user)
+	winshow(user, "chemdispenser", 1)
+	user.skincmds["chemdispenser"] = src
+	return
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -398,9 +395,9 @@
 		spawn()
 			has_sprites += user.client
 			for(var/i = 1 to MAX_PILL_SPRITE)
-				usr << browse_rsc(icon('chemical.dmi', "pill" + num2text(i)), "pill[i].png")
+				usr << browse_rsc(icon('icons/obj/chemical.dmi', "pill" + num2text(i)), "pill[i].png")
 			for(var/i = 1 to MAX_BOTTLE_SPRITE)
-				usr << browse_rsc(icon('chemical.dmi', "bottle" + num2text(i)), "bottle[i].png")
+				usr << browse_rsc(icon('icons/obj/chemical.dmi', "bottle" + num2text(i)), "bottle[i].png")
 	var/dat = ""
 	if(!beaker)
 		dat = "Please insert beaker.<BR>"
@@ -776,8 +773,8 @@
 		/obj/item/stack/sheet/mineral/clown = list("banana" = 20),
 		/obj/item/stack/sheet/mineral/silver = list("silver" = 20),
 		/obj/item/stack/sheet/mineral/gold = list("gold" = 20),
-		/obj/item/weapon/grown/nettle = list("sacid" = 5),
-		/obj/item/weapon/grown/deathnettle = list("pacid" = 5),
+		/obj/item/weapon/grown/nettle = list("sacid" = 0),
+		/obj/item/weapon/grown/deathnettle = list("pacid" = 0),
 
 		//Blender Stuff
 		/obj/item/weapon/reagent_containers/food/snacks/grown/soybeans = list("soymilk" = 5),
@@ -802,16 +799,16 @@
 	var/list/juice_items = list (
 
 		//Juicer Stuff
-		/obj/item/weapon/reagent_containers/food/snacks/grown/tomato = list("tomatojuice" = 5),
-		/obj/item/weapon/reagent_containers/food/snacks/grown/carrot = list("carrotjuice" = 5),
-		/obj/item/weapon/reagent_containers/food/snacks/grown/berries = list("berryjuice" = 5),
-		/obj/item/weapon/reagent_containers/food/snacks/grown/banana = list("banana" = 5),
-		/obj/item/weapon/reagent_containers/food/snacks/grown/potato = list("potato" = 5),
-		/obj/item/weapon/reagent_containers/food/snacks/grown/lemon = list("lemonjuice" = 5),
-		/obj/item/weapon/reagent_containers/food/snacks/grown/orange = list("orangejuice" = 5),
-		/obj/item/weapon/reagent_containers/food/snacks/grown/lime = list("limejuice" = 5),
-		/obj/item/weapon/reagent_containers/food/snacks/watermelonslice = list("watermelonjuice" = 5),
-		/obj/item/weapon/reagent_containers/food/snacks/grown/poisonberries = list("poisonberryjuice" = 5),
+		/obj/item/weapon/reagent_containers/food/snacks/grown/tomato = list("tomatojuice" = 0),
+		/obj/item/weapon/reagent_containers/food/snacks/grown/carrot = list("carrotjuice" = 0),
+		/obj/item/weapon/reagent_containers/food/snacks/grown/berries = list("berryjuice" = 0),
+		/obj/item/weapon/reagent_containers/food/snacks/grown/banana = list("banana" = 0),
+		/obj/item/weapon/reagent_containers/food/snacks/grown/potato = list("potato" = 0),
+		/obj/item/weapon/reagent_containers/food/snacks/grown/lemon = list("lemonjuice" = 0),
+		/obj/item/weapon/reagent_containers/food/snacks/grown/orange = list("orangejuice" = 0),
+		/obj/item/weapon/reagent_containers/food/snacks/grown/lime = list("limejuice" = 0),
+		/obj/item/weapon/reagent_containers/food/snacks/watermelonslice = list("watermelonjuice" = 0),
+		/obj/item/weapon/reagent_containers/food/snacks/grown/poisonberries = list("poisonberryjuice" = 0),
 	)
 
 
