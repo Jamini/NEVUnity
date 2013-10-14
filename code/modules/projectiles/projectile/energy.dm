@@ -15,7 +15,7 @@
 	weaken = 10
 	stutter = 10
 	*/
-	agony = 65
+	agony = 70
 	damage_type = HALLOSS
 	//Damage will be handled on the MOB side, to prevent window shattering.
 
