@@ -27,6 +27,7 @@
 /obj/item/weapon/melee/baton/attack_self(mob/user as mob)
 	if(status && (CLUMSY in user.mutations) && prob(50))
 		user << "\red You grab the [src] on the wrong side."
+		user.apply_effect(40, AGONY, 0)
 		user.Weaken(30)
 		charges--
 		if(charges < 1)
