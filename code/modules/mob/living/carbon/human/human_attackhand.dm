@@ -22,15 +22,19 @@
 		if(G.cell)
 			if(M.a_intent == "hurt")//Stungloves. Any contact will stun the alien.
 				if(G.cell.charge >= 2500)
-					G.cell.charge -= 2500
-					visible_message("\red <B>[src] has been touched with the stun gloves by [M]!</B>")
+					var/damage = G.cell.charge
+					G.cell.charge = 0
+					visible_message("\red <B>[src] has been touched [M]. Electricity courses down their frame!</B>")
 					M.attack_log += text("\[[time_stamp()]\] <font color='red'>Stungloved [src.name] ([src.ckey])</font>")
 					src.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been stungloved by [M.name] ([M.ckey])</font>")
 
 					log_attack("<font color='red'>[M.name] ([M.ckey]) stungloved [src.name] ([src.ckey])</font>")
 
 					var/armorblock = run_armor_check(M.zone_sel.selecting, "energy")
-					apply_effects(5,5,0,0,5,0,0,armorblock)
+					apply_effect((damage^0.4), AGONY, armorblock)
+					apply_effect(10, STUTTER, 0)
+					apply_effect(10, WEAKEN, armorblock)
+					apply_damage((damage^0.45), BURN, M.zone_sel.selecting, armorblock)
 					return 1
 				else
 					M << "\red Not enough charge! "
