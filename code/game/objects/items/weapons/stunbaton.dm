@@ -27,6 +27,7 @@
 /obj/item/weapon/melee/baton/attack_self(mob/user as mob)
 	if(status && (CLUMSY in user.mutations) && prob(50))
 		user << "\red You grab the [src] on the wrong side."
+		user.apply_effect(40, AGONY, 0)
 		user.Weaken(30)
 		charges--
 		if(charges < 1)
@@ -46,6 +47,7 @@
 /obj/item/weapon/melee/baton/attack(mob/M as mob, mob/user as mob)
 	if(status && (CLUMSY in user.mutations) && prob(50))
 		user << "<span class='danger'>You accidentally hit yourself with the [src]!</span>"
+		user.apply_effect(70, AGONY, 0)
 		user.Weaken(30)
 		charges--
 		if(charges < 1)
@@ -68,8 +70,9 @@
 		return
 
 	if(status)
-		H.apply_effect(10, STUN, 0)
-		H.apply_effect(10, WEAKEN, 0)
+		H..apply_effect(70, AGONY, 0)
+//		H.apply_effect(10, STUN, 0)
+//		H.apply_effect(10, WEAKEN, 0)
 		H.apply_effect(10, STUTTER, 0)
 		user.lastattacked = M
 		H.lastattacker = user
@@ -96,7 +99,8 @@
 		if(istype(hit_atom, /mob/living))
 			var/mob/living/carbon/human/H = hit_atom
 			if(status)
-				H.apply_effect(10, STUN, 0)
+				H.apply_effect(110, AGONY, 0)
+//				H.apply_effect(10, STUN, 0)
 				H.apply_effect(10, WEAKEN, 0)
 				H.apply_effect(10, STUTTER, 0)
 				charges--
