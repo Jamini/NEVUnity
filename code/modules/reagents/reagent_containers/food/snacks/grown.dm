@@ -118,7 +118,7 @@
 	New()
 		..()
 		spawn(5)	//So potency can be set in the proc that creates these crops
-			reagents.add_reagent("nutriment", 1+round((potency / 10), 1))
+			reagents.add_reagent("cornoil", 3+round((potency / 10), 1))
 			bitesize = 1+round(reagents.total_volume / 2, 1)
 
 /obj/item/weapon/reagent_containers/food/snacks/grown/cherries
@@ -130,8 +130,7 @@
 	New()
 		..()
 		spawn(5)	//So potency can be set in the proc that creates these crops
-			reagents.add_reagent("nutriment", 1+round((potency / 15), 1))
-			reagents.add_reagent("sugar", 1+round((potency / 15), 1))
+			reagents.add_reagent("cherryjelly", 1+round((potency / 20), 1))
 			bitesize = 1+round(reagents.total_volume / 2, 1)
 
 /obj/item/weapon/reagent_containers/food/snacks/grown/poppy
@@ -538,7 +537,7 @@
 	New()
 		..()
 		spawn(5)	//So potency can be set in the proc that creates these crops
-			reagents.add_reagent("nutriment", 1+round((potency / 20), 1))
+			reagents.add_reagent("soymilk", 3+round((potency / 20), 1))
 			bitesize = 1+round(reagents.total_volume / 2, 1)
 
 /obj/item/weapon/reagent_containers/food/snacks/grown/tomato
@@ -550,7 +549,7 @@
 	New()
 		..()
 		spawn(5)	//So potency can be set in the proc that creates these crops
-			reagents.add_reagent("nutriment", 1+round((potency / 10), 1))
+			reagents.add_reagent("ketchup", 1+round((potency / 20), 1))
 			bitesize = 1+round(reagents.total_volume / 2, 1)
 
 	throw_impact(atom/hit_atom)
@@ -569,7 +568,7 @@
 	New()
 		..()
 		spawn(5)	//So potency can be set in the proc that creates these crops
-			reagents.add_reagent("nutriment", 1+round((potency / 10), 1))
+			reagents.add_reagent("ketchup", 1+round((potency / 20), 1))
 			bitesize = 1+round(reagents.total_volume / 2, 1)
 		if(istype(src.loc,/mob))
 			pickup(src.loc)
@@ -598,7 +597,7 @@
 	New()
 		..()
 		spawn(5)	//So potency can be set in the proc that creates these crops
-			reagents.add_reagent("nutriment", 1+round((potency / 10), 1))
+			reagents.add_reagent("ketchup", 1+round((potency / 20), 1))
 			reagents.add_reagent("blood", 1+round((potency / 5), 1))
 			bitesize = 1+round(reagents.total_volume / 2, 1)
 
@@ -621,7 +620,7 @@
 	New()
 		..()
 		spawn(5)	//So potency can be set in the proc that creates these crops
-			reagents.add_reagent("nutriment", 1+round((potency / 20), 1))
+			reagents.add_reagent("ketchup", 1+round((potency / 20), 1))
 			reagents.add_reagent("lube", 1+round((potency / 5), 1))
 			bitesize = 1+round(reagents.total_volume / 2, 1)
 
@@ -657,6 +656,7 @@
 		..()
 		spawn(5)	//So potency can be set in the proc that creates these crops
 			reagents.add_reagent("nutriment", 1+round((potency / 25), 1))
+			reagents.add_reagent("flour", 3+round((potency / 25), 1))
 			bitesize = 1+round(reagents.total_volume / 2, 1)
 
 /obj/item/weapon/reagent_containers/food/snacks/grown/ricestalk
@@ -669,6 +669,7 @@
 		..()
 		spawn(5)	//So potency can be set in the proc that creates these crops
 			reagents.add_reagent("nutriment", 1+round((potency / 25), 1))
+			reagents.add_reagent("rice", 3+round((potency / 25), 1))
 			bitesize = 1+round(reagents.total_volume / 2, 1)
 
 /obj/item/weapon/reagent_containers/food/snacks/grown/kudzupod

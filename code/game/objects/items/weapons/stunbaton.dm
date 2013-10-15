@@ -24,7 +24,7 @@
 	else
 		icon_state = "stunbaton"
 
-/obj/item/weapon/melee/baton/attack_self(mob/user as mob)
+/obj/item/weapon/melee/baton/attack_self(mob/living/user as mob)
 	if(status && (CLUMSY in user.mutations) && prob(50))
 		user << "\red You grab the [src] on the wrong side."
 		user.apply_effect(40, AGONY, 0)
@@ -44,10 +44,9 @@
 		user << "<span class='warning'>\The [src] is out of charge.</span>"
 	add_fingerprint(user)
 
-/obj/item/weapon/melee/baton/attack(mob/M as mob, mob/user as mob)
+/obj/item/weapon/melee/baton/attack(mob/living/M as mob, mob/user as mob)
 	if(status && (CLUMSY in user.mutations) && prob(50))
 		user << "<span class='danger'>You accidentally hit yourself with the [src]!</span>"
-		user.apply_effect(70, AGONY, 0)
 		user.Weaken(30)
 		charges--
 		if(charges < 1)
@@ -70,7 +69,7 @@
 		return
 
 	if(status)
-		H..apply_effect(70, AGONY, 0)
+		H.apply_effect(70, AGONY, 0)
 //		H.apply_effect(10, STUN, 0)
 //		H.apply_effect(10, WEAKEN, 0)
 		H.apply_effect(10, STUTTER, 0)

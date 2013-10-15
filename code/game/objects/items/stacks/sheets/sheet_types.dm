@@ -167,6 +167,11 @@ var/global/list/datum/stack_recipe/cardboard_recipes = list ( \
 	new/datum/stack_recipe("cardborg helmet", /obj/item/clothing/head/cardborg), \
 	new/datum/stack_recipe("pizza box", /obj/item/pizzabox), \
 	new/datum/stack_recipe("folder", /obj/item/weapon/folder), \
+	new/datum/stack_recipe("egg carton", /obj/item/weapon/storage/fancy/egg_box), \
+	new/datum/stack_recipe("doughnut box", /obj/item/weapon/storage/fancy/donut_box), \
+	new/datum/stack_recipe("candle box", /obj/item/weapon/storage/fancy/candle_box), \
+	new/datum/stack_recipe("crayon box", /obj/item/weapon/storage/fancy/crayons), \
+
 )
 
 /obj/item/stack/sheet/cardboard	//BubbleWrap
