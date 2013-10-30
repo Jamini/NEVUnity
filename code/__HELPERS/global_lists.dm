@@ -32,8 +32,8 @@ var/global/list/facial_hair_styles_male_list = list()
 var/global/list/facial_hair_styles_female_list = list()
 var/global/list/skin_styles_female_list = list()		//unused
 	//Underwear
-var/global/list/underwear_m = list("White", "Grey", "Green", "Blue", "Black", "Mankini", "Love-Hearts", "Black2", "Grey2", "Stripey", "Kinky", "None") //Curse whoever made male/female underwear diffrent colours
-var/global/list/underwear_f = list("Red", "White", "Yellow", "Blue", "Black", "Thong", "Babydoll", "Baby-Blue", "Green", "Pink", "Kinky", "None")
+var/global/list/underwear_m = list("White", "Grey", "Green", "Blue", "Black", "Kinky", "None") //Curse whoever made male/female underwear diffrent colours
+var/global/list/underwear_f = list("Red", "White", "Yellow", "Blue", "Black", "Kinky", "None")
 	//Backpacks
 var/global/list/backbaglist = list("Nothing", "Backpack", "Satchel", "Satchel Alt")
 

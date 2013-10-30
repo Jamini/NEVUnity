@@ -168,13 +168,6 @@
 	var/up = 0 //So Unathi helmets play nicely with the weldervision check.
 	species_restricted = list("Unathi")
 
-/obj/item/clothing/head/helmet/space/unathi/helmet_cheap
-	name = "NT breacher helmet"
-	desc = "Hey! Watch it with that thing! It's a knock-off of a Unathi battle-helm, and that spike could put someone's eye out."
-	icon_state = "unathi_helm_cheap"
-	item_state = "unathi_helm_cheap"
-	objcolor = "unathi_helm_cheap"
-
 /obj/item/clothing/suit/space/unathi
 	armor = list(melee = 40, bullet = 30, laser = 30,energy = 15, bomb = 35, bio = 100, rad = 50)
 	allowed = list(/obj/item/device/flashlight,/obj/item/weapon/tank,/obj/item/weapon/storage/bag/ore,/obj/item/device/t_scanner,/obj/item/weapon/pickaxe, /obj/item/weapon/rcd)
@@ -183,11 +176,99 @@
 	species_restricted = list("Unathi")
 
 /obj/item/clothing/suit/space/rig/security/unathi/
-	name = "NT breacher chassis"
-	desc = "A cheap NT knock-off of a Unathi battle-rig. Looks like a fish, moves like a fish, steers like a cow."
+	name = "NT security breacher chassis"
+	desc = "A special helmet designed for work in a hazardous, low-pressure environment. Has an additional layer of armor. There is no way this was made for a human.."
+	icon_state = "rig-soghun"
+	item_state = "rig-soghun"
+	slowdown = 3
+	species_restricted = list("Unathi")
+
+/obj/item/clothing/head/helmet/space/rig/security/unathi/
+	name = "NT security breacher helmet"
+	desc = "A special helmet designed for work in a hazardous, low-pressure environment. Has an additional layer of armor. Look at that spike!"
+	icon_state = "rig0-unathi-helm-sec"
+	item_state = "rig0-unathi-helm-sec"
+	objcolor = "unathi-helm-sec"
+	species_restricted = list("Unathi")
+
+/obj/item/clothing/suit/space/rig/unathi/
+	name = "NT engineering breacher chassis"
+	desc = "A special helmet designed for work in a hazardous, low-pressure environment. Has mild radiation shielding. There is no way this was made for a human.."
+	icon_state = "rig-soghun-eng"
+	item_state = "rig-soghun-eng"
+	slowdown = 3
+	species_restricted = list("Unathi")
+
+/obj/item/clothing/head/helmet/space/rig/unathi/
+	name = "NT engineering breacher helmet"
+	desc = "A special helmet designed for work in a hazardous, low-pressure environment. Has mild radiation shielding. Look at that spike!"
+	icon_state = "rig0-unathi-helm"
+	item_state = "rig0-unathi-helm"
+	objcolor = "unathi-helm"
+	species_restricted = list("Unathi")
+
+/obj/item/clothing/suit/space/rig/medical/unathi/
+	name = "NT medical breacher chassis"
+	desc = "A special suit that protects against hazardous, low pressure environments. Has minimal armor for maximum mobility. There is no way this was made for a human.."
+	icon_state = "rig-soghun-med"
+	item_state = "rig-soghun-med"
+	slowdown = 3
+	species_restricted = list("Unathi")
+
+/obj/item/clothing/head/helmet/space/rig/medical/unathi/
+	name = "NT medical breacher helmet"
+	desc = "A special helmet designed for work in a hazardous, low-pressure environment. Has minimal armor for maximum mobility. Look at that spike!"
+	icon_state = "rig0-unathi-helm-med"
+	item_state = "rig0-unathi-helm-med"
+	objcolor = "unathi-helm-med"
+	species_restricted = list("Unathi")
+
+/obj/item/clothing/suit/space/rig/elite/unathi/
+	name = "NT advanced breacher chassis"
+	desc = "A special suit that protects against hazardous, low pressure environments. Has enhanced radiation shielding.There is no way this was made for a human.."
+	icon_state = "rig-soghun-white"
+	item_state = "rig-soghun-white"
+	slowdown = 3
+	species_restricted = list("Unathi")
+
+/obj/item/clothing/head/helmet/space/rig/elite/unathi/
+	name = "NT advanced breacher helmet"
+	desc = "A special helmet designed for work in a hazardous, low-pressure environment. Has enhanced radiation shielding. Look at that spike!"
+	icon_state = "rig0-unathi-helm-white"
+	item_state = "rig0-unathi-helm-white"
+	objcolor = "unathi-helm-white"
+	species_restricted = list("Unathi")
+
+/obj/item/clothing/suit/space/rig/atmos/unathi/
+	name = "NT atmospherics breacher chassis"
+	desc = "A special suit that protects against hazardous, low pressure environments. Has enhanced heat shielding.There is no way this was made for a human.."
+	icon_state = "rig-soghun-atmo"
+	item_state = "rig-soghun-atmo"
+	slowdown = 3
+	species_restricted = list("Unathi")
+
+/obj/item/clothing/head/helmet/space/rig/atmos/unathi/
+	name = "NT atmopherics breacher helmet"
+	desc = "A special helmet designed for work in a hazardous, low-pressure environment. Has enhanced heat shielding. Look at that spike!"
+	icon_state = "rig0-unathi-helm-atmo"
+	item_state = "rig0-unathi-helm-atmo"
+	objcolor = "unathi-helm-atmo"
+	species_restricted = list("Unathi")
+
+/obj/item/clothing/suit/space/rig/mining/unathi/
+	name = "NT mining breacher chassis"
+	desc = "A special suit that protects against hazardous, low pressure environments. Has enhanced radiation shielding.There is no way this was made for a human.."
 	icon_state = "rig-unathi-cheap"
 	item_state = "rig-unathi-cheap"
 	slowdown = 3
+	species_restricted = list("Unathi")
+
+/obj/item/clothing/head/helmet/space/rig/mining/unathi/
+	name = "NT mining breacher helmet"
+	desc = "Hey! Watch it with that thing! It's a knock-off of a Unathi battle-helm, and that spike could put someone's eye out."
+	icon_state = "unathi_helm_cheap"
+	item_state = "unathi_helm_cheap"
+	objcolor = "unathi_helm_cheap"
 
 /obj/item/clothing/head/helmet/space/unathi/breacher
 	name = "breacher helm"

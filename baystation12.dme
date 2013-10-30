@@ -1356,4 +1356,5 @@
 #include "interface\interface.dm"
 #include "interface\skin.dmf"
 #include "maps\nev_unityx.dmm"
+#include "maps\RandomZLevels\Academy.dm"
 // END_INCLUDE
