@@ -75,8 +75,13 @@
 			if(src.connected.beaker)
 				if(src.connected.filtering)
 					dat += "<HR><A href='?src=\ref[src];togglefilter=1'>Stop Dialysis</A><BR>"
+					dat += text("Output Beaker has [] units of free space remaining<BR><HR>", src.connected.beaker.reagents.maximum_volume - src.connected.beaker.reagents.total_volume)
 				else
-					dat += "<HR><A href='?src=\ref[src];togglefilter=1'> Start Dialysis</A><BR>"
+					dat += "<HR><A href='?src=\ref[src];togglefilter=1'>Start Dialysis</A><BR>"
+					dat += text("Output Beaker has [] units of free space remaining<BR><HR>", src.connected.beaker.reagents.maximum_volume - src.connected.beaker.reagents.total_volume)
+			else
+				dat += "<HR>No Dialysis Output Beaker is present.<BR><HR>"
+
 			for(var/chemical in connected.available_chemicals)
 				dat += "Inject [connected.available_chemicals[chemical]]: "
 				for(var/amount in connected.amounts)
@@ -147,7 +152,6 @@
 	New()
 		..()
 		beaker = new /obj/item/weapon/reagent_containers/glass/beaker/large()
-		beaker.volume = 1000000
 		spawn( 5 )
 			if(orient == "RIGHT")
 				icon_state = "sleeper_0-r"
@@ -180,50 +184,52 @@
 			del(src)
 		return
 
-/*	attackby(obj/item/weapon/reagent_containers/glass/beaker/O as obj, mob/user as mob)
-		if(istype(O, /obj/item/weapon/reagent_containers/glass))
+	attackby(var/obj/item/weapon/G as obj, var/mob/user as mob)
+		if(istype(G, /obj/item/weapon/reagent_containers/glass))
 			if(!beaker)
-				user.before_take_item(O)
-				O.loc = src
-				beaker = O
+				beaker = G
+				user.drop_item()
+				G.loc = src
+				user.visible_message("[user] adds \a [G] to \the [src]!", "You add \a [G] to \the [src]!")
+				return
 			else
 				user << "\red The sleeper has a beaker already."
-*/
-	attackby(obj/item/weapon/grab/G as obj, mob/user as mob)
-		if((!( istype(G, /obj/item/weapon/grab)) || !( ismob(G.affecting))))
-			return
-		if(src.occupant)
-			user << "\blue <B>The sleeper is already occupied!</B>"
-			return
-
-		for(var/mob/living/carbon/slime/M in range(1,G.affecting))
-			if(M.Victim == G.affecting)
-				usr << "[G.affecting.name] will not fit into the sleeper because they have a slime latched onto their head."
 				return
 
-		visible_message("[user] starts putting [G.affecting.name] into the sleeper.", 3)
+		else if(istype(G, /obj/item/weapon/grab))
+			if(!ismob(G:affecting))
+				return
 
-		if(do_after(user, 20))
 			if(src.occupant)
 				user << "\blue <B>The sleeper is already occupied!</B>"
 				return
-			if(!G || !G.affecting) return
-			var/mob/M = G.affecting
-			if(M.client)
-				M.client.perspective = EYE_PERSPECTIVE
-				M.client.eye = src
-			M.loc = src
-			src.occupant = M
-			src.icon_state = "sleeper_1"
-			if(orient == "RIGHT")
-				icon_state = "sleeper_1-r"
 
-			M << "\blue <b>You feel cool air surround you. You go numb as your senses turn inward.</b>"
+			for(var/mob/living/carbon/slime/M in range(1,G:affecting))
+				if(M.Victim == G:affecting)
+					usr << "[G:affecting.name] will not fit into the sleeper because they have a slime latched onto their head."
+					return
 
-			for(var/obj/O in src)
-				O.loc = src.loc
-			src.add_fingerprint(user)
-			del(G)
+			visible_message("[user] starts putting [G:affecting:name] into the sleeper.", 3)
+
+			if(do_after(user, 20))
+				if(src.occupant)
+					user << "\blue <B>The sleeper is already occupied!</B>"
+					return
+				if(!G || !G:affecting) return
+				var/mob/M = G:affecting
+				if(M.client)
+					M.client.perspective = EYE_PERSPECTIVE
+					M.client.eye = src
+				M.loc = src
+				src.occupant = M
+				src.icon_state = "sleeper_1"
+				if(orient == "RIGHT")
+					icon_state = "sleeper_1-r"
+
+				M << "\blue <b>You feel cool air surround you. You go numb as your senses turn inward.</b>"
+
+				src.add_fingerprint(user)
+				del(G)
 			return
 		return
 
@@ -291,8 +297,6 @@
 			toggle_filter()
 		if(!src.occupant)
 			return
-		for(var/obj/O in src)
-			O.loc = src.loc
 		if(src.occupant.client)
 			src.occupant.client.eye = src.occupant.client.mob
 			src.occupant.client.perspective = MOB_PERSPECTIVE
@@ -333,6 +337,10 @@
 			user << text("[]\t -Burn Severity %: []", (src.occupant.getFireLoss() < 60 ? "\blue " : "\red "), src.occupant.getFireLoss())
 			user << "\blue Expected time till occupant can safely awake: (note: If health is below 20% these times are inaccurate)"
 			user << text("\blue \t [] second\s (if around 1 or 2 the sleeper is keeping them asleep.)", src.occupant.paralysis / 5)
+			if(src.beaker)
+				user << text("\blue \t Dialysis Output Beaker has [] of free space remaining.", src.beaker.reagents.maximum_volume - src.beaker.reagents.total_volume)
+			else
+				user << "\blue No Dialysis Output Beaker loaded."
 		else
 			user << "\blue There is no one inside!"
 		return
@@ -351,18 +359,19 @@
 		add_fingerprint(usr)
 		return
 
-/*	verb/remove_beaker()
+	verb/remove_beaker()
 		set name = "Remove Beaker"
 		set category = "Object"
 		set src in oview(1)
 		if(usr.stat != 0)
 			return
 		if(beaker)
+			filtering = 0
 			beaker.loc = usr.loc
 			beaker = null
 		add_fingerprint(usr)
 		return
-*/
+
 	verb/move_inside()
 		set name = "Enter Sleeper"
 		set category = "Object"
@@ -392,6 +401,8 @@
 			src.icon_state = "sleeper_1"
 			if(orient == "RIGHT")
 				icon_state = "sleeper_1-r"
+
+			usr << "\blue <b>You feel cool air surround you. You go numb as your senses turn inward.</b>"
 
 			for(var/obj/O in src)
 				del(O)
