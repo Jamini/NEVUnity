@@ -4,6 +4,7 @@
 *.rsc
 *.dmb
 *.lk
+maploader_debug.txt
 
 #ignore any files in config/, except those in subdirectories.
 /config/*
