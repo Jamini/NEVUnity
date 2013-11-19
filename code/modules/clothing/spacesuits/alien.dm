@@ -102,7 +102,7 @@
 	desc = "A special helmet designed for work in a hazardous, low pressure environment. Has reinforced plating. This one doesn't look like it was made for humans."
 	icon_state = "rig0-taj-helmet-mining"
 	item_state = "rig0-taj-helmet-mining"
-	objcolor = "taj-helmet-med"
+	objcolor = "taj-helmet-mining"
 	species_restricted = list("Tajaran")
 
 /obj/item/clothing/suit/space/rig/mining/tajara/
@@ -266,8 +266,8 @@
 /obj/item/clothing/head/helmet/space/rig/mining/unathi/
 	name = "NT mining breacher helmet"
 	desc = "Hey! Watch it with that thing! It's a knock-off of a Unathi battle-helm, and that spike could put someone's eye out."
-	icon_state = "unathi_helm_cheap"
-	item_state = "unathi_helm_cheap"
+	icon_state = "rig0-unathi_helm_cheap"
+	item_state = "rig0-unathi_helm_cheap"
 	objcolor = "unathi_helm_cheap"
 
 /obj/item/clothing/head/helmet/space/unathi/breacher
