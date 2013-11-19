@@ -2,7 +2,7 @@
 	name = "fax machine"
 	icon = 'icons/obj/library.dmi'
 	icon_state = "bigscanner"
-	req_access = list(access_lawyer)
+	req_access = null
 	anchored = 1
 	density = 1
 	use_power = 1
@@ -23,7 +23,7 @@
 	attack_hand(mob/user as mob)
 		user.set_machine(src)
 
-		var/dat = "Central Command Fax Machine<BR>"
+		var/dat = "Fax Machine<BR>"
 
 		var/scan_name
 		if(scan)

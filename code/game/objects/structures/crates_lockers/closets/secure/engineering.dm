@@ -81,6 +81,7 @@
 	New()
 		..()
 		sleep(2)
+		new /obj/item/weapon/weldpack(src)
 		new /obj/item/clothing/head/welding(src)
 		new /obj/item/clothing/head/welding(src)
 		new /obj/item/clothing/head/welding(src)
