@@ -43,6 +43,8 @@
 
 /turf/simulated/var/tmp/air_check_directions = 0 //Do not modify this, just add turf to air_master.tiles_to_update
 
+/turf/simulated/var/tmp/unsim_check_directions = 0 //See above.
+
 /turf/simulated/var/tmp/obj/fire/active_hotspot
 
 /turf/simulated/proc/update_visuals()
@@ -95,7 +97,7 @@
 /turf/simulated/assume_air(datum/gas_mixture/giver)
 	if(!giver)	return 0
 	if(zone)
-		zone.air.merge(giver)
+		zone.assume_air(giver)
 		return 1
 	else
 		return ..()
@@ -111,9 +113,8 @@
 
 /turf/simulated/remove_air(amount as num)
 	if(zone)
-		var/datum/gas_mixture/removed = null
-		removed = zone.air.remove(amount)
-		return removed
+		return zone.remove_air(amount)
+
 	else if(air)
 		var/datum/gas_mixture/removed = null
 		removed = air.remove(amount)
@@ -129,9 +130,16 @@
 	var/air_directions_archived = air_check_directions
 	air_check_directions = 0
 
+	var/unsim_directions_archived = unsim_check_directions
+	unsim_check_directions = 0
+
 	for(var/direction in cardinal)
-		if(ZAirPass(get_step(src,direction)))
-			air_check_directions |= direction
+		var/turf/check_turf = get_step(src, direction)
+		if(ZAirPass(check_turf))
+			if(istype(check_turf, /turf/simulated))
+				air_check_directions |= direction
+			else if(istype(check_turf, /turf/space) || istype(check_turf, /turf/unsimulated))
+				unsim_check_directions |= direction
 
 	if(!zone && !blocks_air) //No zone, but not a wall.
 		for(var/direction in DoorDirections) //Check door directions first.
@@ -167,18 +175,21 @@
 			if(!istype(T))
 				continue
 
-			//I can connect to air in this direction
-			if(air_check_directions & direction && !(air_directions_archived & direction))
-
+			//I can connect to air or space in this direction
+			if((air_check_directions & direction && !(air_directions_archived & direction)) || \
+				(unsim_check_directions & direction && !(unsim_directions_archived & direction)))
 				ZConnect(src,T)
+				zone.ActivateIfNeeded()
+				if(T.zone) T.zone.ActivateIfNeeded()
 
 			//Something like a wall was built, changing the geometry.
-			else if(!(air_check_directions & direction) && air_directions_archived & direction)
+			else if((!(air_check_directions & direction) && air_directions_archived & direction) || \
+					(!(unsim_check_directions & direction) && unsim_directions_archived & direction))
 				var/turf/NT = get_step(T, direction)
 
 				//If the tile is in our own zone, and we cannot connect to it, better rebuild.
 				if(istype(NT,/turf/simulated) && NT in zone.contents)
-					zone.rebuild = 1
+					air_master.zones_needing_rebuilt.Add(zone)
 
 				//Parse if we need to remove the tile, or rebuild the zone.
 				else if(istype(NT) && NT in zone.unsimulated_tiles)
@@ -196,7 +207,7 @@
 					//The unsimulated turf is adjacent to another one of our zone's turfs,
 					//  better rebuild to be sure we didn't get cut in twain
 					if(consider_rebuild)
-						zone.rebuild = 1
+						air_master.zones_needing_rebuilt.Add(zone)
 
 					//Not adjacent to anything, and unsimulated.  Goodbye~
 					else
