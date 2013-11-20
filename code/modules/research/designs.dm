@@ -1606,6 +1606,19 @@ datum/design/secglasses
 	locked = 1
 
 /////////////////////////////////////////
+//////////////Engineering////////////////
+/////////////////////////////////////////
+
+datum/design/hugewelder
+	name = "Industrial Welding Tool"
+	desc = "When you just need more fuel than any other welder."
+	id = "huge_welder"
+	req_tech = list("materials" = 2, "plasmatech" = 1, "engineering" = 3)
+	build_type = PROTOLATHE
+	materials = list("$metal" = 2000, "$glass" = 500)
+	build_path = "/obj/item/weapon/weldingtool/hugetank"
+
+/////////////////////////////////////////
 //////////////////Test///////////////////
 /////////////////////////////////////////
 

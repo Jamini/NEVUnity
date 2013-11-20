@@ -129,7 +129,8 @@
 /obj/item/weapon/weldingtool
 	name = "welding tool"
 	icon = 'icons/obj/items.dmi'
-	icon_state = "welder"
+	icon_state = "rwelder"
+	item_state = "rwelder"
 	flags = FPRINT | TABLEPASS| CONDUCT
 	slot_flags = SLOT_BELT
 
@@ -147,9 +148,11 @@
 	//R&D tech level
 	origin_tech = "engineering=1"
 	//Welding tool specific stuff
-	var/welding = 0	 //Whether or not the welding tool is off(0), on(1) or currently welding(2)
+	var/welding = 0	 //Whether or not the welding tool is off(0) or on(1)
 	var/status = 1		 //Whether the welder is secured or unsecured (able to attach rods to it to make a flamethrower)
 	var/max_fuel = 20	 //The max amount of fuel the welder can hold
+	var/flame_type = "flame"  //Flame type. flame, plasma or arc, currently.
+	var/decayed = 0		//Used for Arc Welder rod replenishment.
 
 /obj/item/weapon/weldingtool/New()
 //	var/random_fuel = min(rand(10,20),max_fuel)
@@ -157,6 +160,7 @@
 	reagents = R
 	R.my_atom = src
 	R.add_reagent("fuel", max_fuel)
+	set_state(0)
 	return
 
 /obj/item/weapon/weldingtool/examine()
@@ -182,7 +186,7 @@
 		var/obj/item/weapon/flamethrower/F = new/obj/item/weapon/flamethrower(user.loc)
 		src.loc = F
 		F.weldtool = src
-		user.put_in_hands(F)	//tada. this tries to put it in either hand or the floor, and does all those screen updates and stuff. Neat.
+		user.put_in_hands(F)	//tada. this tries to put it in either hand or the floor, and does all those screen updates and stuff.
 		return
 	..()
 	return
@@ -197,11 +201,6 @@
 		//Welders left on now use up fuel, but lets not have them run out quite that fast
 		if(1)
 			if(prob(5))
-				remove_fuel(1)
-		//If you're actually actively welding, use fuel faster.
-		//Is this actually used or set anywhere? - Nodrak Suspect set in construction runs.
-		if(2)
-			if(prob(75))
 				remove_fuel(1)
 	//I'm not sure what this does. I assume it has to do with starting fires...
 	//...but it doesnt check to see if the welder is on or not. Doesn't need to, because if it's not welding, it exits processing above. IE it already checked. ...I think
@@ -233,6 +232,27 @@
 			location.hotspot_expose(700, 50, 1) //This line it heats the air triggering a fire Isn't there a better way to deal with this now?
 	return
 
+/obj/item/weapon/weldingtool/attack(mob/M as mob, mob/user as mob)
+	if(hasorgans(M))
+		var/datum/organ/external/S = M:organs_by_name[user.zone_sel.selecting]
+		if (!S) return
+		if(!(S.status & ORGAN_ROBOT) || user.a_intent != "help")
+			return ..()
+		if(S.brute_dam)
+			S.heal_damage(15,0,0,1)
+			if(user != M)
+				user.visible_message("\red \The [user] patches some dents on \the [M]'s [S.display_name] with \the [src]",\
+				"\red You patch some dents on \the [M]'s [S.display_name]",\
+				"You hear a welder.")
+			else
+				user.visible_message("\red \The [user] patches some dents on their [S.display_name] with \the [src]",\
+				"\red You patch some dents on your [S.display_name]",\
+				"You hear a welder.")
+		else
+			user << "Nothing to fix!"
+	else
+		return ..()
+
 /obj/item/weapon/weldingtool/attack_self(mob/user as mob)
 	toggle()
 	return
@@ -241,30 +261,62 @@
 /obj/item/weapon/weldingtool/proc/get_fuel()
 	return reagents.get_reagent_amount("fuel")
 
-/obj/item/weapon/weldingtool/proc/set_state(var/state)
-	if(state==1)
+/obj/item/weapon/weldingtool/proc/set_state(var/state, mob/user as mob)
+	if(state==1 && decayed ==0)
 		welding = 1
-		src.force = 15
+		if(flame_type == "plasma")
+			src.force = 20
+		else
+			src.force = 15
 		src.damtype = "fire"
 		update_icon()
 		processing_objects.Add(src)
 		return
+	else if(state==1 && decayed ==1)
+		user << "\red This welder needs a new rod!"
+		welding = 0
+		src.force = 3
+		src.damtype = "brute"
+		update_icon()
+		processing_objects.Remove(src)
 	else
 		welding = 0
 		src.force = 3
 		src.damtype = "brute"
 		update_icon()
-		return
+		processing_objects.Remove(src)
+	return
 
 /obj/item/weapon/weldingtool/update_icon()
 	overlays.Cut()
+	update_cell()
 	if (welding == 0)
-		overlays += "weldoff"
+		overlays += "welderoff"
+		if(type == "arc" && decayed == 0)
+			overlays += "arcrodoff"
 	else if (welding == 1)
-		overlays += "weldon"
-		//if welder flame, if plaswelder hotflame, if arc sparks.
+		overlays += "welderon"
+		if (flame_type == "arc")
+			overlays += "arcrodon"
+		else if (flame_type == "plasma")
+			overlays += "pflame"
+		else
+			overlays += "wflame"
+	update_inhand()
+	return
 
-//Removes fuel from the welding tool. If a mob is passed, it will perform an eyecheck on the mob. This should probably be renamed to use() <-Sense, this does not make to me.
+/obj/item/weapon/weldingtool/proc/update_cell()
+	return
+
+/obj/item/weapon/weldingtool/proc/update_inhand()
+	if (welding == 0)
+		item_state = "[icon_state]"
+	else if (welding == 1)
+		item_state = "[icon_state]1"
+	return
+
+
+//Removes fuel from the welding tool. If a mob is passed, it will perform an eyecheck on the mob. This should probably be renamed to use()
 /obj/item/weapon/weldingtool/proc/remove_fuel(var/amount = 1, var/mob/M = null)
 	if(!welding || !check_fuel())	//if not on, or no fuel
 		return 0
@@ -279,13 +331,23 @@
 			M << "\blue You need more welding fuel to complete this task."
 		return 0
 
-//Returns whether or not the welding tool is currently on. <-Why?
+//Returns whether or not the welding tool is currently on
 /obj/item/weapon/weldingtool/proc/isOn()	//should be a obj/item/ level proc, hell almost all of this should be hooks.
 	return src.welding
 
+//Toggles the welder off and on
+/obj/item/weapon/weldingtool/proc/toggle(var/message = 0)
+	if(!status)	return
+	src.welding = !( src.welding )
+	if (src.welding)
+		setWelding(1)
+	else
+		setWelding(0, message)
+	return
+
 //Sets the welding state of the welding tool. If you see W.welding = 1 anywhere, please change it to W.setWelding(1)
 //so that the welding tool updates accordingly
-/obj/item/weapon/weldingtool/proc/setWelding(var/temp_welding)
+/obj/item/weapon/weldingtool/proc/setWelding(var/temp_welding, var/message = 0)
 	//If we're turning it on
 	if(temp_welding > 0)
 		if (remove_fuel(1))
@@ -297,7 +359,10 @@
 			return
 	//Otherwise
 	else
-		usr << "\blue The [src] switches off."
+		if(!message)
+			usr << "\blue You switch the [src] off."
+		else
+			usr << "\blue The [src] shuts off!"
 		set_state(0)
 
 //Turns off the welder if there is no more fuel (does this really need to be its own proc?)
@@ -307,28 +372,10 @@
 		return 0
 	return 1
 
-//Toggles the welder off and on
-/obj/item/weapon/weldingtool/proc/toggle(var/message = 0)
-	if(!status)	return
-	src.welding = !( src.welding )
-	if (src.welding)
-		if (remove_fuel(1))
-			usr << "\blue You switch the [src] on."
-			set_state(1)
-		else
-			usr << "\blue Need more fuel!"
-			set_state(0)
-			return
-	else
-		if(!message)
-			usr << "\blue You switch the [src] off."
-		else
-			usr << "\blue The [src] shuts off!"
-		set_state(0)
 
 //Decides whether or not to damage a player's eyes based on what they're wearing as protection
 //Note: This should probably be moved to mob
-/obj/item/weapon/weldingtool/proc/eyecheck(mob/user as mob) //dear god wtf is this. D;  most of this should be handled in the Life() stuff anyway already.
+/obj/item/weapon/weldingtool/proc/eyecheck(mob/user as mob)
 	if(!iscarbon(user))	return 1
 	var/safety = user:eyecheck()
 	switch(safety)
@@ -360,51 +407,85 @@
 			user.disabilities &= ~NEARSIGHTED
 	return
 
+
 /obj/item/weapon/weldingtool/largetank
-	name = "Industrial Welding Tool"
+	name = "Upgraded Welding Tool"
+	icon_state = "mwelder"
 	max_fuel = 40
 	m_amt = 70
 	g_amt = 60
 	origin_tech = "engineering=2"
 
 /obj/item/weapon/weldingtool/hugetank
-	name = "Upgraded Welding Tool"
+	name = "Industrial Welding Tool"
+	icon_state = "lwelder"
 	max_fuel = 80
 	w_class = 3.0
 	m_amt = 70
 	g_amt = 120
 	origin_tech = "engineering=3"
+/*
+/obj/item/weapon/weldingtool/arc
+	name = "Electric Arc Welding Tool"
+	icon_state = "awelder"
+	w_class = 2.0
+	m_amt = 100
+	g_amt = 120
+	var/obj/item/weapon/cell = null
+	origin_tech = "engineering=3"
 
-/*Icon stuff, from nucgun
-		update_charge()
-			if (crit_fail)
-				overlays += "nucgun-whee"
-				return
-			var/ratio = power_supply.charge / power_supply.maxcharge
-			ratio = round(ratio, 0.25) * 100
-			overlays += "nucgun-[ratio]"
-		update_reactor()
-			if(crit_fail)
-				overlays += "nucgun-crit"
-				return
-			if(lightfail)
-				overlays += "nucgun-medium"
-			else if ((power_supply.charge/power_supply.maxcharge) <= 0.5)
-				overlays += "nucgun-light"
-			else
-				overlays += "nucgun-clean"
-		update_mode()
-			if (mode == 0)
-				overlays += "nucgun-stun"
-			else if (mode == 1)
-				overlays += "nucgun-kill"
-	update_icon()
-		overlays.Cut()
-		update_charge()
-		update_reactor()
-		update_mode()
+/obj/item/weapon/weldingtool/arc/attackby(obj/item/weapon/W, mob/user)
+	if(istype(W, /obj/item/weapon/cell))
+		if(!cell)
+			user.drop_item()
+			W.loc = src
+			cell = W
+			user << "<span class='notice'>You install a cell in [src].</span>"
+			update_icon()
+		else
+			user << "<span class='notice'>[src] already has a cell.</span>"
+
+	else if(istype(W, /obj/item/weapon/screwdriver))
+		if(cell)
+			cell.updateicon()
+			cell.loc = get_turf(src.loc)
+			cell = null
+			user << "<span class='notice'>You remove the cell from the [src].</span>"
+			set_state(0)
+			return
+	return
+
+/obj/item/weapon/weldingtool/arc/update_icon()
+	..()
+	if(cell)
+		overlays +=
+	return
+
+/obj/item/weapon/weldingtool/arc/remove_fuel(var/amount = 1, var/mob/M = null)
+	if(cell)
+		if(check_fuel())
+			if(cell.use((amount * 100))
+				return 1
+		else
+			set_state(0)
+			return 0
+
+/obj/item/weapon/weldingtool/arc/check_fuel()
+	if((cell.charge <= 99) && welding)
+		toggle(1)
+		return 0
+	return 1
+
+/obj/item/weapon/weldingtool/arc/examine()
+	set src in view(1)
+	if(cell)
+		usr <<"<span class='notice'>The welder is [round(cell.percent())]% charged.</span>"
+	if(!cell)
+		usr <<"<span class='warning'>The welder does not have a power source installed.</span>"
+
+/obj/item/weapon/weldingtool/arc/New()
+	return
 */
-
 /*
  * Crowbar
  */
@@ -429,23 +510,4 @@
 	icon_state = "red_crowbar"
 	item_state = "crowbar_red"
 
-/obj/item/weapon/weldingtool/attack(mob/M as mob, mob/user as mob)
-	if(hasorgans(M))
-		var/datum/organ/external/S = M:organs_by_name[user.zone_sel.selecting]
-		if (!S) return
-		if(!(S.status & ORGAN_ROBOT) || user.a_intent != "help")
-			return ..()
-		if(S.brute_dam)
-			S.heal_damage(15,0,0,1)
-			if(user != M)
-				user.visible_message("\red \The [user] patches some dents on \the [M]'s [S.display_name] with \the [src]",\
-				"\red You patch some dents on \the [M]'s [S.display_name]",\
-				"You hear a welder.")
-			else
-				user.visible_message("\red \The [user] patches some dents on their [S.display_name] with \the [src]",\
-				"\red You patch some dents on your [S.display_name]",\
-				"You hear a welder.")
-		else
-			user << "Nothing to fix!"
-	else
-		return ..()
+
