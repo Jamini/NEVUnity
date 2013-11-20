@@ -208,6 +208,11 @@ Indirect connections will not merge the two zones after they reach equilibrium.
 			zone_2.closed_connection_zones += zone_1
 			zone_2.closed_connection_zones[zone_1] = 1
 
+	if(zone_1.status == ZONE_SLEEPING)
+		zone_1.SetStatus(ZONE_ACTIVE)
+
+	if(zone_2.status == ZONE_SLEEPING)
+		zone_2.SetStatus(ZONE_ACTIVE)
 
 /connection/proc/DisconnectZones(var/zone/zone_1, var/zone/zone_2)
 	//Sanity checking
