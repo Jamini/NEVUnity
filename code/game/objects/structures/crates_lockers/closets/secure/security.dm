@@ -15,13 +15,13 @@
 			new /obj/item/weapon/storage/backpack/captain(src)
 		else
 			new /obj/item/weapon/storage/backpack/satchel_cap(src)
+		new /obj/item/clothing/tie/medal/gold/captain(src)
 		new /obj/item/clothing/suit/captunic(src)
 		new /obj/item/clothing/suit/captunic/capjacket(src)
 		new /obj/item/clothing/head/helmet/cap(src)
 		new /obj/item/clothing/under/rank/captain(src)
 		new /obj/item/clothing/suit/armor/vest(src)
 		new /obj/item/weapon/cartridge/captain(src)
-		new /obj/item/clothing/head/helmet/swat(src)
 		new /obj/item/clothing/shoes/brown(src)
 		new /obj/item/device/radio/headset/heads/captain(src)
 		new /obj/item/clothing/gloves/captain(src)
@@ -29,6 +29,7 @@
 		new /obj/item/clothing/suit/armor/captain(src)
 		new /obj/item/weapon/melee/telebaton(src)
 		new /obj/item/clothing/under/dress/dress_cap(src)
+		new /obj/item/clothing/glasses/sunglasses(src)
 		return
 
 
