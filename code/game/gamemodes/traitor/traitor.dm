@@ -123,12 +123,12 @@
 				steal_objective.find_target()
 				traitor.objectives += steal_objective
 		switch(rand(1,100))
-			if(1 to 33)
+			if(1 to 5)
 				if (!(locate(/datum/objective/escape) in traitor.objectives))
 					var/datum/objective/escape/escape_objective = new
 					escape_objective.owner = traitor
 					traitor.objectives += escape_objective
-			if(34 to 100)
+			if(6 to 100)
 				if (!(locate(/datum/objective/survive) in traitor.objectives))
 					var/datum/objective/survive/survive_objective = new
 					survive_objective.owner = traitor
