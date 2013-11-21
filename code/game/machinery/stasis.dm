@@ -97,8 +97,8 @@
 	if(src.occupant)
 		if(!src.occupant.client && (src.occupant.stat==0||src.occupant.stat==1))//if the living creature has no client
 			for(var/obj/item/W in occupant) //remove everything they are wearing
-			//ID's or PDA's, Jumpsuits, Headset, and Implants are deleted
-				if(istype(W, /obj/item/weapon/card)|| istype(W, /obj/item/device/pda)||istype(W, /obj/item/weapon/implant)|| istype(W,/obj/item/device/radio/headset))
+			//ID's or PDA's, PJ's, Headset, and Implants are deleted
+				if(istype(W, /obj/item/weapon/card)|| istype(W, /obj/item/device/pda)||istype(W, /obj/item/weapon/implant)|| istype(W,/obj/item/device/radio/headset)||istype(W,/obj/item/clothing/under/pj) || istype(W,/obj/item/clothing/shoes/slippers))
 					if(istype(W, /obj/item/device/pda))
 						for(var/obj/item/weapon/card/X in W)
 							del(X)
