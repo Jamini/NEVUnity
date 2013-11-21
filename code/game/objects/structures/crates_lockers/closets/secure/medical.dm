@@ -82,11 +82,11 @@
 				new /obj/item/clothing/under/rank/medical/purple(src)
 				new /obj/item/clothing/head/surgery/purple(src)
 
-		new /obj/item/clothing/under/rank/medical(src)
 		new /obj/item/clothing/under/rank/nurse(src)
 		new /obj/item/clothing/under/rank/orderly(src)
 		new /obj/item/clothing/shoes/white(src)
-//		new /obj/item/weapon/cartridge/medical(src)
+		new /obj/item/weapon/cartridge/medical(src)
+		new /obj/item/device/flashlight/pen(src)
 		new /obj/item/device/radio/headset/headset_med(src)
 		new /obj/item/weapon/storage/belt/medical(src)
 		return
@@ -129,6 +129,7 @@
 				new /obj/item/clothing/under/rank/medical/purple(src)
 				new /obj/item/clothing/head/surgery/purple(src)
 
+		new /obj/item/device/flashlight/pen(src)
 		new /obj/item/clothing/under/rank/medical(src)
 		new /obj/item/clothing/shoes/white(src)
 		new /obj/item/clothing/suit/storage/labcoat(src)
@@ -153,21 +154,12 @@
 			new /obj/item/weapon/storage/backpack/medic(src)
 		else
 			new /obj/item/weapon/storage/backpack/satchel_med(src)
-		switch(pick("blue", "green", "purple"))
-			if ("blue")
-				new /obj/item/clothing/under/rank/medical/blue(src)
-				new /obj/item/clothing/head/surgery/blue(src)
-			if ("green")
-				new /obj/item/clothing/under/rank/medical/green(src)
-				new /obj/item/clothing/head/surgery/green(src)
-			if ("purple")
-				new /obj/item/clothing/under/rank/medical/purple(src)
-				new /obj/item/clothing/head/surgery/purple(src)
+		new /obj/item/device/flashlight/pen(src)
 		new /obj/item/clothing/under/rank/medical(src)
 		new /obj/item/clothing/suit/storage/labcoat(src)
 		new /obj/item/clothing/suit/storage/fr_jacket(src)
 		new /obj/item/clothing/shoes/white(src)
-//		new /obj/item/weapon/cartridge/medical(src)
+		new /obj/item/weapon/cartridge/medical(src)
 		new /obj/item/device/radio/headset/headset_med(src)
 		new /obj/item/weapon/storage/belt/medical(src)
 		return
@@ -211,6 +203,8 @@
 		new /obj/item/weapon/storage/belt/medical(src)
 		new /obj/item/device/flash(src)
 		new /obj/item/weapon/reagent_containers/hypospray(src)
+		new /obj/item/clothing/glasses/hud/health(src)
+		new /obj/item/device/flashlight/pen(src)
 		return
 
 
