@@ -23,14 +23,12 @@
 		new /obj/item/blueprints(src)
 		new /obj/item/clothing/under/rank/chief_engineer(src)
 		new /obj/item/clothing/head/hardhat/white(src)
-		new /obj/item/clothing/head/welding(src)
+		new /obj/item/weapon/storage/belt/utility/full(src)
 		new /obj/item/clothing/gloves/yellow(src)
 		new /obj/item/clothing/shoes/brown(src)
 		new /obj/item/weapon/cartridge/ce(src)
 		new /obj/item/device/radio/headset/heads/ce(src)
-		new /obj/item/weapon/storage/toolbox/mechanical(src)
 		new /obj/item/clothing/suit/storage/hazardvest(src)
-		new /obj/item/clothing/mask/gas(src)
 		new /obj/item/device/multitool(src)
 		new /obj/item/device/flash(src)
 		new /obj/item/taperoll/engineering(src)
@@ -114,14 +112,16 @@
 			new /obj/item/clothing/tie/storage/brown_vest(src)
 		else
 			new /obj/item/clothing/tie/storage/webbing(src)
-		new /obj/item/weapon/storage/toolbox/mechanical(src)
 		new /obj/item/device/radio/headset/headset_eng(src)
 		new /obj/item/clothing/suit/storage/hazardvest(src)
-		new /obj/item/clothing/mask/gas(src)
 		new /obj/item/clothing/glasses/meson(src)
 		new /obj/item/weapon/cartridge/engineering(src)
 		new /obj/item/taperoll/engineering(src)
+		new /obj/item/weapon/storage/belt/utility/full(src)
+		new /obj/item/clothing/head/hardhat(src)
+		new /obj/item/clothing/under/rank/engineer(src)
 		return
+
 /obj/structure/closet/secure_closet/electrician_personal
 	name = "Electrician's Locker"
 	req_access = list(access_power)
@@ -144,13 +144,15 @@
 			new /obj/item/clothing/tie/storage/brown_vest(src)
 		else
 			new /obj/item/clothing/tie/storage/webbing(src)
-		new /obj/item/weapon/storage/toolbox/electrical(src)
 		new /obj/item/device/multitool
 		new /obj/item/device/radio/headset/headset_eng(src)
 		new /obj/item/clothing/suit/storage/hazardvest(src)
-		new /obj/item/clothing/mask/gas(src)
 		new /obj/item/weapon/cartridge/engineering(src)
 		new /obj/item/taperoll/engineering(src)
+		new /obj/item/clothing/under/rank/electrician(src)
+		new /obj/item/clothing/shoes/orange(src)
+		new /obj/item/weapon/storage/belt/utility/full(src)
+		new /obj/item/clothing/head/hardhat(src)
 		return
 /obj/structure/closet/secure_closet/atmos_personal
 	name = "Atmospheric Locker"
@@ -179,7 +181,9 @@
 		new /obj/item/weapon/extinguisher(src)
 		new /obj/item/device/radio/headset/headset_eng(src)
 		new /obj/item/clothing/suit/storage/hazardvest(src)
-		new /obj/item/clothing/mask/gas(src)
 		new /obj/item/weapon/cartridge/atmos(src)
 		new /obj/item/taperoll/engineering(src)
+		new /obj/item/clothing/under/rank/atmospheric_technician(src)
+		new /obj/item/clothing/shoes/black(src)
+		new /obj/item/weapon/storage/belt/utility/atmostech/(src)
 		return
