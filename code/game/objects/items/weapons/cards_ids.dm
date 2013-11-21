@@ -121,6 +121,7 @@
 	..()
 
 /obj/item/weapon/card/id
+	flags = TABLEPASS | FPRINT | STASIS_DEL 
 	name = "identification card"
 	desc = "A card used to provide ID and determine access across the station."
 	icon_state = "id"
@@ -236,6 +237,7 @@
 	access = list(access_syndicate, access_external_airlocks)
 
 /obj/item/weapon/card/id/captains_spare
+	flags = TABLEPASS | FPRINT
 	name = "captain's spare ID"
 	desc = "The spare ID of the High Lord himself."
 	icon_state = "gold"
