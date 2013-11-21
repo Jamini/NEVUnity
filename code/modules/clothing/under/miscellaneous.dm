@@ -4,6 +4,7 @@
 	icon_state = "red_pyjamas"
 	objcolor = "red_pyjamas"
 	item_state = "w_suit"
+	flags = FPRINT | TABLEPASS | STASIS_DEL
 
 /obj/item/clothing/under/pj/blue
 	name = "blue pj's"
@@ -11,6 +12,7 @@
 	icon_state = "blue_pyjamas"
 	objcolor = "blue_pyjamas"
 	item_state = "w_suit"
+	flags = FPRINT | TABLEPASS | STASIS_DEL
 
 /obj/item/clothing/under/captain_fly
 	name = "rogue captains uniform"
