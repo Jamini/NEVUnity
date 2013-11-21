@@ -48,7 +48,7 @@
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the quartermaster"
+	supervisors = "the first officer"
 	selection_color = "#dddddd"
 	access = list(access_hydroponics, access_bar, access_kitchen, access_morgue)
 	minimal_access = list(access_hydroponics, access_bar, access_kitchen, access_morgue)
@@ -57,10 +57,12 @@
 
 	equip(var/mob/living/carbon/human/H)
 		if(!H)	return 0
-		H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/chef(H), slot_w_uniform)
-		H.equip_to_slot_or_del(new /obj/item/clothing/suit/chef(H), slot_wear_suit)
-		H.equip_to_slot_or_del(new /obj/item/clothing/shoes/black(H), slot_shoes)
-		H.equip_to_slot_or_del(new /obj/item/clothing/head/chefhat(H), slot_head)
+		H.equip_to_slot_or_del(new /obj/item/device/radio/headset/headset_cargo(H), slot_l_ear)
+		if(prob(50)
+			H.equip_to_slot_or_del(new /obj/item/clothing/under/pj/blue(H), slot_w_uniform)
+		else
+			H.equip_to_slot_or_del(new /obj/item/clothing/under/pj/red(H), slot_w_uniform)
+		H.equip_to_slot_or_del(new /obj/item/clothing/shoes/slippers(H), slot_shoes)
 		H.equip_to_slot_or_del(new /obj/item/device/pda/chef(H), slot_belt)
 		if(H.backbag == 1)
 			H.equip_to_slot_or_del(new /obj/item/weapon/storage/box/survival(H), slot_r_hand)
@@ -132,13 +134,13 @@
 
 
 /datum/job/cargo_tech
-	title = "Cargo Technician"
+	title = "Quartermaster"
 	flag = CARGOTECH
 	department_flag = CIVILIAN
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the quartermaster"
+	supervisors = "the first officer"
 	selection_color = "#dddddd"
 	access = list(access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_qm, access_mint, access_mining, access_mining_station)
 	minimal_access = list(access_maint_tunnels, access_cargo, access_cargo_bot, access_mailsorting)
@@ -147,10 +149,12 @@
 	equip(var/mob/living/carbon/human/H)
 		if(!H)	return 0
 		H.equip_to_slot_or_del(new /obj/item/device/radio/headset/headset_cargo(H), slot_l_ear)
-		H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/cargotech(H), slot_w_uniform)
-		H.equip_to_slot_or_del(new /obj/item/clothing/shoes/black(H), slot_shoes)
+		if(prob(50)
+			H.equip_to_slot_or_del(new /obj/item/clothing/under/pj/blue(H), slot_w_uniform)
+		else
+			H.equip_to_slot_or_del(new /obj/item/clothing/under/pj/red(H), slot_w_uniform)
+		H.equip_to_slot_or_del(new /obj/item/clothing/shoes/slippers(H), slot_shoes)
 		H.equip_to_slot_or_del(new /obj/item/device/pda/cargo(H), slot_belt)
-//		H.equip_to_slot_or_del(new /obj/item/clothing/gloves/black(H), slot_gloves)
 		if(H.backbag == 1)
 			H.equip_to_slot_or_del(new /obj/item/weapon/storage/box/survival(H), slot_r_hand)
 		else
@@ -174,15 +178,17 @@
 
 	equip(var/mob/living/carbon/human/H)
 		if(!H)	return 0
-		H.equip_to_slot_or_del(new /obj/item/device/radio/headset/headset_cargo (H), slot_l_ear)
+		H.equip_to_slot_or_del(new /obj/item/device/radio/headset/headset_cargo(H), slot_l_ear)
 		switch(H.backbag)
 			if(2) H.equip_to_slot_or_del(new /obj/item/weapon/storage/backpack/industrial(H), slot_back)
 			if(3) H.equip_to_slot_or_del(new /obj/item/weapon/storage/backpack/satchel_eng(H), slot_back)
 			if(4) H.equip_to_slot_or_del(new /obj/item/weapon/storage/backpack/satchel(H), slot_back)
-		H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/miner(H), slot_w_uniform)
+		if(prob(50)
+			H.equip_to_slot_or_del(new /obj/item/clothing/under/pj/blue(H), slot_w_uniform)
+		else
+			H.equip_to_slot_or_del(new /obj/item/clothing/under/pj/red(H), slot_w_uniform)
+		H.equip_to_slot_or_del(new /obj/item/clothing/shoes/slippers(H), slot_shoes)
 		H.equip_to_slot_or_del(new /obj/item/device/pda/shaftminer(H), slot_belt)
-		H.equip_to_slot_or_del(new /obj/item/clothing/shoes/black(H), slot_shoes)
-//		H.equip_to_slot_or_del(new /obj/item/clothing/gloves/black(H), slot_gloves)
 		if(H.backbag == 1)
 			H.equip_to_slot_or_del(new /obj/item/weapon/storage/box/engineer(H), slot_r_hand)
 			H.equip_to_slot_or_del(new /obj/item/weapon/crowbar(H), slot_l_hand)
@@ -277,7 +283,7 @@
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the quartermaster"
+	supervisors = "the first officer"
 	selection_color = "#dddddd"
 	access = list(access_janitor, access_maint_tunnels)
 	minimal_access = list(access_janitor, access_maint_tunnels)
@@ -285,14 +291,17 @@
 
 	equip(var/mob/living/carbon/human/H)
 		if(!H)	return 0
-		H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/janitor(H), slot_w_uniform)
-		H.equip_to_slot_or_del(new /obj/item/clothing/shoes/black(H), slot_shoes)
+		H.equip_to_slot_or_del(new /obj/item/device/radio/headset/headset_cargo(H), slot_l_ear)
+		if(prob(50)
+			H.equip_to_slot_or_del(new /obj/item/clothing/under/pj/blue(H), slot_w_uniform)
+		else
+			H.equip_to_slot_or_del(new /obj/item/clothing/under/pj/red(H), slot_w_uniform)
+		H.equip_to_slot_or_del(new /obj/item/clothing/shoes/slippers(H), slot_shoes)
 		H.equip_to_slot_or_del(new /obj/item/device/pda/janitor(H), slot_belt)
 		if(H.backbag == 1)
 			H.equip_to_slot_or_del(new /obj/item/weapon/storage/box/survival(H), slot_r_hand)
 		else
 			H.equip_to_slot_or_del(new /obj/item/weapon/storage/box/survival(H.back), slot_in_backpack)
-//		H.equip_to_slot_or_del(new /obj/item/key(H), slot_l_store)
 		return 1
 
 /*
