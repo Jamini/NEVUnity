@@ -1,5 +1,5 @@
 /obj/structure/closet/secure_closet/bar
-	name = "Booze"
+	name = "Bar Wardrobe"
 	req_access = list(access_bar)
 	icon_state = "cabinetdetective_locked"
 	icon_closed = "cabinetdetective"
@@ -12,16 +12,19 @@
 	New()
 		..()
 		sleep(2)
-		new /obj/item/weapon/reagent_containers/food/drinks/beer( src )
-		new /obj/item/weapon/reagent_containers/food/drinks/beer( src )
-		new /obj/item/weapon/reagent_containers/food/drinks/beer( src )
-		new /obj/item/weapon/reagent_containers/food/drinks/beer( src )
-		new /obj/item/weapon/reagent_containers/food/drinks/beer( src )
-		new /obj/item/weapon/reagent_containers/food/drinks/beer( src )
-		new /obj/item/weapon/reagent_containers/food/drinks/beer( src )
-		new /obj/item/weapon/reagent_containers/food/drinks/beer( src )
-		new /obj/item/weapon/reagent_containers/food/drinks/beer( src )
-		new /obj/item/weapon/reagent_containers/food/drinks/beer( src )
+		new /obj/item/weapon/storage/backpack/satchel( src )
+		new /obj/item/clothing/shoes/black( src )
+		new /obj/item/clothing/suit/armor/vest( src )
+		new /obj/item/clothing/under/rank/bartender( src )
+		new /obj/item/weapon/storage/box/survival( src )
+		new /obj/item/ammo_casing/shotgun/beanbag( src )
+		new /obj/item/ammo_casing/shotgun/beanbag( src )
+		new /obj/item/ammo_casing/shotgun/beanbag( src )
+		new /obj/item/ammo_casing/shotgun/beanbag( src )
+		new /obj/item/clothing/under/rank/chef( src )
+		new /obj/item/clothing/suit/chef( src )
+		new /obj/item/clothing/shoes/black( src )
+		new /obj/item/clothing/head/chefhat( src )
 		return
 
 /obj/structure/closet/secure_closet/bar/update_icon()
