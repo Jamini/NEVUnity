@@ -4,6 +4,7 @@
 	name = "implant"
 	icon = 'device.dmi'
 	icon_state = "implant"
+	flags = FPRINT | TABLEPASS | STASIS_DEL
 	var/implanted = null
 	var/mob/imp_in = null
 	var/datum/organ/external/part = null
