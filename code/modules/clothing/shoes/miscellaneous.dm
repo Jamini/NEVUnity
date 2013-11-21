@@ -114,12 +114,14 @@
 	icon_state = "slippers"
 	item_state = "slippers"
 	species_restricted = null
+	flags = FPRINT | TABLEPASS | STASIS_DEL
 
 /obj/item/clothing/shoes/slippers_worn
 	name = "worn bunny slippers"
 	desc = "Fluffy..."
 	icon_state = "slippers_worn"
 	item_state = "slippers_worn"
+	flags = FPRINT | TABLEPASS | STASIS_DEL
 
 /obj/item/clothing/shoes/laceup
 	name = "laceup shoes"
