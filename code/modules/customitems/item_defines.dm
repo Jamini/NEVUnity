@@ -103,6 +103,7 @@
 	desc = "An academic journal, seemingly pertaining to medical genetics. Paper flags demarcate some articles the owner finds interesting."
 	icon = 'custom_items.dmi'
 	icon_state = "matthewriebhardt"
+	flags = FPRINT | TABLEPASS | STASIS_DEL
 
 /obj/item/weapon/pen/fluff/multi //spaceman96: Trenna Seber
 	name = "multiobjcolor pen"
@@ -142,6 +143,7 @@
 	icon_state = "ana_badge"
 	item_state = "ana_badge"
 	objcolor = "ana_badge"
+	flags = FPRINT | TABLEPASS | STASIS_DEL
 
 /obj/item/fluff/ana_issek_2/attack_self(mob/user as mob)
 	if(isliving(user))
@@ -205,6 +207,7 @@
 	icon_state = "guessip"
 	icon_on = "guessipon"
 	icon_off = "guessip"
+	flags = FPRINT | TABLEPASS | STASIS_DEL
 
 /obj/item/weapon/lighter/zippo/fluff/riley_rohtin_1 //rawrtaicho: Riley Rohtin
 	name = "Riley's black zippo"
@@ -310,6 +313,7 @@
 	icon_state = "beakerlarge"
 	g_amt = 5000
 	volume = 100
+	flags = FPRINT | TABLEPASS | STASIS_DEL
 
 /obj/item/weapon/reagent_containers/glass/beaker/fluff/eleanor_stone //Rkf45: Eleanor Stone
 	name = "teapot"
@@ -551,6 +555,7 @@
 	desc = "A welding helmet with blue flame decals on it."
 	icon = 'custom_items.dmi'
 	icon_state = "norah_briggs_1"
+	flags = FPRINT | TABLEPASS | STASIS_DEL
 
 /obj/item/clothing/head/helmet/greenbandana/fluff/taryn_kifer_1 //themij: Taryn Kifer
 	name = "orange bandana"
@@ -625,7 +630,7 @@
 
 /obj/item/clothing/under/fluff/milo_hachert //Field Dress Uniform - Milo Hachert - Commissar_Drew
 	name = "field dress uniform"
-	desc = "A uniform jacket, its buttons polished to a shine, coupled with a dark pair of trousers. 'Hachert' is embroidered upon the jacket’s shoulder bar."
+	desc = "A uniform jacket, its buttons polished to a shine, coupled with a dark pair of trousers. 'Hachert' is embroidered upon the jacketï¿½s shoulder bar."
 	icon = 'custom_items.dmi'
 	icon_state = "milohachert"
 	item_state = "milohachert"
@@ -654,6 +659,7 @@
 	icon_state = "ana_uniform"
 	item_state = "ana_uniform"
 	objcolor = "ana_uniform"
+	flags = FPRINT | TABLEPASS | STASIS_DEL
 
 /obj/item/clothing/under/fluff/olddressuniform //desiderium: Momiji Inubashiri
 	name = "retired dress uniform"
@@ -780,7 +786,8 @@
 	slot_flags = 0
 	flags = FPRINT|TABLEPASS
 	w_class = 1
-	slot_flags = SLOT_MASK
+	slot_flags = SLOT_MASK	
+	flags = FPRINT | TABLEPASS | STASIS_DEL
 
 ////// Silver locket - Konaa Hirano - Konaa_Hirano
 
@@ -825,6 +832,7 @@
 	flags = FPRINT|TABLEPASS
 	w_class = 1
 	slot_flags = SLOT_MASK
+	flags = FPRINT | TABLEPASS | STASIS_DEL
 
 ////// Emerald necklace - Ty Foster - Nega
 
@@ -833,7 +841,7 @@
 	desc = "A brass necklace with a green emerald placed at the end. It has a small inscription on the top of the chain, saying \'Foster\'"
 	icon = 'custom_items.dmi'
 	icon_state = "ty_foster"
-	flags = FPRINT|TABLEPASS
+	flags = FPRINT | TABLEPASS | STASIS_DEL
 	w_class = 1
 
 //////////// Shoes ////////////
@@ -847,6 +855,7 @@
 /obj/item/clothing/shoes/jackboots/fluff/kerbal
 	name = "Steel-Toed work boots"
 	desc = "A pair of heavy, steel-toed work boots. They have a polished shine to them."
+	flags = FPRINT | TABLEPASS | STASIS_DEL
 
 
 //////////// Sets ////////////
@@ -907,12 +916,14 @@
 	desc = "A gasmask painted with Unathi tribal markings"
 	icon_state = "oimask"
 	item_state = "oimask"
+	flags = FPRINT | TABLEPASS | STASIS_DEL
 
 /obj/item/clothing/mask/gas/slave
 	name = "A slave collar"
 	desc = "A slave collar fitted with an ominous, blinking, red light. Probably explodes."
 	icon_state = "mathuscollar"
 	item_state = "mathuscollar"
+	flags = FPRINT | TABLEPASS | STASIS_DEL
 
 //////////// Weapons ////////////
 
@@ -921,6 +932,7 @@
 /obj/item/weapon/melee/baton/fluff/oeng_baton
 	name = "well-used stun baton"
 	desc = "A stun baton used for incapacitating targets; there seems to be a bunch of tally marks set into the handle."
+	flags = FPRINT | TABLEPASS | STASIS_DEL
 
 ///// Deckard .44 - Callum Leamas - Roaper
 /obj/item/weapon/gun/projectile/detective/fluff/callum_leamas
