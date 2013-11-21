@@ -731,3 +731,7 @@ var/list/RESTRICTED_CAMERA_NETWORKS = list( //Those networks can only be accesse
 
 #define ZONE_ACTIVE 1
 #define ZONE_SLEEPING 0
+
+//Flags for Stasis
+
+#define STASIS_DEL 1
