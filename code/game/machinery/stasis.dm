@@ -109,17 +109,30 @@
 			var/job = src.occupant.mind.assigned_role
 			job_master.FreeRole(job)
 			//check objectives TODO
+			if(src.occupant.mind.special_role = "traitor")
+				for(var/datum/objectives/O in src.occupant.mind)
+					del(O)
+				src.occupant.mind.special_role = null
+			else
+				possible_traitors.Remove(src.occupant)
+			
 			//delete them from datacore
-			for(var/datum/data/record/R in data_core)
+			for(var/datum/data/record/R in data_core.medical)
 				if ((R.fields["name"] == occupant.real_name))
-					R.fields["rank"] = "In Stasis"
+					del(R)
+			for(var/datum/data/record/T in data_core.security)
+				if ((T.fields["name"] == occupant.real_name))
+					del(T)
+			for(var/datum/data/record/G in data_core.general)
+				if ((G.fields["name"] == occupant.real_name))
+					del(G)	
 			var/obj/item/device/radio/intercom/a = new /obj/item/device/radio/intercom(null)
 			a.autosay("[occupant.real_name] has entered stasis.", "Stasis Management Computer")
 			src.icon_state = "scanner_0"
 /*			for(var/mob/traitor in player_list)
 				for(var/datum/objective/objectives in traitor)
 					if(objectives.target == src.occupant.mind) //This isn't returning true or we aren't reaching this
-						a.autosay("DEBUG: TRAITOR OBJECTIVE MATCHES DESPAWNIGNG MOB","DEBUG")
+						a.autosay("DEBUG: TRAITOR OBJECTIVE MATCHES DESPAWNING MOB","DEBUG")
 						del(objectives)
 						switch(rand(1,100))
 							if(1 to 33)
