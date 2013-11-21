@@ -3,10 +3,11 @@
 	desc = "An updated, modular intercom that fits over the head. Takes encryption keys"
 	icon_state = "headset"
 	item_state = "headset"
+	flags = FPRINT | TABLEPASS | STASIS_DEL
 	g_amt = 0
 	m_amt = 75
 	subspace_transmission = 1
-	canhear_range = 0 // can't hear headsets from very far away
+	canhear_range = 1 // can't hear headsets from very far away
 
 	slot_flags = SLOT_EARS
 	var/translate_binary = 0
