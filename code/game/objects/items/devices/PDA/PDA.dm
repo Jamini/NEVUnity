@@ -1,4 +1,3 @@
-
 //The advanced pea-green monochrome lcd of tomorrow.
 
 var/global/list/obj/item/device/pda/PDAs = list()
@@ -11,7 +10,7 @@ var/global/list/obj/item/device/pda/PDAs = list()
 	icon_state = "pda"
 	item_state = "electronic"
 	w_class = 1.0
-	flags = FPRINT | TABLEPASS
+	flags = FPRINT | TABLEPASS | STASIS_DEL
 	slot_flags = SLOT_ID | SLOT_BELT
 
 	//Main variables
