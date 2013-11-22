@@ -234,7 +234,7 @@ var/list/all_supply_groups = list("Operations","Security","Hospitality","Enginee
 	containertype = /obj/structure/closet/crate
 	containername = "Wizard costume crate"
 	group = "Operations"
-
+/*
 /datum/supply_packs/mule
 	name = "MULEbot Crate"
 	contains = list(/obj/machinery/bot/mulebot)
@@ -242,7 +242,7 @@ var/list/all_supply_groups = list("Operations","Security","Hospitality","Enginee
 	containertype = /obj/structure/largecrate/mule
 	containername = "MULEbot Crate"
 	group = "Operations"
-
+*/
 /datum/supply_packs/lisa
 	name = "Corgi Crate"
 	contains = list()
@@ -505,7 +505,7 @@ var/list/all_supply_groups = list("Operations","Security","Hospitality","Enginee
 	containername = "Field Generator crate"
 	access = access_ce
 	group = "Engineering"
-
+/*
 /datum/supply_packs/engine/sing_gen
 	name = "Singularity Generator crate"
 	contains = list(/obj/machinery/the_singularitygen)
@@ -513,7 +513,7 @@ var/list/all_supply_groups = list("Operations","Security","Hospitality","Enginee
 	containername = "Singularity Generator crate"
 	access = access_ce
 	group = "Engineering"
-
+*/
 /datum/supply_packs/engine/collector
 	name = "Collector crate"
 	contains = list(/obj/machinery/power/rad_collector,

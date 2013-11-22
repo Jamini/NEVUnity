@@ -382,13 +382,8 @@ datum/objective/survive
 		if(!owner.current || owner.current.stat == DEAD || isbrain(owner.current))
 			return 0		//Brains no longer win survive objectives. --NEO
 		if(issilicon(owner.current) && owner.current != owner.original)
-			return 0	
-		if(istype(location, /turf/simulated/shuttle/floor4)) // Fails tratiors if they are in the shuttle brig 
-			if(istype(owner.current, /mob/living/carbon))
-				return 0
-                if (owner.current.handcuffed)
-                	return 0
-                return 1
+			return 0
+		return 1
 
 // Similar to the anti-rev objective, but for traitors
 datum/objective/brig
