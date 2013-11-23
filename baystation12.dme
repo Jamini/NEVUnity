@@ -513,6 +513,7 @@
 #include "code\game\objects\items\devices\radio\radio.dm"
 #include "code\game\objects\items\robot\robot_items.dm"
 #include "code\game\objects\items\robot\robot_parts.dm"
+#include "code\game\objects\items\robot\robot_parts_advanced.dm"
 #include "code\game\objects\items\robot\robot_upgrades.dm"
 #include "code\game\objects\items\stacks\medical.dm"
 #include "code\game\objects\items\stacks\nanopaste.dm"

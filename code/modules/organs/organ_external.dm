@@ -58,7 +58,7 @@
 ****************************************************/
 
 /datum/organ/external/proc/emp_act(severity)
-	if(!(status & ORGAN_ROBOT))	//meatbags do not care about EMP
+	if(!(status & ORGAN_ROBOT) && status & EXPLODES)	//meatbags and old prosthetics do not care about EMP
 		return
 	var/probability = 30
 	var/damage = 15
@@ -279,7 +279,7 @@
 	if(germ_level > 0 && owner.bodytemperature >= 170)	//cryo stops germs from moving and doing their bad stuffs
 		//Syncing germ levels with external wounds
 		for(var/datum/wound/W in wounds)
-			if(!W.bandaged && !W.salved)
+			if(!W.bandaged && !W.salved && !(status & ORGAN_ROBOT))
 				W.germ_level = max(W.germ_level, germ_level)	//Wounds get all the germs
 				if (W.germ_level > germ_level)	//Badly infected wounds raise internal germ levels
 					germ_level++
@@ -506,7 +506,7 @@
 		if(organ)
 			destspawn = 1
 			//Robotic limbs explode if sabotaged.
-			if(status & ORGAN_ROBOT && !no_explode && sabotaged)
+			if(status & ORGAN_ROBOT && !no_explode && sabotaged && organ.flags & EXPLODES)
 				owner.visible_message("\red \The [owner]'s [display_name] explodes violently!",\
 				"\red <b>Your [display_name] explodes!</b>",\
 				"You hear an explosion followed by a scream!")

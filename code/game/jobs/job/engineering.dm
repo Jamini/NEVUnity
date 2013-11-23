@@ -32,7 +32,7 @@
 			H.equip_to_slot_or_del(new /obj/item/clothing/under/pj/blue(H), slot_w_uniform)
 		else
 			H.equip_to_slot_or_del(new /obj/item/clothing/under/pj/red(H), slot_w_uniform)
-		H.equip_to_slot_or_del(new /obj/item/device/pda/heads/ce(H), slot_l_store)
+		H.equip_to_slot_or_del(new /obj/item/device/pda/heads/ce(H), slot_belt)
 		H.equip_to_slot_or_del(new /obj/item/clothing/shoes/slippers(H), slot_shoes)
 		if(H.backbag == 1)
 			H.equip_to_slot_or_del(new /obj/item/weapon/storage/box/engineer(H), slot_r_hand)
@@ -66,7 +66,7 @@
 		else
 			H.equip_to_slot_or_del(new /obj/item/clothing/under/pj/red(H), slot_w_uniform)
 		H.equip_to_slot_or_del(new /obj/item/clothing/shoes/slippers(H), slot_shoes)
-		H.equip_to_slot_or_del(new /obj/item/device/pda/engineering(H), slot_l_store)
+		H.equip_to_slot_or_del(new /obj/item/device/pda/engineering(H), slot_belt)
 		if(H.backbag == 1)
 			H.equip_to_slot_or_del(new /obj/item/weapon/storage/box/engineer(H), slot_r_hand)
 		else
@@ -96,7 +96,7 @@
 		else
 			H.equip_to_slot_or_del(new /obj/item/clothing/under/pj/red(H), slot_w_uniform)
 		H.equip_to_slot_or_del(new /obj/item/clothing/shoes/slippers(H), slot_shoes)
-		H.equip_to_slot_or_del(new /obj/item/device/pda/engineering(H), slot_l_store)
+		H.equip_to_slot_or_del(new /obj/item/device/pda/engineering(H), slot_belt)
 		if(H.backbag == 1)
 			H.equip_to_slot_or_del(new /obj/item/weapon/storage/box/engineer(H), slot_r_hand)
 		else
@@ -120,15 +120,15 @@
 		if(!H)	return 0
 		H.equip_to_slot_or_del(new /obj/item/device/radio/headset/headset_eng(H), slot_l_ear)
 		switch(H.backbag)
-			if(2) H.equip_to_slot_or_del(new /obj/item/weapon/storage/backpack(H), slot_back)
-			if(3) H.equip_to_slot_or_del(new /obj/item/weapon/storage/backpack/satchel_norm(H), slot_back)
+			if(2) H.equip_to_slot_or_del(new /obj/item/weapon/storage/backpack/industrial(H), slot_back)
+			if(3) H.equip_to_slot_or_del(new /obj/item/weapon/storage/backpack/satchel_eng(H), slot_back)
 			if(4) H.equip_to_slot_or_del(new /obj/item/weapon/storage/backpack/satchel(H), slot_back)
 		if(prob(50))
 			H.equip_to_slot_or_del(new /obj/item/clothing/under/pj/blue(H), slot_w_uniform)
 		else
 			H.equip_to_slot_or_del(new /obj/item/clothing/under/pj/red(H), slot_w_uniform)
 		H.equip_to_slot_or_del(new /obj/item/clothing/shoes/slippers(H), slot_shoes)
-		H.equip_to_slot_or_del(new /obj/item/device/pda/atmos(H), slot_l_store)
+		H.equip_to_slot_or_del(new /obj/item/device/pda/atmos(H), slot_belt)
 		if(H.backbag == 1)
 			H.equip_to_slot_or_del(new /obj/item/weapon/storage/box/engineer(H), slot_r_hand)
 		else

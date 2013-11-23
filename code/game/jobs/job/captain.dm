@@ -16,6 +16,10 @@
 	equip(var/mob/living/carbon/human/H)
 		if(!H)	return 0
 		H.equip_to_slot_or_del(new /obj/item/device/radio/headset/heads/captain(H), slot_l_ear)
+		if(prob(50))
+			H.equip_to_slot_or_del(new /obj/item/clothing/under/pj/blue(H), slot_w_uniform)
+		else
+			H.equip_to_slot_or_del(new /obj/item/clothing/under/pj/red(H), slot_w_uniform)
 		switch(H.backbag)
 			if(2) H.equip_to_slot_or_del(new /obj/item/weapon/storage/backpack/captain(H), slot_back)
 			if(3) H.equip_to_slot_or_del(new /obj/item/weapon/storage/backpack/satchel_cap(H), slot_back)

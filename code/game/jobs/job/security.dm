@@ -38,6 +38,7 @@
 		else
 			H.equip_to_slot_or_del(new /obj/item/weapon/storage/box/survival(H.back), slot_in_backpack)
 			H.equip_to_slot_or_del(new /obj/item/weapon/handcuffs(H), slot_in_backpack)
+		H.equip_to_slot_or_del(new /obj/item/device/pda/heads/hos(H), slot_belt)
 		H.equip_to_slot_or_del(new /obj/item/device/flash(H), slot_r_store)
 		var/obj/item/weapon/implant/loyalty/L = new/obj/item/weapon/implant/loyalty(H)
 		L.imp_in = H
