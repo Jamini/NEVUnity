@@ -103,7 +103,7 @@
 			for(var/mob/living/carbon/human/M in viewers(L, null))
 				M.apply_effect((rand(10, 20)), IRRADIATE, 0)
 				M << "\red You feel strange."
-		return/*
+		return
 	if(prob(1))
 		// AI CALL SHUTTLE I SAW RUNE, SUPER LOW CHANCE, CAN HARDLY HAPPEN
 		for(var/mob/living/carbon/O in viewers(src, null))
@@ -120,7 +120,6 @@
 			O.mind.make_Rev()
 			sparks()
 		return
-		*/
 	if(prob(1))
 		// The OH SHIT FUCK GOD DAMN IT LYNCH THE SCIENTISTS event.
 		for(var/mob/living/carbon/O in viewers(src, null))

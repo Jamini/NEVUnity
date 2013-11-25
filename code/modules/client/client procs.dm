@@ -253,6 +253,7 @@
 		'nano/templates/cryo.tmpl',
 		'nano/images/uiBackground.png',
 		'nano/images/uiIcons16.png',
+		'nano/templates/telescience_console.tmpl',
 		'nano/images/uiIcons24.png',
 		'nano/images/uiLinkPendingIcon.gif',
 		'nano/images/uiNoticeBackground.jpg',

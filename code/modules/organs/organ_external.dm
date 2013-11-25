@@ -58,7 +58,7 @@
 ****************************************************/
 
 /datum/organ/external/proc/emp_act(severity)
-	if(!(status & ORGAN_ROBOT) && status & EXPLODES)	//meatbags and old prosthetics do not care about EMP
+	if(!(status & ORGAN_ROBOT))	//meatbags and old prosthetics do not care about EMP
 		return
 	var/probability = 30
 	var/damage = 15
