@@ -85,7 +85,13 @@
 					"You have won tickets to the newest crime drama DETECTIVE MYSTERY IN THE CLAMITY CAPER!",\
 					"You have won tickets to the newest romantic comedy 16 RULES OF LOVE!",\
 					"You have won tickets to the newest thriller THE CULT OF THE SLEEPING ONE!")
-
+				if(8)
+					sender = pick("Try Dr. Riebhardt's special program!","Looking for that extra 'boost' to your sex life?")
+					message = pick("The Riebhardt program is 100% safe, 100% reversable, and provides a 200% boost in bed!",\
+					"After six years of research, DR. Riebhardt has released his solution for dissatisfied wives and lovers everywhere!",\
+					"Try a day in your partner's shoes with our 1-day gender swap program!",\
+					"Order now and receive a free packet of Dr. Riebhardt's special 'cleansing' pills, free of charge!",\
+					"Men of all species report AMAZING increases in length, width, and stamina!")
 			useMS.send_pda_message("[P.owner]", sender, message)
 
 			if (prob(50)) //Give the AI an increased chance to intercept the message
