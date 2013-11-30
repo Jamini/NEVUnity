@@ -36,7 +36,7 @@
 
 			var/sender
 			var/message
-			switch(pick(1,2,3,4,5,6,7))
+			switch(pick(1,2,3,4,5,6,7,8))
 				if(1)
 					sender = pick("MaxBet","MaxBet Online Casino","There is no better time to register","I'm excited for you to join us")
 					message = pick("Triple deposits are waiting for you at MaxBet Online when you register to play with us.",\

@@ -802,16 +802,16 @@
 	var/list/juice_items = list (
 
 		//Juicer Stuff
-		/obj/item/weapon/reagent_containers/food/snacks/grown/tomato = list("tomatojuice" = 0),
-		/obj/item/weapon/reagent_containers/food/snacks/grown/carrot = list("carrotjuice" = 0),
-		/obj/item/weapon/reagent_containers/food/snacks/grown/berries = list("berryjuice" = 0),
-		/obj/item/weapon/reagent_containers/food/snacks/grown/banana = list("banana" = 0),
-		/obj/item/weapon/reagent_containers/food/snacks/grown/potato = list("potato" = 0),
-		/obj/item/weapon/reagent_containers/food/snacks/grown/lemon = list("lemonjuice" = 0),
-		/obj/item/weapon/reagent_containers/food/snacks/grown/orange = list("orangejuice" = 0),
-		/obj/item/weapon/reagent_containers/food/snacks/grown/lime = list("limejuice" = 0),
-		/obj/item/weapon/reagent_containers/food/snacks/watermelonslice = list("watermelonjuice" = 0),
-		/obj/item/weapon/reagent_containers/food/snacks/grown/poisonberries = list("poisonberryjuice" = 0),
+		/obj/item/weapon/reagent_containers/food/snacks/grown/tomato = list("tomatojuice" = 5),
+		/obj/item/weapon/reagent_containers/food/snacks/grown/carrot = list("carrotjuice" = 5),
+		/obj/item/weapon/reagent_containers/food/snacks/grown/berries = list("berryjuice" = 5),
+		/obj/item/weapon/reagent_containers/food/snacks/grown/banana = list("banana" = 5),
+		/obj/item/weapon/reagent_containers/food/snacks/grown/potato = list("potato" = 5),
+		/obj/item/weapon/reagent_containers/food/snacks/grown/lemon = list("lemonjuice" = 5),
+		/obj/item/weapon/reagent_containers/food/snacks/grown/orange = list("orangejuice" = 5),
+		/obj/item/weapon/reagent_containers/food/snacks/grown/lime = list("limejuice" = 5),
+		/obj/item/weapon/reagent_containers/food/snacks/watermelonslice = list("watermelonjuice" = 5),
+		/obj/item/weapon/reagent_containers/food/snacks/grown/poisonberries = list("poisonberryjuice" = 5),
 	)
 
 

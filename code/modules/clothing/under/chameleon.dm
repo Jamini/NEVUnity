@@ -3,7 +3,7 @@
 	name = "black jumpsuit"
 	icon_state = "black"
 	item_state = "bl_suit"
-	color = "black"
+	objcolor = "black"
 	desc = "It's a plain jumpsuit. It seems to have a small dial on the wrist."
 	origin_tech = "syndicate=3"
 	siemens_coefficient = 0.8
@@ -38,11 +38,11 @@
 		name = "psychedelic"
 		desc = "Groovy!"
 		icon_state = "psyche"
-		color = "psyche"
+		objcolor = "psyche"
 		spawn(200)
 			name = "Black Jumpsuit"
 			icon_state = "bl_suit"
-			color = "black"
+			objcolor = "black"
 			desc = null
 		..()
 
@@ -68,7 +68,7 @@
 		name = A.name
 		icon_state = A.icon_state
 		item_state = A.item_state
-		color = A.color
+		objcolor = A.objcolor
 		usr.update_inv_w_uniform()	//so our overlays update.
 
 

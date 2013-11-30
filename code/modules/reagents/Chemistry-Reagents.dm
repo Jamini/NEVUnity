@@ -738,6 +738,7 @@ datum
 			reagent_state = LIQUID
 			color = "#C8A5DC"
 			overdose = REAGENTS_OVERDOSE
+			custom_metabolism = 0.5
 
 		oxycodone
 			name = "Oxycodone"
@@ -746,6 +747,15 @@ datum
 			reagent_state = LIQUID
 			color = "#C805DC"
 			overdose = REAGENTS_OVERDOSE
+			custom_metabolism = 0.3
+			on_mob_life(var/mob/living/M as mob)
+				if(!M) M = holder.my_atom
+				M.druggy = max(M.druggy, 15)
+				if(isturf(M.loc) && !istype(M.loc, /turf/space))
+					if(M.canmove && !M.restrained())
+						if(prob(10)) step(M, pick(cardinal))
+				if(prob(7)) M.emote(pick("moan","giggle"))
+				return
 
 		virus_food
 			name = "Virus Food"

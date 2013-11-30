@@ -230,6 +230,8 @@
 			//So clones don't die of oxyloss in a running pod.
 			if (src.occupant.reagents.get_reagent_amount("inaprovaline") < 30)
 				src.occupant.reagents.add_reagent("inaprovaline", 60)
+			if (src.occupant.reagents.get_reagent_amount("stoxin") < 1)
+				src.occupant.reagents.add_reagent("stoxin", 29)
 
 			//Also heal some oxyloss ourselves because inaprovaline is so bad at preventing it!!
 			src.occupant.adjustOxyLoss(-4)
