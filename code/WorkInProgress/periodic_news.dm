@@ -14,14 +14,14 @@
 		paycuts_suspicion
 			round_time = 60*10
 			message = {"Reports have leaked that Nanotrasen Inc. is planning to put paycuts into
-						effect on many of its Research Stations in Tau Ceti. Apparently these research
-						stations haven't been able to yield the expected revenue, and thus adjustments
+						effect on many of its installations in Tau Ceti. Apparently these Installations
+						haven't been able to yield the expected revenue, and thus adjustments
 						have to be made."}
 			author = "Unauthorized"
 
 		paycuts_confirmation
 			round_time = 60*40
-			message = {"Earlier rumours about paycuts on Research Stations in the Tau Ceti system have
+			message = {"Earlier rumours about paycuts on installations in the Tau Ceti system have
 						been confirmed. Shockingly, however, the cuts will only affect lower tier
 						personnel. Heads of Staff will, according to our sources, not be affected."}
 			author = "Unauthorized"
@@ -41,12 +41,12 @@
 
 		announcement
 			round_time = 60*20
-			message = {"The new field of research trying to explain several interesting spacetime oddities,
-						also known as \"Bluespace Research\", has reached new heights. Of the several
-						hundred space stations now orbiting in Tau Ceti, fifteen are now specially equipped
-						to experiment with and research Bluespace effects. Rumours have it some of these
-						stations even sport functional \"travel gates\" that can instantly move a whole research
-						team to an alternate reality."}
+			message = {"The field of research trying to explain several interesting spacetime oddities,
+						also known as \"Bluespace Research\", has reached new heights. Of the half-dozen
+						NT facilities within Tau Ceti, eighty percent are now specially equipped
+						with bluespace matter transmission devices. Rumours have it some of these
+						stations even sport coordinate-based short-range telepads, as opposed to the classic beacon-based
+						technology that has been popularized over the last few years."}
 
 	random_junk
 
@@ -73,6 +73,13 @@
 						reveals that many of them were playing games instead of working and their pay has been docked
 						accordingly."}
 			round_time = 60 * 90
+		gone_mad
+			author = ""
+			
+			message = {"Breaking news! Tajaran captain of deep-space exploration vessel attempts to force crew to wear shockingly 
+						revealing uniform! Nonhuman command ability brought into question! Can we trust our ships and 
+						stations under the control of these catlike sex addicts? More at eleven!"}
+			round_time = 60 * 120
 
 	lotus_tree
 
