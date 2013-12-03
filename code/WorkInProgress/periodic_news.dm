@@ -74,7 +74,8 @@
 						accordingly."}
 			round_time = 60 * 90
 		gone_mad
-			author = ""
+			author = "Assisstant Editro Carl Ritz"
+			channel_name = "The Gibson Gazette"
 			
 			message = {"Breaking news! Tajaran captain of deep-space exploration vessel attempts to force crew to wear shockingly 
 						revealing uniform! Nonhuman command ability brought into question! Can we trust our ships and 
