@@ -456,7 +456,7 @@ datum/mind
 							new_objective.explanation_text = "Accumulate [target_number] capture points."
 						if("absorb")
 							new_objective = new /datum/objective/absorb
-							new_objective.explanation_text = "Absorb [target_number] compatible genomes."
+							new_objective.explanation_text = "Infect [target_number] compatible targets."
 					new_objective.owner = src
 					new_objective.target_amount = target_number
 

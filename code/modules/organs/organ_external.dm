@@ -614,7 +614,7 @@
 	icon_name = "torso"
 	display_name = "chest"
 	max_damage = 75
-	min_broken_damage = 40
+	min_broken_damage = 45
 	body_part = UPPER_TORSO
 
 
@@ -622,7 +622,7 @@
 	name = "groin"
 	icon_name = "groin"
 	display_name = "groin"
-	max_damage = 50
+	max_damage = 60
 	min_broken_damage = 30
 	body_part = LOWER_TORSO
 
@@ -631,7 +631,7 @@
 	display_name = "left arm"
 	icon_name = "l_arm"
 	max_damage = 50
-	min_broken_damage = 20
+	min_broken_damage = 25
 	body_part = ARM_LEFT
 
 /datum/organ/external/l_leg
@@ -639,7 +639,7 @@
 	display_name = "left leg"
 	icon_name = "l_leg"
 	max_damage = 50
-	min_broken_damage = 20
+	min_broken_damage = 25
 	body_part = LEG_LEFT
 	icon_position = LEFT
 
@@ -648,7 +648,7 @@
 	display_name = "right arm"
 	icon_name = "r_arm"
 	max_damage = 50
-	min_broken_damage = 20
+	min_broken_damage = 25
 	body_part = ARM_RIGHT
 
 /datum/organ/external/r_leg
@@ -656,7 +656,7 @@
 	display_name = "right leg"
 	icon_name = "r_leg"
 	max_damage = 50
-	min_broken_damage = 20
+	min_broken_damage = 25
 	body_part = LEG_RIGHT
 	icon_position = RIGHT
 
@@ -664,8 +664,8 @@
 	name = "l_foot"
 	display_name = "left foot"
 	icon_name = "l_foot"
-	max_damage = 30
-	min_broken_damage = 15
+	max_damage = 40
+	min_broken_damage = 20
 	body_part = FOOT_LEFT
 	icon_position = LEFT
 
@@ -673,8 +673,8 @@
 	name = "r_foot"
 	display_name = "right foot"
 	icon_name = "r_foot"
-	max_damage = 30
-	min_broken_damage = 15
+	max_damage = 40
+	min_broken_damage = 20
 	body_part = FOOT_RIGHT
 	icon_position = RIGHT
 
@@ -682,24 +682,24 @@
 	name = "r_hand"
 	display_name = "right hand"
 	icon_name = "r_hand"
-	max_damage = 30
-	min_broken_damage = 15
+	max_damage = 40
+	min_broken_damage = 20
 	body_part = HAND_RIGHT
 
 /datum/organ/external/l_hand
 	name = "l_hand"
 	display_name = "left hand"
 	icon_name = "l_hand"
-	max_damage = 30
-	min_broken_damage = 15
+	max_damage = 40
+	min_broken_damage = 20
 	body_part = HAND_LEFT
 
 /datum/organ/external/head
 	name = "head"
 	icon_name = "head"
 	display_name = "head"
-	max_damage = 75
-	min_broken_damage = 40
+	max_damage = 90
+	min_broken_damage = 45
 	body_part = HEAD
 	var/disfigured = 0
 

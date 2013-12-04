@@ -49,13 +49,13 @@ var/list/datum/power/changeling/powerinstances = list()
 	helptext = "Allows you to absorb a single DNA and use it. Does not count towards your absorb objective."
 	genomecost = 0
 	verbpath = /mob/proc/changeling_hivedownload
-
+/*
 /datum/power/changeling/lesser_form
 	name = "Lesser Form"
 	desc = "We debase ourselves and become lesser.  We become a monkey."
 	genomecost = 1
 	verbpath = /mob/proc/changeling_lesser_form
-
+*/
 /datum/power/changeling/deaf_sting
 	name = "Deaf Sting"
 	desc = "We silently sting a human, completely deafening them for a short time."

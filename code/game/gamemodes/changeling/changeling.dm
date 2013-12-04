@@ -10,7 +10,7 @@ var/list/possible_changeling_IDs = list("Alpha","Beta","Gamma","Delta","Epsilon"
 	restricted_jobs = list("AI", "Cyborg")
 	protected_jobs = list("Security Officer", "Warden", "Detective", "Captain")
 	required_players = 2
-	required_players_secret = 10
+	required_players_secret = 5
 	required_enemies = 1
 	recommended_enemies = 4
 
@@ -82,7 +82,7 @@ var/list/possible_changeling_IDs = list("Alpha","Beta","Gamma","Delta","Epsilon"
 
 
 /datum/game_mode/proc/forge_changeling_objectives(var/datum/mind/changeling)
-	//OBJECTIVES - Always absorb 5 genomes, plus random traitor objectives.
+	//OBJECTIVES - Always infect some humans, plus random traitor objectives.
 	//If they have two objectives as well as absorb, they must survive rather than escape
 	//No escape alone because changelings aren't suited for it and it'd probably just lead to rampant robusting
 	//If it seems like they'd be able to do it in play, add a 10% chance to have to escape alone
@@ -92,24 +92,34 @@ var/list/possible_changeling_IDs = list("Alpha","Beta","Gamma","Delta","Epsilon"
 	absorb_objective.gen_amount_goal(2, 3)
 	changeling.objectives += absorb_objective
 
-	var/datum/objective/assassinate/kill_objective = new
-	kill_objective.owner = changeling
-	kill_objective.find_target()
-	changeling.objectives += kill_objective
-
-	var/datum/objective/steal/steal_objective = new
-	steal_objective.owner = changeling
-	steal_objective.find_target()
-	changeling.objectives += steal_objective
-
-
 	switch(rand(1,100))
-		if(1 to 80)
+		if(1 to 33)
+			var/datum/objective/demote/demote_objective = new
+			demote_objective.owner = changeling
+			demote_objective.find_target()
+			changeling.objectives += demote_objective
+		if(34 to 50)
+			var/datum/objective/brig/brig_objective = new
+			brig_objective.owner = changeling
+			brig_objective.find_target()
+			changeling.objectives += brig_objective
+		if(51 to 66)
+			var/datum/objective/harm/harm_objective = new
+			harm_objective.owner = changeling
+			harm_objective.find_target()
+			changeling.objectives += harm_objective
+		else
+			var/datum/objective/steal/steal_objective = new
+			steal_objective.owner = changeling
+			steal_objective.find_target()
+			changeling.objectives += steal_objective
+	switch(rand(1,100))
+		if(1 to 5)
 			if (!(locate(/datum/objective/escape) in changeling.objectives))
 				var/datum/objective/escape/escape_objective = new
 				escape_objective.owner = changeling
 				changeling.objectives += escape_objective
-		else
+		if(6 to 100)
 			if (!(locate(/datum/objective/survive) in changeling.objectives))
 				var/datum/objective/survive/survive_objective = new
 				survive_objective.owner = changeling
@@ -132,6 +142,7 @@ var/list/possible_changeling_IDs = list("Alpha","Beta","Gamma","Delta","Epsilon"
 		changeling.current << "<B>Objective #[obj_count]</B>: [objective.explanation_text]"
 		obj_count++
 	return
+
 
 /*/datum/game_mode/changeling/check_finished()
 	var/changelings_alive = 0
@@ -216,7 +227,7 @@ var/list/possible_changeling_IDs = list("Alpha","Beta","Gamma","Delta","Epsilon"
 	var/changelingID = "Changeling"
 	var/geneticdamage = 0
 	var/isabsorbing = 0
-	var/geneticpoints = 5
+	var/geneticpoints = 10
 	var/purchasedpowers = list()
 	var/mimicing = ""
 

@@ -538,6 +538,10 @@
 	icon = 'custom_items.dmi'
 	icon_state = "swatcap"
 
+/obj/item/clothing/head/hgpiratecap/fluff/jack_smith
+	name = "\improper Flight Officer Cap"
+	desc = "A black and red cap of a first officer. It carries an air of quiet dignity about it!"
+
 /obj/item/clothing/head/welding/fluff/alice_mccrea_1 //madmalicemccrea: Alice McCrea
 	name = "flame decal welding helmet"
 	desc = "A welding helmet adorned with flame decals, and several cryptic slogans of varying degrees of legibility. \"Fly the Friendly Skies\" is clearly visible, written above the visor, for some reason."
@@ -786,7 +790,7 @@
 	slot_flags = 0
 	flags = FPRINT|TABLEPASS
 	w_class = 1
-	slot_flags = SLOT_MASK	
+	slot_flags = SLOT_MASK
 	flags = FPRINT | TABLEPASS | STASIS_DEL
 
 ////// Silver locket - Konaa Hirano - Konaa_Hirano

@@ -63,18 +63,18 @@
 	return changeling
 
 
-//Absorbs the victim's DNA making them uncloneable. Requires a strong grip on the victim.
+//Infects the victim and steals their DNA. Requires a strong grip on the victim.
 //Doesn't cost anything as it's the most basic ability.
 /mob/proc/changeling_absorb_dna()
 	set category = "Changeling"
-	set name = "Absorb DNA"
+	set name = "Infect DNA"
 
 	var/datum/changeling/changeling = changeling_power(0,0,100)
 	if(!changeling)	return
 
 	var/obj/item/weapon/grab/G = src.get_active_hand()
 	if(!istype(G))
-		src << "<span class='warning'>We must be grabbing a creature in our active hand to absorb them.</span>"
+		src << "<span class='warning'>We must be grabbing a creature in our active hand to infect them.</span>"
 		return
 
 	var/mob/living/carbon/human/T = G.affecting
@@ -83,15 +83,15 @@
 		return
 
 	if(NOCLONE in T.mutations)
-		src << "<span class='warning'>This creature's DNA is ruined beyond useability!</span>"
+		src << "<span class='warning'>This creature's DNA is unsuitable!</span>"
 		return
 
 	if(!G.killing)
-		src << "<span class='warning'>We must have a tighter grip to absorb this creature.</span>"
+		src << "<span class='warning'>We must have a tighter grip to infect this creature.</span>"
 		return
 
 	if(changeling.isabsorbing)
-		src << "<span class='warning'>We are already absorbing!</span>"
+		src << "<span class='warning'>We are already infecting!</span>"
 		return
 
 	changeling.isabsorbing = 1
@@ -107,25 +107,25 @@
 				src.visible_message("<span class='danger'>[src] stabs [T] with the proboscis!</span>")
 				T << "<span class='danger'>You feel a sharp stabbing pain!</span>"
 				var/datum/organ/external/affecting = T.get_organ(src.zone_sel.selecting)
-				if(affecting.take_damage(39,0,1,"large organic needle"))
+				if(affecting.take_damage(30,0,1,"large organic needle"))
 					T:UpdateDamageIcon()
 					continue
 
 		feedback_add_details("changeling_powers","A[stage]")
 		if(!do_mob(src, T, 150))
-			src << "<span class='warning'>Our absorption of [T] has been interrupted!</span>"
+			src << "<span class='warning'>Our infection of [T] has been interrupted!</span>"
 			changeling.isabsorbing = 0
 			return
 
-	src << "<span class='notice'>We have absorbed [T]!</span>"
-	src.visible_message("<span class='danger'>[src] sucks the fluids from [T]!</span>")
-	T << "<span class='danger'>You have been absorbed by the changeling!</span>"
+	src << "<span class='notice'>We have infected [T]!</span>"
+	src.visible_message("<span class='danger'>[src] injects something into [T]!</span>")
+	T << "<span class='danger'>You have been infected by the changeling!</span>"
 
 	T.dna.real_name = T.real_name //Set this again, just to be sure that it's properly set.
 	changeling.absorbed_dna |= T.dna
-	if(src.nutrition < 400) src.nutrition = min((src.nutrition + T.nutrition), 400)
-	changeling.chem_charges += 10
-	changeling.geneticpoints += 2
+//	if(src.nutrition < 400) src.nutrition = min((src.nutrition + T.nutrition), 400)
+//	changeling.chem_charges += 10
+//	changeling.geneticpoints += 2
 
 	if(T.mind && T.mind.changeling)
 		if(T.mind.changeling.absorbed_dna)
@@ -136,7 +136,7 @@
 				changeling.absorbedcount++
 			T.mind.changeling.absorbed_dna.len = 1
 
-		if(T.mind.changeling.purchasedpowers)
+/*		if(T.mind.changeling.purchasedpowers)
 			for(var/datum/power/changeling/Tp in T.mind.changeling.purchasedpowers)
 				if(Tp in changeling.purchasedpowers)
 					continue
@@ -147,19 +147,29 @@
 						call(Tp.verbpath)()
 					else
 						src.make_changeling()
-
-		changeling.chem_charges += T.mind.changeling.chem_charges
-		changeling.geneticpoints += T.mind.changeling.geneticpoints
-		T.mind.changeling.chem_charges = 0
-		T.mind.changeling.geneticpoints = 0
+*/
+//		changeling.chem_charges += T.mind.changeling.chem_charges
+//		changeling.geneticpoints += T.mind.changeling.geneticpoints
+//		T.mind.changeling.geneticpoints = 0
 		T.mind.changeling.absorbedcount = 0
-
+	else //Eating a human makes them a drone
+		T.make_changeling() //Drones have changling powers!
+		T.mind.special_role = "Drone" //Special role for you
+		//Drones exist to protect their master
+		var/datum/objective/protect/protect_objective = new
+		protect_objective.owner = T.mind
+		protect_objective.target = src.mind
+		T.mind.objectives += protect_objective
+		//Let the drone know who its master is
+		T << "<B>\red You are a drone!</B>"
+		T << "<b>\red Use say \":g message\" to communicate with your master! Do as they say!</b>"
 	changeling.absorbedcount++
 	changeling.isabsorbing = 0
-
+	T.mind.changeling.chem_charges = 20
 	T.death(0)
 	T.Drain()
 	return 1
+
 
 
 //Change our DNA to that of somebody we've absorbed.
@@ -196,7 +206,7 @@
 	feedback_add_details("changeling_powers","TR")
 	return 1
 
-
+/*
 //Transform into a monkey.
 /mob/proc/changeling_lesser_form()
 	set category = "Changeling"
@@ -344,7 +354,7 @@
 	feedback_add_details("changeling_powers","LFT")
 	del(C)
 	return 1
-
+*/
 
 //Fake our own death and fully heal. You will appear to be dead but regenerate fully after a short delay.
 /mob/proc/changeling_fakedeath()
@@ -374,20 +384,17 @@
 				living_mob_list += C
 			C.stat = CONSCIOUS
 			C.tod = null
-			C.setToxLoss(0)
-			C.setOxyLoss(0)
-			C.setCloneLoss(0)
 			C.SetParalysis(0)
 			C.SetStunned(0)
 			C.SetWeakened(0)
 			C.radiation = 0
-			C.heal_overall_damage(C.getBruteLoss(), C.getFireLoss())
 			C.reagents.clear_reagents()
 			C << "<span class='notice'>We have regenerated.</span>"
 			C.visible_message("<span class='warning'>[src] appears to wake from the dead, having healed all wounds.</span>")
 
 			C.status_flags &= ~(FAKEDEATH)
 			C.update_canmove()
+			C.revive()
 			C.make_changeling()
 	feedback_add_details("changeling_powers","FD")
 	return 1
@@ -647,7 +654,7 @@ var/list/datum/dna/hivemind_bank = list()
 
 	var/mob/living/carbon/T = changeling_sting(10,/mob/proc/changeling_silence_sting)
 	if(!T)	return 0
-	T.silent += 30
+	T.silent += 20
 	feedback_add_details("changeling_powers","SS")
 	return 1
 
@@ -687,7 +694,7 @@ var/list/datum/dna/hivemind_bank = list()
 	var/mob/living/carbon/T = changeling_sting(30,/mob/proc/changeling_paralysis_sting)
 	if(!T)	return 0
 	T << "<span class='danger'>Your muscles begin to painfully tighten.</span>"
-	T.Weaken(20)
+	T.Weaken(10)
 	feedback_add_details("changeling_powers","PS")
 	return 1
 
@@ -749,7 +756,7 @@ var/list/datum/dna/hivemind_bank = list()
 	T.silent = 10
 	T.Paralyse(10)
 	T.make_jittery(1000)
-	if(T.reagents)	T.reagents.add_reagent("lexorin", 40)
+	if(T.reagents)	T.reagents.add_reagent("lexorin", 20)
 	feedback_add_details("changeling_powers","DTHS")
 	return 1
 
