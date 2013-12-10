@@ -163,6 +163,17 @@ micro-manipulator, console screen, beaker, Microlaser, matter bin, power cells.
 Note: Once everything is added to the public areas, will add m_amt and g_amt to circuit boards since autolathe won't be able
 to destroy them and players will be able to make replacements.
 */
+/obj/item/weapon/circuitboard/holopad
+	name = "Circuit board (Holopad)"
+	build_path = "/obj/machinery/hologram/holopad"
+	board_type = "machine"
+	origin_tech = "magnets=2;engineering=2;programming=3"
+	frame_desc = "Requires 1 Scanning Module, 1 Manipulator, 1 Console Screen, and 5 Micro-Laser."
+	req_components = list(
+							"/obj/item/weapon/stock_parts/scanning_module" = 1,
+							"/obj/item/weapon/stock_parts/manipulator" = 1,
+							"/obj/item/weapon/stock_parts/micro_laser" = 5)
+
 /obj/item/weapon/circuitboard/destructive_analyzer
 	name = "Circuit board (Destructive Analyzer)"
 	build_path = "/obj/machinery/r_n_d/destructive_analyzer"
@@ -172,7 +183,8 @@ to destroy them and players will be able to make replacements.
 	req_components = list(
 							"/obj/item/weapon/stock_parts/scanning_module" = 1,
 							"/obj/item/weapon/stock_parts/manipulator" = 1,
-							"/obj/item/weapon/stock_parts/micro_laser" = 1)
+							"/obj/item/weapon/stock_parts/micro_laser" = 1,
+							"/obj/item/weapon/stock_parts/console_screen" = 1)
 
 /obj/item/weapon/circuitboard/autolathe
 	name = "Circuit board (Autolathe)"

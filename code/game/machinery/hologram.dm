@@ -114,6 +114,12 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 	use_power = 1//Passive power usage.
 	return 1
 
+/obj/machinery/hologram/holopad/attackby(var/obj/item/O as obj, var/mob/user as mob)
+	if (istype(O, /obj/item/weapon/wrench))
+		playsound(loc, 'sound/items/Ratchet.ogg', 50, 1)
+		anchored = !anchored
+		user << "You [anchored ? "wrench" : "unwrench"] \the [src]."
+
 /obj/machinery/hologram/holopad/process()
 	if(hologram)//If there is a hologram.
 		if(master && !master.stat && master.client && master.eyeobj)//If there is an AI attached, it's not incapacitated, it has a client, and the client eye is centered on the projector.

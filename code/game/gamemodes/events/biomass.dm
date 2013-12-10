@@ -1,4 +1,6 @@
 // BIOMASS (Note that this code is very similar to Space Vine code)
+
+
 /obj/effect/biomass
 	name = "biomass"
 	desc = "Space barf from another dimension. It just keeps spreading!"

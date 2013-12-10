@@ -154,6 +154,7 @@
 		T.mind.changeling.absorbedcount = 0
 	else //Eating a human makes them a drone
 		T.make_changeling() //Drones have changling powers!
+		T.mind.changeling.geneticpoints = 2
 		T.mind.special_role = "Drone" //Special role for you
 		//Drones exist to protect their master
 		var/datum/objective/protect/protect_objective = new
@@ -167,7 +168,6 @@
 	changeling.isabsorbing = 0
 	T.mind.changeling.chem_charges = 20
 	T.death(0)
-	T.Drain()
 	return 1
 
 
