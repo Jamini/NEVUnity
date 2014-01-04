@@ -755,6 +755,7 @@ datum
 					if(M.canmove && !M.restrained())
 						if(prob(10)) step(M, pick(cardinal))
 				if(prob(7)) M.emote(pick("moan","giggle"))
+				..()
 				return
 
 		virus_food

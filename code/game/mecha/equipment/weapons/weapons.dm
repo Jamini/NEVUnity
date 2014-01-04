@@ -95,19 +95,13 @@
 
 
 /obj/item/mecha_parts/mecha_equipment/weapon/honker
-	name = "HoNkER BlAsT 5000"
+	name = "Riot Supression Horn"
 	icon_state = "mecha_honker"
 	energy_drain = 200
 	equip_cooldown = 150
 	range = MELEE|RANGED
 	construction_time = 500
-	construction_cost = list("metal"=20000,"bananium"=10000)
-
-	can_attach(obj/mecha/combat/honker/M as obj)
-		if(..())
-			if(istype(M))
-				return 1
-		return 0
+	construction_cost = list("metal"=20000)
 
 	action(target)
 		if(!chassis)
@@ -133,7 +127,7 @@
 				M.Stun(10)
 				M.Paralyse(4)
 			else
-				M.make_jittery(500)
+				M.make_jittery(20)
 			/* //else the mousetraps are useless
 			if(istype(M, /mob/living/carbon/human))
 				var/mob/living/carbon/human/H = M
@@ -149,6 +143,12 @@
 		log_message("Honked from [src.name]. HONK!")
 		do_after_cooldown()
 		return
+
+	can_attach(obj/mecha/combat/honker/M as obj)
+		if(..())
+			if(istype(M))
+				return 1
+		return 0
 
 /obj/item/mecha_parts/mecha_equipment/weapon/ballistic
 	name = "General Ballisic Weapon"
@@ -329,12 +329,13 @@
 	projectile = /obj/item/weapon/grenade/flashbang/clusterbang
 	construction_cost = list("metal"=20000,"gold"=6000,"uranium"=6000)
 
+
 /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/flashbang/clusterbang/limited/get_equip_info()//Limited version of the clusterbang launcher that can't reload
 	return "<span style=\"color:[equip_ready?"#0f0":"#f00"];\">*</span>&nbsp;[chassis.selected==src?"<b>":"<a href='?src=\ref[chassis];select_equip=\ref[src]'>"][src.name][chassis.selected==src?"</b>":"</a>"]\[[src.projectiles]\]"
 
 /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/flashbang/clusterbang/limited/rearm()
 	return//Extra bit of security
-
+/*
 /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/banana_mortar
 	name = "Banana Mortar"
 	icon_state = "mecha_bananamrtr"
@@ -394,3 +395,4 @@
 		log_message("Launched a mouse-trap from [src.name], targeting [target]. HONK!")
 		do_after_cooldown()
 		return
+*/

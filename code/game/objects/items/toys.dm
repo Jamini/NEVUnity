@@ -528,7 +528,7 @@
 	icon_state = "durandprize"
 
 /obj/item/toy/prize/honk
-	name = "toy H.O.N.K."
+	name = "toy Josiah"
 	desc = "Mini-Mecha action figure! Collect them all! 6/11."
 	icon_state = "honkprize"
 

@@ -68,8 +68,14 @@
 	switch(M.a_intent)
 		if("help")
 			if(health >= config.health_threshold_crit)
-				help_shake_act(M)
-				return 1
+				if (src.lying)
+					help_shake_act(M)
+					return 1
+				else
+					if(M == src)
+					else
+						visible_message("[M] gives [src] a quick hug!")
+					return 1
 //			if(M.health < -75)	return 0
 
 			if((M.head && (M.head.flags & HEADCOVERSMOUTH)) || (M.wear_mask && (M.wear_mask.flags & MASKCOVERSMOUTH)))
@@ -154,7 +160,7 @@
 
 			if(w_uniform)
 				w_uniform.add_fingerprint(M)
-			var/datum/organ/external/affecting = get_organ(ran_zone(M.zone_sel.selecting))
+//			var/datum/organ/external/affecting = get_organ(ran_zone(M.zone_sel.selecting))
 
 			if (istype(r_hand,/obj/item/weapon/gun) || istype(l_hand,/obj/item/weapon/gun))
 				var/obj/item/weapon/gun/W = null
@@ -175,17 +181,11 @@
 						turfs += T
 					var/turf/target = pick(turfs)
 					return W.afterattack(target,src)
-
-			var/randn = rand(1, 100)
-			if (randn <= 25)
-				apply_effect(4, WEAKEN, run_armor_check(affecting, "melee"))
-				playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
-				visible_message("\red <B>[M] has pushed [src]!</B>")
 				return
 
 			var/talked = 0	// BubbleWrap
 
-			if(randn <= 60)
+			if(prob(60))
 				//BubbleWrap: Disarming breaks a pull
 				if(pulling)
 					visible_message("\red <b>[M] has broken [src]'s grip on [pulling]!</B>")

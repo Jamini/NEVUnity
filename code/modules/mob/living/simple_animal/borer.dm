@@ -45,7 +45,7 @@
 	var/truename                            // Name used for brainworm-speak.
 	var/mob/living/captive_brain/host_brain // Used for swapping control of the body back and forth.
 	var/controlling                         // Used in human death check.
-	var/damageprob = 5
+	var/damageprob = 1
 	var/controldelay = 300
 
 /mob/living/simple_animal/borer/Life()
@@ -155,7 +155,6 @@
 			host_brain.ckey = host.ckey
 			host.ckey = src.ckey
 			controlling = 1
-
 			host.verbs += /mob/living/carbon/proc/release_control
 			host.verbs += /mob/living/carbon/proc/punish_host
 			host.verbs += /mob/living/carbon/proc/spawn_larvae

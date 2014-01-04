@@ -290,13 +290,13 @@ var/list/department_radio_keys = list(
 				message_range = 1
 				italics = 1
 /////SPECIAL HEADSETS END
-
-	var/datum/gas_mixture/environment = loc.return_air()
-	if(environment)
-		var/pressure = environment.return_pressure()
-		if (pressure < SAY_MINIMUM_PRESSURE)	//in space no one can hear you scream
-			italics = 1
-			message_range = 1
+	if(loc.return_air())
+		var/datum/gas_mixture/environment = loc.return_air()
+		if(environment)
+			var/pressure = environment.return_pressure()
+			if (pressure < SAY_MINIMUM_PRESSURE)	//in space no one can hear you scream
+				italics = 1
+				message_range = 1
 
 	var/list/listening
 

@@ -111,7 +111,6 @@
 		new /obj/item/weapon/book/manual/research_and_development(src)
 		update_icon()
 
-
 /*
  * Book
  */

@@ -2,5 +2,5 @@
 	name = "Alex"
 	real_name = "Alex"
 	truename = "Alex"
-	damageprob = 4
+	damageprob = 0
 	controldelay = 275

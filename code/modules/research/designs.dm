@@ -636,6 +636,7 @@ datum/design/gygax_main
 	build_type = IMPRINTER
 	materials = list("$glass" = 2000, "sacid" = 20)
 	build_path = "/obj/item/weapon/circuitboard/mecha/gygax/main"
+	locked = 1
 
 datum/design/gygax_peri
 	name = "Circuit Design (\"Gygax\" Peripherals Control module)"
@@ -645,6 +646,7 @@ datum/design/gygax_peri
 	build_type = IMPRINTER
 	materials = list("$glass" = 2000, "sacid" = 20)
 	build_path = "/obj/item/weapon/circuitboard/mecha/gygax/peripherals"
+	locked = 1
 
 datum/design/gygax_targ
 	name = "Circuit Design (\"Gygax\" Weapons & Targeting Control module)"
@@ -654,6 +656,7 @@ datum/design/gygax_targ
 	build_type = IMPRINTER
 	materials = list("$glass" = 2000, "sacid" = 20)
 	build_path = "/obj/item/weapon/circuitboard/mecha/gygax/targeting"
+	locked = 1
 
 datum/design/durand_main
 	name = "Circuit Design (\"Durand\" Central Control module)"
@@ -663,6 +666,7 @@ datum/design/durand_main
 	build_type = IMPRINTER
 	materials = list("$glass" = 2000, "sacid" = 20)
 	build_path = "/obj/item/weapon/circuitboard/mecha/durand/main"
+	locked = 1
 
 datum/design/durand_peri
 	name = "Circuit Design (\"Durand\" Peripherals Control module)"
@@ -672,6 +676,7 @@ datum/design/durand_peri
 	build_type = IMPRINTER
 	materials = list("$glass" = 2000, "sacid" = 20)
 	build_path = "/obj/item/weapon/circuitboard/mecha/durand/peripherals"
+	locked = 1
 
 datum/design/durand_targ
 	name = "Circuit Design (\"Durand\" Weapons & Targeting Control module)"
@@ -681,33 +686,37 @@ datum/design/durand_targ
 	build_type = IMPRINTER
 	materials = list("$glass" = 2000, "sacid" = 20)
 	build_path = "/obj/item/weapon/circuitboard/mecha/durand/targeting"
+	locked = 1
 
 datum/design/honker_main
-	name = "Circuit Design (\"H.O.N.K\" Central Control module)"
-	desc = "Allows for the construction of a \"H.O.N.K\" Central Control module."
+	name = "Circuit Design (\"Josiah\" Central Control module)"
+	desc = "Allows for the construction of a \"Josiah\" Central Control module."
 	id = "honker_main"
 	req_tech = list("programming" = 3)
 	build_type = IMPRINTER
 	materials = list("$glass" = 2000, "sacid" = 20)
 	build_path = "/obj/item/weapon/circuitboard/mecha/honker/main"
+	locked = 1
 
 datum/design/honker_peri
-	name = "Circuit Design (\"H.O.N.K\" Peripherals Control module)"
-	desc = "Allows for the construction of a \"H.O.N.K\" Peripheral Control module."
+	name = "Circuit Design (\"Josiah\" Peripherals Control module)"
+	desc = "Allows for the construction of a \"Josiah\" Peripheral Control module."
 	id = "honker_peri"
 	req_tech = list("programming" = 3)
 	build_type = IMPRINTER
 	materials = list("$glass" = 2000, "sacid" = 20)
 	build_path = "/obj/item/weapon/circuitboard/mecha/honker/peripherals"
+	locked = 1
 
 datum/design/honker_targ
-	name = "Circuit Design (\"H.O.N.K\" Weapons & Targeting Control module)"
-	desc = "Allows for the construction of a \"H.O.N.K\" Weapons & Targeting Control module."
+	name = "Circuit Design (\"Josiah\" Weapons & Targeting Control module)"
+	desc = "Allows for the construction of a \"Josiah\" Weapons & Targeting Control module."
 	id = "honker_targ"
 	req_tech = list("programming" = 3)
 	build_type = IMPRINTER
 	materials = list("$glass" = 2000, "sacid" = 20)
 	build_path = "/obj/item/weapon/circuitboard/mecha/honker/targeting"
+	locked = 1
 
 ////////////////////////////////////////
 /////////// Mecha Equpment /////////////
@@ -721,6 +730,7 @@ datum/design/mech_scattershot
 	req_tech = list("combat" = 4)
 	build_path = "/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/scattershot"
 	category = "Exosuit Equipment"
+	locked = 1
 
 datum/design/mech_laser
 	name = "Exosuit Weapon Design (CH-PS \"Immolator\" Laser)"
@@ -730,6 +740,7 @@ datum/design/mech_laser
 	req_tech = list("combat" = 3, "magnets" = 3)
 	build_path = "/obj/item/mecha_parts/mecha_equipment/weapon/energy/laser"
 	category = "Exosuit Equipment"
+	locked = 1
 
 datum/design/mech_laser_heavy
 	name = "Exosuit Weapon Design (CH-LC \"Solaris\" Laser Cannon)"
@@ -739,6 +750,7 @@ datum/design/mech_laser_heavy
 	req_tech = list("combat" = 4, "magnets" = 4)
 	build_path = "/obj/item/mecha_parts/mecha_equipment/weapon/energy/laser/heavy"
 	category = "Exosuit Equipment"
+	locked = 1
 
 datum/design/mech_grenade_launcher
 	name = "Exosuit Weapon Design (SGL-6 Grenade Launcher)"
@@ -748,6 +760,7 @@ datum/design/mech_grenade_launcher
 	req_tech = list("combat" = 3)
 	build_path = "/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/flashbang"
 	category = "Exosuit Equipment"
+	locked = 1
 
 datum/design/clusterbang_launcher
 	name = "Exosuit Module Design (SOP-6 Clusterbang Launcher)"
@@ -757,6 +770,7 @@ datum/design/clusterbang_launcher
 	req_tech = list("combat"= 5, "materials" = 5, "syndicate" = 3)
 	build_path = "/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/flashbang/clusterbang/limited"
 	category = "Exosuit Equipment"
+	locked = 1
 
 datum/design/mech_wormhole_gen
 	name = "Exosuit Module Design (Localized Wormhole Generator)"
@@ -766,6 +780,7 @@ datum/design/mech_wormhole_gen
 	req_tech = list("bluespace" = 3, "magnets" = 2)
 	build_path = "/obj/item/mecha_parts/mecha_equipment/wormhole_generator"
 	category = "Exosuit Equipment"
+	locked = 1
 
 datum/design/mech_teleporter
 	name = "Exosuit Module Design (Teleporter Module)"
@@ -775,6 +790,7 @@ datum/design/mech_teleporter
 	req_tech = list("bluespace" = 10, "magnets" = 5)
 	build_path = "/obj/item/mecha_parts/mecha_equipment/teleporter"
 	category = "Exosuit Equipment"
+	locked = 1
 
 datum/design/mech_rcd
 	name = "Exosuit Module Design (RCD Module)"

@@ -235,47 +235,47 @@
 ////////// HONK
 
 /obj/item/mecha_parts/chassis/honker
-	name = "H.O.N.K Chassis"
+	name = "Josiah A.R.S.U. Chassis"
 
 	New()
 		..()
 		construct = new /datum/construction/mecha/honker_chassis(src)
 
 /obj/item/mecha_parts/part/honker_torso
-	name="H.O.N.K Torso"
+	name="Josiah Torso"
 	icon_state = "honker_harness"
 	construction_time = 300
-	construction_cost = list("metal"=35000,"glass"=10000,"bananium"=10000)
+	construction_cost = list("metal"=35000,"glass"=10000)
 
 /obj/item/mecha_parts/part/honker_head
-	name="H.O.N.K Head"
+	name="Josiah Head"
 	icon_state = "honker_head"
 	construction_time = 200
-	construction_cost = list("metal"=15000,"glass"=5000,"bananium"=5000)
+	construction_cost = list("metal"=15000,"glass"=5000)
 
 /obj/item/mecha_parts/part/honker_left_arm
-	name="H.O.N.K Left Arm"
+	name="Josiah Left Arm"
 	icon_state = "honker_l_arm"
 	construction_time = 200
-	construction_cost = list("metal"=20000,"bananium"=5000)
+	construction_cost = list("metal"=20000)
 
 /obj/item/mecha_parts/part/honker_right_arm
-	name="H.O.N.K Right Arm"
+	name="Josiah Right Arm"
 	icon_state = "honker_r_arm"
 	construction_time = 200
-	construction_cost = list("metal"=20000,"bananium"=5000)
+	construction_cost = list("metal"=20000)
 
 /obj/item/mecha_parts/part/honker_left_leg
-	name="H.O.N.K Left Leg"
+	name="Josiah Left Leg"
 	icon_state = "honker_l_leg"
 	construction_time = 200
-	construction_cost = list("metal"=20000,"bananium"=5000)
+	construction_cost = list("metal"=20000)
 
 /obj/item/mecha_parts/part/honker_right_leg
-	name="H.O.N.K Right Leg"
+	name="Josiah Right Leg"
 	icon_state = "honker_r_leg"
 	construction_time = 200
-	construction_cost = list("metal"=20000,"bananium"=5000)
+	construction_cost = list("metal"=20000)
 
 
 ////////// Phazon
@@ -457,15 +457,15 @@
 		origin_tech = "programming=4"
 
 	honker/peripherals
-		name = "Circuit board (H.O.N.K Peripherals Control module)"
+		name = "Circuit board (Josiah ARSU Peripherals Control module)"
 		icon_state = "mcontroller"
 
 	honker/targeting
-		name = "Circuit board (H.O.N.K Weapon Control and Targeting module)"
+		name = "Circuit board (Josiah ARSU Weapon Control and Targeting module)"
 		icon_state = "mcontroller"
 
 	honker/main
-		name = "Circuit board (H.O.N.K Central Control module)"
+		name = "Circuit board (Josiah ARSU Central Control module)"
 		icon_state = "mainboard"
 
 	odysseus

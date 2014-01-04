@@ -154,7 +154,7 @@
 	icon_state = "deathripley-broken"
 
 /obj/effect/decal/mecha_wreckage/honker
-	name = "Honker wreckage"
+	name = "Josiah wreckage"
 	icon_state = "honker-broken"
 
 	New()

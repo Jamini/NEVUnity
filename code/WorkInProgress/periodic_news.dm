@@ -76,9 +76,9 @@
 		gone_mad
 			author = "Assisstant Editro Carl Ritz"
 			channel_name = "The Gibson Gazette"
-			
-			message = {"Breaking news! Tajaran captain of deep-space exploration vessel attempts to force crew to wear shockingly 
-						revealing uniform! Nonhuman command ability brought into question! Can we trust our ships and 
+
+			message = {"Breaking news! Tajaran captain of deep-space exploration vessel attempts to force crew to wear shockingly
+						revealing uniform! Nonhuman command ability brought into question! Can we trust our ships and
 						stations under the control of these catlike sex addicts? More at eleven!"}
 			round_time = 60 * 120
 
@@ -121,8 +121,40 @@
 			the riots. More on this at 6."}
 			round_time = 60 * 60
 
+	ahdomai_conflict
+		breaking_news
+			channel_name = "Tau Ceti Daily"
+			author = "Altair Al-Hadur"
 
-var/global/list/newscaster_standard_feeds = list(/datum/news_announcement/bluespace_research, /datum/news_announcement/lotus_tree, /datum/news_announcement/random_junk,  /datum/news_announcement/food_riots)
+			message = {"Breaking news: Tensions are high on Ahdomai this week as the Kaytam ocean liner \"Akirria\" has been
+			impounded by Hadii officials. No official news has been released from the planetary government, but satellite
+			footage of the Tajaran homeworld shows that half a dozen Kaytam oceangoing vessels have mobilized less than
+			seventy kilometers away from the coast of the city of /"Al-Adur/". The rebel Kaytam leaders, long-time opponents
+			of Nanotrasen on the planet, have declined to comment on this military advance, citing: \"What happens here does
+			not concern offworlders of any species.\" More at eleven!"}
+			round_time = 60 * 10
+
+		more
+			channel_name = "Tau Ceti Daily"
+			author = "Altair Al-Hadur"
+
+			message = {"This just in: Hadii leadership has released a statement today. Na'ima Khayyam Hadii spoke on behalf of
+			the clan leadership alongside Radi Koth Hadii regarding the impounded ship. /"As you are aware, the Ahdomai Defense
+			Force is an independant agency, funded by our clan in the best interests of keeping all of Ahdomai safe. The Kaytam
+			ship currently impounded at Al-Adur is belived to be involved in an illegal smuggling operation. This action is a
+			simple precution, and the Clan Kaytam should be grateful we are willing to lend them military aid to curtail violence
+			and illegal activities originating from their borders./""}
+			round_time = 60 * 60
+
+		defused
+			channel_name = "Tau Ceti Daily"
+			author = "Altair Al-Hadur"
+
+			message = {"Al-Adur conflict defused! The ocean liner Akirra has been released with full apology from Hadii officials.
+			Neither party was availible to comment, but both clans have withdrew from the region after the release of the ship."}
+			round_time = 60 * 120
+
+var/global/list/newscaster_standard_feeds = list(/datum/news_announcement/bluespace_research, /datum/news_announcement/lotus_tree, /datum/news_announcement/random_junk,  /datum/news_announcement/food_riots, /datum/news_announcement/ahdomai_conflict)
 
 proc/process_newscaster()
 	check_for_newscaster_updates(ticker.mode.newscaster_announcements)

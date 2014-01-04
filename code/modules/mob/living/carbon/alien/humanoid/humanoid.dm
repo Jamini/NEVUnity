@@ -349,25 +349,17 @@
 						O.show_message(text("\red <B>[] has attempted to punch []!</B>", M, src), 1)
 
 		if ("disarm")
-			if (!lying)
-				if (prob(5))//Very small chance to push an alien down.
-					Weaken(2)
-					playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
-					for(var/mob/O in viewers(src, null))
-						if ((O.client && !( O.blinded )))
-							O.show_message(text("\red <B>[] has pushed down []!</B>", M, src), 1)
-				else
-					if (prob(50))
-						drop_item()
-						playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
-						for(var/mob/O in viewers(src, null))
-							if ((O.client && !( O.blinded )))
-								O.show_message(text("\red <B>[] has disarmed []!</B>", M, src), 1)
-					else
-						playsound(loc, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
-						for(var/mob/O in viewers(src, null))
-							if ((O.client && !( O.blinded )))
-								O.show_message(text("\red <B>[] has attempted to disarm []!</B>", M, src), 1)
+			if (prob(50))
+				drop_item()
+				playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
+				for(var/mob/O in viewers(src, null))
+					if ((O.client && !( O.blinded )))
+						O.show_message(text("\red <B>[] has disarmed []!</B>", M, src), 1)
+			else
+				playsound(loc, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
+				for(var/mob/O in viewers(src, null))
+					if ((O.client && !( O.blinded )))
+						O.show_message(text("\red <B>[] has attempted to disarm []!</B>", M, src), 1)
 	return
 
 /*Code for aliens attacking aliens. Because aliens act on a hivemind, I don't see them as very aggressive with each other.
