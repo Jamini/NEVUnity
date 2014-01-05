@@ -1,14 +1,163 @@
-/obj/machinery/stasispod
-	name = "\improper Stasis pod"
-	desc = "It places SSD persons in stasis."
+/*
+ * Cryogenic refrigeration unit. Basically a despawner.
+ * Stealing a lot of concepts/code from sleepers due to massive laziness.
+ * The despawn tick will only fire if it's been more than time_till_despawned ticks
+ * since time_entered, which is world.time when the occupant moves in.
+ * ~ Zuhayr
+ */
+
+//Used for logging people entering cryosleep and important items they are carrying.
+var/global/list/frozen_crew = list()
+var/global/list/frozen_items = list()
+
+//Main cryopod console.
+
+/obj/machinery/computer/cryopod
+	name = "cryogenic oversight console"
+	desc = "An interface between crew and the cryogenic storage oversight systems."
 	icon = 'icons/obj/Cryogenic2.dmi'
-	icon_state = "scanner_0"
+	icon_state = "cellconsole"
+	circuit = "/obj/item/weapon/circuitboard/cryopodcontrol"
+	var/mode = null
+
+/obj/machinery/computer/cryopod/attack_paw()
+	src.attack_hand()
+
+/obj/machinery/computer/cryopod/attack_ai()
+	src.attack_hand()
+
+obj/machinery/computer/cryopod/attack_hand(mob/user = usr)
+	if(stat & (NOPOWER|BROKEN))
+		return
+
+	user.set_machine(src)
+	src.add_fingerprint(usr)
+
+	var/dat
+
+	if (!( ticker ))
+		return
+
+	dat += "<hr/><br/><b>Cryogenic Oversight Control</b><br/>"
+	dat += "<i>Welcome, [user.real_name].</i><br/><br/><hr/>"
+	dat += "<a href='?src=\ref[src];log=1'>View storage log</a>.<br>"
+	dat += "<a href='?src=\ref[src];item=1'>Recover object</a>.<br>"
+	dat += "<a href='?src=\ref[src];crew=1'>Revive crew</a>.<br/><hr/>"
+
+	user << browse(dat, "window=cryopod_console")
+	onclose(user, "cryopod_console")
+
+obj/machinery/computer/cryopod/Topic(href, href_list)
+
+	if(..())
+		return
+
+	var/mob/user = usr
+
+	src.add_fingerprint(user)
+
+	if(href_list["log"])
+
+		var/dat = "<b>Recently stored crewmembers</b><br/><hr/><br/>"
+		for(var/person in frozen_crew)
+			dat += "[person]<br/>"
+		dat += "<hr/>"
+
+		user << browse(dat, "window=cryolog")
+
+	else if(href_list["item"])
+
+		if(frozen_items.len == 0)
+			user << "\blue There is nothing to recover from storage."
+			return
+
+		var/obj/item/I = input(usr, "Please choose which object to retrieve.","Object recovery",null) as obj in frozen_items
+
+		if(!I || frozen_items.len == 0)
+			user << "\blue There is nothing to recover from storage."
+			return
+
+		visible_message("\blue The console beeps happily as it disgorges \the [I].", 3)
+
+		I.loc = get_turf(src)
+		frozen_items -= I
+
+	else if(href_list["allitems"])
+
+		if(frozen_items.len == 0)
+			user << "\blue There is nothing to recover from storage."
+			return
+
+		visible_message("\blue The console beeps happily as it disgorges the desired objects.", 3)
+
+		for(var/obj/item/I in frozen_items)
+			I.loc = get_turf(src)
+			frozen_items -= I
+
+	else if(href_list["crew"])
+
+		user << "\red Functionality unavailable at this time."
+
+	src.updateUsrDialog()
+	return
+
+/obj/item/weapon/circuitboard/cryopodcontrol
+	name = "Circuit board (Cryogenic Oversight Console)"
+	build_path = "/obj/machinery/computer/cryopod"
+	origin_tech = "programming=3"
+
+//Decorative structures to go alongside cryopods.
+/obj/structure/cryofeed
+
+	name = "\improper cryogenic feed"
+	desc = "A bewildering tangle of machinery and pipes."
+	icon = 'icons/obj/Cryogenic2.dmi'
+	icon_state = "cryo_rear"
+	anchored = 1
+
+	var/orient_right = null //Flips the sprite.
+
+/obj/structure/cryofeed/right
+	orient_right = 1
+	icon_state = "cryo_rear-r"
+
+/obj/structure/cryofeed/New()
+
+	if(orient_right)
+		icon_state = "cryo_rear-r"
+	else
+		icon_state = "cryo_rear"
+	..()
+
+//Cryopods themselves.
+/obj/machinery/stasispod
+	name = "\improper cryogenic freezer"
+	desc = "A man-sized pod for entering suspended animation."
+	icon = 'icons/obj/Cryogenic2.dmi'
+	icon_state = "body_scanner_0"
 	density = 1
-	var/mob/occupant = null
-	anchored = 1.0
-	use_power = 1
-	idle_power_usage = 50
-	active_power_usage = 300
+	anchored = 1
+
+	var/mob/occupant = null      // Person waiting to be despawned.
+	var/orient_right = null      // Flips the sprite.
+	var/time_till_despawn = 9000 // 15 minutes-ish safe period before being despawned.
+	var/time_entered = 0         // Used to keep track of the safe period.
+	var/obj/item/device/radio/intercom/announce
+
+/obj/machinery/stasispod/right
+	orient_right = 1
+	icon_state = "body_scanner_0-r"
+
+
+/obj/machinery/stasispod/New()
+
+	announce = new /obj/item/device/radio/intercom(src)
+
+	if(orient_right)
+		icon_state = "body_scanner_0-r"
+	else
+		icon_state = "body_scanner_0"
+	..()
 
 /obj/machinery/stasispod/allow_drop()
 	return 0
@@ -95,6 +244,11 @@
 	return
 /obj/machinery/stasispod/process()
 	if(src.occupant)
+
+		//Allow a ten minute gap between entering the pod and actually despawning.
+		if(world.time - time_entered < time_till_despawn)
+			return
+
 		if(!src.occupant.client && (src.occupant.stat==0||src.occupant.stat==1))//if the living creature has no client
 			for(var/obj/item/W in occupant) //remove everything they are wearing
 			//Items with the STASIS_DEL flag are deleted
@@ -106,13 +260,16 @@
 					del(W)
 				occupant.drop_from_inventory(W)
 		//free up their job slot
-			var/job = src.occupant.mind.assigned_role
+			var/job = occupant.mind.assigned_role
+			var/role = occupant.mind.special_role
 			job_master.FreeRole(job)
-			//check objectives TODO
-			if(src.occupant.mind.special_role == "traitor")
-				for(var/datum/objective/O in src.occupant.mind)
-					del(O)
-				src.occupant.mind.special_role = null
+			if(role == "traitor" || role == "MODE")
+				del(occupant.mind.objectives)
+				occupant.mind.special_role = null
+			else
+				if(ticker.mode.name == "AutoTraitor")
+					var/datum/game_mode/traitor/autotraitor/current_mode = ticker.mode
+					current_mode.possible_traitors.Remove(occupant)
 
 			//delete them from datacore
 			for(var/datum/data/record/R in data_core.medical)
@@ -124,34 +281,20 @@
 			for(var/datum/data/record/G in data_core.general)
 				if ((G.fields["name"] == occupant.real_name))
 					del(G)
-			var/obj/item/device/radio/intercom/a = new /obj/item/device/radio/intercom(null)
-			a.autosay("[occupant.real_name] has entered stasis.", "Stasis Management Computer")
+
+
+			if(orient_right)
+				icon_state = "body_scanner_0-r"
+			else
+				icon_state = "body_scanner_0"
+
+			//This should guarantee that ghosts don't spawn.
+			occupant.ckey = null
+			//Make an announcement and log the person entering storage.
+			frozen_crew += "[occupant.real_name]"
+			announce.autosay("[occupant.real_name] has entered stasis.", "Stasis Management Computer")
+			visible_message("\blue The crypod hums and hisses as it moves [occupant.real_name] into storage.", 3)
 			src.icon_state = "scanner_0"
-/*			for(var/mob/traitor in player_list)
-				for(var/datum/objective/objectives in traitor)
-					if(objectives.target == src.occupant.mind) //This isn't returning true or we aren't reaching this
-						a.autosay("DEBUG: TRAITOR OBJECTIVE MATCHES DESPAWNING MOB","DEBUG")
-						del(objectives)
-						switch(rand(1,100))
-							if(1 to 33)
-								var/datum/objective/demote/demote_objective = new
-								demote_objective.owner = traitor.mind
-								demote_objective.find_target()
-								traitor.mind.objectives += demote_objective
-							if(34 to 50)
-								var/datum/objective/brig/brig_objective = new
-								brig_objective.owner = traitor.mind
-								brig_objective.find_target()
-								traitor.mind.objectives += brig_objective
-							if(51 to 66)
-								var/datum/objective/harm/harm_objective = new
-								harm_objective.owner = traitor.mind
-								harm_objective.find_target()
-								traitor.mind.objectives += harm_objective
-							else
-								var/datum/objective/steal/steal_objective = new
-								steal_objective.owner = traitor.mind
-								steal_objective.find_target()
-								traitor.mind.objectives += steal_objective */
 			del(src.occupant)//delete the mob
+			src.occupant = null
 		return

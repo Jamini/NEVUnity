@@ -980,11 +980,11 @@
 		usr << "\blue <B>The [src.name] is already occupied!</B>"
 		src.log_append_to_last("Permission denied.")
 		return
-/*
-	if (usr.abiotic())
-		usr << "\blue <B>Subject cannot have abiotic items on.</B>"
-		return
-*/
+	if(iscarbon(usr))
+		var/mob/living/carbon/C = usr
+		if(C.handcuffed)
+			usr << "\red Kinda hard to climb in while handcuffed don't you think?"
+			return
 	var/passed
 	if(src.operation_allowed(usr))
 		passed = 1

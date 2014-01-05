@@ -104,7 +104,7 @@
 				M.apply_effect((rand(10, 20)), IRRADIATE, 0)
 				M << "\red You feel strange."
 		return
-	if(prob(1))
+/*	if(prob(1))
 		// AI CALL SHUTTLE I SAW RUNE, SUPER LOW CHANCE, CAN HARDLY HAPPEN
 		for(var/mob/living/carbon/O in viewers(src, null))
 			var/datum/game_mode/cult/temp = new
@@ -119,7 +119,7 @@
 			O.show_message("\red The telepad flashes with a strange light, and you see all kind of images flash through your mind, of murderous things Nanotrasen has done, and you decide to rebel!", 2)
 			O.mind.make_Rev()
 			sparks()
-		return
+		return */
 	if(prob(1))
 		// The OH SHIT FUCK GOD DAMN IT LYNCH THE SCIENTISTS event.
 		for(var/mob/living/carbon/O in viewers(src, null))

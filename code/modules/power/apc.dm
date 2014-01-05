@@ -22,7 +22,7 @@
 	icon_state = "apc0"
 	anchored = 1
 	use_power = 0
-	req_access = list(access_power)
+	req_access = list(access_engine_equip)
 	var/area/area
 	var/areastring = null
 	var/obj/item/weapon/cell/cell
@@ -218,6 +218,7 @@
 
 	if (istype(user, /mob/living/silicon) && get_dist(src,user)>1)
 		return src.attack_hand(user)
+	src.add_fingerprint(user)
 	if (istype(W, /obj/item/weapon/crowbar) && opened)
 		if (has_electronics==1)
 			if (terminal)
@@ -468,10 +469,6 @@
 	if(stat & (BROKEN|MAINT))
 		return
 
-	if(ishuman(user))
-		if(istype(user:gloves, /obj/item/clothing/gloves/space_ninja)&&user:gloves:candrain&&!user:gloves:draining)
-			call(/obj/item/clothing/gloves/space_ninja/proc/drain)("APC",src,user:wear_suit)
-			return
 	// do APC interaction
 	user.set_machine(src)
 	src.interact(user)
@@ -804,7 +801,8 @@
 		if(!can_use(usr, 1))
 			return
 	src.add_fingerprint(usr)
-	usr.set_machine(src)
+	if(usingUI) // If we set their machine and they're not using the UI, it'll cause the UI to pop up.
+		usr.set_machine(src)
 	if (href_list["apcwires"])
 		var/t1 = text2num(href_list["apcwires"])
 		if (!( istype(usr.get_active_hand(), /obj/item/weapon/wirecutters) ))
@@ -966,12 +964,7 @@
 				cell.corrupt()
 				src.malfhack = 1
 				update_icon()
-				var/datum/effect/effect/system/harmless_smoke_spread/smoke = new /datum/effect/effect/system/harmless_smoke_spread()
-				smoke.set_up(3, 0, src.loc)
-				smoke.attach(src)
-				smoke.start()
 				var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
-				s.set_up(3, 1, src)
 				s.start()
 				for(var/mob/M in viewers(src))
 					M.show_message("\red The [src.name] suddenly lets out a blast of smoke and some sparks!", 3, "\red You hear sizzling electronics.", 2)
