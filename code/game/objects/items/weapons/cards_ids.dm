@@ -121,9 +121,9 @@
 	..()
 
 /obj/item/weapon/card/id
-	flags = TABLEPASS | FPRINT | STASIS_DEL 
+	flags = TABLEPASS | FPRINT | STASIS_DEL
 	name = "identification card"
-	desc = "A card used to provide ID and determine access across the station."
+	desc = "A card used to provide ID and determine access across the ship."
 	icon_state = "id"
 	item_state = "card-id"
 	var/access = list()

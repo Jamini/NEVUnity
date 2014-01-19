@@ -405,8 +405,8 @@ var/list/solars_list = list()
 
 	var/t = "<TT><B>Solar Generator Control</B><HR><PRE>"
 	t += "<B>Generated power</B> : [round(lastgen)] W<BR>"
-	t += "Station Rotational Period: [60/abs(sun.rate)] minutes<BR>"
-	t += "Station Rotational Direction: [sun.rate<0 ? "CCW" : "CW"]<BR>"
+	t += "Ship Rotational Period: [60/abs(sun.rate)] minutes<BR>"
+	t += "Ship Rotational Direction: [sun.rate<0 ? "CCW" : "CW"]<BR>"
 	t += "Star Orientation: [sun.angle]&deg ([angle2text(sun.angle)])<BR>"
 	t += "Array Orientation: [rate_control(src,"cdir","[cdir]&deg",1,10,60)] ([angle2text(cdir)])<BR>"
 	t += "<BR><HR><BR>"

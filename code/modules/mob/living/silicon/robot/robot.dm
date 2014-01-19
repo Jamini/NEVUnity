@@ -297,12 +297,12 @@
 // this verb lets cyborgs see the stations manifest
 /mob/living/silicon/robot/verb/cmd_station_manifest()
 	set category = "Robot Commands"
-	set name = "Show Station Manifest"
+	set name = "Show Ship Manifest"
 	show_station_manifest()
 
 
 /mob/living/silicon/robot/proc/robot_alerts()
-	var/dat = "<HEAD><TITLE>Current Station Alerts</TITLE><META HTTP-EQUIV='Refresh' CONTENT='10'></HEAD><BODY>\n"
+	var/dat = "<HEAD><TITLE>Current Ship Alerts</TITLE><META HTTP-EQUIV='Refresh' CONTENT='10'></HEAD><BODY>\n"
 	dat += "<A HREF='?src=\ref[src];mach_close=robotalerts'>Close</A><BR><BR>"
 	for (var/cat in alarms)
 		dat += text("<B>[cat]</B><BR>\n")
@@ -387,7 +387,7 @@
 			if(connected_ai)
 				if(connected_ai.mind == malfai)
 					if(malf.apcs >= 3)
-						stat(null, "Time until station control secured: [max(malf.AI_win_timeleft/(malf.apcs/3), 0)] seconds")
+						stat(null, "Time until ship control secured: [max(malf.AI_win_timeleft/(malf.apcs/3), 0)] seconds")
 			else if(ticker.mode:malf_mode_declared)
 				stat(null, "Time left: [max(ticker.mode:AI_win_timeleft/(ticker.mode:apcs/3), 0)]")
 	return 0

@@ -163,14 +163,14 @@
 
 /obj/item/clothing/under/suit_jacket/really_black
 	name = "executive suit"
-	desc = "A formal black suit and red tie, intended for the station's finest."
+	desc = "A formal black suit and red tie, intended for the ship's finest."
 	icon_state = "really_black_suit"
 	item_state = "bl_suit"
 	objcolor = "black_suit"
 
 /obj/item/clothing/under/suit_jacket/female
 	name = "executive suit"
-	desc = "A formal trouser suit for women, intended for the station's finest."
+	desc = "A formal trouser suit for women, intended for the ship's finest."
 	icon_state = "black_suit_fem"
 	item_state = "black_suit_fem"
 	objcolor = "black_suit_fem"

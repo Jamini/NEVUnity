@@ -225,7 +225,7 @@
 						emergency_shuttle.incall()
 						captain_announce("The Evacuation has been called. It will arrive in [round(emergency_shuttle.timeleft()/60)] minutes.")
 						log_admin("[key_name(usr)] called the Evacuation")
-						message_admins("\blue [key_name_admin(usr)] called the Evacuation to the station", 1)
+						message_admins("\blue [key_name_admin(usr)] called the Evacuation to the ship", 1)
 					if(1)
 						emergency_shuttle.recall()
 						log_admin("[key_name(usr)] Canceled the Evacuation")
@@ -1970,7 +1970,7 @@
 			if("immovable")
 				feedback_inc("admin_secrets_fun_used",1)
 				feedback_add_details("admin_secrets_fun_used","IR")
-				message_admins("[key_name_admin(usr)] has sent an immovable rod to the station", 1)
+				message_admins("[key_name_admin(usr)] has sent an immovable rod to the ship", 1)
 				immovablerod()
 			if("prison_break")
 				feedback_inc("admin_secrets_fun_used",1)
@@ -2103,7 +2103,7 @@
 				for(var/obj/machinery/door/airlock/W in world)
 					if(W.z == 1 && !istype(get_area(W), /area/bridge) && !istype(get_area(W), /area/crew_quarters) && !istype(get_area(W), /area/security/prison))
 						W.req_access = list()
-				message_admins("[key_name_admin(usr)] activated Egalitarian Station mode")
+				message_admins("[key_name_admin(usr)] activated Egalitarian Ship mode")
 				command_alert("Centcomm airlock control override activated. Please take this time to get acquainted with your coworkers.")
 				world << sound('sound/AI/commandreport.ogg')
 			if("dorf")
@@ -2120,7 +2120,7 @@
 				message_admins("[key_name_admin(usr)] triggered an ion storm")
 				var/show_log = alert(usr, "Show ion message?", "Message", "Yes", "No")
 				if(show_log == "Yes")
-					command_alert("Ion storm detected near the station. Please check all AI-controlled equipment for errors.", "Anomaly Alert")
+					command_alert("Ion storm detected near the ship. Please check all AI-controlled equipment for errors.", "Anomaly Alert")
 					world << sound('sound/AI/ionstorm.ogg')
 			if("spacevines")
 				feedback_inc("admin_secrets_fun_used",1)
@@ -2375,7 +2375,7 @@
 					news_network.wanted_issue.body = src.admincaster_feed_message.body
 					news_network.wanted_issue.backup_author = src.admincaster_feed_message.backup_author
 					src.admincaster_screen = 19
-				log_admin("[key_name_admin(usr)] issued a Station-wide Wanted Notification for [src.admincaster_feed_message.author]!")
+				log_admin("[key_name_admin(usr)] issued a Ship-wide Wanted Notification for [src.admincaster_feed_message.author]!")
 		src.access_news_network()
 
 	else if(href_list["ac_cancel_wanted"])

@@ -160,7 +160,7 @@
 	icon_closed = "secgearcrate"
 
 /obj/structure/closet/crate/secure/hydrosec
-	desc = "A crate with a lock on it, painted in the scheme of the station's botanists."
+	desc = "A crate with a lock on it, painted in the scheme of the ship's botanists."
 	name = "secure hydroponics crate"
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "hydrosecurecrate"

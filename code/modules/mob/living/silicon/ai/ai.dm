@@ -104,8 +104,8 @@ var/list/ai_list = list()
 			if (B.brainmob.mind)
 				B.brainmob.mind.transfer_to(src)
 
-			src << "<B>You are playing the station's AI. The AI cannot move, but can interact with many objects while viewing them (through cameras).</B>"
-			src << "<B>To look at other parts of the station, click on yourself to get a camera menu.</B>"
+			src << "<B>You are playing the ship's AI. The AI cannot move, but can interact with many objects while viewing them (through cameras).</B>"
+			src << "<B>To look at other parts of the ship, click on yourself to get a camera menu.</B>"
 			src << "<B>While observing through a camera, you can use most (networked) devices which you can see, such as computers, APCs, intercoms, doors, etc.</B>"
 			src << "To use something, simply click on it."
 			src << "Use say :b to speak to your cyborgs through binary."
@@ -179,14 +179,14 @@ var/list/ai_list = list()
 		for (var/datum/mind/malfai in malf.malf_ai)
 			if (mind == malfai) // are we the evil one?
 				if (malf.apcs >= 3)
-					stat(null, "Time until station control secured: [max(malf.AI_win_timeleft/(malf.apcs/3), 0)] seconds")
+					stat(null, "Time until ship control secured: [max(malf.AI_win_timeleft/(malf.apcs/3), 0)] seconds")
 
 
 /mob/living/silicon/ai/proc/ai_alerts()
 	set category = "AI Commands"
 	set name = "Show Alerts"
 
-	var/dat = "<HEAD><TITLE>Current Station Alerts</TITLE><META HTTP-EQUIV='Refresh' CONTENT='10'></HEAD><BODY>\n"
+	var/dat = "<HEAD><TITLE>Current Ship Alerts</TITLE><META HTTP-EQUIV='Refresh' CONTENT='10'></HEAD><BODY>\n"
 	dat += "<A HREF='?src=\ref[src];mach_close=aialerts'>Close</A><BR><BR>"
 	for (var/cat in alarms)
 		dat += text("<B>[]</B><BR>\n", cat)
@@ -371,7 +371,7 @@ var/list/ai_list = list()
 				usr.machine = usr
 
 			while (src.cameraFollow == target)
-				usr << "Target is not on or near any active cameras on the station. We'll check again in 5 seconds (unless you use the cancel-camera verb)."
+				usr << "Target is not on or near any active cameras on the ship. We'll check again in 5 seconds (unless you use the cancel-camera verb)."
 				sleep(40)
 				continue
 

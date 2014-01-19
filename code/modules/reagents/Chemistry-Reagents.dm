@@ -1898,13 +1898,15 @@ datum
 				if(!data) data = 1
 				switch(data)
 					if(1 to 15)
-						M.bodytemperature += 5 * TEMPERATURE_DAMAGE_COEFFICIENT
+						if(M.bodytemperature < BODYTEMP_HEAT_DAMAGE_LIMIT)
+							M.bodytemperature += 5 * TEMPERATURE_DAMAGE_COEFFICIENT
 						if(holder.has_reagent("frostoil"))
 							holder.remove_reagent("frostoil", 5)
 						if(istype(M, /mob/living/carbon/slime))
 							M.bodytemperature += rand(5,20)
 					if(15 to INFINITY)
-						M.bodytemperature += 10 * TEMPERATURE_DAMAGE_COEFFICIENT
+						if(M.bodytemperature < BODYTEMP_HEAT_DAMAGE_LIMIT)
+							M.bodytemperature += 10 * TEMPERATURE_DAMAGE_COEFFICIENT
 						if(istype(M, /mob/living/carbon/slime))
 							M.bodytemperature += rand(10,20)
 				holder.remove_reagent(src.id, FOOD_METABOLISM)
@@ -1990,13 +1992,15 @@ datum
 				if(!data) data = 1
 				switch(data)
 					if(1 to 15)
-						M.bodytemperature -= 5 * TEMPERATURE_DAMAGE_COEFFICIENT
+						if(M.bodytemperature > BODYTEMP_COLD_DAMAGE_LIMIT)
+							M.bodytemperature -= 5 * TEMPERATURE_DAMAGE_COEFFICIENT
 						if(holder.has_reagent("capsaicin"))
 							holder.remove_reagent("capsaicin", 5)
 						if(istype(M, /mob/living/carbon/slime))
 							M.bodytemperature -= rand(5,20)
 					if(15 to INFINITY)
-						M.bodytemperature -= 10 * TEMPERATURE_DAMAGE_COEFFICIENT
+						if(M.bodytemperature > BODYTEMP_COLD_DAMAGE_LIMIT)
+							M.bodytemperature -= 10 * TEMPERATURE_DAMAGE_COEFFICIENT
 						if(istype(M, /mob/living/carbon/slime))
 							M.bodytemperature -= rand(10,20)
 				data++
@@ -2887,7 +2891,7 @@ datum
 		ethanol/specialwhiskey
 			name = "Special Blend Whiskey"
 			id = "specialwhiskey"
-			description = "Just when you thought regular station whiskey was good... This silky, amber goodness has to come along and ruin everything."
+			description = "Just when you thought regular ship whiskey was good... This silky, amber goodness has to come along and ruin everything."
 			color = "#664300" // rgb: 102, 67, 0
 			boozepwr = 2
 			dizzy_adj = 4
@@ -3233,7 +3237,7 @@ datum
 		ethanol/manhattan_proj
 			name = "Manhattan Project"
 			id = "manhattan_proj"
-			description = "A scientist's drink of choice, for pondering ways to blow up the station."
+			description = "A scientist's drink of choice, for pondering ways to blow up the ship."
 			color = "#664300" // rgb: 102, 67, 0
 			boozepwr = 5
 

@@ -269,7 +269,7 @@ Code:
 <a href='byond://?src=\ref[src];choice=Signal Code;scode=5'>+</a><br>"}
 
 			if (42) //status displays
-				menu = "<h4><img src=pda_status.png> Station Status Display Interlink</h4>"
+				menu = "<h4><img src=pda_status.png> Ship Status Display Interlink</h4>"
 
 				menu += "\[ <A HREF='?src=\ref[src];choice=Status;statdisp=blank'>Clear</A> \]<BR>"
 				menu += "\[ <A HREF='?src=\ref[src];choice=Status;statdisp=shuttle'>Shuttle ETA</A> \]<BR>"
@@ -470,7 +470,7 @@ Code:
 				menu = "<h4><img src=pda_crate.png> Supply Record Interlink</h4>"
 
 				menu += "<BR><B>Supply shuttle</B><BR>"
-				menu += "Location: [supply_shuttle.moving ? "Moving to station ([supply_shuttle.eta] Mins.)":supply_shuttle.at_station ? "Station":"Dock"]<BR>"
+				menu += "Location: [supply_shuttle.moving ? "Moving to ship ([supply_shuttle.eta] Mins.)":supply_shuttle.at_station ? "Ship":"Dock"]<BR>"
 				menu += "Current approved orders: <BR><ol>"
 				for(var/S in supply_shuttle.shoppinglist)
 					var/datum/supply_order/SO = S

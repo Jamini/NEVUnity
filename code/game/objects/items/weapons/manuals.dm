@@ -8,10 +8,10 @@
 
 
 /obj/item/weapon/book/manual/engineering_construction
-	name = "Station Repairs and Construction"
+	name = "Ship Repairs and Construction"
 	icon_state ="bookEngineering"
 	author = "Engineering Encyclopedia"		 // Who wrote the thing, can be changed by pen or PC. It is not automatically assigned
-	title = "Station Repairs and Construction"
+	title = "Ship Repairs and Construction"
 
 	dat = {"
 
@@ -110,7 +110,7 @@
 
 				<h4>Power outage</h4>
 
-				A power problem has made the entire station loose power? Could be station-wide wiring problems or syndicate power sinks. In any case follow these steps:
+				A power problem has made the entire ship loose power? Could be ship-wide wiring problems or syndicate power sinks. In any case follow these steps:
 				<p>
 				<b>Step one:</b> <b><font color='red'>PANIC!</font></b><br>
 				<b>Step two:</b> Get your ass over to engineering! <b>QUICKLY!!!</b><br>

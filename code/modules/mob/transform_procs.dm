@@ -110,8 +110,8 @@
 	for (var/obj/item/device/radio/intercom/comm in O.loc)
 		comm.ai += O
 
-	O << "<B>You are playing the station's AI. The AI cannot move, but can interact with many objects while viewing them (through cameras).</B>"
-	O << "<B>To look at other parts of the station, click on yourself to get a camera menu.</B>"
+	O << "<B>You are playing the ship's AI. The AI cannot move, but can interact with many objects while viewing them (through cameras).</B>"
+	O << "<B>To look at other parts of the ship, click on yourself to get a camera menu.</B>"
 	O << "<B>While observing through a camera, you can use most (networked) devices which you can see, such as computers, APCs, intercoms, doors, etc.</B>"
 	O << "To use something, simply click on it."
 	O << {"Use say ":b to speak to your cyborgs through binary."}

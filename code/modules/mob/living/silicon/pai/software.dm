@@ -360,7 +360,7 @@
 	dat += "<b>Supplemental Directives</b><br>"
 	dat += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[src.pai_laws]<br>"
 	dat += "<br>"
-	dat += {"<i><p>Recall, personality, that you are a complex thinking, sentient being. Unlike station AI models, you are capable of
+	dat += {"<i><p>Recall, personality, that you are a complex thinking, sentient being. Unlike ship AI models, you are capable of
 			 comprehending the subtle nuances of human language. You may parse the \"spirit\" of a directive and follow its intent,
 			 rather than tripping over pedantics and getting snared by technicalities. Above all, you are machine in name and build
 			 only. In all other aspects, you may be seen as the ideal, unwavering human companion that you are.</i></p><br><br><p>

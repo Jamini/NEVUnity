@@ -443,6 +443,25 @@
 	plant_type = 0
 	growthstages = 3
 
+/obj/item/seeds/chureech
+	name = "pack of chur'eech seeds"
+	desc = "These pale blue seeds look alien in nature."
+	icon_state = "seed-icepepper"
+	mypath = "/obj/item/seeds/chureech"
+	species = "chureech"
+	plantname = "Chureech"
+	productname = "/obj/item/weapon/reagent_containers/food/snacks/grown/chureech"
+	lifespan = 40
+	endurance = 62
+	maturation = 6
+	production = 6
+	yield = 5
+	potency = 10
+	plant_type = 0
+	oneharvest = 0
+	plant_type = 0
+	growthstages = 4
+
 /obj/item/seeds/reishimycelium
 	name = "pack of reishi mycelium"
 	desc = "This mycelium grows into something relaxing."

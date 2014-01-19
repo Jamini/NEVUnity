@@ -62,7 +62,7 @@ datum/skill/management
 datum/skill/knowledge/law
     ID = "law"
     name = "NanoTrasen Law"
-    desc = "Your knowledge of NanoTrasen law and procedures. This includes Space Law, as well as general station rulings and procedures. A low level in this skill is typical for security officers, a high level in this skill is typical for captains."
+    desc = "Your knowledge of NanoTrasen law and procedures. This includes Space Law, as well as general ship rulings and procedures. A low level in this skill is typical for security officers, a high level in this skill is typical for captains."
     field = "Security"
     secondary = 1
 
@@ -87,7 +87,7 @@ datum/skill/atmos
 datum/skill/engines
 	ID = "engines"
 	name = "Engines"
-	desc = "Describes your knowledge of the various engine types common on space stations, such as the singularity or anti-matter engine."
+	desc = "Describes your knowledge of the various engine types common on space ships, such as the singularity or anti-matter engine."
 	field = "Engineering"
 	secondary = 1
 
@@ -106,7 +106,7 @@ datum/skill/pilot
 datum/skill/medical
     ID = "medical"
     name = "Medicine"
-    desc = "Covers an understanding of the human body and medicine. At a low level, this skill gives a basic understanding of applying common types of medicine, and a rough understanding of medical devices like the health analyzer. At a high level, this skill grants exact knowledge of all the medicine available on the station, as well as the ability to use complex medical devices like the body scanner or mass spectrometer."
+    desc = "Covers an understanding of the human body and medicine. At a low level, this skill gives a basic understanding of applying common types of medicine, and a rough understanding of medical devices like the health analyzer. At a high level, this skill grants exact knowledge of all the medicine available on the ship, as well as the ability to use complex medical devices like the body scanner or mass spectrometer."
     field = "Medical"
 
 datum/skill/anatomy

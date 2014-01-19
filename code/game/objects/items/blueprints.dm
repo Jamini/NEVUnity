@@ -1,6 +1,6 @@
 /obj/item/blueprints
-	name = "station blueprints"
-	desc = "Blueprints of the station. There's stamp \"Classified\" and several coffee stains on it."
+	name = "ship blueprints"
+	desc = "Blueprints of the ship. There's stamp \"Classified\" and several coffee stains on it."
 	icon = 'icons/obj/items.dmi'
 	icon_state = "blueprints"
 	attack_verb = list("attacked", "bapped", "hit")

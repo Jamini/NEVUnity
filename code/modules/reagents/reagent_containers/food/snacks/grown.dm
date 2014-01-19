@@ -715,6 +715,20 @@
 			reagents.add_reagent("imidazoline", 3+round(potency / 5, 1))
 			bitesize = 1+round(reagents.total_volume / 2, 1)
 
+/obj/item/weapon/reagent_containers/food/snacks/grown/chureech
+	seed = "/obj/item/seeds/chureech"
+	name = "chureech"
+	desc = "A pale blue nut from the Tajaran home world. It's sweet!"
+	icon_state = "cnut"
+	potency = 10
+	New()
+		..()
+		spawn(5)
+			reagents.add_reagent("nutriment", 1+round((potency / 20), 1))
+			reagents.add_reagent("sugar", 2+round((potency / 5), 1))
+			reagents.add_reagent("frostoil", 1, 1)
+			bitesize = 2
+
 /obj/item/weapon/reagent_containers/food/snacks/grown/mushroom/reishi
 	seed = "/obj/item/seeds/reishimycelium"
 	name = "reishi"
@@ -842,6 +856,7 @@
 		spawn(5)	//So potency can be set in the proc that creates these crops
 			reagents.add_reagent("nutriment",1+round((potency / 25), 1))
 			bitesize = 1+round(reagents.total_volume / 2, 1)
+
 
 /obj/item/weapon/reagent_containers/food/snacks/grown/mushroom/glowshroom
 	seed = "/obj/item/seeds/glowshroom"

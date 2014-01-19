@@ -149,7 +149,7 @@
 				if("gargleblaster")
 					icon_state = "gargleblasterglass"
 					name = "Pan-Galactic Gargle Blaster"
-					desc = "Does... does this mean that Arthur and Ford are on the station? Oh joy."
+					desc = "Does... does this mean that Arthur and Ford are on the ship? Oh joy."
 				if("bravebull")
 					icon_state = "bravebullglass"
 					name = "Brave Bull"
@@ -217,7 +217,7 @@
 				if("manhattan_proj")
 					icon_state = "proj_manhattanglass"
 					name = "Manhattan Project"
-					desc = "A scienitst drink of choice, for thinking how to blow up the station."
+					desc = "A scienitst drink of choice, for thinking how to blow up the ship."
 				if("ginfizz")
 					icon_state = "ginfizzglass"
 					name = "Gin Fizz"

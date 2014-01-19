@@ -86,14 +86,25 @@
 		if(istype(C, /obj/item/weapon/weldingtool))
 			var/obj/item/weapon/weldingtool/W = C
 			if(W.remove_fuel(0, user))
-				blocked = !blocked
-				user.visible_message("\red \The [user] [blocked ? "welds" : "unwelds"] \the [src] with \a [W].",\
-				"You [blocked ? "weld" : "unweld"] \the [src] with \the [W].",\
-				"You hear something being welded.")
-				update_icon()
-				return
+				if(!anchored)
+					var/obj/item/stack/sheet/plasteel/T = new /obj/item/stack/sheet/plasteel(src.loc)
+					user.visible_message("\red \The [user] breaks down \the [src] frame with the [W].",\
+					"You break down \the [src] frame with the [W].",\
+					"You hear something being welded.")
+					T.amount = 5
+					spawn(0)
+						open()
+					del(src)
+					return
+				else
+					blocked = !blocked
+					user.visible_message("\red \The [user] [blocked ? "welds" : "unwelds"] \the [src] with \a [W].",\
+					"You [blocked ? "weld" : "unweld"] \the [src] with \the [W].",\
+					"You hear something being welded.")
+					update_icon()
+					return
 
-		if(blocked)
+		if(blocked && !istype(C,/obj/item/weapon/wrench))
 			user << "\red \The [src] is welded solid!"
 			return
 
@@ -102,6 +113,24 @@
 		if(A.master)
 			A = A.master
 		var/alarmed = A.air_doors_activated || A.fire
+
+		if( istype(C, /obj/item/weapon/wrench))
+			if(!density)
+				return
+			if(operating)
+				return
+			if(blocked)
+				anchored = !anchored
+				user.visible_message("\blue \The [user] [anchored ? "bolts" : "unbolts"] \the [src] from the floor.",\
+				"You [anchored ? "bolt" : "unbolt"] \the [src] with \the [C].",\
+				"You hear a ratchet.")
+				update_icon()
+				return
+			else
+				user.visible_message("\red \The [user] fumbles at \the [src] with \a [C], but the bolts are not visible!",\
+				"You try to [anchored ? "bolt" : "unbolt"] \the [src], but you can't reach the bolts!",\
+				"You hear someone fumbling around.")
+				return
 
 		if( istype(C, /obj/item/weapon/crowbar) || ( istype(C,/obj/item/weapon/twohanded/fireaxe) && C:wielded == 1 ) )
 			if(operating)

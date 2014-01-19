@@ -1,6 +1,5 @@
 /proc/playsound(var/atom/source, soundin, vol as num, vary, extrarange as num)
 	//Frequency stuff only works with 45kbps oggs.
-
 	switch(soundin)
 		if ("shatter") soundin = pick('sound/effects/Glassbr1.ogg','sound/effects/Glassbr2.ogg','sound/effects/Glassbr3.ogg')
 		if ("explosion") soundin = pick('sound/effects/Explosion1.ogg','sound/effects/Explosion2.ogg')

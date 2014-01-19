@@ -140,7 +140,7 @@ obj/machinery/computer/cryopod/Topic(href, href_list)
 
 	var/mob/occupant = null      // Person waiting to be despawned.
 	var/orient_right = null      // Flips the sprite.
-	var/time_till_despawn = 9000 // 15 minutes-ish safe period before being despawned.
+	var/time_till_despawn = 3000 // 5 minutes-ish safe period before being despawned.
 	var/time_entered = 0         // Used to keep track of the safe period.
 	var/obj/item/device/radio/intercom/announce
 
@@ -177,7 +177,8 @@ obj/machinery/computer/cryopod/Topic(href, href_list)
 		return
 	src.go_out()
 	for(var/obj/O in src)
-		O.loc = get_turf(src)//Ejects items that manage to get in there (exluding the components)
+		if(!(istype(O,/obj/item/device/radio/intercom))) //Let's not eject the annoucement computer
+			O.loc = get_turf(src)//Ejects items that manage to get in there (exluding the components)
 	if(!occupant)
 		for(var/mob/M in src)//Failsafe so you can get mobs out
 			M.loc = get_turf(src)
@@ -202,7 +203,11 @@ obj/machinery/computer/cryopod/Topic(href, href_list)
 	usr.client.eye = src
 	usr.loc = src
 	src.occupant = usr
-	src.icon_state = "scanner_1"
+	if(orient_right)
+		src.icon_state = "body_scanner_1-r"
+	else
+		src.icon_state = "body_scanner_1"
+	..()
 	/*
 	for(var/obj/O in src)    // THIS IS P. STUPID -- LOVE, DOOHL
 		//O = null
@@ -228,7 +233,11 @@ obj/machinery/computer/cryopod/Topic(href, href_list)
 		M.client.eye = src
 	M.loc = src
 	src.occupant = M
-	src.icon_state = "scanner_1"
+	if(orient_right)
+		src.icon_state = "body_scanner_1-r"
+	else
+		src.icon_state = "body_scanner_1"
+	..()
 	src.add_fingerprint(user)
 	return
 
@@ -240,7 +249,10 @@ obj/machinery/computer/cryopod/Topic(href, href_list)
 		src.occupant.client.perspective = MOB_PERSPECTIVE
 	src.occupant.loc = src.loc
 	src.occupant = null
-	src.icon_state = "scanner_0"
+	if(orient_right)
+		src.icon_state = "body_scanner_0-r"
+	else
+		src.icon_state = "body_scanner_0"
 	return
 /obj/machinery/stasispod/process()
 	if(src.occupant)
@@ -284,9 +296,9 @@ obj/machinery/computer/cryopod/Topic(href, href_list)
 
 
 			if(orient_right)
-				icon_state = "body_scanner_0-r"
+				src.icon_state = "body_scanner_0-r"
 			else
-				icon_state = "body_scanner_0"
+				src.icon_state = "body_scanner_0"
 
 			//This should guarantee that ghosts don't spawn.
 			occupant.ckey = null
@@ -294,7 +306,6 @@ obj/machinery/computer/cryopod/Topic(href, href_list)
 			frozen_crew += "[occupant.real_name]"
 			announce.autosay("[occupant.real_name] has entered stasis.", "Stasis Management Computer")
 			visible_message("\blue The crypod hums and hisses as it moves [occupant.real_name] into storage.", 3)
-			src.icon_state = "scanner_0"
 			del(src.occupant)//delete the mob
 			src.occupant = null
 		return

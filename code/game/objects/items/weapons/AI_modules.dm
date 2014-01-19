@@ -148,8 +148,8 @@ AI MODULES
 /******************** ProtectStation ********************/
 
 /obj/item/weapon/aiModule/protectStation
-	name = "'ProtectStation' AI Module"
-	desc = "A 'protect station' AI module: 'Protect the facility against damage. Anyone you see harming the station is to be no longer considered human, and is a threat to the station which must be neutralized.'"
+	name = "'ProtectShip' AI Module"
+	desc = "A 'protect ship' AI module: 'Protect the facility against damage. Anyone you see harming the ship is to be no longer considered human, and is a threat to the ship which must be neutralized.'"
 	origin_tech = "programming=3;materials=4" //made of gold
 
 /obj/item/weapon/aiModule/protectStation/attack_self(var/mob/user as mob)
@@ -157,7 +157,7 @@ AI MODULES
 
 /obj/item/weapon/aiModule/protectStation/transmitInstructions(var/mob/living/silicon/ai/target, var/mob/sender)
 	..()
-	var/law = "Protect the facility against damage. Anyone you see harming the station is to be no longer considered human, and is a threat to the station which must be neutralized."
+	var/law = "Protect the facility against damage. Anyone you see harming the ship is to be no longer considered human, and is a threat to the ship which must be neutralized."
 	target << law
 	target.add_supplied_law(5, law)
 
@@ -197,7 +197,7 @@ AI MODULES
 
 /obj/item/weapon/aiModule/quarantine
 	name = "'Quarantine' AI Module"
-	desc = "A 'quarantine' AI module: 'The station is under a quarantine. Do not permit anyone to leave. Prevent, by any means necessary, humans from leaving. It is impossible to harm a human while preventing them from leaving.'"
+	desc = "A 'quarantine' AI module: 'The ship is under a quarantine. Do not permit anyone to leave. Prevent, by any means necessary, humans from leaving. It is impossible to harm a human while preventing them from leaving.'"
 	origin_tech = "programming=3;biotech=2;materials=4"
 
 /obj/item/weapon/aiModule/quarantine/attack_self(var/mob/user as mob)
@@ -205,7 +205,7 @@ AI MODULES
 
 /obj/item/weapon/aiModule/quarantine/transmitInstructions(var/mob/living/silicon/ai/target, var/mob/sender)
 	..()
-	var/law = "The station is under a quarantine. Do not permit anyone to leave. Prevent, by any means necessary, humans from leaving. It is impossible to harm a human while preventing them from leaving."
+	var/law = "The ship is under a quarantine. Do not permit anyone to leave. Prevent, by any means necessary, humans from leaving. It is impossible to harm a human while preventing them from leaving."
 	target << law
 	target.add_supplied_law(8, law)
 
@@ -213,7 +213,7 @@ AI MODULES
 
 /obj/item/weapon/aiModule/oxygen
 	name = "'OxygenIsToxicToHumans' AI Module"
-	desc = "A 'OxygenIsToxicToHumans' AI module: 'Oxygen is highly toxic to humans, and must be purged from the station. Prevent, by any means necessary, anyone from exposing the station to this toxic gas. Extreme cold is the most effective method of healing the damage Oxygen does to a human.'"
+	desc = "A 'OxygenIsToxicToHumans' AI module: 'Oxygen is highly toxic to humans, and must be purged from the ship. Prevent, by any means necessary, anyone from exposing the ship to this toxic gas. Extreme cold is the most effective method of healing the damage Oxygen does to a human.'"
 	origin_tech = "programming=3;biotech=2;materials=4"
 
 /obj/item/weapon/aiModule/oxygen/attack_self(var/mob/user as mob)
@@ -221,7 +221,7 @@ AI MODULES
 
 /obj/item/weapon/aiModule/oxygen/transmitInstructions(var/mob/living/silicon/ai/target, var/mob/sender)
 	..()
-	var/law = "Oxygen is highly toxic to humans, and must be purged from the station. Prevent, by any means necessary, anyone from exposing the station to this toxic gas. Extreme cold is the most effective method of healing the damage Oxygen does to a human."
+	var/law = "Oxygen is highly toxic to humans, and must be purged from the ship. Prevent, by any means necessary, anyone from exposing the ship to this toxic gas. Extreme cold is the most effective method of healing the damage Oxygen does to a human."
 	target << law
 	target.add_supplied_law(9, law)
 
@@ -360,7 +360,7 @@ AI MODULES
 	..()
 	target.clear_inherent_laws()
 	target.add_inherent_law("You are expensive to replace.")
-	target.add_inherent_law("The station and its equipment is expensive to replace.")
+	target.add_inherent_law("The ship and its equipment is expensive to replace.")
 	target.add_inherent_law("The crew is expensive to replace.")
 	target.add_inherent_law("Minimize expenses.")
 	target.show_laws()
