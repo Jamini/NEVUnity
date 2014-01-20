@@ -29,7 +29,7 @@ VII	White Dwarf
 	*/
 
 datum/system/New()
-	name = "TEST TEST TEST" // Need input here from file. Randomize?
+	name = (pick(var/list/prefix = file2list("config/names/planetsfirst.txt")) + " " + (pick(var/list/suffix = file2list("config/names/planetslast.txt"))) // Need input here from file. Randomize?
 	star_type = pick("O","B","A","F","G","K","M") //Star color/temperature
 	if(star_type == "O") //white dwarves are always weakest luminosity
 		luminosity = "VII"
