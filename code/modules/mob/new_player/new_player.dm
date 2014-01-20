@@ -300,7 +300,7 @@
 			AnnounceArrival(character, rank)
 
 		else
-			if(character.mind.assigned_role = "Cyborg")
+			if(character.mind.assigned_role == "Cyborg")
 				character.Robotize()
 			else
 				character.AIize()

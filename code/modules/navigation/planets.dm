@@ -29,7 +29,10 @@ VII	White Dwarf
 	*/
 
 datum/system/New()
-	name = (pick(var/list/prefix = file2list("config/names/planetsfirst.txt")) + " " + (pick(var/list/suffix = file2list("config/names/planetslast.txt"))) // Need input here from file. Randomize?
+
+	var/list/prefix = file2list("config/names/planetsfirst.txt")
+	var/list/suffix = file2list("config/names/planetslast.txt")
+	name = pick(prefix) + " " + pick(suffix) // Need input here from file. Randomize?
 	star_type = pick("O","B","A","F","G","K","M") //Star color/temperature
 	if(star_type == "O") //white dwarves are always weakest luminosity
 		luminosity = "VII"
@@ -102,11 +105,11 @@ datum/planet/
 	var/orbit_number // How far from the star?
 	var/datum/system/system //Who do you orbit?
 	var/planet_type //See below. What type of planet is it?
-	var/datum/probe/probe
+//	var/datum/probe/probe
 //Below vars show up on the scanner
 	var/temp // How hot the site is
 	var/size // How big the site is
-	var/rads 
+	var/rads
 	var/list/features
 	var/visit
 
@@ -116,7 +119,7 @@ datum/planet/New()
 	orbit_number = 0
 	system = null
 	planet_type = null //This should never show
-	probe = 0 //planets don't start with probes
+//	probe = null //planets don't start with probes
 	temp = rand(100,473) //-173C to 200C
 	size = rand(1,5)  // scale of 1-5. This determines how many features a site has.
 	rads = rand(1,5) // scale of 1-5. Intensity determines light/temperature/radiation of a site
@@ -128,25 +131,21 @@ datum/planet/New(var/typein)
 	planet_type = typein
 	var/list/possible_features
 	possible_features = null
-		switch(typein)
-			if("Anom")
-				possible_features = "Empty Space", "Empty Space", "Empty Space","Bluespace Rift","Gravity Field","Ion Storm", "Radiation Spike", "Solar Flare","Intercepted Transmission"
-			if("Gas")
-				possible_features = "Water","Helium Banding","Ammonia Deposits","Deuterium","Methane Deposits","Rings","Moon", "Hotspot"
-			if("Habit")
-				possible_features = "Mineral Deposits", "Caverns", "Desert", "Water", "Plant Life", "Animal Life", "Intelligent Life", "Ruins","Volcanic Activity", "Shipwreak", "Mountains", "Outpost", "Moon"
-				visit = 1
-			if("Debris")
-				possible_features = "Shipwreak","Shipwreak","Skipjack","Combat Drones","Ice","Garbled Transmission", "Asteroids", "Energy Signatures", "Life Signs", "Distress Beacon", "Empty Space","Meteors", "Space Junk","Space Carp"
-				visit = 1
-			if("Dead")
-				possible_features = "Mineral Deposits","Mineral Deposits","Mineral Deposits","Ice","Caverns","Caverns","Caverns","Facility", "Space Carp"
-				visit = 1
-			else
-		if(possible_features contains "Rings" || possible_features contains "Moon")
-			visit = 1
-	while(features.length < size)
-		features = features + pick(possible_features)
+	if(typein == "Anom")
+		possible_features = list("Empty Space", "Empty Space", "Empty Space","Bluespace Rift","Gravity Field","Ion Storm", "Radiation Spike", "Solar Flare","Intercepted Transmission")
+	if(typein == "Gas")
+		possible_features = list("Water","Helium Banding","Ammonia Deposits","Deuterium","Methane Deposits","Rings","Moon", "Hotspot")
+	if(typein == "Habit")
+		possible_features = list("Mineral Deposits", "Caverns", "Desert", "Water", "Plant Life", "Animal Life", "Intelligent Life", "Ruins","Volcanic Activity", "Shipwreak", "Mountains", "Outpost", "Moon")
+		visit = 1
+	if(typein == "Debris")
+		possible_features = list("Shipwreak","Shipwreak","Skipjack","Combat Drones","Water","Garbled Transmission", "Asteroids", "Energy Signatures", "Life Signs", "Distress Beacon", "Empty Space","Meteors", "Space Junk","Space Carp")
+		visit = 1
+	if(typein == "Dead")
+		possible_features = list("Mineral Deposits","Mineral Deposits","Mineral Deposits","Water","Caverns","Caverns","Caverns","Facility", "Space Carp")
+		visit = 1
+	while(features.len < size)
+		features = features.Add(pick(possible_features))
 	return
 
 /*
