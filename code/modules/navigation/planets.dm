@@ -93,6 +93,7 @@ datum/system/New()
 				ptype = "Dead"
 		var/datum/planet/x = new /datum/planet(ptype)
 		x.orbit_number = pnumber
+		x.system = src
 		planets = planets + x
 		pnumber--
 
@@ -101,16 +102,53 @@ datum/planet/
 	var/orbit_number // How far from the star?
 	var/datum/system/system //Who do you orbit?
 	var/planet_type //See below. What type of planet is it?
-	var/subtype //What flavor of sub-site are you?
 	var/datum/probe/probe
 //Below vars show up on the scanner
 	var/temp // How hot the site is
 	var/size // How big the site is
-	var/rads //What type of radiation you are getting
-	var/intensity //how intense is the radiation
-datum/planet/New(var/typein)
+	var/rads 
+	var/list/features
+	var/visit
 
 datum/planet/New()
+	//Import random planet names here
+	//New() just spawns a blank planet
+	orbit_number = 0
+	system = null
+	planet_type = null //This should never show
+	probe = 0 //planets don't start with probes
+	temp = rand(100,473) //-173C to 200C
+	size = rand(1,5)  // scale of 1-5. This determines how many features a site has.
+	rads = rand(1,5) // scale of 1-5. Intensity determines light/temperature/radiation of a site
+	visit = 0 // by default planets do not load sites
+	features = null // default planets don't have features
+
+datum/planet/New(var/typein)
+	..()
+	planet_type = typein
+	var/list/possible_features
+	possible_features = null
+		switch(typein)
+			if("Anom")
+				possible_features = "Empty Space", "Empty Space", "Empty Space","Bluespace Rift","Gravity Field","Ion Storm", "Radiation Spike", "Solar Flare","Intercepted Transmission"
+			if("Gas")
+				possible_features = "Helium Banding","Ammonia Deposits","Deuterium","Methane Deposits","Rings","Moon", "Hotspot"
+			if("Habit")
+				possible_features = "Mineral Deposits", "Caverns", "Desert", "Water", "Plant Life", "Animal Life", "Intelligent Life", "Ruins","Volcanic Activity", "Shipwreak", "Mountains", "Outpost", "Moon"
+				visit = 1
+			if("Debris")
+				possible_features = "Shipwreak","Shipwreak","Skipjack","Combat Drones","Garbled Transmission", "Asteroids", "Energy Signatures", "Life Signs", "Distress Beacon", "Empty Space","Meteors", "Space Junk","Space Carp"
+				visit = 1
+			if("Dead")
+				possible_features = "Mineral Deposits","Mineral Deposits","Mineral Deposits","Caverns","Caverns","Caverns","Facility", "Space Carp"
+				visit = 1
+			else
+		if(possible_features contains "Rings" || possible_features contains "Moon")
+			visit = 1
+	while(features.length < size)
+		features = features + pick(possible_features)
+	return
+
 /*
   Planets
   Main sequence stars have most "Habitable" planets
