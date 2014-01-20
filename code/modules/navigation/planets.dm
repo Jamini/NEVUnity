@@ -132,15 +132,15 @@ datum/planet/New(var/typein)
 			if("Anom")
 				possible_features = "Empty Space", "Empty Space", "Empty Space","Bluespace Rift","Gravity Field","Ion Storm", "Radiation Spike", "Solar Flare","Intercepted Transmission"
 			if("Gas")
-				possible_features = "Helium Banding","Ammonia Deposits","Deuterium","Methane Deposits","Rings","Moon", "Hotspot"
+				possible_features = "Water","Helium Banding","Ammonia Deposits","Deuterium","Methane Deposits","Rings","Moon", "Hotspot"
 			if("Habit")
 				possible_features = "Mineral Deposits", "Caverns", "Desert", "Water", "Plant Life", "Animal Life", "Intelligent Life", "Ruins","Volcanic Activity", "Shipwreak", "Mountains", "Outpost", "Moon"
 				visit = 1
 			if("Debris")
-				possible_features = "Shipwreak","Shipwreak","Skipjack","Combat Drones","Garbled Transmission", "Asteroids", "Energy Signatures", "Life Signs", "Distress Beacon", "Empty Space","Meteors", "Space Junk","Space Carp"
+				possible_features = "Shipwreak","Shipwreak","Skipjack","Combat Drones","Ice","Garbled Transmission", "Asteroids", "Energy Signatures", "Life Signs", "Distress Beacon", "Empty Space","Meteors", "Space Junk","Space Carp"
 				visit = 1
 			if("Dead")
-				possible_features = "Mineral Deposits","Mineral Deposits","Mineral Deposits","Caverns","Caverns","Caverns","Facility", "Space Carp"
+				possible_features = "Mineral Deposits","Mineral Deposits","Mineral Deposits","Ice","Caverns","Caverns","Caverns","Facility", "Space Carp"
 				visit = 1
 			else
 		if(possible_features contains "Rings" || possible_features contains "Moon")
