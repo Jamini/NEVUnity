@@ -294,13 +294,16 @@
 
 		//ticker.mode.latespawn(character)
 
-		if(character.mind.assigned_role != "Cyborg")
+		if(character.mind.assigned_role != "Cyborg" && character.mind.assigned_role != "AI")
 			data_core.manifest_inject(character)
 			ticker.minds += character.mind//Cyborgs and AIs handle this in the transform proc.	//TODO!!!!! ~Carn
 			AnnounceArrival(character, rank)
 
 		else
-			character.Robotize()
+			if(character.mind.assigned_role = "Cyborg")
+				character.Robotize()
+			else
+				character.AIize()
 		del(src)
 
 	proc/AnnounceArrival(var/mob/living/carbon/human/character, var/rank)
