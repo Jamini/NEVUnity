@@ -554,7 +554,9 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 		"emergency response team",
 		"nanotrasen representative",
 		"nanotrasen officer",
-		"nanotrasen captain"
+		"nanotrasen captain",
+		"vox essentials",
+		"vox raider"
 		)
 	var/dresscode = input("Select dress for [M]", "Robust quick dress shop") as null|anything in dresspacks
 	if (isnull(dresscode))
@@ -910,6 +912,21 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 			W.assignment = "Admiral"
 			W.registered_name = M.real_name
 			M.equip_to_slot_or_del(W, slot_wear_id)
+
+		if ("vox essentials")
+			M.equip_to_slot_or_del(new /obj/item/clothing/shoes/magboots/vox(M), slot_shoes)
+			M.equip_to_slot_or_del(new /obj/item/clothing/under/vox/vox_robes(M), slot_w_uniform)
+			M.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow/vox(M), slot_gloves)
+			M.equip_to_slot_or_del(new /obj/item/clothing/suit/space/vox/carapace(M), slot_wear_suit)
+			M.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/space/vox/carapace(M), slot_head)
+			var /obj/item/weapon/tank/jetpack/J = new /obj/item/weapon/tank/nitrogen
+			M.equip_to_slot_or_del(J, slot_back)
+			J.toggle()
+			M.equip_to_slot_or_del(new /obj/item/clothing/mask/breath/vox(M), slot_wear_mask)
+			J.Topic(null, list("stat" = 1))
+
+		if ("vox raider")
+			M.equip_vox_raider()
 
 	M.regenerate_icons()
 
