@@ -142,7 +142,7 @@
 			the clan leadership alongside Radi Koth Hadii regarding the impounded ship. /"As you are aware, the Ahdomai Defense
 			Force is an independant agency, funded by our clan in the best interests of keeping all of Ahdomai safe. The Kaytam
 			ship currently impounded at Al-Adur is belived to be involved in an illegal smuggling operation. This action is a
-			simple precution, and the Clan Kaytam should be grateful we are willing to lend them military aid to curtail violence
+			simple precation, and the Clan Kaytam should be grateful we are willing to lend them military aid to curtail violence
 			and illegal activities originating from their borders./""}
 			round_time = 60 * 60
 

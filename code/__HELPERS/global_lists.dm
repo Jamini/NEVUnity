@@ -15,6 +15,7 @@ var/global/list/chemical_reactions_list				//list of all /datum/chemical_reactio
 var/global/list/chemical_reagents_list				//list of all /datum/reagent datums indexed by reagent id. Used by chemistry stuff
 var/global/list/landmarks_list = list()				//list of all landmarks created
 var/global/list/surgery_steps = list()				//list of all surgery steps  |BS12
+var/global/list/slime_surgery_steps = list()		//seperating out slime steps
 var/global/list/mechas_list = list()				//list of all mechs. Used by hostile mobs target tracking.
 
 //Languages/species/whitelist.
@@ -73,6 +74,12 @@ var/global/list/backbaglist = list("Nothing", "Backpack", "Satchel", "Satchel Al
 	for(var/T in paths)
 		var/datum/surgery_step/S = new T
 		surgery_steps += S
+//	sort_surgeries()
+	//Slime surgery
+	paths = typesof(/datum/surgery_step/slime)-/datum/surgery_step/slime
+	for(var/T in paths)
+		var/datum/surgery_step/slime/S = new T
+		slime_surgery_steps += S
 	sort_surgeries()
 
 	//Languages and species.

@@ -49,7 +49,10 @@
 
 	makepowernets()
 
+	//Should include Astronav stuff over here!! #JAMINICODEMARK
 	sun = new /datum/sun()
+	ship = new /datum/ship()
+
 	radio_controller = new /datum/controller/radio()
 	data_core = new /obj/effect/datacore()
 	paiController = new /datum/paiController()

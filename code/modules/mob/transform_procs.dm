@@ -176,7 +176,8 @@
 	O.mmi.transfer_identity(src)//Does not transfer key/client.
 
 	O.Namepick()
-
+	O.loc = pick(latejoin)
+	O.lastarea = get_area(loc)
 	spawn(0)//To prevent the proc from returning null.
 		del(src)
 	return O

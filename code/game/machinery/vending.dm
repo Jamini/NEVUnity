@@ -151,6 +151,10 @@
 		if(src.panel_open)
 			attack_hand(user)
 		return
+	else if(istype(W, /obj/item/weapon/wrench))
+		playsound(loc, 'sound/items/Ratchet.ogg', 50, 1)
+		anchored = !anchored
+		user << "You [anchored ? "wrench" : "unwrench"] \the [src]."
 	else if(istype(W, /obj/item/weapon/coin) && premium.len > 0)
 		user.drop_item()
 		W.loc = src

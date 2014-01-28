@@ -1,6 +1,6 @@
 datum/system
 	var/name
-	var/list/datum/planet/planets // List of planets in orbit
+	var/planets[] // List of planets in orbit
 	var/star_number // Binary system?
 	var/star_type //Approximate surface temperature of the star
 	var/luminosity //Total radiation emitted by star. Luminosity differentiates stars within a class by size
@@ -49,7 +49,6 @@ datum/system/New()
 		star_number = 1
 
 //planet creation! Some of these are not planets, so make up to 20 sites!
-	planets = null
 	var/pnumber = 0
 	switch(luminosity)
 		if("VII")
@@ -97,7 +96,10 @@ datum/system/New()
 		var/datum/planet/x = new /datum/planet(ptype)
 		x.orbit_number = pnumber
 		x.system = src
-		planets = planets + x
+		if(planets)
+			planets.Add(x)
+		else
+			planets = list(x)
 		pnumber--
 
 datum/planet/
@@ -110,11 +112,15 @@ datum/planet/
 	var/temp // How hot the site is
 	var/size // How big the site is
 	var/rads
-	var/list/features
+	var/features[]
 	var/visit
 
 datum/planet/New()
 	//Import random planet names here
+	var/list/prefix = file2list("config/names/planetsfirst.txt")
+	var/list/suffix = file2list("config/names/planetslast.txt")
+	name = pick(prefix) + " " + pick(suffix) // Need input here from file. Randomize?
+
 	//New() just spawns a blank planet
 	orbit_number = 0
 	system = null
@@ -124,7 +130,6 @@ datum/planet/New()
 	size = rand(1,5)  // scale of 1-5. This determines how many features a site has.
 	rads = rand(1,5) // scale of 1-5. Intensity determines light/temperature/radiation of a site
 	visit = 0 // by default planets do not load sites
-	features = null // default planets don't have features
 
 datum/planet/New(var/typein)
 	..()
@@ -144,8 +149,13 @@ datum/planet/New(var/typein)
 	if(typein == "Dead")
 		possible_features = list("Mineral Deposits","Mineral Deposits","Mineral Deposits","Water","Caverns","Caverns","Caverns","Facility", "Space Carp")
 		visit = 1
-	while(features.len < size)
-		features = features.Add(pick(possible_features))
+	var/x = 0
+	while(x < size)
+		if(features)
+			features.Add(pick(possible_features))
+		else
+			features = list(pick(possible_features))
+		x++
 	return
 
 /*
@@ -187,4 +197,25 @@ datum/planet/New(var/typein)
 
 */
 
+datum/ship
 
+	var/datum/system/cursystem
+	var/datum/system/system1
+	var/datum/system/system2
+	var/probes
+
+datum/ship/New()
+
+	cursystem = new /datum/system()
+	system1 = new /datum/system()
+	system2 = new /datum/system()
+	probes = 6
+
+datum/ship/proc/move(x) //Used for moving the ship. 0 is no move, -1 is system 1, 1 is system 2
+	switch(x)
+		if(-1)
+			cursystem = system1
+		if(1)
+			cursystem = system2
+		else
+	return
