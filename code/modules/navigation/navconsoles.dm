@@ -3,8 +3,8 @@
 	icon_state = "comm_monitor"
 	name = "Astronavigation Console"
 	desc = "This console allows you to scan nearby stars and planets!"
-	var/datum/system/activesystem = null
-	var/datum/planet/activeplanet = null
+	var/datum/system/activesystem
+	var/datum/planet/activeplanet
 
 /**
   * The ui_interact proc is used to open and update Nano UIs
