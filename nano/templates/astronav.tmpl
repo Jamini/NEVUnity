@@ -19,6 +19,12 @@ Used In File(s): \code\modules\telesci\navconsoles.dm
     {{:systemlum}}<br>
   </div>
 
+  {{if !systembinary == '-'}}
+  <div class = "itemContent" align ="right">
+   Binary System <br>
+   {{:systembinary}}<br>
+  </div>
+  {{/if}}
 <br>
   <div class=itemContent" align="center">
     {{:~link('Clear scans',{ 'clear': 1})}}
