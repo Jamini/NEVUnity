@@ -3,8 +3,8 @@
 	icon_state = "comm_monitor"
 	name = "Astronavigation Console"
 	desc = "This console allows you to scan nearby stars and planets!"
-	var/datum/system/activesystem = null
-	var/datum/planet/activeplanet = null
+	var/datum/system/activesystem
+	var/datum/planet/activeplanet
 
 /**
   * The ui_interact proc is used to open and update Nano UIs
@@ -46,7 +46,7 @@
 	var/datum/nanoui/ui = nanomanager.get_open_ui(user, src, ui_key)
 	if (!ui)
 		// the ui does not exist, so we'll create a new one
-		ui = new(user, src, ui_key, "astronav.tmpl", name, 380, 110)
+		ui = new(user, src, ui_key, "astronav.tmpl", name, 380, 380)
 		// When the UI is first opened this is the data it will use
 		ui.set_initial_data(data)
 		ui.open()
@@ -68,20 +68,20 @@
 	ui_interact(user)
 
 /obj/machinery/computer/astronavigation/Topic(href, href_list)
-	if(stat & (NOPOWER|BROKEN))
-		return 0
-
 	if(href_list["setarget1"])
 		activesystem = ship.system1
+		world << "ping"
 		return 1
 	if(href_list["setarget2"])
 		activesystem = ship.system2
+		world << "pong"
 		return 1
 	if(href_list["clear"])
 		activesystem = null
 		activeplanet = null
+		world << "splat"
 		return 1
-
+	world << "zap"
 	return 0
 
 
