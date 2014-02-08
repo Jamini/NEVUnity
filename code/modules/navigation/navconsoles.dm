@@ -32,12 +32,12 @@
 		if(activesystem.luminosity2) //If it's a binary system, more info is needed!
 			data["systembinary"] = activesystem.luminosity2
 		else
-			data["systembinary"] = "-"
+			data["systembinary"] = null
 	else
 		data["systemname"] = "No target!"
 		data["systemtype"] = "-"
 		data["systemlum"] = "-"
-		data["systembinary"] = "-"
+		data["systembinary"] = null
 //	if(activesystem && activeplanet)
 //
 //	else
@@ -52,7 +52,10 @@
 		ui.open()
 	else
 		// The UI is already open so push the new data to it
-		ui.push_data(data)
+		//This is a crappy hack to get things to work until I can make it work better. Hate it so much.
+		ui.close()
+		ui.set_initial_data(data)
+		ui.open()
 		return
 
 /obj/machinery/computer/astronavigation/attack_paw(mob/user)
@@ -68,21 +71,16 @@
 	ui_interact(user)
 
 /obj/machinery/computer/astronavigation/Topic(href, href_list)
+	if(stat & (NOPOWER|BROKEN))
+		return 0
 	if(href_list["setarget1"])
 		activesystem = ship.system1
-		world << "ping"
-		return 1
 	if(href_list["setarget2"])
 		activesystem = ship.system2
-		world << "pong"
-		return 1
 	if(href_list["clear"])
 		activesystem = null
 		activeplanet = null
-		world << "splat"
-		return 1
-	world << "zap"
-	return 0
+	return 1
 
 
 

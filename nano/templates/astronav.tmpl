@@ -13,12 +13,25 @@ Used In File(s): \code\modules\telesci\navconsoles.dm
 <h3>Current System:</h3>
 <div class="item">
   <div class="itemContent">
-    {{:systemname}}
-    {{:systemtype}}
-    {{:systemlum}}
+    {^{if systemname}}
+      System name: {{:systemname}} <br>
+      Star Type:   
+      {^{if systembinary}}
+        Binary 
+      {{else}}
+    
+      {{/if}}
+      {{:systemtype}} <br>
+      Star luminosity : {{:systemlum}} <br>
+      {^{if systembinary}}
+      Binary star luminosity : {{:systembinary}}
+      {{else}}
+      {{/if}}
+    {{else}}
+        Select a target to scan!
+    {{/if}}
   </div>
   <div class=itemContent">
-    {^{:~link('Clear scans',{ 'clear': 1})}}
+    {^{:~link('Clear scans', 'gear' ,{ 'clear': 1})}}
   </div>
 </div>
-

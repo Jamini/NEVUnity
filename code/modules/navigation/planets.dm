@@ -112,7 +112,7 @@ datum/planet/
 	var/temp // How hot the site is
 	var/size // How big the site is
 	var/rads
-	var/features[]
+	var/list/features
 	var/visit
 
 datum/planet/New()
