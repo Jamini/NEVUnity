@@ -6,24 +6,24 @@ Used In File(s): \code\modules\telesci\navconsoles.dm
 <h3>Detected Systems:</h3>
 <div class="item">
 	<div class="itemContent">
-		{^{:~link(systemname1, 'gear', {'setarget1': 1})}}
-		{^{:~link(systemname2, 'gear', {'setarget2': 1})}}
+		{{:~link(systemname1, 'gear', {'setarget1': 1})}}
+		{{:~link(systemname2, 'gear', {'setarget2': 1})}}
 	</div>
 </div>
 <h3>Current System:</h3>
 <div class="item">
   <div class="itemContent">
-    {^{if systemname}}
+    {{if systemname}}
       System name: {{:systemname}} <br>
       Star Type:   
-      {^{if systembinary}}
+      {{if systembinary}}
         Binary 
       {{else}}
     
       {{/if}}
       {{:systemtype}} <br>
       Star luminosity : {{:systemlum}} <br>
-      {^{if systembinary}}
+      {{if systembinary}}
       Binary star luminosity : {{:systembinary}}
       {{else}}
       {{/if}}
@@ -43,6 +43,6 @@ Used In File(s): \code\modules\telesci\navconsoles.dm
   
   
   <div class=itemContent">
-    {^{:~link('Clear scans', 'gear' ,{ 'clear': 1})}}
+    {{:~link('Clear scans', 'gear' ,{ 'clear': 1})}}
   </div>
 </div>
