@@ -205,7 +205,7 @@ datum
 			result_amount = 2
 
 		cryptobiolin
-			name = "Cryptobiolin"
+			name = "Cryptosbiolin"
 			id = "cryptobiolin"
 			result = "cryptobiolin"
 			required_reagents = list("potassium" = 1, "oxygen" = 1, "sugar" = 1)

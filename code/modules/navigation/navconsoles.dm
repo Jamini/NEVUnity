@@ -26,9 +26,17 @@
 	data["systemname2"] = ship.system2.name
 
 	if(activesystem) //Pick a target to scan!
+
 		data["systemname"] = activesystem.name
 		data["systemtype"] = activesystem.star_type
 		data["systemlum"] = activesystem.luminosity
+		var/locations[]
+		for (var/datum/planet/temps in activesystem.planets)
+			if(locations)
+				locations.Add(list(list("planet_name" = temps.name, "planet_orbit" = temps.orbit_number)))
+			else
+				locations = list(list("planet_name" = temps.name, "planet_orbit" = temps.orbit_number))
+		data["planets"] = locations
 		if(activesystem.luminosity2) //If it's a binary system, more info is needed!
 			data["systembinary"] = activesystem.luminosity2
 		else
@@ -39,7 +47,7 @@
 		data["systemlum"] = "-"
 		data["systembinary"] = null
 //	if(activesystem && activeplanet)
-//
+
 //	else
 
 

@@ -31,6 +31,17 @@ Used In File(s): \code\modules\telesci\navconsoles.dm
         Select a target to scan!
     {{/if}}
   </div>
+  <div class="item">
+	<div class="itemContentWide" style="width: 100%;">
+    {^{for planets}}
+      {{:planet_name}}
+      {{:planet_orbit}} <br>
+     {{/for}}
+	</div>
+</div>
+
+  
+  
   <div class=itemContent">
     {^{:~link('Clear scans', 'gear' ,{ 'clear': 1})}}
   </div>

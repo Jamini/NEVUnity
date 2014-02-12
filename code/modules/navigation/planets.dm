@@ -137,17 +137,17 @@ datum/planet/New(var/typein)
 	var/list/possible_features
 	possible_features = null
 	if(typein == "Anom")
-		possible_features = list("Empty Space", "Empty Space", "Empty Space","Bluespace Rift","Gravity Field","Ion Storm", "Radiation Spike", "Solar Flare","Intercepted Transmission")
+		possible_features = list( "Empty Space",  "Empty Space",  "Empty Space", "Bluespace Rift", "Gravity Field", "Ion Storm",  "Radiation Spike",  "Solar Flare", "Intercepted Transmission")
 	if(typein == "Gas")
-		possible_features = list("Water","Helium Banding","Ammonia Deposits","Deuterium","Methane Deposits","Rings","Moon", "Hotspot")
+		possible_features = list("Water","Helium Banding","Ammonia Deposits","Deuterium","Methane Deposits","Rings", "Moon",  "Hotspot")
 	if(typein == "Habit")
-		possible_features = list("Mineral Deposits", "Caverns", "Desert", "Water", "Plant Life", "Animal Life", "Intelligent Life", "Ruins","Volcanic Activity", "Shipwreak", "Mountains", "Outpost", "Moon")
+		possible_features = list("Mineral Deposits", "Caverns", "Desert", "Water", "Plant Life", "Animal Life",  "Intelligent Life",  "Ruins", "Volcanic Activity",  "Shipwreak",  "Mountains",  "Outpost",  "Moon")
 		visit = 1
 	if(typein == "Debris")
-		possible_features = list("Shipwreak","Shipwreak","Skipjack","Combat Drones","Water","Garbled Transmission", "Asteroids", "Energy Signatures", "Life Signs", "Distress Beacon", "Empty Space","Meteors", "Space Junk","Space Carp")
+		possible_features = list("Shipwreak","Shipwreak","Skipjack","Combat Drones","Water", "Garbled Transmission",  "Asteroids",  "Energy Signatures",  "Life Signs",  "Distress Beacon",  "Empty Space", "Meteors",  "Space Junk", "Space Carp")
 		visit = 1
 	if(typein == "Dead")
-		possible_features = list("Mineral Deposits","Mineral Deposits","Mineral Deposits","Water","Caverns","Caverns","Caverns","Facility", "Space Carp")
+		possible_features = list("Mineral Deposits","Mineral Deposits","Mineral Deposits","Water", "Caverns", "Caverns", "Caverns", "Facility",  "Space Carp")
 		visit = 1
 	var/x = 0
 	while(x < size)

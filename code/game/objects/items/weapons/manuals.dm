@@ -586,7 +586,7 @@
 		</head>
 
 		<body>
-		<iframe width='100%' height='97%' src="http://69.207.21.17/mediawiki/index.php/Security&printable=yes&remove_links=1" frameborder="0" id="main_frame"></iframe>		</body>
+		<iframe width='100%' height='97%' src="http://69.252.137.99/mediawiki/index.php/Security&printable=yes&remove_links=1" frameborder="0" id="main_frame"></iframe>		</body>
 
 		</html>
 

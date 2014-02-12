@@ -300,6 +300,13 @@ datum
 				if(!M) M = holder.my_atom
 				// Toxins are really weak, but without being treated, last very long.
 				M.adjustToxLoss(0.2)
+				if(src.volume <= 0.1) if(data != -1)
+					data = -1
+					M << "\red Your stomach hurts a little less.."
+				else
+					if(world.time > data + ANTIDEPRESSANT_MESSAGE_DELAY)
+						data = world.time
+						M << "\blue Your stomach hurts a little bit...."
 				..()
 				return
 
@@ -405,6 +412,14 @@ datum
 				if(M.losebreath >= 10)
 					M.losebreath = max(10, M.losebreath-5)
 				holder.remove_reagent(src.id, 0.5 * REAGENTS_METABOLISM)
+				if(src.volume <= 0.1) if(data != -1)
+					data = -1
+					M << pick("\red You feel a little less alert..", "\blue Your heartbeat slows a little..")
+				else
+					if(world.time > data + ANTIDEPRESSANT_MESSAGE_DELAY)
+						data = world.time
+						M << pick("\blue You feel alert!","\red Your heart is racing!")
+
 				return
 
 		space_drugs
@@ -422,6 +437,7 @@ datum
 					if(M.canmove && !M.restrained())
 						if(prob(10)) step(M, pick(cardinal))
 				if(prob(7)) M.emote(pick("twitch","drool","moan","giggle"))
+				if(prob(5)) M << pick("\blue duuuuuuuuuude~", "\blue The world is swimming", "\blue Your hands are HUGE!", "\blue You can do ANYTHING!", "\red Your are starting to freak out a little maaan!")
 				holder.remove_reagent(src.id, 0.5 * REAGENTS_METABOLISM)
 				return
 
@@ -436,6 +452,7 @@ datum
 			on_mob_life(var/mob/living/M as mob)
 				if(ishuman(M))
 					if(prob(7)) M.emote(pick("twitch","drool","moan","gasp"))
+					if(prob(5)) M << pick( "\blue When was the last time I felt this GOOD?", "\blue Your body tingles pleasently!")
 					holder.remove_reagent(src.id, 0.25 * REAGENTS_METABOLISM)
 				return
 
@@ -516,6 +533,9 @@ datum
 			description = "A soft, low-melting solid that can easily be cut with a knife. Reacts violently with water."
 			reagent_state = SOLID
 			color = "#A0A0A0" // rgb: 160, 160, 160
+			on_mob_life(var/mob/living/M as mob)
+				if(ishuman(M))
+					if(prob(5)) M << pick( "\red You feel a little uneasy..")
 
 			custom_metabolism = 0.01
 
@@ -533,6 +553,8 @@ datum
 					step(M, pick(cardinal))
 				if(prob(5)) M.emote(pick("twitch","drool","moan"))
 				M.adjustBrainLoss(2)
+				if(ishuman(M))
+					if(prob(5)) M << pick( "\red You feel disoriented..")
 				..()
 				return
 
@@ -570,6 +592,8 @@ datum
 			on_mob_life(var/mob/living/M as mob)
 				if(!M) M = holder.my_atom
 				M.take_organ_damage(1*REM, 0)
+				if(ishuman(M))
+					if(prob(5)) M << pick( "\red You can't breathe!")
 				..()
 				return
 
@@ -584,6 +608,8 @@ datum
 			on_mob_life(var/mob/living/M as mob)
 				if(!M) M = holder.my_atom
 				M.adjustToxLoss(1*REM)
+				if(ishuman(M))
+					if(prob(5)) M << pick( "\red You feel naseus..")
 				..()
 				return
 
@@ -618,6 +644,8 @@ datum
 				if(M.canmove && !M.restrained() && istype(M.loc, /turf/space))
 					step(M, pick(cardinal))
 				if(prob(5)) M.emote(pick("twitch","drool","moan"))
+				if(ishuman(M))
+					if(prob(5)) M << pick( "\red You feel disoriented..")
 				..()
 				return
 
@@ -630,6 +658,8 @@ datum
 
 			on_mob_life(var/mob/living/M as mob)
 				M.nutrition += 1*REM
+				if(ishuman(M))
+					if(prob(1)) M << pick( "\blue You feel a rush of energy!")
 				..()
 				return
 
@@ -665,6 +695,7 @@ datum
 				// radium may increase your chances to cure a disease
 				if(istype(M,/mob/living/carbon)) // make sure to only use it on carbon mobs
 					var/mob/living/carbon/C = M
+					if(prob(5)) M << pick(  "\red You feel naseus..")
 					if(C.virus2.len)
 						for (var/ID in C.virus2)
 							var/datum/disease2/disease/V = C.virus2[ID]
@@ -672,6 +703,7 @@ datum
 								if(prob(50))
 									M.radiation += 50 // curing it that way may kill you instead
 									M.adjustToxLoss(100)
+									M << "You feel weak!"
 								M:antibodies |= V.antigen
 				..()
 				return
@@ -694,7 +726,7 @@ datum
 
 			on_mob_life(var/mob/living/M as mob)
 				if(!M) M = holder.my_atom
-
+				if(prob(5)) M << pick(  "\red It burns!")
 				var/needs_update = M.mutations.len > 0
 
 				M.mutations = list()
@@ -728,6 +760,7 @@ datum
 			on_mob_life(var/mob/living/M as mob)
 				if(!M) M = holder.my_atom
 				M.adjustFireLoss(1)
+				if(prob(5)) M << pick(  "\red It burns!")
 				..()
 				return
 
@@ -755,6 +788,7 @@ datum
 					if(M.canmove && !M.restrained())
 						if(prob(10)) step(M, pick(cardinal))
 				if(prob(7)) M.emote(pick("moan","giggle"))
+				if(prob(5)) M << pick(  "\red You can't feel anything!", "\blue You feel disconnected from your body.", "\blue Your injuries stop hurting.", "\blue Wow! Your hands are BIG!")
 				..()
 				return
 
@@ -825,6 +859,7 @@ datum
 
 			on_mob_life(var/mob/living/M as mob)
 				if(!M) M = holder.my_atom
+				if(prob(5)) M << pick(  "\red Your body aches dully...")
 				M.apply_effect(1,IRRADIATE,0)
 				..()
 				return
@@ -869,6 +904,7 @@ datum
 			on_mob_life(var/mob/living/M as mob)
 				if(!M) M = holder.my_atom
 				M.adjustToxLoss(1)
+				if(prob(5)) M << pick(  "\red You feel naseus..")
 				..()
 				return
 
@@ -933,8 +969,10 @@ datum
 			on_mob_life(var/mob/living/M as mob)
 				if(!M) M = holder.my_atom
 				if(M.bodytemperature > 310)
+					if(prob(5)) M << "\blue You feel cooler."
 					M.bodytemperature = max(310, M.bodytemperature - (40 * TEMPERATURE_DAMAGE_COEFFICIENT))
 				else if(M.bodytemperature < 311)
+					if(prob(5)) M <<"\blue You feel warmer."
 					M.bodytemperature = min(310, M.bodytemperature + (40 * TEMPERATURE_DAMAGE_COEFFICIENT))
 				..()
 				return
@@ -953,6 +991,7 @@ datum
 				if(!M.confused) M.confused = 1
 				M.confused = max(M.confused, 20)
 				holder.remove_reagent(src.id, 0.5 * REAGENTS_METABOLISM)
+				if(prob(5)) M << pick(  "\red You feel dizzy.", "\red Whua? Who am I?", "\red You lose track of what you were thinking.", "\red It's hard to think...", "\red You feel disoriented.")
 				..()
 				return
 
@@ -970,6 +1009,7 @@ datum
 					return
 				if(!M) M = holder.my_atom
 				M.heal_organ_damage(0,2*REM)
+				if(prob(5)) M << pick("\red You feel nauseus!")
 				..()
 				return
 
@@ -986,6 +1026,8 @@ datum
 					return
 				if(!M) M = holder.my_atom
 				M.heal_organ_damage(0,3*REM)
+				if(prob(5))
+					M << "\red You feel sick!"
 				..()
 				return
 
@@ -1002,6 +1044,7 @@ datum
 					return  //See above, down and around. --Agouri
 				if(!M) M = holder.my_atom
 				M.adjustOxyLoss(-2*REM)
+				if(prob(5)) M << pick(  "\blue Your heart starts beating faster!", "\blue You feel alert!")
 				if(holder.has_reagent("lexorin"))
 					holder.remove_reagent("lexorin", 2*REM)
 				..()
@@ -1020,6 +1063,7 @@ datum
 					return
 				if(!M) M = holder.my_atom
 				M.adjustOxyLoss(-M.getOxyLoss())
+				if(prob(5)) M << pick(  "\blue Your heart starts beating faster!", "\blue You feel alert!")
 				if(holder.has_reagent("lexorin"))
 					holder.remove_reagent("lexorin", 2*REM)
 				..()
@@ -1035,6 +1079,7 @@ datum
 			on_mob_life(var/mob/living/M as mob)
 				if(M.stat == 2.0)
 					return
+				if(prob(1)) M << pick(  "\blue Your heart starts beating faster!", "\blue You start to feel better!")
 				if(!M) M = holder.my_atom
 				if(M.getOxyLoss() && prob(80)) M.adjustOxyLoss(-1*REM)
 				if(M.getBruteLoss() && prob(80)) M.heal_organ_damage(1*REM,0)
@@ -1051,6 +1096,7 @@ datum
 			color = "#C8A5DC" // rgb: 200, 165, 220
 
 			on_mob_life(var/mob/living/M as mob)
+				if(prob(5)) M << pick(  "\blue Your feel your muscles relax.", "\blue You feel a flood of relief")
 				if(!M) M = holder.my_atom
 				M.reagents.remove_all_type(/datum/reagent/toxin, 1*REM, 0, 1)
 				M.drowsyness = max(M.drowsyness-2*REM, 0)
@@ -1117,7 +1163,7 @@ datum
 				if(holder.has_reagent("mindbreaker"))
 					holder.remove_reagent("mindbreaker", 5)
 				M.hallucination = max(0, M.hallucination - 10)
-				if(prob(60))	M.adjustToxLoss(1)
+				if(prob(60))	M.adjustToxLoss(0.2)
 				..()
 				return
 
@@ -1135,6 +1181,7 @@ datum
 				if(prob(80)) M.adjustBrainLoss(1*REM)
 				if(prob(50)) M.drowsyness = max(M.drowsyness, 3)
 				if(prob(10)) M.emote("drool")
+				if(prob(5)) M << pick(  "\red It's hard to think...")
 				..()
 				return
 
@@ -1150,6 +1197,7 @@ datum
 			on_mob_life(var/mob/living/M as mob)
 				if(!M) M = holder.my_atom
 				M.radiation = max(M.radiation-3*REM,0)
+				if(prob(1)) M << pick(  "\red Your body aches fiercely!")
 				..()
 				return
 
@@ -1168,6 +1216,7 @@ datum
 				if(!M) M = holder.my_atom
 				M.radiation = max(M.radiation-7*REM,0)
 				M.adjustToxLoss(-1*REM)
+				if(prob(1)) M << pick(  "\red Your body burns!")
 				if(prob(15))
 					M.take_organ_damage(1, 0)
 				..()
@@ -1185,6 +1234,7 @@ datum
 			on_mob_life(var/mob/living/M as mob)
 				if(!M) M = holder.my_atom
 				M.adjustBrainLoss(-3*REM)
+				if(prob(10)) M << pick(  "\blue The world snaps into clearer focus.")
 				..()
 				return
 
@@ -1198,6 +1248,7 @@ datum
 
 			on_mob_life(var/mob/living/M as mob)
 				if(!M) M = holder.my_atom
+				if(prob(5)) M << pick(  "\blue The world snaps into clearer focus.")
 				M.eye_blurry = max(M.eye_blurry-5 , 0)
 				M.eye_blind = max(M.eye_blind-5 , 0)
 				M.disabilities &= ~NEARSIGHTED
@@ -1219,6 +1270,7 @@ datum
 					return
 				if(!M) M = holder.my_atom
 				M.heal_organ_damage(2*REM,0)
+				if(prob(5)) M << pick(  "\red Your body itches everywhere!")
 				..()
 				return
 
@@ -1233,6 +1285,7 @@ datum
 
 			on_mob_life(var/mob/living/M as mob)
 				if(!M) M = holder.my_atom
+				if(prob(5)) M << pick(  "\blue You feel a rush of energy!")
 				if(prob(5)) M.emote(pick("twitch","blink_r","shiver"))
 				..()
 				return
@@ -1247,6 +1300,7 @@ datum
 			on_mob_life(var/mob/living/M as mob)
 				if(!M) M = holder.my_atom
 				if(M.bodytemperature < 170)
+					if(prob(5)) M << pick(  "\blue You feel a cool, soothing sensation.")
 					M.adjustCloneLoss(-1)
 					M.adjustOxyLoss(-1)
 					M.heal_organ_damage(1,1)
@@ -1264,6 +1318,7 @@ datum
 			on_mob_life(var/mob/living/M as mob)
 				if(!M) M = holder.my_atom
 				if(M.bodytemperature < 170)
+					if(prob(5)) M << pick(  "\blue You feel a cool, soothing sensation.")
 					M.adjustCloneLoss(-3)
 					M.adjustOxyLoss(-3)
 					M.heal_organ_damage(3,3)
@@ -1281,6 +1336,7 @@ datum
 
 			on_mob_life(var/mob/living/M as mob)
 				if(!M) M = holder.my_atom
+				if(prob(5)) M << pick(  "\red Your body aches and burns everywhere!.")
 				if(!data) data = 1
 				data++
 				switch(data)
@@ -1397,6 +1453,7 @@ datum
 
 			on_mob_life(var/mob/living/M as mob)
 				if(!M) M = holder.my_atom
+				if(prob(5)) M << pick(  "\blue You feel relaxed.", "\blue You feel fuzzy", "\blue Hah! That's a funny thought!")
 				M.dizziness = 0
 				M.drowsyness = 0
 				M.stuttering = 0
@@ -1440,6 +1497,7 @@ datum
 			toxpwr = 0
 
 			reaction_mob(var/mob/living/carbon/M, var/method=TOUCH, var/volume)
+				M << "Your everything hurts! Something is wrong!"
 				if(!..())	return
 				if(!istype(M) || !M.dna)	return  //No robots, AIs, aliens, Ians or other mobs should be affected by this.
 				src = null
@@ -1451,6 +1509,7 @@ datum
 					updateappearance(M,M.dna.uni_identity)
 				return
 			on_mob_life(var/mob/living/carbon/M)
+				M << "Your everything hurts! Something is wrong!"
 				if(!istype(M))	return
 				if(!M) M = holder.my_atom
 				M.apply_effect(10,IRRADIATE,0)
@@ -1540,6 +1599,7 @@ datum
 			custom_metabolism = 0.4
 
 			on_mob_life(var/mob/living/M as mob)
+				M << "\red You can't breathe!"
 				if(!M) M = holder.my_atom
 				M.adjustOxyLoss(4*REM)
 				M.sleeping += 1
@@ -1604,6 +1664,7 @@ datum
 			overdose = REAGENTS_OVERDOSE
 
 			on_mob_life(var/mob/living/M)
+				if(prob(5))M << "\red Your mind breaks apart!"
 				if(!M) M = holder.my_atom
 				M.hallucination += 10
 				..()
@@ -1667,6 +1728,7 @@ datum
 				switch(data)
 					if(1 to 12)
 						if(prob(5))	M.emote("yawn")
+						if(prob(5)) M << "You feel dizzy and tired"
 					if(12 to 15)
 						M.eye_blurry = max(M.eye_blurry, 10)
 					if(15 to 25)

@@ -65,8 +65,8 @@
 
 	var/server
 	var/banappeals
-	var/wikiurl = "http://69.207.21.17/mediawiki/index.php/Main_Page"
-	var/forumurl = "http://69.207.21.17/phpbb/"
+	var/wikiurl = "http://67.252.137.99/mediawiki/index.php/Main_Page"
+	var/forumurl = "http://67.252.137.99/phpbb/"
 
 	//Alert level description
 	var/alert_desc_green = "All threats to the station have passed. Security may not have weapons visible, privacy laws are once again fully enforced."
