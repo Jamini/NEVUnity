@@ -164,6 +164,7 @@
 
 /obj/machinery/body_scanconsole
 	var/obj/machinery/bodyscanner/connected
+	var/known_implants = list(/obj/item/weapon/implant/chem, /obj/item/weapon/implant/death_alarm, /obj/item/weapon/implant/loyalty, /obj/item/weapon/implant/tracking)
 	var/delete
 	var/temphtml
 	name = "Body Scanner Console"
@@ -249,6 +250,9 @@
 					dat += text("Paralysis Summary %: [] ([] seconds left!)<BR>", occupant.paralysis, round(occupant.paralysis / 4))
 					dat += text("Body Temperature: [occupant.bodytemperature-T0C]&deg;C ([occupant.bodytemperature*1.8-459.67]&deg;F)<BR><HR>")
 
+					if(occupant.has_brain_worms())
+						dat += "Large growth detected in frontal lobe, possibly cancerous. Surgical removal is recommended.<BR/>"
+
 					if(occupant.vessel)
 						var/blood_volume = round(occupant.vessel.get_reagent_amount("blood"))
 						var/blood_percent =  blood_volume / 560
@@ -265,25 +269,6 @@
 						if(!D.hidden[SCANNER])
 							dat += text("<font color='red'><B>Warning: [D.form] Detected</B>\nName: [D.name].\nType: [D.spread].\nStage: [D.stage]/[D.max_stages].\nPossible Cure: [D.cure]</FONT><BR>")
 
-					var/implnts = ""
-					for(var/obj/item/weapon/implant/I in occupant)
-						if(I in occupant)
-							if(I.implanted)
-								if(istype(I, /obj/item/weapon/implant/death_alarm))
-									implnts += "<font color='blue'>death alarm</font><br>"
-								if(istype(I, /obj/item/weapon/implant/loyalty))
-									implnts += "<font color='blue'>loyalty</font><br>"
-								if(istype(I, /obj/item/weapon/implant/chem))
-									implnts += "<font color='red'>chemical</font><br>"
-								if(istype(I, /obj/item/weapon/implant/tracking))
-									implnts += "<font color='red'>tracking</font><br>"
-
-					if(implnts)
-						dat += "<br>"
-						dat += "Detected implants: <br>"
-
-						dat += implnts
-
 					dat += "<HR><table border='1'>"
 					dat += "<tr>"
 					dat += "<th>Organ</th>"
@@ -299,6 +284,7 @@
 						var/infected = ""
 						var/imp = ""
 						var/bled = ""
+						var/robot = ""
 						var/splint = ""
 						var/internal_bleeding = ""
 						var/lung_ruptured = ""
@@ -313,23 +299,40 @@
 							bled = "Bleeding:"
 						if(e.status & ORGAN_BROKEN)
 							AN = "[e.broken_description]:"
+						if(e.status & ORGAN_ROBOT)
+							robot = "Prosthetic:"
 						if(e.open)
 							open = "Open:"
-						if(e.implants.len)
-							imp = "Unknown body present:"
+						var/unknown_body = 0
+						for(var/I in e.implants)
+							if(is_type_in_list(I,known_implants))
+								imp += "[I] implanted:"
+							else
+								unknown_body++
+						if(unknown_body)
+							imp += "Unknown body present:"
 						if(!AN && !open && !infected & !imp)
 							AN = "None:"
 						if(!(e.status & ORGAN_DESTROYED))
-							dat += "<td>[e.display_name]</td><td>[e.burn_dam]</td><td>[e.brute_dam]</td><td>[bled][AN][splint][open][infected][imp][internal_bleeding][lung_ruptured]</td>"
+							dat += "<td>[e.display_name]</td><td>[e.burn_dam]</td><td>[e.brute_dam]</td><td>[robot][bled][AN][splint][open][infected][imp][internal_bleeding][lung_ruptured]</td>"
 						else
 							dat += "<td>[e.display_name]</td><td>-</td><td>-</td><td>Not Found</td>"
 						dat += "</tr>"
 					for(var/organ_name in occupant.internal_organs)
 						var/datum/organ/internal/i = occupant.internal_organs[organ_name]
+						var/mech = ""
+						if(i.robotic == 1)
+							mech = "Assisted:"
+						if(i.robotic == 2)
+							mech = "Mechanical:"
 						dat += "<tr>"
-						dat += "<td>[i.name]</td><td>N/A</td><td>[i.damage]</td><td>None:</td>"
+						dat += "<td>[i.name]</td><td>N/A</td><td>[i.damage]</td><td>None:[mech]</td><td></td>"
 						dat += "</tr>"
 					dat += "</table>"
+					if(occupant.sdisabilities & BLIND)
+						dat += text("<font color='red'>Cataracts detected.</font><BR>")
+					if(occupant.sdisabilities & NEARSIGHTED)
+						dat += text("<font color='red'>Retinal misalignment detected.</font><BR>")
 			else
 				dat += "\The [src] is empty."
 		else

@@ -458,7 +458,7 @@
 	src.add_fingerprint(user)
 
 	//Synthetic human mob goes here.
-	if(istype(user,/mob/living/carbon/human))
+/*	if(istype(user,/mob/living/carbon/human))
 		var/mob/living/carbon/human/H = user
 		if(H.species.flags & IS_SYNTHETIC && H.a_intent == "grab")
 			if(emagged || stat & BROKEN)
@@ -486,7 +486,7 @@
 			else
 				user << "There is no charge to draw from that APC."
 			return
-
+*/
 	if(usr == user && opened && (!issilicon(user)))
 		if(cell)
 			user.put_in_hands(cell)
@@ -954,10 +954,10 @@
 				cell.corrupt()
 				src.malfhack = 1
 				update_icon()
-				var/datum/effect/effect/system/smoke_spread/smoke = new /datum/effect/effect/system/smoke_spread()
-				smoke.set_up(3, 0, src.loc)
-				smoke.attach(src)
-				smoke.start()
+//				var/datum/effect/effect/system/smoke_spread/smoke = new /datum/effect/effect/system/smoke_spread()
+//				smoke.set_up(3, 0, src.loc)
+//				smoke.attach(src)
+//				smoke.start()
 				var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
 				s.set_up(3, 1, src)
 				s.start()

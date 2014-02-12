@@ -16,7 +16,7 @@
   *
   * @return nothing
   */
-/obj/machinery/computer/astronavigation/ui_interact(mob/user, ui_key = "main")
+/obj/machinery/computer/astronavigation/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null)
 	if(stat & (BROKEN|NOPOWER)) return
 	if(user.stat || user.restrained()) return
 
@@ -50,7 +50,7 @@
 
 //	else
 
-
+/*
 	var/datum/nanoui/ui = nanomanager.get_open_ui(user, src, ui_key)
 	if (!ui)
 		// the ui does not exist, so we'll create a new one
@@ -65,7 +65,20 @@
 		ui.set_initial_data(data)
 		ui.open()
 		return
+*/
 
+	// update the ui if it exists, returns null if no ui is passed/found
+	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data)
+	if (!ui)
+		// the ui does not exist, so we'll create a new() one
+        // for a list of parameters and their descriptions see the code docs in \code\modules\nano\nanoui.dm
+		ui = new(user, src, ui_key, "astronav.tmpl", name, 380, 380)
+		// when the ui is first opened this is the data it will use
+		ui.set_initial_data(data)
+		// open the new ui window
+		ui.open()
+		// auto update every Master Controller tick
+		ui.set_auto_update(1)
 /obj/machinery/computer/astronavigation/attack_paw(mob/user)
 	user << "You are too primitive to use this computer."
 	return
