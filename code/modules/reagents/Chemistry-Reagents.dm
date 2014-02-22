@@ -1260,6 +1260,25 @@ datum
 				..()
 				return
 
+		peridaxon
+			name = "Peridaxon"
+			id = "peridaxon"
+			description = "Used to encourage recovery of internal organs and nervous systems.  Medicate cautiously."
+			reagent_state = LIQUID
+			color = "#C8A5DC" // rgb: 200, 165, 220
+			overdose = 10
+
+			on_mob_life(var/mob/living/M as mob)
+				if(!M) M = holder.my_atom
+				if(ishuman(M))
+					var/mob/living/carbon/human/H = M
+					var/datum/organ/external/chest/C = H.get_organ("chest")
+					for(var/datum/organ/internal/I in C.internal_organs)
+						if(I.damage > 0)
+							I.damage -= 0.20
+				..()
+				return
+
 		bicaridine
 			name = "Bicaridine"
 			id = "bicaridine"
