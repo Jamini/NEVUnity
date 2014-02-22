@@ -1251,9 +1251,12 @@ datum
 				if(prob(5)) M << pick(  "\blue The world snaps into clearer focus.")
 				M.eye_blurry = max(M.eye_blurry-5 , 0)
 				M.eye_blind = max(M.eye_blind-5 , 0)
-				M.disabilities &= ~NEARSIGHTED
-				M.eye_stat = max(M.eye_stat-5, 0)
-//				M.sdisabilities &= ~1		Replaced by eye surgery
+				if(ishuman(m))
+					var/mob/living/carbon/human/H = M
+					var/datum/organ/internal/eyes/E = H.internal_organs["eyes"]
+					if(istype(E))
+						if(E.damage > 0)
+							E.damage -= 1
 				..()
 				return
 
