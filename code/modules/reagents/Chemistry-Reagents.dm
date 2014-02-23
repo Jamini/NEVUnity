@@ -1251,9 +1251,31 @@ datum
 				if(prob(5)) M << pick(  "\blue The world snaps into clearer focus.")
 				M.eye_blurry = max(M.eye_blurry-5 , 0)
 				M.eye_blind = max(M.eye_blind-5 , 0)
-				M.disabilities &= ~NEARSIGHTED
-				M.eye_stat = max(M.eye_stat-5, 0)
-//				M.sdisabilities &= ~1		Replaced by eye surgery
+				if(ishuman(M))
+					var/mob/living/carbon/human/H = M
+					var/datum/organ/internal/eyes/E = H.internal_organs["eyes"]
+					if(istype(E))
+						if(E.damage > 0)
+							E.damage -= 1
+				..()
+				return
+
+		peridaxon
+			name = "Peridaxon"
+			id = "peridaxon"
+			description = "Used to encourage recovery of internal organs and nervous systems.  Medicate cautiously."
+			reagent_state = LIQUID
+			color = "#C8A5DC" // rgb: 200, 165, 220
+			overdose = 10
+
+			on_mob_life(var/mob/living/M as mob)
+				if(!M) M = holder.my_atom
+				if(ishuman(M))
+					var/mob/living/carbon/human/H = M
+					var/datum/organ/external/chest/C = H.get_organ("chest")
+					for(var/datum/organ/internal/I in C.internal_organs)
+						if(I.damage > 0)
+							I.damage -= 0.20
 				..()
 				return
 
