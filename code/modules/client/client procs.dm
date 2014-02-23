@@ -255,6 +255,7 @@
 		'nano/images/uiIcons16.png',
 		'nano/templates/telescience_console.tmpl',
 		'nano/templates/astronav.tmpl',
+		'nano/templates/navigation.tmpl',
 		'nano/templates/apc.tmpl',
 		'nano/templates/canister.tmpl',
 		'nano/templates/freezer.tmpl',

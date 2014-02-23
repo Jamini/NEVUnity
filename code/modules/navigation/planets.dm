@@ -126,6 +126,7 @@ datum/planet/New()
 	system = null
 	planet_type = null //This should never show
 //	probe = null //planets don't start with probes
+
 	temp = rand(100,473) //-173C to 200C
 	size = rand(1,5)  // scale of 1-5. This determines how many features a site has.
 	rads = rand(1,5) // scale of 1-5. Intensity determines light/temperature/radiation of a site
@@ -151,12 +152,17 @@ datum/planet/New(var/typein)
 		visit = 1
 	var/x = 0
 	while(x < size)
+		var/datum/feature/zone = new /datum/feature()
+		zone.name = pick(possible_features)
 		if(features)
-			features.Add(pick(possible_features))
+			features.Add(zone)
 		else
-			features = list(pick(possible_features))
+			features = list(zone)
 		x++
 	return
+
+datum/feature
+	var/name
 
 /*
   Planets
@@ -200,6 +206,7 @@ datum/planet/New(var/typein)
 datum/ship
 
 	var/datum/system/cursystem
+	var/datum/planet/curplanet
 	var/datum/system/system1
 	var/datum/system/system2
 	var/probes
@@ -207,15 +214,15 @@ datum/ship
 datum/ship/New()
 
 	cursystem = new /datum/system()
+	curplanet = null
 	system1 = new /datum/system()
 	system2 = new /datum/system()
 	probes = 6
 
-datum/ship/proc/move(x) //Used for moving the ship. 0 is no move, -1 is system 1, 1 is system 2
-	switch(x)
-		if(-1)
-			cursystem = system1
-		if(1)
-			cursystem = system2
-		else
+datum/ship/proc/move(datum/system/x) //Used for moving the ship. 0 is no move, -1 is system 1, 1 is system 2
+	cursystem = x
+	system1 = new /datum/system()
+	system2 = new /datum/system()
 	return
+datum/ship/proc/moveplan(datum/planet/x)
+	curplanet = x

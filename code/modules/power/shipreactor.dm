@@ -26,9 +26,11 @@
 	if(loc)
 		env = loc.return_air()
 		pulse() //Emits power
-		heat() //Emits heat and explodes if it gets too hot!
 		if(prob(event_chance))//Chance for it to run a special event TODO:Come up with one or two more that fit
 			event()
+		if(energy > 1)
+			heat() //Emits heat and explodes if it gets too hot!
+
 	return
 
 
@@ -50,9 +52,9 @@
 
 
 /obj/machinery/unityreactor/proc/toxmob()
-	if (src.energy>200)
-		toxdamage = round(((src.energy-50)/25)*4,1)
-		radiation = round(((src.energy-50)/25)*5,1)
+	if (src.energy>50)
+		toxdamage = round(((src.energy)/10)*4,1)
+		radiation = round(((src.energy)/10)*8,1)
 		radiationmin = round((radiation/5),1)//
 	for(var/mob/living/M in view(toxrange, src.loc))
 		M.apply_effect(rand(radiationmin,radiation), IRRADIATE)

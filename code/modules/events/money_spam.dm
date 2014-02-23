@@ -36,7 +36,7 @@
 
 			var/sender
 			var/message
-			switch(pick(1,2,3,4,5,6,7,8))
+			switch(pick(1,2,3,4,5,6,7,8,9))
 				if(1)
 					sender = pick("MaxBet","MaxBet Online Casino","There is no better time to register","I'm excited for you to join us")
 					message = pick("Triple deposits are waiting for you at MaxBet Online when you register to play with us.",\
@@ -92,6 +92,11 @@
 					"Try a day in your partner's shoes with our 1-day gender swap program!",\
 					"Order now and receive a free packet of Dr. Riebhardt's special 'cleansing' pills, free of charge!",\
 					"Men of all species report AMAZING increases in length, width, and stamina!")
+				if(9)
+					sender = pick("Space Surgeon General Bob", "Experts around the galaxy agree!", "Surgeon General Bob's Advice!")
+					message = pick("Don't let SPACE AIDS catch you off gaurd. Sign up for Space Surgeon General Bob's program today!",\
+					"With just a blood sample and 5000 credits, Space General Surgeon Bob can save your life. Hear about lives saved by Space General Surgeon Bob with his re-vol-u-tionary cures!",\
+					"Did you know, 1 in 200 sentients are affected by SPACE AIDS each year? Don't let yourself be part of a statistic. Send a sample to Space General Surgeon Bob today and have peace of mind knowing you did the RIGHT THING for your LOVED ONES.")
 			useMS.send_pda_message("[P.owner]", sender, message)
 
 			if (prob(50)) //Give the AI an increased chance to intercept the message

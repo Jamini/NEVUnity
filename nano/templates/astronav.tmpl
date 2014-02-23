@@ -33,14 +33,26 @@ Used In File(s): \code\modules\telesci\navconsoles.dm
   </div>
   <div class="item">
 	<div class="itemContentWide" style="width: 100%;">
-    {^{for planets}}
-      {{:planet_name}}
-      {{:planet_orbit}} <br>
-     {{/for}}
+    {{for planets}}
+      {{:~link(planet_name,'gear',{'setplanet': planet_name})}}
+    {{/for}}
 	</div>
 </div>
+<h3>Current Planet:</h3>
+<div class="item">
+  <div class="itemContent">
+    {{if aplanet}}
+      Planet name: {{:aplanet}} <br>
+      Orbit: {{:p_orb}}<br>
+      Surface temp: {{:p_temp}}°K<br>
+      Size: {{:p_size}} <br>
+      Radiation Level: {{:p_rads}} <br><br>
+      Features: 
+      {{for zones}}
+        {{:feature}} <br>
+      {{/for}}
+    {{/if}}
 
-  
   
   <div class=itemContent">
     {{:~link('Clear scans', 'gear' ,{ 'clear': 1})}}

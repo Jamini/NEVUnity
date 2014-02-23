@@ -1,4 +1,9 @@
 //Restores our verbs. It will only restore verbs allowed during lesser (monkey) form if we are not human
+/obj/item/weapon/implant/changling
+	name = "changling "
+	desc = "And boom goes the weasel."
+	icon_state = "implant_evil"
+
 /mob/proc/make_changeling()
 	if(!mind)				return
 	if(!mind.changeling)	mind.changeling = new /datum/changeling(gender)
@@ -157,7 +162,7 @@
 		T.mind.changeling.geneticpoints = 2
 		T.mind.special_role = "Drone" //Special role for you
 		//Drones exist to protect their master
-		var/datum/objective/protect/protect_objective = new
+		var/datum/objective/protect/protect_objective = new /datum/objective/protect
 		protect_objective.owner = T.mind
 		protect_objective.target = src.mind
 		T.mind.objectives += protect_objective

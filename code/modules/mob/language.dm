@@ -70,6 +70,12 @@
 	speech_verb = "growls"
 	key = "3"
 
+/datum/language/sign
+	name = "Nanotrasen Sign Language"
+	desc = "This \"language\" has its roots in ASL, ISL, and has recently begun to incorporate some of the more universal gestures of Siik'Tjar. Completely non-verbal, this language uses hand signals to express ideas."
+	speech_verb = "signs"
+	key = "4"
+
 // Language handling.
 /mob/proc/add_language(var/language)
 
