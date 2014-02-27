@@ -128,6 +128,7 @@
 	faction = "Station"
 	total_positions = 2
 	spawn_positions = 2
+	alt_titles = list("NTMC Liason")
 	supervisors = "the warden"
 	selection_color = "#ffeeee"
 	access = list(access_security, access_sec_doors, access_brig, access_court, access_maint_tunnels, access_morgue)

@@ -875,6 +875,9 @@ proc/process_ghost_teleport_locs()
 	name = "\improper Holodeck - Off"
 	icon_state = "Holodeck"
 
+/area/holodeck/source_pool
+	name = "\improper Holodeck - Pool"
+
 /area/holodeck/source_emptycourt
 	name = "\improper Holodeck - Empty Court"
 

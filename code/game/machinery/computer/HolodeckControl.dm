@@ -28,6 +28,7 @@
 		dat += "<HR>Current Loaded Programs:<BR>"
 
 		dat += "<A href='?src=\ref[src];emptycourt=1'>((Empty Court)</font>)</A><BR>"
+		dat += "<A href='?src=\ref[src];pool=1'>((Pool)</font>)</A><BR>"
 		dat += "<A href='?src=\ref[src];boxingcourt=1'>((Boxing Court)</font>)</A><BR>"
 		dat += "<A href='?src=\ref[src];basketball=1'>((Basketball Court)</font>)</A><BR>"
 		dat += "<A href='?src=\ref[src];thunderdomecourt=1'>((Thunderdome Court)</font>)</A><BR>"
@@ -71,7 +72,12 @@
 		if((usr.contents.Find(src) || (in_range(src, usr) && istype(src.loc, /turf))) || (istype(usr, /mob/living/silicon)))
 			usr.set_machine(src)
 
-			if(href_list["emptycourt"])
+			if(href_list["pool"])
+				target = locate(/area/holodeck/source_pool)
+				if(target)
+					loadProgram(target)
+
+			else if(href_list["emptycourt"])
 				target = locate(/area/holodeck/source_emptycourt)
 				if(target)
 					loadProgram(target)
