@@ -985,6 +985,42 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 		if(SMES.anchored)
 			SMES.chargemode = 1
 
+/client/proc/startSupermatter()
+
+	set category = "Debug"
+	set name = "Start Supermatter Engine"
+	set desc = "Sets the supermatter core on. For lazy admins across the board"
+
+	if(alert("Are you sure? This will start up the engine but it is an experimental feature and a manual startup is always preferable!",,"Yes","No") != "Yes")
+		return
+
+	message_admins("[key_name(src)] used lazy engine startup. Slacker.")
+	log_admin("[key_name(src)] used admin engine startup verb.")
+
+	for(var/obj/machinery/power/emitter/E in world)
+		if(E.x == 146 && E.y == 110)
+			E.anchored = 1
+			E.state = 2
+			E.connect_to_network()
+			E.directwired = 1
+			E.active = 1
+
+	for(var/obj/machinery/power/rad_collector/Rad in world)
+		if(Rad.anchored)
+			if(!Rad.P)
+				var/obj/item/weapon/tank/plasma/Plasma = new/obj/item/weapon/tank/plasma(Rad)
+				Plasma.air_contents.toxins = 70
+				Rad.drainratio = 0
+				Rad.P = Plasma
+				Plasma.loc = Rad
+
+			if(!Rad.active)
+				Rad.toggle_power()
+
+	for(var/obj/machinery/power/smes/SMES in world)
+		if(SMES.anchored)
+			SMES.chargemode = 1
+
 /client/proc/cmd_debug_mob_lists()
 	set category = "Debug"
 	set name = "Debug Mob Lists"
