@@ -115,3 +115,18 @@
 				A.y = rand(teleport_y, teleport_y_offset)
 				A.z = rand(teleport_z, teleport_z_offset)
 
+/* edge teleporter, teleports atmos to the other side of the map (10 tiles from the edge)*/
+/obj/effect/step_trigger/teleporter/edge
+	..()
+/obj/effect/step_trigger/teleporter/edge/New()
+	teleport_x = 255 - src.x
+	teleport_y = 255 - src.y
+	if(teleport_x < 8)
+		teleport_x = 8
+	if(teleport_x > 248)
+		teleport_x = 248
+	if(teleport_y < 8)
+		teleport_y = 8
+	if(teleport_y > 248)
+		teleport_y = 248
+	teleport_z = src.z

@@ -90,17 +90,27 @@
 			spawn(5) src.reagents.clear_reagents()
 			return
 		else if(istype(target, /obj/structure/reagent_dispensers)) //A dispenser. Transfer FROM it TO us.
+			var/obj/structure/reagent_dispensers/temp = target
+			if(temp.dispense)
+				if(!temp.reagents.total_volume && temp.reagents)
+					user << "\red [temp] is empty."
+					return
 
-			if(!target.reagents.total_volume && target.reagents)
-				user << "\red [target] is empty."
-				return
+				if(reagents.total_volume >= reagents.maximum_volume)
+					user << "\red [src] is full."
+					return
+				var/trans = temp.reagents.trans_to(src, temp:amount_per_transfer_from_this)
+				user << "\blue You fill [src] with [trans] units of the contents of [target]."
+			else
+				if(!src.reagents.total_volume && src.reagents)
+					user << "\red [src] is empty."
+					return
 
-			if(reagents.total_volume >= reagents.maximum_volume)
-				user << "\red [src] is full."
-				return
-
-			var/trans = target.reagents.trans_to(src, target:amount_per_transfer_from_this)
-			user << "\blue You fill [src] with [trans] units of the contents of [target]."
+				if(temp.reagents.total_volume >= temp.reagents.maximum_volume)
+					user << "\red [temp] is full."
+					return
+				var/trans = src.reagents.trans_to(target, src:amount_per_transfer_from_this)
+				user << "\blue You fill [temp] with [trans] units of the contents of [src]."
 
 		else if(target.is_open_container() && target.reagents) //Something like a glass. Player probably wants to transfer TO it.
 			if(!reagents.total_volume)

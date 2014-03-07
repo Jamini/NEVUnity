@@ -120,7 +120,6 @@
 			\"further proof\" of the colony's anti-NanoTrasen stance. Meanwhile, Refuge Security has been unable to quell
 			the riots. More on this at 6."}
 			round_time = 60 * 60
-
 	ahdomai_conflict
 		breaking_news
 			channel_name = "Tau Ceti Daily"

@@ -10,6 +10,7 @@
 	flags = FPRINT
 	pressure_resistance = 2*ONE_ATMOSPHERE
 
+	var/dispense = 1
 	var/amount_per_transfer_from_this = 10
 	var/possible_transfer_amounts = list(10,25,50,100)
 
@@ -34,6 +35,16 @@
 				usr << "\blue [R.volume] units of [R.name]"
 		else
 			usr << "\blue Nothing."
+	verb/set_REFILL() //set if the dispenser is accepting or dispensing reagents
+		set name = "Toggle dispense mode"
+		set category = "Object"
+		set src in view(1)
+		dispense = !dispense
+		if (!(usr in view(1)) && usr!=src.loc) return
+		if(dispense)
+			usr << "\blue [src] set to dispense mode."
+		else
+			usr << "\blue [src] set to refill mode."
 
 	verb/set_APTFT() //set amount_per_transfer_from_this
 		set name = "Set transfer amount"

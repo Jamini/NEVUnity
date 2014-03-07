@@ -5,6 +5,7 @@
 	desc = "This console allows you to travel to nearby stars and planets!"
 	var/datum/system/cursystem
 	var/datum/planet/curplanet
+	var/locked = 0
 
 /obj/machinery/computer/navigation/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null)
 	if(stat & (BROKEN|NOPOWER)) return
@@ -14,6 +15,8 @@
 	var/data[0]
 	data["systemname1"] = ship.system1.name
 	data["systemname2"] = ship.system2.name
+	cursystem = ship.cursystem
+	curplanet = ship.curplanet
 	if(cursystem)
 		data["systemname"] = cursystem.name
 		data["systemtype"] = cursystem.star_type
@@ -70,13 +73,66 @@
 /obj/machinery/computer/navigation/Topic(href, href_list)
 	if(stat & (NOPOWER|BROKEN))
 		return 0
+	if(locked)
+		src.visible_message("The Terminal Buzzes: Ship currently in motion. Navigation Systems Locked!")
+		src.visible_message("\blue \icon[src] buzzes irritably!", 7)
+		playsound(src.loc, 'sound/machines/buzz-sigh.ogg', 50, 1)
+		return 0
+	if(ship.cantmove)
+		src.visible_message("The Terminal Buzzes: Probe or Away team currently off-ship. Navigation Systems Locked!!")
+		src.visible_message("\blue \icon[src] buzzes irritably!", 7)
+		playsound(src.loc, 'sound/machines/buzz-sigh.ogg', 50, 1)
+		return 0
 	if(href_list["move1"])
-		return 0
+		move(ship.system1)
 	if(href_list["move2"])
-		return 0
+		move(ship.system2)
+	if(href_list["moveplanet"])
+		var/datum/planet/temp
+		for(temp in cursystem.planets)
+			if(temp.name == href_list["moveplanet"])
+				moveplan(temp)
 	if(href_list["launchprobe"])
 		return 0
-
+	return 1
+/obj/machinery/computer/navigation/proc/moveplan(var/datum/planet/movetarget)
+	if(movetarget)
+		locked = 1
+		command_alert("Movement Initated. Destination:" + movetarget.name+ ". All hands please prepare for bluespace transit. ETA:5 minutes.", "NEV Unity Autopilot")
+//		for(var/mob/M in player_list)
+//			M << sound('sound/music/All Hands.ogg')
+		for(var/turf/space/x in world)
+			if(!(istype(x, /turf/space/transit)))
+				x.icon_state = "[((x.x + x.y) ^ ~(x.x * x.y) + x.z) % 25]"
+		sleep 3000 //This will be 3000 eventually. (5min) - set to 10s for testing
+		command_alert("Movement Complete. The ship has reached "+ movetarget.name+ "", "NEV Unity Autopilot")
+		for(var/turf/space/x in world)
+			if(!istype(x, /turf/space/transit))
+				x.icon_state = "x[((x.x + x.y) ^ ~(x.x * x.y) + x.z) % 25]"
+//		for(var/mob/M in player_list)
+//			M << sound('sound/music/All Hands.ogg')
+		ship.curplanet = movetarget
+		locked = 0
+/obj/machinery/computer/navigation/proc/move(var/datum/system/movetarget)
+	if(movetarget)
+		locked = 1
+		command_alert("Movement Initiated. Destination:"+ movetarget.name+ ". All hands please prepare for bluespace transit. ETA: 15 minutes.", "NEV Unity Autopilot")
+//		for(var/mob/M in player_list)
+//			M << sound('sound/music/All Hands.ogg')
+		for(var/turf/space/x in world)
+			if(!(istype(x, /turf/space/transit)))
+				x.icon_state = "[((x.x + x.y) ^ ~(x.x * x.y) + x.z) % 25]"
+		sleep 9000 //This will be 9000 eventually. (15min) - set to 10s for testing
+		command_alert("Movement Complete. The ship has reached "+ movetarget.name+ "", "NEV Unity Autopilot")
+		for(var/turf/space/x in world)
+			if(!istype(x, /turf/space/transit))
+				x.icon_state = "x[((x.x + x.y) ^ ~(x.x * x.y) + x.z) % 25]"
+//		for(var/mob/M in player_list)
+//			M << sound('sound/music/All Hands.ogg')
+		ship.cursystem = movetarget
+		ship.system1 = new /datum/system()
+		ship.system2 = new /datum/system()
+		locked = 0
 /obj/machinery/computer/astronavigation
 	icon = 'icons/obj/computer.dmi'
 	icon_state = "comm_monitor"
@@ -105,6 +161,7 @@
 	var/data[0]
 	data["systemname1"] = ship.system1.name
 	data["systemname2"] = ship.system2.name
+	data["cursystem"] = ship.cursystem.name
 
 	if(activesystem) //Pick a target to scan!
 
@@ -178,8 +235,10 @@
 		activesystem = ship.system1
 	if(href_list["setarget2"])
 		sysscan("System")
-		usr << "Starting System Scan"
 		activesystem = ship.system2
+	if(href_list["setargetcur"])
+		sysscan("System")
+		activesystem = ship.cursystem
 	if(href_list["clear"])
 		usr << "Clearing Scans"
 		activesystem = null

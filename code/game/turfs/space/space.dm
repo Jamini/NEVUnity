@@ -2,14 +2,14 @@
 	icon = 'icons/turf/space.dmi'
 	name = "\proper space"
 	icon_state = "0"
-
+	layer = 1.8
 	temperature = T0C
 	thermal_conductivity = OPEN_HEAT_TRANSFER_COEFFICIENT
 //	heat_capacity = 700000 No.
 
 /turf/space/New()
 	if(!istype(src, /turf/space/transit))
-		icon_state = "[((x + y) ^ ~(x * y) + z) % 25]"
+		icon_state = "x[((x + y) ^ ~(x * y) + z) % 25]"
 
 /turf/space/attack_paw(mob/user as mob)
 	return src.attack_hand(user)

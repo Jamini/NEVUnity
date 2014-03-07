@@ -138,7 +138,7 @@ datum/planet/New(var/typein)
 	var/list/possible_features
 	possible_features = null
 	if(typein == "Anom")
-		possible_features = list( "Empty Space",  "Empty Space",  "Empty Space", "Bluespace Rift", "Gravity Field", "Ion Storm",  "Radiation Spike",  "Solar Flare", "Intercepted Transmission")
+		possible_features = list( "Intermittent Signal",  "Sensor Blip",  "Anomolous Sector", "Bluespace Rift", "Gravity Field", "Ion Storm",  "Radiation Spike",  "Solar Flare", "Intercepted Transmission")
 	if(typein == "Gas")
 		possible_features = list("Water","Helium Banding","Ammonia Deposits","Deuterium","Methane Deposits","Rings", "Moon",  "Hotspot")
 	if(typein == "Habit")
@@ -163,7 +163,6 @@ datum/planet/New(var/typein)
 
 datum/feature
 	var/name
-
 /*
   Planets
   Main sequence stars have most "Habitable" planets
@@ -210,6 +209,7 @@ datum/ship
 	var/datum/system/system1
 	var/datum/system/system2
 	var/probes
+	var/cantmove = 0
 
 datum/ship/New()
 

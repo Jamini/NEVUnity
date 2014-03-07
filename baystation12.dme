@@ -1059,6 +1059,7 @@
 #include "code\modules\nano\nanoui.dm"
 #include "code\modules\navigation\navconsoles.dm"
 #include "code\modules\navigation\planets.dm"
+#include "code\modules\navigation\probe.dm"
 #include "code\modules\organs\blood.dm"
 #include "code\modules\organs\organ.dm"
 #include "code\modules\organs\organ_external.dm"

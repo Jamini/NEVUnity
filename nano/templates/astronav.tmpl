@@ -1,6 +1,6 @@
 <!-- 
 Title: Astronavigation UI 
-Used In File(s): \code\modules\telesci\navconsoles.dm
+Used In File(s): \code\modules\navigation\navconsoles.dm
  -->
 
 <h3>Detected Systems:</h3>
@@ -8,9 +8,12 @@ Used In File(s): \code\modules\telesci\navconsoles.dm
 	<div class="itemContent">
 		{{:~link(systemname1, 'gear', {'setarget1': 1})}}
 		{{:~link(systemname2, 'gear', {'setarget2': 1})}}
+		{{if cursystem}}
+      {{:~link(cursystem, 'gear', {'setargetcur': 1})}}
+    {{/if}}
 	</div>
 </div>
-<h3>Current System:</h3>
+<h3>Target System:</h3>
 <div class="item">
   <div class="itemContent">
     {{if systemname}}
@@ -38,7 +41,7 @@ Used In File(s): \code\modules\telesci\navconsoles.dm
     {{/for}}
 	</div>
 </div>
-<h3>Current Planet:</h3>
+<h3>Target Site:</h3>
 <div class="item">
   <div class="itemContent">
     {{if aplanet}}
@@ -47,7 +50,7 @@ Used In File(s): \code\modules\telesci\navconsoles.dm
       Surface temp: {{:p_temp}}°K<br>
       Size: {{:p_size}} <br>
       Radiation Level: {{:p_rads}} <br><br>
-      Features: 
+      Features: <br>
       {{for zones}}
         {{:feature}} <br>
       {{/for}}
