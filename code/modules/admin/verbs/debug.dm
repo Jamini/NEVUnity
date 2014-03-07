@@ -1005,10 +1005,6 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 			E.directwired = 1
 			E.active = 1
 
-	for(var/obj/machinery/field_generator/F in world)
-		if(F.anchored)
-			F.Varedit_start = 1
-
 	for(var/obj/machinery/power/rad_collector/Rad in world)
 		if(Rad.anchored)
 			if(!Rad.P)
