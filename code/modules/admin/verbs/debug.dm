@@ -998,7 +998,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 	log_admin("[key_name(src)] used admin engine startup verb.")
 
 	for(var/obj/machinery/power/emitter/E in world)
-		if(E.x == 146 && E.y == 110)
+		if(E.name == "Engine emitter")
 			E.anchored = 1
 			E.state = 2
 			E.connect_to_network()
