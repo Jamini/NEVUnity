@@ -922,12 +922,13 @@
 	item_state = "oimask"
 	flags = FPRINT | TABLEPASS | STASIS_DEL
 
-/obj/item/clothing/mask/gas/slave
+/obj/item/clothing/mask/breath/slave
 	name = "A slave collar"
 	desc = "A slave collar fitted with an ominous, blinking, red light. Probably explodes."
 	icon_state = "mathuscollar"
 	item_state = "mathuscollar"
 	flags = FPRINT | TABLEPASS | STASIS_DEL
+	canremove = 0
 
 //////////// Weapons ////////////
 
@@ -958,3 +959,10 @@
 	if(istype(A, /obj/item/ammo_magazine))
 		flick("leamas-reloading",src)
 	..()
+
+////// Kitty Ear Mutation - Damien
+/obj/item/clothing/head/kitty/fluff/damien
+	name = "Very real cat ears"
+	desc = "Those don't look fake, and they don't look like they come off!"
+	flags = FPRINT | TABLEPASS | STASIS_DEL
+	canremove = 0

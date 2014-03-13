@@ -1225,6 +1225,7 @@
 		spawn(5)	//So potency can be set in the proc that creates these crops
 			reagents.add_reagent("nutriment", 1+round((potency / 50), 1))
 			reagents.add_reagent("sacid", round(potency, 1))
+			reagents.add_reagent("sacid", 1)
 			force = round((5+potency/5), 1)
 
 /obj/item/weapon/grown/deathnettle // -- Skie

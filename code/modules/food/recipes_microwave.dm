@@ -1146,3 +1146,46 @@ I said no!
 /datum/recipe/cracker
 	reagents = list("flour" = 5, "sodiumchloride" = 1)
 	result = /obj/item/weapon/reagent_containers/food/snacks/cracker
+
+/datum/recipe/lasagna
+	items = list(
+		reagents = list("wine" = 5),
+		/obj/item/weapon/reagent_containers/food/snacks/spagetti,
+		/obj/item/weapon/reagent_containers/food/snacks/spagetti,
+		/obj/item/weapon/reagent_containers/food/snacks/spagetti,
+		/obj/item/weapon/reagent_containers/food/snacks/grown/tomato,
+		/obj/item/weapon/reagent_containers/food/snacks/grown/tomato,
+		/obj/item/weapon/reagent_containers/food/snacks/meat,
+		/obj/item/weapon/reagent_containers/food/snacks/meat,
+		/obj/item/weapon/reagent_containers/food/snacks/cheesewedge,
+		/obj/item/weapon/reagent_containers/food/snacks/cheesewedge,
+		/obj/item/weapon/reagent_containers/food/snacks/grown/mushroom/chanterelle,
+	)
+	result = /obj/item/weapon/reagent_containers/food/snacks/sliceable/lasagna
+/datum/recipe/veglasagna
+	items = list(
+		reagents = list("wine" = 5),
+		/obj/item/weapon/reagent_containers/food/snacks/spagetti,
+		/obj/item/weapon/reagent_containers/food/snacks/spagetti,
+		/obj/item/weapon/reagent_containers/food/snacks/spagetti,
+		/obj/item/weapon/reagent_containers/food/snacks/grown/tomato,
+		/obj/item/weapon/reagent_containers/food/snacks/grown/tomato,
+		/obj/item/weapon/reagent_containers/food/snacks/tofu,
+		/obj/item/weapon/reagent_containers/food/snacks/tofu,
+		/obj/item/weapon/reagent_containers/food/snacks/cheesewedge,
+		/obj/item/weapon/reagent_containers/food/snacks/cheesewedge,
+		/obj/item/weapon/reagent_containers/food/snacks/grown/mushroom/chanterelle,
+	)
+	result = /obj/item/weapon/reagent_containers/food/snacks/sliceable/veglasagna
+/datum/recipe/schur
+	items = list(
+		/obj/item/weapon/reagent_containers/food/snacks/grown/chureech,
+		/obj/item/weapon/reagent_containers/food/snacks/grown/potato,
+	)
+	result = /obj/item/weapon/reagent_containers/food/snacks/stuffchureech
+/datum/recipe/friedtomatoes
+	items = list(
+		reagents = list("cornoil" = 5),
+		/obj/item/weapon/reagent_containers/food/snacks/grown/tomato,
+	)
+	result = /obj/item/weapon/reagent_containers/food/snacks/friedtomatoes

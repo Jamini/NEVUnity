@@ -1848,10 +1848,47 @@
 // All the food items that can be sliced into smaller bits like Meatbread and Cheesewheels
 
 // sliceable is just an organization type path, it doesn't have any additional code or variables tied to it.
+/obj/item/weapon/reagent_containers/food/snacks/sliceable/veglasagna
+	name = "vegitarian lasagna"
+	desc = "a hearty itallian meal that can feed half the crew, now with 100% more tofu! (ew)"
+	icon_state = "lasagna"
+	slice_path = /obj/item/weapon/reagent_containers/food/snacks/veglasagnaslice
+	slices_num = 5
+	New()
+		..
+		reagents.add_reagent("nutriment", 40)
+		reagents.add_reagent("tomatojuice", 6)
+		bitesize = 2
+
+/obj/item/weapon/reagent_containers/food/snacks/veglasagnaslice
+	name = "lasagna slice"
+	desc = "A slice of delicious vegitarian lasagna."
+	icon_state = "lasagnaslice"
+	trash = /obj/item/trash/plate
+	bitesize = 2
+
+/obj/item/weapon/reagent_containers/food/snacks/sliceable/lasagna
+	name = "lasagna"
+	desc = "a hearty itallian meal that can feed half the crew."
+	icon_state = "lasagna"
+	slice_path = /obj/item/weapon/reagent_containers/food/snacks/lasagnaslice
+	slices_num = 5
+	New()
+		..
+		reagents.add_reagent("nutriment", 40)
+		reagents.add_reagent("tomatojuice", 6)
+		bitesize = 2
+
+/obj/item/weapon/reagent_containers/food/snacks/lasagnaslice
+	name = "lasagna slice"
+	desc = "A slice of delicious lasagna."
+	icon_state = "lasagnaslice"
+	trash = /obj/item/trash/plate
+	bitesize = 2
 
 /obj/item/weapon/reagent_containers/food/snacks/sliceable/meatbread
 	name = "meatbread loaf"
-	desc = "The culinary base of every self-respecting eloquen/tg/entleman."
+	desc = "The culinary base of every self-respecting eloquent gentleman."
 	icon_state = "meatbread"
 	slice_path = /obj/item/weapon/reagent_containers/food/snacks/meatbreadslice
 	slices_num = 5
@@ -2188,7 +2225,27 @@
 		..()
 		reagents.add_reagent("nutriment", 1)
 
+/obj/item/weapon/reagent_containers/food/snacks/stuffchureech
+	name = "Stuffed Chureech"
+	desc = "Chureech stuffed with terran potatoes. Sweet and savory!"
+	icon_state = "roastedchu"
+	trash = /obj/item/trash/plate
+	bitesize = 2
 
+	New()
+		..()
+		reagents.add_reagent("nutriment",6)
+
+/obj/item/weapon/reagent_containers/food/snacks/friedtomatoes
+	name = "Deep-fried tomatoes"
+	desc = "tomatoes fried the southern way! Mmmm!"
+	icon_state = "friedtomato"
+	trash = /obj/item/trash/plate
+	bitesize = 2
+
+	New()
+		..()
+		reagents.add_reagent("nutriment",8)
 
 /////////////////////////////////////////////////PIZZA////////////////////////////////////////
 
