@@ -45,7 +45,8 @@ datum/borrowbook // Datum used to keep track of who has borrowed what when and f
 		if(1)
 			establish_old_db_connection()
 			if(!dbcon_old.IsConnected())
-				dat += "<font color=red><b>ERROR</b>: Unable to contact External Archive. Please contact your system administrator for assistance.</font><BR>"
+				dat += "<font color=red><b>ERROR</b>: Reconnecting to External Archive.</font><BR>"
+				dbcon_old = new()
 			else if(!SQLquery)
 				dat += "<font color=red><b>ERROR</b>: Malformed search request. Please contact your system administrator for assistance.</font><BR>"
 			else
@@ -191,7 +192,8 @@ datum/borrowbook // Datum used to keep track of who has borrowed what when and f
 			dat += "<h3>External Archive</h3>"
 			establish_old_db_connection()
 			if(!dbcon_old.IsConnected())
-				dat += "<font color=red><b>ERROR</b>: Unable to contact External Archive. Please contact your system administrator for assistance.</font>"
+				dat += "<font color=red><b>ERROR</b>: Reconnecting to External Archive.</font><BR>"
+				dbcon_old = new()
 			else
 				dat += "<A href='?src=\ref[src];orderbyid=1'>(Order book by SS<sup>13</sup>BN)</A><BR><BR>"
 				dat += "<table>"

@@ -1531,6 +1531,7 @@ datum/design/esmg
 	build_type = PROTOLATHE
 	materials = list("$metal" = 800, "$glass" = 800, "$diamond" = 1000)
 	build_path = "/obj/item/weapon/gun/energy/smg"
+	locked = 1
 
 datum/design/plasmapistol
 	name = "Plasma Pistol"
@@ -1540,7 +1541,7 @@ datum/design/plasmapistol
 	build_type = PROTOLATHE
 	materials = list("$metal" = 1000, "$glass" = 1000, "$plasma" = 1000, "$silver" = 500, "$gold" = 500)
 	build_path = "/obj/item/weapon/gun/energy/plasma"
-
+	locked = 1
 
 /////////////////////////////////////////
 /////////////////Mining//////////////////

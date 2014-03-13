@@ -1,0 +1,20 @@
+<!-- 
+Title: Probe Operation UI 
+Used In File(s): \code\modules\navigation\probe.dm
+ -->
+
+<h3>Probe Location:</h3>
+<div class="item">
+  <div class="itemContent">
+
+    {{if oplanet}}
+      {{if away}}
+        Probe deployed at {{:oplanet}} <br>
+        {{:~link("Return",'gear',{'return':1})}}
+       {{else}}
+          Probe Bay Primed! {{:~link("Launch",'gear',{'launch': 1})}}
+       {{/if}}
+    {{else}}
+          Not Currently Orbiting a Site!
+    {{/if}}
+</div>

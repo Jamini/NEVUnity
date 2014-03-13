@@ -1,0 +1,57 @@
+<!-- 
+Title: Navigation UI 
+Used In File(s): \code\modules\navigation\navconsoles.dm
+ -->
+
+<h3>Current System:</h3>
+<div class="item">
+  <div class="itemContent">
+    {{if systemname}}
+      System name: {{:systemname}} <br>
+      Star Type:   
+      {{if systembinary}}
+        Binary 
+      {{else}}
+    
+      {{/if}}
+      {{:systemtype}} <br>
+      Star luminosity : {{:systemlum}} <br>
+      {{if systembinary}}
+      Binary star luminosity : {{:systembinary}}
+      {{else}}
+      {{/if}}
+    {{else}}
+        We are in deep space!
+    {{/if}}
+  </div>
+  <div class="item">
+	<div class="itemContentWide" style="width: 100%;">
+    {{for planets}}
+      {{:~link(planet_name,'gear',{'moveplanet': planet_name})}}
+    {{/for}}
+	</div>
+</div>
+<h3>Current Planet:</h3>
+<div class="item">
+  <div class="itemContent">
+    {{if aplanet}}
+      Site name: {{:aplanet}} <br>
+      Orbit: {{:p_orb}}<br>
+      Feature Temp: {{:p_temp}}°K<br>
+      Size: {{:p_size}} <br>
+      Radiation Level: {{:p_rads}} <br><br>
+      Detected Features: <br>
+      {{for zones}}
+        {{:feature}} <br>
+      {{/for}}
+
+    {{else}}
+      We are not orbiting a planet!
+    {{/if}}
+<h3>Select a Destination:</h3>  
+  
+  <div class=itemContent">
+		{{:~link(systemname1, 'gear', {'move1': 1})}}
+		{{:~link(systemname2, 'gear', {'move2': 1})}}
+  </div>
+</div>

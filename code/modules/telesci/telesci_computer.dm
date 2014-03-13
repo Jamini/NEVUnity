@@ -189,6 +189,10 @@
 		if(sending)
 			source = dest
 			dest = target
+		for(var/obj/machinery/unityreactor/x in source)
+			del(x)
+			empulse(dest.loc, 21, 42)
+			user << "<span class='caution'>Supercritical Energy Source Detected! Warning.</span>"
 		for(var/atom/movable/ROI in source)
 			if(ROI.anchored) continue
 			do_teleport(ROI, dest, 0)
