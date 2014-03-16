@@ -83,7 +83,7 @@
 	supervisors = "the chief engineer"
 	selection_color = "#fff5cc"
 	access = list(access_eva, access_engine, access_engine_equip, access_tech_storage, access_maint_tunnels, access_external_airlocks, access_construction, access_atmospherics)
-	minimal_access = list(access_engine, access_tech_storage, access_maint_tunnels, access_power, access_construction,access_external_airlocks,access_emergency_storage, access_atmospherics)
+	minimal_access = list(access_engine, access_tech_storage, access_maint_tunnels, access_power, access_construction,access_external_airlocks,access_emergency_storage, access_atmospherics,access_engine_equip)
 	equip(var/mob/living/carbon/human/H)
 		if(!H)	return 0
 		H.equip_to_slot_or_del(new /obj/item/device/radio/headset/headset_eng(H), slot_l_ear)
