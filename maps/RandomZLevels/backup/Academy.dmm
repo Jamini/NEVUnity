@@ -329,7 +329,7 @@
 "gq" = (/obj/structure/window/reinforced{dir = 1},/turf/simulated/floor/plating,/area/awaymission/academy/classrooms)
 "gr" = (/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"; pixel_y = 0; tag = ""},/turf/simulated/floor/carpet,/area/awaymission/academy/academyaft)
 "gs" = (/obj/structure/cable{d1 = 2; d2 = 8; icon_state = "2-8"; tag = ""},/turf/simulated/floor/carpet,/area/awaymission/academy/academyaft)
-"gt" = (/obj/structure/table,/obj/item/weapon/gun/projectile/shotgun/pump/sc_pump,/obj/item/weapon/paper{info = "Grade: A+ Educator's Notes: Excellent form."; name = "Summoning Midterm Exam"},/turf/simulated/floor{tag = "icon-vault (NORTHEAST)"; icon_state = "vault"; dir = 5},/area/awaymission/academy/classrooms)
+"gt" = (/obj/structure/table,/obj/item/weapon/paper{info = "Grade: A+ Educator's Notes: Excellent form."; name = "Summoning Midterm Exam"},/turf/simulated/floor{tag = "icon-vault (NORTHEAST)"; icon_state = "vault"; dir = 5},/area/awaymission/academy/classrooms)
 "gu" = (/obj/structure/table,/obj/item/weapon/gun/projectile/russian,/obj/item/weapon/paper{info = "Grade: B- Educator's Notes: Keep applying yourself, you're showing improvement."; name = "Summoning Midterm Exam"},/turf/simulated/floor{tag = "icon-vault (NORTHEAST)"; icon_state = "vault"; dir = 5},/area/awaymission/academy/classrooms)
 "gv" = (/obj/structure/table,/turf/simulated/floor{tag = "icon-vault (NORTHEAST)"; icon_state = "vault"; dir = 5},/area/awaymission/academy/classrooms)
 "gw" = (/obj/structure/window/reinforced,/obj/item/ammo_casing,/turf/simulated/floor{icon_state = "delivery"; name = "floor"},/area/awaymission/academy/classrooms)

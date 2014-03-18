@@ -73,6 +73,7 @@
 	icon_state = "datadisk0"
 	var/datum/disease2/effectholder/effect = null
 	var/stage = 1
+	w_class = 0
 
 /obj/item/weapon/diseasedisk/premade/New()
 	name = "Blank GNA disk (stage: [5-stage])"

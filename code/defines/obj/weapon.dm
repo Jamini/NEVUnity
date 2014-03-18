@@ -180,6 +180,7 @@
 /obj/item/weapon/disk
 	name = "disk"
 	icon = 'icons/obj/items.dmi'
+	w_class = 0
 
 /obj/item/weapon/disk/nuclear
 	name = "nuclear authentication disk"

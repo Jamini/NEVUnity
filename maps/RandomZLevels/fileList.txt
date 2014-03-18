@@ -5,9 +5,23 @@
 
 #maps/RandomZLevels/awaymission.dmm
 maps/RandomZLevels/Academy.dmm
-maps/RandomZLevels/arcticwaste.dmm
 maps/RandomZLevels/beach.dmm
 maps/RandomZLevels/blackmarketpackers.dmm
 maps/RandomZLevels/example.dmm
 maps/RandomZLevels/listeningpost.dmm
-maps/RandomZLevels/spacebattle.dmm
+maps/RandomZLevels/asteroid.dmm
+maps/RandomZLevels/asteroid.dmm
+maps/RandomZLevels/asteroid.dmm
+maps/RandomZLevels/asteroid.dmm
+maps/RandomZLevels/asteroid.dmm
+maps/RandomZLevels/asteroid.dmm
+maps/RandomZLevels/asteroid.dmm
+maps/RandomZLevels/asteroid.dmm
+maps/RandomZLevels/asteroid.dmm
+maps/RandomZLevels/asteroid.dmm
+maps/RandomZLevels/asteroid.dmm
+maps/RandomZLevels/asteroid.dmm
+maps/RandomZLevels/asteroid.dmm
+maps/RandomZLevels/asteroid.dmm
+maps/RandomZLevels/asteroid.dmm
+

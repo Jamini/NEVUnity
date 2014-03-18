@@ -78,6 +78,11 @@
 		src.visible_message("\blue \icon[src] buzzes irritably!", 7)
 		playsound(src.loc, 'sound/machines/buzz-sigh.ogg', 50, 1)
 		return 0
+	if(shuttleAway)
+		src.visible_message("The Terminal Buzzes: The shuttle is away. Navigation Systems Locked!")
+		src.visible_message("\blue \icon[src] buzzes irritably!", 7)
+		playsound(src.loc, 'sound/machines/buzz-sigh.ogg', 50, 1)
+		return 0
 	if(ship.cantmove)
 		src.visible_message("The Terminal Buzzes: Probe or Away team currently off-ship. Navigation Systems Locked!!")
 		src.visible_message("\blue \icon[src] buzzes irritably!", 7)
@@ -105,13 +110,18 @@
 			if(!(istype(x, /turf/space/transit)))
 				x.icon_state = "[((x.x + x.y) ^ ~(x.x * x.y) + x.z) % 25]"
 		sleep 3000 //This will be 3000 eventually. (5min) - set to 10s for testing
-		command_alert("Movement Complete. The ship has reached "+ movetarget.name+ "", "NEV Unity Autopilot")
 		for(var/turf/space/x in world)
 			if(!istype(x, /turf/space/transit))
 				x.icon_state = "x[((x.x + x.y) ^ ~(x.x * x.y) + x.z) % 25]"
 //		for(var/mob/M in player_list)
 //			M << sound('sound/music/All Hands.ogg')
 		ship.curplanet = movetarget
+		for(var/area/shuttle/mining/outpost/target in world)
+			del(target)
+		createAwayMission()
+		awayZLevel++
+		onPlanet = 1
+		command_alert("Movement Complete. The ship has reached "+ movetarget.name+ "", "NEV Unity Autopilot")
 		locked = 0
 /obj/machinery/computer/navigation/proc/move(var/datum/system/movetarget)
 	if(movetarget)
@@ -132,6 +142,7 @@
 		ship.cursystem = movetarget
 		ship.system1 = new /datum/system()
 		ship.system2 = new /datum/system()
+		onPlanet = 0
 		locked = 0
 /obj/machinery/computer/astronavigation
 	icon = 'icons/obj/computer.dmi'

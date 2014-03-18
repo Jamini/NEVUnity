@@ -53,7 +53,7 @@ datum/controller/game_controller/proc/setup()
 	world.tick_lag = config.Ticklag
 
 	spawn(20)
-		createRandomZlevel()
+		//createRandomZlevel() // We are moving to a new away mission structure. This is no longer neccesary
 
 	if(!air_master)
 		air_master = new /datum/controller/air_system()

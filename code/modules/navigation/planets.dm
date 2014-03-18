@@ -223,6 +223,11 @@ datum/ship/proc/move(datum/system/x) //Used for moving the ship. 0 is no move, -
 	cursystem = x
 	system1 = new /datum/system()
 	system2 = new /datum/system()
+	onPlanet = 0
 	return
 datum/ship/proc/moveplan(datum/planet/x)
 	curplanet = x
+	world << "DEBUG WORKS"
+	createAwayMission()
+	onPlanet = 1
+	return
