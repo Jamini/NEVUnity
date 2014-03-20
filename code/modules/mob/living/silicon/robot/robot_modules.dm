@@ -172,14 +172,10 @@
 		src.modules += new /obj/item/weapon/reagent_containers/food/drinks/beer(src)
 		src.modules += new /obj/item/weapon/reagent_containers/food/condiment/enzyme(src)
 		src.modules += new /obj/item/weapon/pen/robopen(src)
-
-		var/obj/item/weapon/rsf/M = new /obj/item/weapon/rsf(src)
-		M.matter = 30
-		src.modules += M
-
+		src.modules += new /obj/item/weapon/rsf/borg/(src)
 		src.modules += new /obj/item/weapon/reagent_containers/robodropper(src)
 
-		var/obj/item/weapon/lighter/zippo/L = new /obj/item/weapon/lighter/zippo(src)
+		var/obj/item/weapon/lighter/zippo/L = new /obj/item/weapon/lighter/zippo(src) //Make a special borg zippo sheesh
 		L.lit = 1
 		src.modules += L
 
