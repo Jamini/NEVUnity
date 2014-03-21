@@ -1365,5 +1365,4 @@
 #include "interface\skin.dmf"
 #include "maps\nev_unityx.dmm"
 #include "maps\RandomZLevels\Academy.dm"
-#include "maps\RandomZLevels\asteroid.dmm"
 // END_INCLUDE

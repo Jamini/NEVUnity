@@ -1,7 +1,11 @@
 proc/createAwayMission()
 	var/list/potentialRandomZlevels = list()
 	world << "\red \b DEBUG: Searching for away missions..."
-	var/list/Lines = file2list("maps/RandomZLevels/fileList.txt")
+	var/list/Lines
+	if(ship.curplanet.planet_type == "Anom") //If the planet is an anomoly, load an empty space map
+		Lines = file2list("maps/RandomZLevels/anomList.txt")
+	else //If we don't have a map list already created, default to the default list.
+		Lines = file2list("maps/RandomZLevels/fileList.txt")
 	if(!Lines.len)	return
 	for (var/t in Lines)
 		if (!t)

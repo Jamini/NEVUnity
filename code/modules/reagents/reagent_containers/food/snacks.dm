@@ -1857,7 +1857,6 @@
 	New()
 		..
 		reagents.add_reagent("nutriment", 40)
-		reagents.add_reagent("tomatojuice", 6)
 		bitesize = 2
 
 /obj/item/weapon/reagent_containers/food/snacks/veglasagnaslice
@@ -1876,7 +1875,6 @@
 	New()
 		..
 		reagents.add_reagent("nutriment", 40)
-		reagents.add_reagent("tomatojuice", 6)
 		bitesize = 2
 
 /obj/item/weapon/reagent_containers/food/snacks/lasagnaslice

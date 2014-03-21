@@ -1639,6 +1639,17 @@ proc/process_ghost_teleport_locs()
 
 
 // Away Missions
+
+//All random zones need to be equal in size
+/area/randomzones/homemap //This is placed on your randomly selectable locations on the HOME map.Each one needs to be labeled with a seperate zonenum on map generation
+	name = "\improper Strange Location"
+	icon_state = "away"
+	var/zonenum = 0
+/area/randomzones/awaymap //This zone goes on your away map. Each zone will randomly select a valid zonenumber from the availible home maps.
+	name = "\improper Strange Location"
+	icon_state = "away"
+	var/zonechar = "z"
+
 /area/awaymission
 	name = "\improper Strange Location"
 	icon_state = "away"

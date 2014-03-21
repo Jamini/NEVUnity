@@ -1149,7 +1149,6 @@ I said no!
 
 /datum/recipe/lasagna
 	items = list(
-		reagents = list("wine" = 5),
 		/obj/item/weapon/reagent_containers/food/snacks/spagetti,
 		/obj/item/weapon/reagent_containers/food/snacks/spagetti,
 		/obj/item/weapon/reagent_containers/food/snacks/spagetti,
@@ -1164,7 +1163,6 @@ I said no!
 	result = /obj/item/weapon/reagent_containers/food/snacks/sliceable/lasagna
 /datum/recipe/veglasagna
 	items = list(
-		reagents = list("wine" = 5),
 		/obj/item/weapon/reagent_containers/food/snacks/spagetti,
 		/obj/item/weapon/reagent_containers/food/snacks/spagetti,
 		/obj/item/weapon/reagent_containers/food/snacks/spagetti,
@@ -1184,8 +1182,8 @@ I said no!
 	)
 	result = /obj/item/weapon/reagent_containers/food/snacks/stuffchureech
 /datum/recipe/friedtomatoes
+	reagents = list("cornoil" = 5)
 	items = list(
-		reagents = list("cornoil" = 5),
 		/obj/item/weapon/reagent_containers/food/snacks/grown/tomato,
 	)
 	result = /obj/item/weapon/reagent_containers/food/snacks/friedtomatoes
