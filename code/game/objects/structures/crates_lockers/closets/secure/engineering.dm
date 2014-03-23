@@ -32,6 +32,7 @@
 		new /obj/item/device/multitool(src)
 		new /obj/item/device/flash(src)
 		new /obj/item/taperoll/engineering(src)
+		new /obj/item/clothing/head/beret/eng(src)
 		return
 
 
@@ -120,6 +121,8 @@
 		new /obj/item/weapon/storage/belt/utility/full(src)
 		new /obj/item/clothing/head/hardhat(src)
 		new /obj/item/clothing/under/rank/engineer(src)
+		new /obj/item/clothing/shoes/orange(src)
+		new /obj/item/clothing/head/beret/eng(src)
 		return
 
 /obj/structure/closet/secure_closet/electrician_personal
@@ -153,6 +156,8 @@
 		new /obj/item/clothing/shoes/orange(src)
 		new /obj/item/weapon/storage/belt/utility/full(src)
 		new /obj/item/clothing/head/hardhat(src)
+		new /obj/item/clothing/shoes/orange(src)
+		new /obj/item/clothing/head/beret/eng(src)
 		return
 /obj/structure/closet/secure_closet/atmos_personal
 	name = "Atmospheric Locker"
@@ -186,4 +191,5 @@
 		new /obj/item/clothing/under/rank/atmospheric_technician(src)
 		new /obj/item/clothing/shoes/black(src)
 		new /obj/item/weapon/storage/belt/utility/atmostech/(src)
+		new /obj/item/clothing/head/beret/eng(src)
 		return

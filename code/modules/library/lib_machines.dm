@@ -47,6 +47,10 @@ datum/borrowbook // Datum used to keep track of who has borrowed what when and f
 			if(!dbcon_old.IsConnected())
 				dat += "<font color=red><b>ERROR</b>: Reconnecting to External Archive.</font><BR>"
 				dbcon_old = new()
+				if(!setup_old_database_connection())
+					world.log << "Your server failed to establish a connection with the SQL database."
+				else
+					world.log << "SQL database connection established."
 			else if(!SQLquery)
 				dat += "<font color=red><b>ERROR</b>: Malformed search request. Please contact your system administrator for assistance.</font><BR>"
 			else

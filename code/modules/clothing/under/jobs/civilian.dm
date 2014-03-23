@@ -19,7 +19,7 @@
 
 
 /obj/item/clothing/under/rank/cargo
-	name = "quartermaster's jumpsuit"
+	name = "first officer's jumpsuit"
 	desc = "It's a jumpsuit worn by the quartermaster. It's specially designed to prevent back injuries caused by pushing paper."
 	icon_state = "qm"
 	item_state = "lb_suit"
@@ -27,7 +27,7 @@
 
 
 /obj/item/clothing/under/rank/cargotech
-	name = "cargo technician's jumpsuit"
+	name = "quartermaster's jumpsuit"
 	desc = "Shooooorts! They're comfy and easy to wear!"
 	icon_state = "cargotech"
 	item_state = "lb_suit"
@@ -62,8 +62,8 @@
 
 
 /obj/item/clothing/under/rank/head_of_personnel
-	desc = "It's a jumpsuit worn by someone who works in the position of \"Head of Personnel\"."
-	name = "head of personnel's jumpsuit"
+	desc = "It's a jumpsuit worn by someone who works in the position of \"First Officer\"."
+	name = "first officer's jumpsuit"
 	icon_state = "hop"
 	item_state = "b_suit"
 	objcolor =  "hop"

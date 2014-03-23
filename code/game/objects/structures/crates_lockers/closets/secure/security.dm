@@ -124,6 +124,7 @@
 		new /obj/item/weapon/gun/energy/gun(src)
 		new /obj/item/clothing/tie/holster/waist(src)
 		new /obj/item/weapon/melee/telebaton(src)
+		new /obj/item/clothing/head/beret/sec(src)
 		return
 
 
@@ -196,6 +197,11 @@
 		new /obj/item/taperoll/police(src)
 		new /obj/item/device/hailer(src)
 		new /obj/item/clothing/tie/storage/black_vest(src)
+		new /obj/item/clothing/under/rank/security(src)
+		new /obj/item/clothing/under/rank/security2(src)
+		new /obj/item/clothing/under/rank/security/corp(src)
+		new /obj/item/clothing/shoes/jackboots(src)
+		new /obj/item/clothing/head/beret/sec(src)
 		return
 
 
@@ -262,6 +268,7 @@
 		new /obj/item/weapon/gun/projectile/detective(src)
 		new /obj/item/clothing/tie/holster/armpit(src)
 		new /obj/item/weapon/lighter/zippo(src)
+		new /obj/item/clothing/head/beret/sec(src)
 		return
 
 /obj/structure/closet/secure_closet/detective/update_icon()

@@ -328,6 +328,8 @@
 					set_picture("ai_fishtank")
 				if("Plump Helmet")
 					set_picture("ai_plump")
+				if("Egypt")
+					set_picture("ai_egypt")
 
 			return
 

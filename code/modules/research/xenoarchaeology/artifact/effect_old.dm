@@ -435,25 +435,27 @@
 					M.updatehealth()
 				return 1
 			if("cellcharge")
-				for (var/obj/machinery/power/apc/C in range(200, originator))
+				for (var/obj/machinery/power/apc/C in range(src.aurarange*10,originator))
 					for (var/obj/item/weapon/cell/B in C.contents)
 						B.charge += 100
 				for (var/obj/machinery/power/smes/S in range (src.aurarange,src)) S.charge += 250
 				for (var/mob/living/silicon/robot/M in world)
 					for (var/obj/item/weapon/cell/D in M.contents)
 						D.charge += 100
-						M << "\blue SYSTEM ALERT: Energy boost detected!"
+						if(prob(10))
+							M << "\blue SYSTEM ALERT: Energy boost detected!"
 				return 1
 			if("celldrain")
-				for (var/obj/machinery/power/apc/C in range(200, originator))
+				for (var/obj/machinery/power/apc/C in range(src.aurarange*10,originator))
 					for (var/obj/item/weapon/cell/B in C.contents)
 						B.charge = max(B.charge-250,0)
 				for (var/obj/machinery/power/smes/S in range (src.aurarange,src))
 					S.charge = max(S.charge-250,0)
-				for (var/mob/living/silicon/robot/M in world)
+				for (var/mob/living/silicon/robot/M in range(src.aurarange,src))
 					for (var/obj/item/weapon/cell/D in M.contents)
 						D.charge = max(D.charge-250,0)
-						M << "\red SYSTEM ALERT: Energy drain detected!"
+						if(prob(10))
+							M << "\red SYSTEM ALERT: Energy drain detected!"
 				return 1
 			if("teleport")
 				for (var/mob/living/M in range(200, originator))
