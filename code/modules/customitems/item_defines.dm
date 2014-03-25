@@ -57,9 +57,9 @@
 	desc = "A scratched and worn identification card; it appears too damaged to inferface with any technology. You can almost make out \"Tom Cabinet\" in the smeared ink."
 	icon_state = "ethan_way_1"
 
-/obj/item/fluff/val_mcneil_1 //silentthunder: Val McNeil
+/obj/item/fluff/val_mcneil_1 //silentthunder: Val McNeil - Reassigned to CD
 	name = "rosary pendant"
-	desc = "A cross on a ring of beads, has McNeil etched onto the back."
+	desc = "a rustic defaced cross. Most of the detail has worn away. It is welded to a thin chain."
 	icon_state = "val_mcneil_1"
 
 /obj/item/fluff/steve_johnson_1 //thebreadbocks: Steve Johnson

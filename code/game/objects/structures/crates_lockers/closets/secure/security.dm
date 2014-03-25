@@ -125,6 +125,7 @@
 		new /obj/item/clothing/tie/holster/waist(src)
 		new /obj/item/weapon/melee/telebaton(src)
 		new /obj/item/clothing/head/beret/sec(src)
+		new /obj/item/clothing/shoes/jackboots(src)
 		return
 
 
@@ -162,6 +163,7 @@
 		new /obj/item/weapon/melee/baton(src)
 		new /obj/item/weapon/gun/energy/taser(src)
 		new /obj/item/weapon/storage/box/holobadge(src)
+		new /obj/item/clothing/shoes/jackboots(src)
 		return
 
 

@@ -1593,7 +1593,12 @@ proc/process_ghost_teleport_locs()
 /area/wreck/engineering
 	name = "\improper Power Room"
 	icon_state = "engine"
-
+/area/unity/stasis
+	name = "\improper Stasis Deck"
+	icon_state = "engine"
+/area/unity/bluespace
+	name = "\improper Bluespace Deck"
+	icon_state = "bridge"
 /area/wreck/bridge
 	name = "\improper Bridge"
 	icon_state = "bridge"

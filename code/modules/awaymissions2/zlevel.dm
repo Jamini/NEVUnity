@@ -4,6 +4,8 @@ proc/createAwayMission()
 	var/list/Lines
 	if(ship.curplanet.planet_type == "Anom") //If the planet is an anomoly, load an empty space map
 		Lines = file2list("maps/RandomZLevels/anomList.txt")
+	if(ship.curplanet.planet_type == "Habit")//If the planet is habitable, load a habitable map.
+		Lines = file2list("maps/RandomZLevels/habitList.txt")
 	else //If we don't have a map list already created, default to the default list.
 		Lines = file2list("maps/RandomZLevels/fileList.txt")
 	if(!Lines.len)	return
