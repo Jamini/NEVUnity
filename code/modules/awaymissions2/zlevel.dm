@@ -1,11 +1,22 @@
+/obj/effect/landmark/zoneloader
+	name = "awayloader"
+	icon = 'icons/mob/screen1.dmi'
+	icon_state = "x2"
+	anchored = 1.0
+	unacidable = 1
+
 proc/createAwayMission()
 	var/list/potentialRandomZlevels = list()
 	world << "\red \b DEBUG: Searching for away missions..."
 	var/list/Lines
 	if(ship.curplanet.planet_type == "Anom") //If the planet is an anomoly, load an empty space map
 		Lines = file2list("maps/RandomZLevels/anomList.txt")
-	if(ship.curplanet.planet_type == "Habit")//If the planet is habitable, load a habitable map.
+	else if(ship.curplanet.planet_type == "Habit")//If the planet is habitable, load a habitable map.
 		Lines = file2list("maps/RandomZLevels/habitList.txt")
+	else if(ship.curplanet.planet_type == "Debris")//If the planet is a debris fild, load a mining map
+		Lines = file2list("maps/RandomZLevels/debrisList.txt")
+	else if(ship.curplanet.planet_type == "Dead")//If the planet is a dead world, load a dead map
+		Lines = file2list("maps/RandomZLevels/deadList.txt")
 	else //If we don't have a map list already created, default to the default list.
 		Lines = file2list("maps/RandomZLevels/fileList.txt")
 	if(!Lines.len)	return
@@ -45,9 +56,103 @@ proc/createAwayMission()
 		if(isfile(file))
 			maploader.load_map(file,z_offset = awayZLevel, load_speed = 100)
 
+		for(var/obj/effect/landmark/zoneloader/x in world)
+			loadRandomZone(x)
+
 
 		world << "\red \b Away mission loaded."
+
+ //remove the random away zone from the list
 
 	else
 		world << "\red \b No away missions found."
 		return
+proc/loadRandomZone(var/obj/effect/landmark/zoneloader/target)
+	var/list/potentialRandomZones = list()
+	world << "\red \b DEBUG: Loading Random Zones..."
+	var/list/Lines = list()
+
+//First we load the generic mapfiles
+
+	if(ship.curplanet.planet_type == "Anom") //If the planet is an anomoly, load from the anomoly lists
+		Lines = file2list("maps/RandomZLevels/anomZoneGeneric.txt")
+	else if(ship.curplanet.planet_type == "Habit")//If the planet is habitable, load from the habitable lists.
+		Lines = file2list("maps/RandomZLevels/habitZoneGeneric.txt")
+	else if(ship.curplanet.planet_type == "deadZoneGeneric.txt")
+		Lines = file2list("maps/RandomZLevels/deadZoneGeneric.txt")
+	else //If we don't have a map list already created, default to the default lists.
+		Lines = file2list("maps/RandomZLevels/zoneGeneric.txt")
+
+
+
+	for(var/datum/feature/x in ship.curplanet.features)
+		if(ship.curplanet.planet_type == "Anom") //If the planet is an anomoly, load from the anomoly lists
+			if(x.name == "Intermittent Signal")
+				Lines.Add(file2list("maps/RandomZLevels/anomShipZones.txt"))
+			if(x.name == "Sensor Blip")
+				Lines.Add(file2list("maps/RandomZLevels/anomShipZones.txt"))
+			if(x.name == "Intercepted Transmission")
+				Lines.Add(file2list("maps/RandomZLevels/anomShipZones.txt"))
+		if(ship.curplanet.planet_type == "Habit")
+			if(x.name == "Ruins")
+				Lines.Add(file2list("maps/RandomZLevels/habitStructures.txt"))
+			if(x.name == "Outpost")
+				Lines.Add(file2list("maps/RandomZLevels/habitStructures.txt"))
+			if(x.name == "Intelligent Life")
+				Lines.Add(file2list("maps/RandomZLevels/habitStructures.txt"))
+		if(ship.curplanet.planet_type == "Debris")
+			if(x.name == "Shipwreak")
+				Lines.Add(file2list("maps/RandomZLevels/anomShipZones.txt"))
+			if(x.name == "Energy Signatures")
+				Lines.Add(file2list("maps/RandomZLevels/anomShipZones.txt"))
+			if(x.name == "Life Signs")
+				Lines.Add(file2list("maps/RandomZLevels/anomShipZones.txt"))
+			if(x.name == "Distress Beacon")
+				Lines.Add(file2list("maps/RandomZLevels/anomShipZones.txt"))
+			if(x.name == "Empty Space")
+				Lines.Add(file2list("maps/RandomZLevels/anomZoneGeneric.txt"))
+
+	if(!Lines.len)	return
+	for (var/t in Lines)
+		if (!t)
+			continue
+
+		t = trim(t)
+		if (length(t) == 0)
+			continue
+		else if (copytext(t, 1, 2) == "#")
+			continue
+
+		var/pos = findtext(t, " ")
+		var/name = null
+	//	var/value = null
+
+		if (pos)
+            // No, don't do lowertext here, that breaks paths on linux
+			name = copytext(t, 1, pos)
+		//	value = copytext(t, pos + 1)
+		else
+            // No, don't do lowertext here, that breaks paths on linux
+			name = t
+
+		if (!name)
+			continue
+
+		potentialRandomZones.Add(name)
+
+	if(potentialRandomZones.len)
+		world << "\red \b Loading away zone."
+
+		var/map = pick(potentialRandomZones)
+		var/file = file(map)
+		if(isfile(file))
+			maploader.load_map(file, z_offset = target.loc.z, y_offset =target.loc.y, x_offset = target.loc.x, load_speed = 100)
+		del(target)
+		world << "\red \b Away zone loaded."
+
+	else
+		world << "\red \b No away zone found."
+		return
+
+
+

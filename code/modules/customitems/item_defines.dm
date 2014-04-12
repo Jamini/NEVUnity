@@ -909,7 +909,7 @@
 	icon_state = "retpoluniform"
 	objcolor = "retpoluniform"
 
-/obj/item/device/fluff/multitool/omnitool
+/obj/item/device/multitool/fluff/omnitool
 	name = "omnitool"
 	desc = "A multipurpose diagnostic and manufacturing tool used for a variety of tasks."
 	icon = 'custom_items.dmi'

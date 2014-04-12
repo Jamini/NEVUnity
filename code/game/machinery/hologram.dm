@@ -29,6 +29,28 @@ Possible to do for anyone motivated enough:
 // 1 = AREA BASED
 var/const/HOLOPAD_MODE = 0
 
+/obj/machinery/hologram/holopad/holobot
+	name = "\improper AI holobot"
+	desc = "It's a hovering device for projecting holographic images. It is activated remotely."
+	icon_state = "holobot0"
+	anchored = 0
+
+/obj/machinery/hologram/holopad/holobot/move_hologram()
+	if(hologram)
+		var/turf/movetarget = get_turf(master.eyeobj)
+		if(movetarget.density)
+			clear_holo()
+		else
+			for(var/obj/D in movetarget.loc)
+				if(!D.density)			continue
+				else
+					clear_holo()
+					return 1
+			step_to(src, master.eyeobj) // So it turns.
+			src.loc = get_turf(master.eyeobj)
+			..()
+	return 1
+
 /obj/machinery/hologram/holopad
 	name = "\improper AI holopad"
 	desc = "It's a floor-mounted device for projecting holographic images. It is activated remotely."
@@ -36,6 +58,51 @@ var/const/HOLOPAD_MODE = 0
 	var/mob/living/silicon/ai/master//Which AI, if any, is controlling the object? Only one AI may control a hologram at any time.
 	var/last_request = 0 //to prevent request spam. ~Carn
 	var/holo_range = 5 // Change to change how far the AI can move away from the holopad before deactivating.
+	var/health = 5
+	var/maxhealth = 5
+	var/fire_dam_coeff = 1.0
+	var/brute_dam_coeff = 1.0
+
+/obj/machinery/hologram/holopad/proc/healthcheck()
+	if (src.health <= 0)
+		src.explode()
+
+/obj/machinery/hologram/holopad/proc/explode()
+	clear_holo()
+	del(src)
+
+/obj/machinery/hologram/holopad/bullet_act(var/obj/item/projectile/Proj)
+	health -= Proj.damage
+	..()
+	healthcheck()
+
+/obj/machinery/hologram/holopad/meteorhit()
+	src.explode()
+	return
+
+/obj/machinery/hologram/holopad/blob_act()
+	src.health -= rand(20,40)*fire_dam_coeff
+	healthcheck()
+	return
+
+/obj/machinery/hologram/holopad/ex_act(severity)
+	switch(severity)
+		if(1.0)
+			src.explode()
+			return
+		if(2.0)
+			src.health -= rand(5,10)*fire_dam_coeff
+			src.health -= rand(10,20)*brute_dam_coeff
+			healthcheck()
+			return
+		if(3.0)
+			if (prob(50))
+				src.health -= rand(1,5)*fire_dam_coeff
+				src.health -= rand(1,5)*brute_dam_coeff
+				healthcheck()
+				return
+	return
+
 
 /obj/machinery/hologram/holopad/attack_hand(var/mob/living/carbon/human/user) //Carn: Hologram requests.
 	if(!istype(user))
@@ -119,6 +186,24 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 		playsound(loc, 'sound/items/Ratchet.ogg', 50, 1)
 		anchored = !anchored
 		user << "You [anchored ? "wrench" : "unwrench"] \the [src]."
+	else if(istype(0, /obj/item/weapon/weldingtool))
+		if(health < maxhealth)
+			health = min(maxhealth, health+10)
+			user.visible_message("\red [user] repairs [src]!","\blue You repair [src]!")
+		else
+			user << "<span class='notice'>[src] does not need a repair.</span>"
+	else
+		if(hasvar(O,"force") && hasvar(O,"damtype"))
+			switch(O.damtype)
+				if("fire")
+					src.health -= O.force * fire_dam_coeff
+				if("brute")
+					src.health -= O.force * brute_dam_coeff
+			..()
+			healthcheck()
+		else
+			..()
+
 
 /obj/machinery/hologram/holopad/process()
 	if(hologram)//If there is a hologram.

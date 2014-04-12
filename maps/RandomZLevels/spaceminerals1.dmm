@@ -1,0 +1,34 @@
+"a" = (/turf/space,/area)
+"b" = (/turf/simulated/mineral/random/high_chance,/area)
+"c" = (/turf/simulated/mineral/iron,/area)
+"d" = (/turf/simulated/mineral/plasma,/area)
+"e" = (/turf/simulated/mineral/gold,/area)
+"f" = (/turf/simulated/mineral/silver,/area)
+"g" = (/turf/simulated/mineral/uranium,/area)
+"h" = (/turf/simulated/mineral/diamond,/area)
+"i" = (/turf/simulated/mineral/clown,/area)
+"j" = (/obj/machinery/artifact,/turf/simulated/floor/engine,/area)
+"k" = (/turf/simulated/mineral/plasma,/area/mine/unexplored)
+
+(1,1,1) = {"
+aaaaabccbccccccaaaaa
+aaaaccbbbcccccccaaaa
+aaccccddddccccbccaaa
+accbbbdddddcccbcccaa
+accddddddddccccbbbba
+ccbddddbbbddccccbbbb
+ccbddddbeeeddcccbbbb
+ddddfbbbgbbbddddcbbb
+ccddfbeeggebddddccbb
+ccddbbgghihgbdddccbb
+ccddbfffijigbdddccba
+addbbbgghihbeddddcba
+adddddeebgggeddddbba
+accdkdeebbbbbdddddba
+accdddddbeebbdddddaa
+accccdddbdddddddddaa
+aacccdddddddddddaaaa
+aaacccccccccccbbaaaa
+aaaaccccccccccaaaaaa
+aaaaaaaaccccccaaaaaa
+"}

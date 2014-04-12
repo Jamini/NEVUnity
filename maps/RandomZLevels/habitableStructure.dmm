@@ -1,0 +1,58 @@
+"a" = (/turf/unsimulated/floor/grass,/area/awaymission/beach{name = "Planet"})
+"b" = (/obj/structure/flora/ausbushes/sparsegrass,/turf/unsimulated/floor/grass,/area/awaymission/beach{name = "Planet"})
+"c" = (/turf/unsimulated/wall{icon_state = "iron6"},/area/awaymission/beach{name = "Planet"})
+"d" = (/turf/unsimulated/wall{icon_state = "iron12"},/area/awaymission/beach{name = "Planet"})
+"e" = (/turf/unsimulated/wall{icon_state = "iron10"},/area/awaymission/beach{name = "Planet"})
+"f" = (/turf/unsimulated/wall{icon_state = "iron3"},/area/awaymission/beach{name = "Planet"})
+"g" = (/obj/structure/closet/gmcloset{icon_closed = "black"; icon_state = "black"; name = "formal wardrobe"},/turf/unsimulated/floor{tag = "icon-wood"; icon_state = "wood"},/area/awaymission/beach{name = "Planet"})
+"h" = (/obj/structure/closet/secure_closet/bar,/turf/unsimulated/floor{tag = "icon-wood"; icon_state = "wood"},/area/awaymission/beach{name = "Planet"})
+"i" = (/obj/structure/table/woodentable,/obj/item/weapon/book/manual/barman_recipes,/turf/unsimulated/floor{tag = "icon-wood"; icon_state = "wood"},/area/awaymission/beach{name = "Planet"})
+"j" = (/obj/structure/table/woodentable,/obj/item/weapon/reagent_containers/food/drinks/shaker,/turf/unsimulated/floor{tag = "icon-wood"; icon_state = "wood"},/area/awaymission/beach{name = "Planet"})
+"k" = (/obj/structure/table/woodentable,/turf/unsimulated/floor{tag = "icon-wood"; icon_state = "wood"},/area/awaymission/beach{name = "Planet"})
+"l" = (/obj/structure/table/woodentable,/obj/item/clothing/glasses/sunglasses,/turf/unsimulated/floor{tag = "icon-wood"; icon_state = "wood"},/area/awaymission/beach{name = "Planet"})
+"m" = (/obj/machinery/vending/boozeomat{emagged = 1},/turf/unsimulated/floor{tag = "icon-wood"; icon_state = "wood"},/area/awaymission/beach{name = "Planet"})
+"n" = (/obj/machinery/vending/cigarette,/turf/unsimulated/floor{tag = "icon-wood"; icon_state = "wood"},/area/awaymission/beach{name = "Planet"})
+"o" = (/obj/machinery/vending/cola,/turf/unsimulated/floor{tag = "icon-wood"; icon_state = "wood"},/area/awaymission/beach{name = "Planet"})
+"p" = (/obj/machinery/vending/snack,/turf/unsimulated/floor{tag = "icon-wood"; icon_state = "wood"},/area/awaymission/beach{name = "Planet"})
+"q" = (/turf/unsimulated/wall{icon_state = "iron1"; tag = "icon-sandstone1"},/area/awaymission/beach{name = "Planet"})
+"r" = (/turf/unsimulated/floor{tag = "icon-wood"; icon_state = "wood"},/area/awaymission/beach{name = "Planet"})
+"s" = (/obj/structure/mineral_door/wood{tag = "icon-wood"; icon_state = "wood"},/turf/unsimulated/floor{tag = "icon-wood"; icon_state = "wood"},/area/awaymission/beach{name = "Planet"})
+"t" = (/turf/unsimulated/wall{tag = "icon-rwall0"; icon_state = "rwall0"},/area/awaymission/beach{name = "Planet"})
+"u" = (/obj/structure/table/woodentable,/obj/item/weapon/reagent_containers/food/drinks/beer,/turf/unsimulated/floor{tag = "icon-wood"; icon_state = "wood"},/area/awaymission/beach{name = "Planet"})
+"v" = (/obj/structure/stool,/turf/unsimulated/floor/grass,/area/awaymission/beach{name = "Planet"})
+"w" = (/obj/structure/mineral_door/wood{tag = "icon-wood"; icon_state = "wood"},/turf/unsimulated/floor/grass,/area/awaymission/beach{name = "Planet"})
+"x" = (/turf/unsimulated/wall{icon_state = "iron14"},/area/awaymission/beach{name = "Planet"})
+"y" = (/turf/unsimulated/wall/fakeglass{icon_state = "fakewindows"; dir = 8},/area/awaymission/beach{name = "Planet"})
+"z" = (/turf/unsimulated/wall/fakeglass{icon_state = "fakewindows"; dir = 4},/area/awaymission/beach{name = "Planet"})
+"A" = (/obj/structure/closet,/turf/unsimulated/floor{tag = "icon-wood"; icon_state = "wood"},/area/awaymission/beach{name = "Planet"})
+"B" = (/obj/structure/stool,/turf/unsimulated/floor{tag = "icon-wood"; icon_state = "wood"},/area/awaymission/beach{name = "Planet"})
+"C" = (/obj/structure/stool/bed/chair/comfy/black{dir = 4},/turf/unsimulated/floor{tag = "icon-wood"; icon_state = "wood"},/area/awaymission/beach{name = "Planet"})
+"D" = (/obj/structure/table,/turf/unsimulated/floor{tag = "icon-wood"; icon_state = "wood"},/area/awaymission/beach{name = "Planet"})
+"E" = (/obj/structure/stool/bed/chair/comfy/black{dir = 8},/turf/unsimulated/floor{tag = "icon-wood"; icon_state = "wood"},/area/awaymission/beach{name = "Planet"})
+"F" = (/obj/structure/stool/bed,/obj/item/weapon/bedsheet/red,/turf/unsimulated/floor{tag = "icon-wood"; icon_state = "wood"},/area/awaymission/beach{name = "Planet"})
+"G" = (/turf/unsimulated/wall{icon_state = "iron5"},/area/awaymission/beach{name = "Planet"})
+"H" = (/turf/unsimulated/wall{icon_state = "iron13"},/area/awaymission/beach{name = "Planet"})
+"I" = (/turf/unsimulated/wall{icon_state = "iron9"},/area/awaymission/beach{name = "Planet"})
+
+(1,1,1) = {"
+aaaaaaaaaaaaaaaaaaaa
+aabbaaabaabbbaabbaaa
+abbbbaabbbbbbbbbbbba
+abbbbacddddddddddeba
+aabbbbfghijklmnopfba
+aaaaabqrrrrrrrrrrfbb
+aaaaaasrrrrrrrrrrfba
+aaaaaatkukkkkkkkkqba
+aaaaaaavvvvvvvvvvaba
+aaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaa
+aabbacdwddxdyzdweaaa
+abbbbfArrAfrrrrrfbaa
+aabbbfBrrBfCDDErfbba
+aaabbfDFFDfCDDErfbaa
+aaaaaGddddHdyzddIaaa
+aaaaaaaabbbbabbbbbaa
+aaaaaaaaaabbabbaaaaa
+"}

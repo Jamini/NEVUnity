@@ -1,0 +1,29 @@
+"a" = (/turf/space,/area)
+"b" = (/turf/simulated/mineral/gold,/area)
+"c" = (/turf/simulated/mineral/random/high_chance,/area)
+"d" = (/turf/simulated/mineral/diamond,/area)
+"e" = (/turf/simulated/mineral/uranium,/area)
+"f" = (/turf/simulated/mineral/clown,/area)
+
+(1,1,1) = {"
+aaaaaaaaaaaaaaaaaaaa
+aaabbaaaaaaabccaaaaa
+aaacbbaaaaaabccaaaaa
+aaaccbaaaaaabccaaaaa
+aadccbaaaaaabccaaaaa
+aadccbaaaaabbccaaaaa
+aadcccaaaabbcccaaaaa
+aadccccaaabccccaaaaa
+aadcccaaaabccccccaaa
+aadcccaaaabccccccaaa
+aadcccaaaacccccecaaa
+aadfccaaaacccceccaaa
+aadfcccaaacccecccaaa
+aadddccaaaaacecccaaa
+aaaadccaaaaacecccaaa
+aaaadccaaaaacecccaaa
+aaaadccaaaaaeccccaaa
+aaaadccaaaaaeccccaaa
+aaaaaaaacccacccccaaa
+aaaaaaaacccacccccaaa
+"}

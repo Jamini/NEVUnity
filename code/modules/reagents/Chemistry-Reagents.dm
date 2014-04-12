@@ -17,6 +17,7 @@ datum
 		var/datum/reagents/holder = null
 		var/reagent_state = SOLID
 		var/list/data = null
+		var/duration
 		var/volume = 0
 		var/nutriment_factor = 0
 		var/custom_metabolism = REAGENTS_METABOLISM //Default 0.2
@@ -297,15 +298,17 @@ datum
 			custom_metabolism = 0.01
 
 			on_mob_life(var/mob/living/M as mob)
+				if(!duration)
+					duration = 0
 				if(!M) M = holder.my_atom
 				// Toxins are really weak, but without being treated, last very long.
 				M.adjustToxLoss(0.2)
-				if(src.volume <= 0.1) if(data != -1)
-					data = -1
+				if(src.volume <= 0.1) if(duration != -1)
+					duration = -1
 					M << "\red Your stomach hurts a little less.."
 				else
-					if(world.time > data + ANTIDEPRESSANT_MESSAGE_DELAY)
-						data = world.time
+					if(world.time > duration + ANTIDEPRESSANT_MESSAGE_DELAY)
+						duration = world.time
 						M << "\blue Your stomach hurts a little bit...."
 				..()
 				return
@@ -375,12 +378,12 @@ datum
 
 			on_mob_life(var/mob/living/M as mob)
 				if(!M) M = holder.my_atom
-				if(!data) data = 1
-				data++
+				if(!duration) duration = 1
+				duration++
 				if(M.losebreath >= 10)
 					M.losebreath = max(10, M.losebreath-10)
 				holder.remove_reagent(src.id, 0.2)
-				switch(data)
+				switch(duration)
 					if(1 to 15)
 						M.eye_blurry = max(M.eye_blurry, 10)
 					if(15 to 25)
@@ -412,12 +415,12 @@ datum
 				if(M.losebreath >= 10)
 					M.losebreath = max(10, M.losebreath-5)
 				holder.remove_reagent(src.id, 0.5 * REAGENTS_METABOLISM)
-				if(src.volume <= 0.1) if(data != -1)
-					data = -1
+				if(src.volume <= 0.1) if(duration != -1)
+					duration = -1
 					M << pick("\red You feel a little less alert..", "\blue Your heartbeat slows a little..")
 				else
-					if(world.time > data + ANTIDEPRESSANT_MESSAGE_DELAY)
-						data = world.time
+					if(world.time > duration + ANTIDEPRESSANT_MESSAGE_DELAY)
+						duration = world.time
 						M << pick("\blue You feel alert!","\red Your heart is racing!")
 
 				return
@@ -1359,9 +1362,9 @@ datum
 			on_mob_life(var/mob/living/M as mob)
 				if(!M) M = holder.my_atom
 				if(prob(5)) M << pick(  "\red Your body aches and burns everywhere!.")
-				if(!data) data = 1
-				data++
-				switch(data)
+				if(!duration) duration = 1
+				duration++
+				switch(duration)
 					if(1 to 15)
 						M.adjustCloneLoss(-1)
 						M.heal_organ_damage(1,1)
@@ -1746,8 +1749,8 @@ datum
 
 			on_mob_life(var/mob/living/M as mob)
 				if(!M) M = holder.my_atom
-				if(!data) data = 1
-				switch(data)
+				if(!duration) duration = 1
+				switch(duration)
 					if(1 to 12)
 						if(prob(5))	M.emote("yawn")
 						if(prob(5)) M << "You feel dizzy and tired"
@@ -1758,7 +1761,7 @@ datum
 					if(25 to INFINITY)
 						M.Paralyse(20)
 						M.drowsyness  = max(M.drowsyness, 30)
-				data++
+				duration++
 				..()
 				return
 
@@ -1774,9 +1777,9 @@ datum
 
 			on_mob_life(var/mob/living/M as mob)
 				if(!M) M = holder.my_atom
-				if(!data) data = 1
-				data++
-				switch(data)
+				if(!duration) duration = 1
+				duration++
+				switch(duration)
 					if(1 to 12)
 						M.confused += 2
 						M.drowsyness += 2
@@ -1798,8 +1801,8 @@ datum
 
 			on_mob_life(var/mob/living/M as mob)
 				if(!M) M = holder.my_atom
-				if(!data) data = 1
-				switch(data)
+				if(!duration) duration = 1
+				switch(duration)
 					if(1)
 						M.confused += 2
 						M.drowsyness += 2
@@ -1807,8 +1810,8 @@ datum
 						M.sleeping += 1
 					if(51 to INFINITY)
 						M.sleeping += 1
-						M.adjustToxLoss((data - 50)*REM)
-				data++
+						M.adjustToxLoss((duration - 50)*REM)
+				duration++
 				..()
 				return
 
@@ -1979,8 +1982,8 @@ datum
 
 			on_mob_life(var/mob/living/M as mob)
 				if(!M) M = holder.my_atom
-				if(!data) data = 1
-				switch(data)
+				if(!duration) duration = 1
+				switch(duration)
 					if(1 to 15)
 						if(M.bodytemperature < BODYTEMP_HEAT_DAMAGE_LIMIT)
 							M.bodytemperature += 5 * TEMPERATURE_DAMAGE_COEFFICIENT
@@ -1994,7 +1997,7 @@ datum
 						if(istype(M, /mob/living/carbon/slime))
 							M.bodytemperature += rand(10,20)
 				holder.remove_reagent(src.id, FOOD_METABOLISM)
-				data++
+				duration++
 				..()
 				return
 
@@ -2073,8 +2076,8 @@ datum
 
 			on_mob_life(var/mob/living/M as mob)
 				if(!M) M = holder.my_atom
-				if(!data) data = 1
-				switch(data)
+				if(!duration) duration = 1
+				switch(duration)
 					if(1 to 15)
 						if(M.bodytemperature > BODYTEMP_COLD_DAMAGE_LIMIT)
 							M.bodytemperature -= 5 * TEMPERATURE_DAMAGE_COEFFICIENT
@@ -2087,7 +2090,7 @@ datum
 							M.bodytemperature -= 10 * TEMPERATURE_DAMAGE_COEFFICIENT
 						if(istype(M, /mob/living/carbon/slime))
 							M.bodytemperature -= rand(10,20)
-				data++
+				duration++
 				holder.remove_reagent(src.id, FOOD_METABOLISM)
 				..()
 				return
@@ -2149,8 +2152,8 @@ datum
 			on_mob_life(var/mob/living/M as mob)
 				if(!M) M = holder.my_atom
 				M.druggy = max(M.druggy, 30)
-				if(!data) data = 1
-				switch(data)
+				if(!duration) duration = 1
+				switch(duration)
 					if(1 to 5)
 						if (!M.stuttering) M.stuttering = 1
 						M.make_dizzy(5)
@@ -2168,7 +2171,7 @@ datum
 						M.druggy = max(M.druggy, 40)
 						if(prob(30)) M.emote(pick("twitch","giggle"))
 				holder.remove_reagent(src.id, 0.2)
-				data++
+				duration++
 				..()
 				return
 
@@ -2415,14 +2418,14 @@ datum
 				..()
 				M.eye_blurry = max(M.eye_blurry-1 , 0)
 				M.eye_blind = max(M.eye_blind-1 , 0)
-				if(!data) data = 1
-				switch(data)
+				if(!duration) duration = 1
+				switch(duration)
 					if(1 to 20)
 						//nothing
 					if(21 to INFINITY)
-						if (prob(data-10))
+						if (prob(duration-10))
 							M.disabilities &= ~NEARSIGHTED
-				data++
+				duration++
 				return
 
 		drink/berryjuice
@@ -2689,8 +2692,8 @@ datum
 
 			on_mob_life(var/mob/living/M as mob)
 				if(!M) M = holder.my_atom
-				if(!data) data = 1
-				switch(data)
+				if(!duration) duration = 1
+				switch(duration)
 					if(1 to 15)
 						M.bodytemperature -= 5 * TEMPERATURE_DAMAGE_COEFFICIENT
 						if(holder.has_reagent("capsaicin"))
@@ -2706,7 +2709,7 @@ datum
 						if(prob(1)) M.emote("shiver")
 						if(istype(M, /mob/living/carbon/slime))
 							M.bodytemperature -= rand(15,20)
-				data++
+				duration++
 				holder.remove_reagent(src.id, FOOD_METABOLISM)
 				..()
 				return
@@ -2723,29 +2726,9 @@ datum
 				return
 
 
-		doctor_delight
-			name = "The Doctor's Delight"
-			id = "doctorsdelight"
-			description = "A gulp a day keeps the MediBot away. That's probably for the best."
-			reagent_state = LIQUID
-			color = "#FF8CFF" // rgb: 255, 140, 255
-			nutriment_factor = 1 * FOOD_METABOLISM
 
-			on_mob_life(var/mob/living/M as mob)
-				M:nutrition += nutriment_factor
-				holder.remove_reagent(src.id, FOOD_METABOLISM)
-				if(!M) M = holder.my_atom
-				if(M:getOxyLoss() && prob(50)) M:adjustOxyLoss(-2)
-				if(M:getBruteLoss() && prob(60)) M:heal_organ_damage(2,0)
-				if(M:getFireLoss() && prob(50)) M:heal_organ_damage(0,2)
-				if(M:getToxLoss() && prob(50)) M:adjustToxLoss(-2)
-				if(M.dizziness !=0) M.dizziness = max(0,M.dizziness-15)
-				if(M.confused !=0) M.confused = max(0,M.confused - 5)
-				..()
-				return
 
 //////////////////////////////////////////////The ten friggen million reagents that get you drunk//////////////////////////////////////////////
-
 		atomicbomb
 			name = "Atomic Bomb"
 			id = "atomicbomb"
@@ -2759,9 +2742,9 @@ datum
 				M.make_dizzy(10)
 				if (!M.stuttering) M.stuttering = 1
 				M.stuttering += 3
-				if(!data) data = 1
-				data++
-				switch(data)
+				if(!duration) duration = 1
+				duration++
+				switch(duration)
 					if(51 to 200)
 						M.sleeping += 1
 					if(201 to INFINITY)
@@ -2778,17 +2761,17 @@ datum
 			color = "#664300" // rgb: 102, 67, 0
 
 			on_mob_life(var/mob/living/M as mob)
-				if(!data) data = 1
-				data++
+				if(!duration) duration = 1
+				duration++
 				M.dizziness +=6
-				if(data >= 15 && data <45)
+				if(duration >= 15 && duration <45)
 					if (!M.stuttering) M.stuttering = 1
 					M.stuttering += 3
-				else if(data >= 45 && prob(50) && data <55)
+				else if(duration >= 45 && prob(50) && duration <55)
 					M.confused = max(M.confused+3,0)
-				else if(data >=55)
+				else if(duration >=55)
 					M.druggy = max(M.druggy, 55)
-				else if(data >=200)
+				else if(duration >=200)
 					M.adjustToxLoss(2)
 				..()
 				return
@@ -2803,17 +2786,17 @@ datum
 			on_mob_life(var/mob/living/carbon/M as mob)
 				if(!M) M = holder.my_atom
 				M.weakened = max(M.weakened, 3)
-				if(!data) data = 1
-				data++
+				if(!duration) duration = 1
+				duration++
 				M.dizziness +=6
-				if(data >= 15 && data <45)
+				if(duration >= 15 && duration <45)
 					if (!M.stuttering) M.stuttering = 1
 					M.stuttering += 3
-				else if(data >= 45 && prob(50) && data <55)
+				else if(duration >= 45 && prob(50) && duration <55)
 					M.confused = max(M.confused+3,0)
-				else if(data >=55)
+				else if(duration >=55)
 					M.druggy = max(M.druggy, 55)
-				else if(data >=200)
+				else if(duration >=200)
 					M.adjustToxLoss(2)
 				..()
 				return
@@ -2828,9 +2811,9 @@ datum
 			on_mob_life(var/mob/living/M as mob)
 				if(!M) M = holder.my_atom
 				M.druggy = max(M.druggy, 50)
-				if(!data) data = 1
-				data++
-				switch(data)
+				if(!duration) duration = 1
+				duration++
+				switch(duration)
 					if(1 to 5)
 						if (!M.stuttering) M.stuttering = 1
 						M.make_dizzy(10)
@@ -2891,14 +2874,14 @@ datum
 				if (adj_drowsy)	M.drowsyness = max(0,M.drowsyness + adj_drowsy)
 				if (adj_sleepy) M.sleeping = max(0,M.sleeping + adj_sleepy)
 
-				if(!src.data) data = 1
-				src.data += boozepwr
+				if(!src.duration) duration = 1
+				src.duration = src.duration + boozepwr
 
-				var/d = data
+				var/d = duration
 
 				// make all the beverages work together
 				for(var/datum/reagent/ethanol/A in holder.reagent_list)
-					if(isnum(A.data)) d += A.data
+					if(isnum(A.duration)) d += A.duration
 
 				M.dizziness += dizzy_adj.
 				if(d >= slur_start && d < pass_out)
@@ -2934,6 +2917,28 @@ datum
 						usr << "The solution melts away the ink on the book."
 					else
 						usr << "It wasn't enough..."
+				return
+
+		ethanol/doctor_delight
+			name = "The Doctor's Delight"
+			id = "doctorsdelight"
+			description = "A gulp a day keeps the MediBot away. That's probably for the best."
+			reagent_state = LIQUID
+			color = "#FF8CFF" // rgb: 255, 140, 255
+			boozepwr = 0.5
+			nutriment_factor = 1 * FOOD_METABOLISM
+
+			on_mob_life(var/mob/living/M as mob)
+				M:nutrition += nutriment_factor
+				holder.remove_reagent(src.id, FOOD_METABOLISM)
+				if(!M) M = holder.my_atom
+				if(M:getOxyLoss() && prob(50)) M:adjustOxyLoss(-2)
+				if(M:getBruteLoss() && prob(60)) M:heal_organ_damage(2,0)
+				if(M:getFireLoss() && prob(50)) M:heal_organ_damage(0,2)
+				if(M:getToxLoss() && prob(50)) M:adjustToxLoss(-2)
+				if(M.dizziness !=0) M.dizziness = max(0,M.dizziness-15)
+				if(M.confused !=0) M.confused = max(0,M.confused - 5)
+				..()
 				return
 
 		ethanol/beer
@@ -3108,8 +3113,8 @@ datum
 			//copy paste from LSD... shoot me
 			on_mob_life(var/mob/M)
 				if(!M) M = holder.my_atom
-				if(!data) data = 1
-				data++
+				if(!duration) duration = 1
+				duration++
 				M:hallucination += 5
 				..()
 				return
@@ -3553,13 +3558,13 @@ datum
 			boozepwr = 4
 
 			on_mob_life(var/mob/living/M as mob)
-				if(!data) data = 1
-				data++
+				if(!duration) duration = 1
+				duration++
 				M.dizziness +=10
-				if(data >= 55 && data <115)
+				if(duration >= 55 && duration <115)
 					if (!M.stuttering) M.stuttering = 1
 					M.stuttering += 10
-				else if(data >= 115 && prob(33))
+				else if(duration >= 115 && prob(33))
 					M.confused = max(M.confused+15,15)
 				..()
 				return

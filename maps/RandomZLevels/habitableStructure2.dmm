@@ -1,0 +1,38 @@
+"a" = (/turf/unsimulated/floor/grass,/area/awaymission/beach{name = "Planet"})
+"b" = (/obj/structure/flora/ausbushes/sparsegrass,/turf/unsimulated/floor/grass,/area/awaymission/beach{name = "Planet"})
+"c" = (/turf/unsimulated/wall{icon_state = "iron6"},/area/awaymission/beach{name = "Planet"})
+"d" = (/turf/unsimulated/wall{icon_state = "iron12"},/area/awaymission/beach{name = "Planet"})
+"e" = (/turf/unsimulated/wall{icon_state = "iron14"},/area/awaymission/beach{name = "Planet"})
+"f" = (/turf/unsimulated/wall{icon_state = "iron10"},/area/awaymission/beach{name = "Planet"})
+"g" = (/turf/unsimulated/wall{icon_state = "iron3"},/area/awaymission/beach{name = "Planet"})
+"h" = (/obj/structure/closet,/turf/unsimulated/floor{tag = "icon-wood"; icon_state = "wood"},/area/awaymission/beach{name = "Planet"})
+"i" = (/turf/unsimulated/floor{tag = "icon-wood"; icon_state = "wood"},/area/awaymission/beach{name = "Planet"})
+"j" = (/obj/structure/table,/turf/unsimulated/floor{tag = "icon-wood"; icon_state = "wood"},/area/awaymission/beach{name = "Planet"})
+"k" = (/obj/structure/stool/bed,/obj/item/weapon/bedsheet/red,/turf/unsimulated/floor{tag = "icon-wood"; icon_state = "wood"},/area/awaymission/beach{name = "Planet"})
+"l" = (/turf/unsimulated/wall{icon_state = "iron5"},/area/awaymission/beach{name = "Planet"})
+"m" = (/obj/structure/mineral_door/wood{tag = "icon-wood"; icon_state = "wood"},/turf/unsimulated/floor/grass,/area/awaymission/beach{name = "Planet"})
+"n" = (/turf/unsimulated/wall{icon_state = "iron13"},/area/awaymission/beach{name = "Planet"})
+"o" = (/turf/unsimulated/wall{icon_state = "iron9"},/area/awaymission/beach{name = "Planet"})
+
+(1,1,1) = {"
+aaaaaaaaaaaaaaaaaaaa
+aababbbbbbbbbbbbaaaa
+aabbbbbabbabbbbbbbaa
+aabbaaaabbbaabbbbbaa
+aaabbaaaaaaaaaaabbba
+aabbbbaaaaaaaaaaaaba
+aabbabaaaaaaaaaaaaaa
+aaabbaaaaaaaaaaaaaaa
+aaacddeddeddfbbaaaaa
+aaaghighighigabbaaaa
+abbgjkgjkgjkgbbbbaaa
+aaaldmndmndmobbaaaaa
+aaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaa
+aaacdmedmedmfaaaaaaa
+abbghighighigbbaaaaa
+aabgjkgjkgjkgbbbaaaa
+aablddnddnddobbaaaaa
+aaaaabbabbbbbbbaaaaa
+aaaaaabbaaaaaaaaaaaa
+"}

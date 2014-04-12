@@ -69,6 +69,13 @@
 		if(istype(O,/obj/item/weapon))
 			var/obj/item/weapon/W = O
 			dtype = W.damtype
+		//adding in a little bit to allow humans to catch some thrown things
+		if(istype(src,/mob/living/carbon/human))
+			if(istype(O,/obj/item/weapon/beach_ball))
+				if(prob(75))
+					src.equip_to_slot_if_possible(O, slot_l_hand)
+					src.equip_to_slot_if_possible(O, slot_r_hand)
+					return 0
 		src.visible_message("\red [src] has been hit by [O].")
 		var/armor = run_armor_check(zone, "melee", "Your armor has protected your [zone].", "Your armor has softened hit to your [zone].")
 		if(armor < 2)

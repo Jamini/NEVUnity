@@ -1,0 +1,115 @@
+"aa" = (/turf/space,/area)
+"ab" = (/turf/simulated/wall,/area)
+"ac" = (/obj/structure/grille,/obj/structure/window/reinforced,/obj/structure/window/reinforced{dir = 1},/obj/structure/window/reinforced{dir = 8},/turf/simulated/floor/plating/airless,/area)
+"ad" = (/obj/structure/grille,/obj/structure/window/reinforced,/obj/structure/window/reinforced{dir = 1},/turf/simulated/floor/plating/airless,/area)
+"ae" = (/obj/structure/grille,/obj/structure/window/reinforced,/obj/structure/window/reinforced{dir = 1},/obj/structure/window/reinforced{dir = 4},/turf/simulated/floor/plating/airless,/area)
+"af" = (/obj/structure/computerframe,/turf/simulated/floor/airless,/area)
+"ag" = (/obj/structure/table,/turf/simulated/floor/airless,/area)
+"ah" = (/obj/structure/stool/bed/chair/office/dark{dir = 1},/obj/effect/landmark/corpse/bridgeofficer,/turf/simulated/floor/airless,/area)
+"ai" = (/turf/simulated/floor/airless,/area)
+"aj" = (/obj/structure/stool/bed/chair/office/dark{dir = 1},/turf/simulated/floor/airless,/area)
+"ak" = (/obj/structure/grille,/obj/structure/window/reinforced{dir = 1},/obj/structure/window/reinforced{dir = 8},/obj/structure/window/reinforced{dir = 4},/turf/simulated/floor/plating/airless,/area)
+"al" = (/obj/effect/alien/weeds,/turf/simulated/floor/airless,/area)
+"am" = (/obj/effect/decal/cleanable/xenoblood/xsplatter,/turf/simulated/floor/airless,/area)
+"an" = (/obj/effect/decal/cleanable/xenoblood/xgibs/up,/turf/simulated/floor/airless,/area)
+"ao" = (/obj/structure/grille,/obj/structure/window/reinforced,/obj/structure/window/reinforced{dir = 8},/obj/structure/window/reinforced{dir = 4},/turf/simulated/floor/plating/airless,/area)
+"ap" = (/obj/effect/decal/cleanable/xenoblood/xgibs/down,/obj/effect/alien/weeds,/turf/simulated/floor/airless,/area)
+"aq" = (/obj/effect/decal/cleanable/xenoblood/xsplatter,/obj/machinery/light/small,/turf/simulated/floor/airless,/area)
+"ar" = (/obj/effect/decal/cleanable/xenoblood/xgibs/body,/turf/simulated/floor/airless,/area)
+"as" = (/obj/effect/decal/cleanable/xenoblood/xgibs/core,/turf/simulated/floor/airless,/area)
+"at" = (/obj/effect/decal/cleanable/xenoblood/xgibs/limb,/obj/machinery/light/small,/turf/simulated/floor/airless,/area)
+"au" = (/obj/machinery/door/airlock/hatch,/turf/simulated/floor/airless,/area)
+"av" = (/obj/effect/alien/resin/wall,/turf/simulated/floor/airless,/area)
+"aw" = (/obj/effect/alien/weeds,/obj/effect/alien/weeds/node,/turf/simulated/floor/airless,/area)
+"ax" = (/obj/structure/table,/obj/item/weapon/FixOVein{pixel_x = -6; pixel_y = 1},/turf/simulated/floor,/area)
+"ay" = (/obj/structure/table,/obj/item/weapon/hemostat{pixel_y = 4},/obj/item/weapon/cautery{pixel_y = 4},/turf/simulated/floor{icon_state = "whitehall"; dir = 2},/area)
+"az" = (/obj/structure/table,/obj/item/weapon/retractor{pixel_x = 0; pixel_y = 6},/obj/item/weapon/scalpel,/turf/simulated/floor{icon_state = "whitehall"; dir = 2},/area)
+"aA" = (/obj/structure/table,/obj/item/weapon/bonegel{pixel_x = 4; pixel_y = 3},/obj/item/weapon/bonesetter,/turf/simulated/floor{icon_state = "whitehall"; dir = 2},/area)
+"aB" = (/obj/structure/table,/obj/item/weapon/surgicaldrill,/obj/item/weapon/circular_saw,/obj/machinery/door_control{id = "Medical_Surgery"; name = "Privacy Shutters"; pixel_y = 25},/turf/simulated/floor,/area)
+"aC" = (/obj/structure/grille,/obj/structure/window/reinforced{dir = 8},/obj/structure/window/reinforced{dir = 4},/turf/simulated/floor/plating/airless,/area)
+"aD" = (/obj/effect/alien/resin/membrane,/turf/simulated/floor/airless,/area)
+"aE" = (/obj/machinery/light{dir = 8},/obj/effect/alien/weeds,/turf/simulated/floor{dir = 4; icon_state = "whitehall"},/area)
+"aF" = (/obj/effect/landmark/corpse/doctor,/obj/effect/decal/cleanable/blood/tracks,/obj/effect/decal/cleanable/blood/splatter,/obj/effect/alien/weeds,/turf/simulated/floor{icon_state = "white"},/area)
+"aG" = (/obj/effect/alien/weeds,/turf/simulated/floor{icon_state = "white"},/area)
+"aH" = (/obj/effect/alien/weeds,/turf/simulated/floor{icon_state = "whitehall"; dir = 8},/area)
+"aI" = (/obj/effect/alien/resin/wall,/turf/simulated/floor{icon_state = "white"},/area)
+"aJ" = (/obj/effect/decal/cleanable/blood/tracks,/obj/effect/alien/weeds,/obj/effect/alien/weeds,/turf/simulated/floor{icon_state = "white"},/area)
+"aK" = (/obj/machinery/optable,/obj/effect/landmark/corpse/alien/testsubject,/turf/simulated/floor{icon_state = "white"},/area)
+"aL" = (/obj/machinery/door/airlock/hatch,/turf/simulated/floor{icon_state = "white"},/area)
+"aM" = (/obj/structure/closet/secure_closet/medical2,/obj/machinery/light{dir = 8},/turf/simulated/floor{dir = 4; icon_state = "whitehall"},/area)
+"aN" = (/obj/machinery/computer/operating,/turf/simulated/floor{icon_state = "white"},/area)
+"aO" = (/obj/structure/sink{dir = 4; icon_state = "sink"; pixel_x = 11; pixel_y = 0},/obj/effect/alien/weeds,/turf/simulated/floor{icon_state = "whitehall"; dir = 8},/area)
+"aP" = (/obj/effect/decal/cleanable/blood/drip,/turf/simulated/floor/airless,/area)
+"aQ" = (/obj/machinery/light/small{dir = 4},/turf/simulated/floor/airless,/area)
+"aR" = (/obj/machinery/door/airlock/hatch,/turf/simulated/floor/plating/airless,/area)
+"aS" = (/obj/effect/alien/resin/wall,/turf/simulated/floor/plating/airless,/area)
+"aT" = (/obj/effect/alien/resin/wall,/turf/simulated/floor/plating/airless{broken = 1},/area)
+"aU" = (/obj/structure/closet/wardrobe/pjs,/turf/simulated/floor,/area)
+"aV" = (/obj/effect/alien/weeds/node,/turf/simulated/floor{icon_state = "whitehall"; dir = 1},/area)
+"aW" = (/obj/effect/alien/weeds,/turf/simulated/floor{icon_state = "whitehall"; dir = 1},/area)
+"aX" = (/obj/structure/extinguisher_cabinet{name = "extinguisher cabinet."; pixel_x = 5; pixel_y = -30},/obj/effect/alien/weeds,/turf/simulated/floor{icon_state = "whitehall"; dir = 1},/area)
+"aY" = (/obj/structure/table,/obj/item/weapon/reagent_containers/spray/cleaner{desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back."; name = "Surgery Cleaner"},/obj/machinery/holosign_switch{pixel_x = -7; pixel_y = 2},/turf/simulated/floor,/area)
+"aZ" = (/obj/machinery/door/airlock/hatch,/turf/simulated/floor/plating/airless{broken = 1},/area)
+"ba" = (/turf/simulated/floor/plating/airless,/area)
+"bb" = (/obj/machinery/bodyscanner,/obj/machinery/light{dir = 1},/turf/simulated/floor{icon_state = "showroomfloor"},/area)
+"bc" = (/obj/machinery/body_scanconsole,/turf/simulated/floor{icon_state = "showroomfloor"},/area)
+"bd" = (/obj/effect/decal/cleanable/blood/gibs/up,/obj/effect/decal/cleanable/blood/splatter,/turf/simulated/floor{icon_state = "showroomfloor"},/area)
+"be" = (/obj/machinery/atmospherics/unary/cryo_cell,/turf/simulated/floor{icon_state = "showroomfloor"},/area)
+"bf" = (/obj/structure/table,/obj/item/weapon/reagent_containers/glass/beaker/cryoxadone{pixel_x = 7; pixel_y = 1},/obj/machinery/atmospherics/unary/vent_scrubber{on = 1},/obj/structure/noticeboard{pixel_x = 0; pixel_y = 32},/obj/machinery/light{dir = 1},/turf/simulated/floor{icon_state = "showroomfloor"},/area)
+"bg" = (/obj/effect/decal/cleanable/vomit,/turf/simulated/floor/airless,/area)
+"bh" = (/obj/effect/decal/cleanable/blood/drip,/obj/machinery/light/small{dir = 4},/turf/simulated/floor/airless,/area)
+"bi" = (/obj/effect/alien/resin/membrane,/turf/simulated/floor/plating/airless,/area)
+"bj" = (/obj/structure/stool/bed,/obj/item/weapon/bedsheet/red,/obj/effect/alien/weeds,/turf/simulated/floor/wood,/area)
+"bk" = (/obj/effect/alien/weeds,/obj/effect/alien/weeds/node,/turf/simulated/floor/wood,/area)
+"bl" = (/obj/effect/alien/weeds,/turf/simulated/floor/wood,/area)
+"bm" = (/obj/machinery/door/airlock/hatch,/turf/simulated/floor{icon_state = "showroomfloor"},/area)
+"bn" = (/obj/effect/decal/cleanable/blood/gibs/limb,/obj/effect/decal/cleanable/blood/splatter,/turf/simulated/floor{icon_state = "showroomfloor"},/area)
+"bo" = (/obj/effect/decal/cleanable/blood/splatter,/turf/simulated/floor{icon_state = "showroomfloor"},/area)
+"bp" = (/obj/effect/landmark/corpse/doctor,/obj/effect/decal/cleanable/blood/gibs/body,/obj/effect/decal/cleanable/blood/gibs/core,/turf/simulated/floor{icon_state = "showroomfloor"},/area)
+"bq" = (/obj/machinery/atmospherics/pipe/manifold{dir = 8; icon_state = "manifold"; level = 2},/obj/effect/decal/cleanable/blood/splatter,/obj/effect/decal/cleanable/blood/splatter,/turf/simulated/floor{icon_state = "showroomfloor"},/area)
+"br" = (/obj/machinery/atmospherics/pipe/simple{icon_state = "intact"; dir = 10; pixel_x = 0; level = 2; initialize_directions = 10},/obj/effect/decal/cleanable/blood/gibs/limb,/obj/effect/decal/cleanable/blood/splatter,/turf/simulated/floor{icon_state = "showroomfloor"},/area)
+"bs" = (/obj/effect/decal/cleanable/blood/splatter,/turf/simulated/floor/airless,/area)
+"bt" = (/obj/machinery/door/airlock/hatch,/obj/effect/decal/cleanable/blood/splatter,/turf/simulated/floor/wood,/area)
+"bu" = (/obj/effect/decal/cleanable/blood/splatter,/turf/simulated/floor/wood,/area)
+"bv" = (/obj/structure/stool/bed,/obj/item/weapon/bedsheet/red,/obj/effect/landmark/corpse/engineer,/obj/effect/decal/cleanable/blood/splatter,/turf/simulated/floor/wood,/area)
+"bw" = (/obj/structure/table,/obj/machinery/light/small,/obj/effect/alien/weeds,/obj/effect/alien/acid,/turf/simulated/floor/wood,/area)
+"bx" = (/obj/structure/closet,/obj/effect/alien/weeds,/obj/effect/alien/acid,/turf/simulated/floor/wood,/area)
+"by" = (/obj/machinery/sleeper,/turf/simulated/floor{icon_state = "showroomfloor"},/area)
+"bz" = (/obj/machinery/sleep_console,/turf/simulated/floor{icon_state = "showroomfloor"},/area)
+"bA" = (/obj/effect/decal/cleanable/blood/gibs/down,/obj/effect/decal/cleanable/blood/splatter,/turf/simulated/floor{icon_state = "showroomfloor"},/area)
+"bB" = (/obj/machinery/atmospherics/portables_connector{dir = 1; name = "Connector Port (Air Supply)"},/obj/machinery/portable_atmospherics/canister/oxygen,/turf/simulated/floor{icon_state = "showroomfloor"},/area)
+"bC" = (/obj/machinery/atmospherics/unary/cold_sink/freezer{dir = 1},/turf/simulated/floor{icon_state = "showroomfloor"},/area)
+"bD" = (/obj/structure/closet,/turf/simulated/floor/wood,/area)
+"bE" = (/obj/structure/table,/obj/machinery/light/small,/turf/simulated/floor/wood,/area)
+"bF" = (/obj/effect/alien/weeds,/obj/effect/alien/egg,/turf/simulated/floor/wood,/area)
+"bG" = (/obj/structure/shuttle/engine/heater,/turf/simulated/floor/plating/airless,/area)
+"bH" = (/obj/machinery/door/airlock/hatch,/turf/simulated/floor/wood,/area)
+"bI" = (/turf/simulated/floor/wood,/area)
+"bJ" = (/obj/structure/stool/bed,/obj/item/weapon/bedsheet/red,/turf/simulated/floor/wood,/area)
+"bK" = (/obj/structure/closet,/obj/effect/alien/weeds,/turf/simulated/floor/wood,/area)
+"bL" = (/obj/structure/shuttle/engine/propulsion{icon_state = "propulsion_l"},/turf/simulated/floor/plating/airless,/area)
+"bM" = (/obj/structure/shuttle/engine/propulsion,/turf/simulated/floor/plating/airless,/area)
+"bN" = (/obj/structure/shuttle/engine/propulsion{icon_state = "burst_r"},/turf/simulated/floor/plating/airless,/area)
+
+(1,1,1) = {"
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaabacadadadaeabaaaaaaaaaaaaaa
+aaaaaaaaaaaaabafagafagafabaaaaaaaaaaaaaa
+aaaaaaaaabababahaiajaiajabababaaaaaaaaaa
+aaaaaaaaakalaiamaianaiaiaiaiakaaaaaaaaaa
+aaaaaaaaaoapaqarasaqaiaiataiaoaaaaaaaaaa
+aaaaaaababalabababababababauababaaaaaaaa
+aaaaaaakavawabaxayazaAaBabaiaiakaaaaaaaa
+aaaaaaaCaDalabaEaFaGaGaHabaiaiaCaaaaaaaa
+aaaaaaaoaDavaIaGaJaKaGaGaLaiaiaoaaaaaaaa
+ababababaDavabaMaGaNaGaOabaPaQababababaa
+aRaSaSaTalavabaUaVaWaXaYabaPaiaZbabaaRaa
+abaSaSabalavabababababababaPaiabbabaabaa
+ababababalavabbbbcbdbebfabbgbhababababaa
+bibjbkblalaDbmbnbobpbqbrbmaibsbtbubvakaa
+bibwbxabalavabbybzbAbBbCabaiaiabbDbEaoaa
+ababababalavabacadadadaeabaiaQababababaa
+bibjbFblawavabbGbGbGbGbGabaiaibHbIbJakaa
+bibwbKababababbLbMbMbMbNababababbDbEaoaa
+ababababaaaaaaaaaaaaaaaaaaaaaaababababaa
+"}

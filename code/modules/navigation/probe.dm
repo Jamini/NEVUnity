@@ -22,6 +22,7 @@
 	var/scandelay = 2000 //How long each scan tick takes. 2000 is the default
 	var/traveldelay = 600 //How long it takes to travel to/from the site. 600 is the default
 	var/obj/structure/reagent_dispensers/probe/collector
+	var/operating = 0
 
 /obj/machinery/computer/probe/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null)
 	if(stat & (BROKEN|NOPOWER)) return
@@ -62,6 +63,17 @@
 	if(stat & (NOPOWER|BROKEN))
 		return 0
 	if(href_list["return"])
+		if(!away)
+			src.visible_message("The Terminal States: Shuttle already returned. Unable to recall.Please launch probe.")
+			src.visible_message("\blue \icon[src] buzzes irritably!", 7)
+			playsound(src.loc, 'sound/machines/buzz-sigh.ogg', 50, 1)
+			return 0
+		if(operating)
+			src.visible_message("The Terminal States: Shuttle already recalled. Please wait")
+			src.visible_message("\blue \icon[src] buzzes irritably!", 7)
+			playsound(src.loc, 'sound/machines/buzz-sigh.ogg', 50,1)
+			return 0
+		operating = 1
 		src.visible_message("The Terminal States: Return Procedure Initiated. ETA: 1 Minute")
 		sleep(traveldelay)
 		src.visible_message("The Terminal States: Probe Retrived")
@@ -69,8 +81,14 @@
 		site.move_contents_to(home)
 		ship.cantmove = 0
 		away = 0
+		operating = 0
 		return 1
 	if(href_list["launch"])
+		if(away)
+			src.visible_message("The Terminal States: Shuttle already away. Unable to launch.Please recall probe.")
+			src.visible_message("\blue \icon[src] buzzes irritably!", 7)
+			playsound(src.loc, 'sound/machines/buzz-sigh.ogg', 50, 1)
+			return 0
 		var/mob/x
 		for(x in locate(PROBE_HOME_AREA))
 			if(x)

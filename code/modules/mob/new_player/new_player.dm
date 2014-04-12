@@ -304,6 +304,9 @@
 				character.Robotize()
 			else
 				character.AIize()
+				for(var/mob/M in player_list)
+					if(!istype(M,/mob/new_player))
+						M << sound('sound/AI/newAI.ogg')
 		del(src)
 
 	proc/AnnounceArrival(var/mob/living/carbon/human/character, var/rank)

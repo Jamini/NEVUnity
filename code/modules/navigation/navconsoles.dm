@@ -103,6 +103,7 @@
 /obj/machinery/computer/navigation/proc/moveplan(var/datum/planet/movetarget)
 	if(movetarget)
 		locked = 1
+		onPlanet = 0
 		command_alert("Movement Initated. Destination:" + movetarget.name+ ". All hands please prepare for bluespace transit. ETA:5 minutes.", "NEV Unity Autopilot")
 //		for(var/mob/M in player_list)
 //			M << sound('sound/music/All Hands.ogg')
@@ -126,6 +127,7 @@
 /obj/machinery/computer/navigation/proc/move(var/datum/system/movetarget)
 	if(movetarget)
 		locked = 1
+		onPlanet = 0
 		command_alert("Movement Initiated. Destination:"+ movetarget.name+ ". All hands please prepare for bluespace transit. ETA: 15 minutes.", "NEV Unity Autopilot")
 //		for(var/mob/M in player_list)
 //			M << sound('sound/music/All Hands.ogg')
@@ -142,7 +144,6 @@
 		ship.cursystem = movetarget
 		ship.system1 = new /datum/system()
 		ship.system2 = new /datum/system()
-		onPlanet = 0
 		locked = 0
 /obj/machinery/computer/astronavigation
 	icon = 'icons/obj/computer.dmi'
@@ -152,7 +153,7 @@
 	var/datum/system/activesystem
 	var/datum/planet/activeplanet
 	var/locked // This variable prevents scanning while a scan is in progress
-	var/scan_delay = 500 //The delay for scanning. Muliply by three for actual delay. 150 seconds for full scan at 500
+	var/scan_delay = 300 //The delay for scanning. Muliply by three for actual delay. 90 seconds for full scan at 300 ticks
 
 /**
   * The ui_interact proc is used to open and update Nano UIs

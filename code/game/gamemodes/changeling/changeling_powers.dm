@@ -3,6 +3,7 @@
 	name = "changling "
 	desc = "And boom goes the weasel."
 	icon_state = "implant_evil"
+	w_class = 0
 
 /mob/proc/make_changeling()
 	if(!mind)				return

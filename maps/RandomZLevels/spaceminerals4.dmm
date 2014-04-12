@@ -1,0 +1,25 @@
+"a" = (/turf/space,/area)
+"b" = (/turf/simulated/mineral/diamond,/area)
+
+(1,1,1) = {"
+aaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaa
+aaaaaaaabaaaaaaaaaaa
+aaaaaaabbbaaaaaaaaaa
+aaaaaaabbbaaaaaabaaa
+aaaaaaabbbaaaaabbbaa
+aaaaaaaabaaaaaabbbaa
+aaabbbbaaaaaaaabbbaa
+aabbbbbbaaaaaaaabaaa
+aaabbbbaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaabaaaaaaa
+aaaaaaaaaaabbbaaaaaa
+aaabaaaaaaabbbaaaaaa
+aabbbaaaaaabbbaaaaaa
+aabbbaaaaaaabaaaaaaa
+aabbbaaaaaaaaaaaaaaa
+aaabaaaaaaaaaaaaaaaa
+"}

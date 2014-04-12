@@ -1,0 +1,30 @@
+"a" = (/turf/space,/area)
+"b" = (/turf/simulated/mineral/uranium,/area)
+"c" = (/turf/simulated/mineral/random/high_chance,/area)
+"d" = (/obj/effect/alien/resin,/turf/simulated/mineral/random/high_chance,/area)
+"e" = (/obj/effect/alien/weeds,/turf/simulated/floor/plating/airless/asteroid,/area)
+"f" = (/obj/machinery/auto_cloner,/turf/simulated/floor/plating/airless/asteroid,/area)
+"g" = (/obj/effect/alien/weeds/node,/turf/simulated/floor/plating/airless/asteroid,/area)
+
+(1,1,1) = {"
+aaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaa
+aaaaaabbbbbbbaaaaaaa
+aaaaabbcccccbbaaaaaa
+aaaabbcccccccbbaaaaa
+aaaabccdddddccbaaaaa
+aaaabcddefeddcbaaaaa
+aaaabcdeeeeedcbaaaaa
+aaaabcdeegeedcbaaaaa
+aaaabcddeeeddcbaaaaa
+aaaabbcdddddcbbaaaaa
+aaaaabbbcccbbbaaaaaa
+aaaaaaabbbbbaaaaaaaa
+aaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaa
+"}
