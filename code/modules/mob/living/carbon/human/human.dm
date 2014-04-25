@@ -14,26 +14,27 @@
 /mob/living/carbon/human/skrell/New()
 	h_style = "Skrell Male Tentacles"
 	set_species("Skrell")
-	remove_language("Sol Common")
 	..()
+	remove_language("Sol Common")
+
 
 /mob/living/carbon/human/tajaran/New()
 	h_style = "Tajaran Ears"
 	set_species("Tajaran")
-	remove_language("Sol Common")
 	..()
+	remove_language("Sol Common")
 
 /mob/living/carbon/human/unathi/New()
 	h_style = "Unathi Horns"
 	set_species("Unathi")
-	remove_language("Sol Common")
 	..()
+	remove_language("Sol Common")
 
 /mob/living/carbon/human/vox/New()
 	h_style = "Short Vox Quills"
 	set_species("Vox")
-	remove_language("Sol Common")
 	..()
+	remove_language("Sol Common")
 
 /mob/living/carbon/human/diona/New()
 	species = new /datum/species/diona(src)

@@ -13,11 +13,11 @@
 #define COLD_DAMAGE_LEVEL_3 3 //Amount of damage applied when your body temperature passes the 120K point
 
 //Note that gas heat damage is only applied once every FOUR ticks.
-#define HEAT_GAS_DAMAGE_LEVEL_1 2 //Amount of damage applied when the current breath's temperature just passes the 360.15k safety point
-#define HEAT_GAS_DAMAGE_LEVEL_2 4 //Amount of damage applied when the current breath's temperature passes the 400K point
-#define HEAT_GAS_DAMAGE_LEVEL_3 8 //Amount of damage applied when the current breath's temperature passes the 1000K point
+#define HEAT_GAS_DAMAGE_LEVEL_1 0 //Amount of damage applied when the current breath's temperature just passes the 360.15k safety point
+#define HEAT_GAS_DAMAGE_LEVEL_2 1.5 //Amount of damage applied when the current breath's temperature passes the 400K point
+#define HEAT_GAS_DAMAGE_LEVEL_3 3 //Amount of damage applied when the current breath's temperature passes the 1000K point
 
-#define COLD_GAS_DAMAGE_LEVEL_1 0.5 //Amount of damage applied when the current breath's temperature just passes the 260.15k safety point
+#define COLD_GAS_DAMAGE_LEVEL_1 0 //Amount of damage applied when the current breath's temperature just passes the 260.15k safety point
 #define COLD_GAS_DAMAGE_LEVEL_2 1.5 //Amount of damage applied when the current breath's temperature passes the 200K point
 #define COLD_GAS_DAMAGE_LEVEL_3 3 //Amount of damage applied when the current breath's temperature passes the 120K point
 
@@ -503,30 +503,34 @@
 
 		if( (abs(310.15 - breath.temperature) > 50) && !(COLD_RESISTANCE in mutations)) // Hot air hurts :(
 			if(status_flags & GODMODE)	return 1	//godmode
-			if(breath.temperature < species.cold_level_1)
+			if(breath.temperature < src.species.cold_level_1)
+				if(prob(20))
+					src << "\red The cold air makes it hard to breathe!"
+			if(breath.temperature < src.species.cold_level_2)
 				if(prob(20))
 					src << "\red You feel your face freezing and an icicle forming in your lungs!"
-			else if(breath.temperature > species.heat_level_1)
+			if(breath.temperature > src.species.heat_level_1)
+				if(prob(20))
+					src << "\red You feel your face burning and a searing heat in your lungs!"
+			if(breath.temperature > src.species.heat_level_2)
 				if(prob(20))
 					src << "\red You feel your face burning and a searing heat in your lungs!"
 
 			switch(breath.temperature)
-				if(-INFINITY to species.cold_level_3)
+				if(-INFINITY to src.species.cold_level_3)
 					apply_damage(COLD_GAS_DAMAGE_LEVEL_3, BURN, "head", used_weapon = "Excessive Cold")
 					fire_alert = max(fire_alert, 1)
-				if(species.cold_level_3 to species.cold_level_2)
+				if(src.species.cold_level_3 to src.species.cold_level_2)
 					apply_damage(COLD_GAS_DAMAGE_LEVEL_2, BURN, "head", used_weapon = "Excessive Cold")
 					fire_alert = max(fire_alert, 1)
-				if(species.cold_level_2 to species.cold_level_1)
-					apply_damage(COLD_GAS_DAMAGE_LEVEL_1, BURN, "head", used_weapon = "Excessive Cold")
+				if(src.species.cold_level_2 to src.species.cold_level_1)
 					fire_alert = max(fire_alert, 1)
-				if(species.heat_level_1 to species.heat_level_2)
-					apply_damage(HEAT_GAS_DAMAGE_LEVEL_1, BURN, "head", used_weapon = "Excessive Heat")
+				if(src.species.heat_level_1 to src.species.heat_level_2)
 					fire_alert = max(fire_alert, 2)
-				if(species.heat_level_2 to species.heat_level_3)
+				if(src.species.heat_level_2 to src.species.heat_level_3)
 					apply_damage(HEAT_GAS_DAMAGE_LEVEL_2, BURN, "head", used_weapon = "Excessive Heat")
 					fire_alert = max(fire_alert, 2)
-				if(species.heat_level_3 to INFINITY)
+				if(src.species.heat_level_3 to INFINITY)
 					apply_damage(HEAT_GAS_DAMAGE_LEVEL_3, BURN, "head", used_weapon = "Excessive Heat")
 					fire_alert = max(fire_alert, 2)
 

@@ -59,8 +59,25 @@ proc/createAwayMission()
 		for(var/obj/effect/landmark/zoneloader/x in world)
 			loadRandomZone(x)
 
+	if(ship.curplanet.planet_type == "Habit")
+		for(var/turf/unsimulated/floor/grass/x in world)
+			if(x.z == awayZLevel)
+				x.temperature = ship.curplanet.temp
+				if(ship.curplanet.temp < 273)
+					x.icon_state = "snow"
+					x.name = "snow"
+				if(ship.curplanet.temp > 315)
+					x.icon_state = "desert"
+					x.name = "desert"
+		for(var/obj/structure/flora/tree/pine/x in world)
+			if(x.z == awayZLevel)
+				if(ship.curplanet.temp < 273)
+					x.icon_state = pick("pine_1","pine_2","pine_3")
+				if(ship.curplanet.temp > 315)
+					x.icon_state = pick("deadtree_1", "deadtree_2", "deadtree_3","deadtree_4","deadtree_5","deadtree_6")
 
 		world << "\red \b Away mission loaded."
+
 
  //remove the random away zone from the list
 
@@ -93,14 +110,19 @@ proc/loadRandomZone(var/obj/effect/landmark/zoneloader/target)
 				Lines.Add(file2list("maps/RandomZLevels/anomShipZones.txt"))
 			if(x.name == "Intercepted Transmission")
 				Lines.Add(file2list("maps/RandomZLevels/anomShipZones.txt"))
+			if(x.name == "Anomolous Sector")
+				Lines.Add(file2list("maps/RandomZLevels/mineralZones.txt"))
+			if(x.name == "Gravity Field")
+				Lines.Add(file2list("maps/RandomZLevels/mineralZones.txt"))
 		if(ship.curplanet.planet_type == "Habit")
 			if(x.name == "Ruins")
-				Lines.Add(file2list("maps/RandomZLevels/habitStructures.txt"))
+				Lines.Add(file2list("maps/RandomZLevels/habitStructureZones.txt"))
 			if(x.name == "Outpost")
-				Lines.Add(file2list("maps/RandomZLevels/habitStructures.txt"))
+				Lines.Add(file2list("maps/RandomZLevels/habitStructureZones.txt"))
 			if(x.name == "Intelligent Life")
-				Lines.Add(file2list("maps/RandomZLevels/habitStructures.txt"))
+				Lines.Add(file2list("maps/RandomZLevels/habitStructureZones.txt"))
 		if(ship.curplanet.planet_type == "Debris")
+			Lines.Add(file2list("maps/RandomZLevels/mineralZones.txt"))
 			if(x.name == "Shipwreak")
 				Lines.Add(file2list("maps/RandomZLevels/anomShipZones.txt"))
 			if(x.name == "Energy Signatures")
@@ -111,6 +133,20 @@ proc/loadRandomZone(var/obj/effect/landmark/zoneloader/target)
 				Lines.Add(file2list("maps/RandomZLevels/anomShipZones.txt"))
 			if(x.name == "Empty Space")
 				Lines.Add(file2list("maps/RandomZLevels/anomZoneGeneric.txt"))
+			if(x.name == "Space Carp")
+				Lines.Add(file2list("maps/RandomZLevels/spaceCarpZones.txt"))
+			if(x.name == "Asteroids")
+				Lines.Add(file2list("maps/RandomZLevels/mineralZones.txt"))
+			if(x.name == "Meteors")
+				Lines.Add(file2list("maps/RandomZLevels/mineralZones.txt"))
+			if(x.name == "Space Junk")
+				Lines.Add(file2list("maps/RandomZLevels/mineralZones.txt"))
+		if(ship.curplanet.planet_type == "Gas")
+			if(x.name == "Moon")
+				Lines.Add(file2list("maps/RandomZLevels/mineralZones.txt"))
+			if(x.name == "Rings")
+				Lines.Add(file2list("maps/RandomZLevels/mineralZones.txt"))
+
 
 	if(!Lines.len)	return
 	for (var/t in Lines)
@@ -152,6 +188,7 @@ proc/loadRandomZone(var/obj/effect/landmark/zoneloader/target)
 
 	else
 		world << "\red \b No away zone found."
+
 		return
 
 

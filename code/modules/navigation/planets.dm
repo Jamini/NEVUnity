@@ -142,6 +142,7 @@ datum/planet/New(var/typein)
 	if(typein == "Gas")
 		possible_features = list("Water","Helium Banding","Ammonia Deposits","Deuterium","Methane Deposits","Rings", "Moon",  "Hotspot")
 	if(typein == "Habit")
+		temp = rand(245, 368)
 		possible_features = list("Mineral Deposits", "Caverns", "Desert", "Water", "Plant Life", "Animal Life",  "Intelligent Life",  "Ruins", "Volcanic Activity",  "Shipwreak",  "Mountains",  "Outpost",  "Moon")
 		visit = 1
 	if(typein == "Debris")

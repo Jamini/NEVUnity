@@ -3,3 +3,5 @@ maps/RandomZLevels/spaceShipWreak2.dmm
 maps/RandomZLevels/spaceShipWreak3.dmm
 maps/RandomZLevels/spaceShipWreak4.dmm
 maps/RandomZLevels/spaceShipWreak5.dmm
+maps/RandomZLevels/floatingoutpost.dmm
+maps/RandomZLevels/cultformation.dmm

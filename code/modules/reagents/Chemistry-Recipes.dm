@@ -1968,6 +1968,10 @@ datum
 			result = "nanocap"
 			required_reagents = list("singulo" = 1, "doctorsdelight" = 1, "beepskysmash" = 1, "toxinsspecial" = 1)
 			result_amount = 4
-
-
+		unstable
+			name = "Unstable Hydrocarbon"
+			id = "unstable"
+			result = "unstable"
+			required_reagents = list("coffee" =2, "cola" = 1, "dr_gibb" = 1)
+			result_amount = 4
 

@@ -454,6 +454,10 @@
 					icon_state = "nanocap"
 					name = "Nanotrasen Nightcap"
 					desc = "All the departments rolled into one delicious drink!"
+				if("unstable")
+					icon_state = "unstable"
+					name = "Unstable Hydrocarbon"
+					desc = "It smells strongly of burning tires. Are you sure you want to drink that!?!"
 
 				else
 					icon_state ="glass_brown"

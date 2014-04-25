@@ -28,6 +28,9 @@
 /obj/effect/landmark/corpse/initialize()
 	createCorpse()
 
+/obj/effect/landmark/corpse/New()
+	createCorpse()
+
 /obj/effect/landmark/corpse/proc/createCorpse() //Creates a mob and checks for gear in each slot before attempting to equip it.
 	var/mob/living/carbon/human/M = new /mob/living/carbon/human (src.loc)
 	M.dna.mutantrace = mutantrace
@@ -164,6 +167,15 @@
 	corpsesuit = /obj/item/clothing/suit/space/rig
 	corpsemask = /obj/item/clothing/mask/breath
 	corpsehelmet = /obj/item/clothing/head/helmet/space/rig
+
+/obj/effect/landmark/corpse/cult
+	name = "Cultist"
+	corpsesuit = /obj/item/clothing/suit/cultrobes/alt
+	corpseuniform = /obj/item/clothing/under/brown
+	corpseback = /obj/item/weapon/storage/backpack/cultpack
+	corpsehelmet = /obj/item/clothing/head/culthood/alt
+	corpseshoes = /obj/item/clothing/shoes/cult
+	corpseid = 0
 
 /obj/effect/landmark/corpse/clown
 	name = "Clown"

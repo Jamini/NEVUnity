@@ -264,6 +264,17 @@ obj/item/weapon/circuitboard/rdserver
 							"/obj/item/weapon/stock_parts/micro_laser" = 1,
 							"/obj/item/weapon/stock_parts/console_screen" = 1)
 
+/obj/item/weapon/circuitboard/holopad
+	name = "Circuit board (Holopad)"
+	build_path = "/obj/machinery/hologram/holopad"
+	board_type = "machine"
+	origin_tech = "programming=2;powerstorage=2"
+	frame_desc = "Requires 10 pieces of cable, 1 Capacitors, and 1 Console Screen."
+	req_components = list(
+							"/obj/item/weapon/cable_coil" = 2,
+							"/obj/item/weapon/stock_parts/capacitor" = 1,
+							"/obj/item/weapon/stock_parts/console_screen" = 1)
+
 /obj/item/weapon/circuitboard/clonepod
 	name = "Circuit board (Clone Pod)"
 	build_path = "/obj/machinery/clonepod"

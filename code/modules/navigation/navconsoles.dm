@@ -101,6 +101,9 @@
 		return 0
 	return 1
 /obj/machinery/computer/navigation/proc/moveplan(var/datum/planet/movetarget)
+	switch(alert("Are you sure you wish to move the ship? This action is irreversible!",,"Yes","No"))
+		if("No")
+			return
 	if(movetarget)
 		locked = 1
 		onPlanet = 0
@@ -125,6 +128,9 @@
 		command_alert("Movement Complete. The ship has reached "+ movetarget.name+ "", "NEV Unity Autopilot")
 		locked = 0
 /obj/machinery/computer/navigation/proc/move(var/datum/system/movetarget)
+	switch(alert("Are you sure you wish to move the ship? This action is irreversible!",,"Yes","No"))
+		if("No")
+			return
 	if(movetarget)
 		locked = 1
 		onPlanet = 0

@@ -32,23 +32,35 @@ var/const/HOLOPAD_MODE = 0
 /obj/machinery/hologram/holopad/holobot
 	name = "\improper AI holobot"
 	desc = "It's a hovering device for projecting holographic images. It is activated remotely."
-	icon_state = "holobot0"
+	icon = 'icons/obj/holobot.dmi'
 	anchored = 0
+	var/obj/machinery/camera/camera
+
+/obj/machinery/hologram/holopad/holobot/New()
+	..()
+	camera = new /obj/machinery/camera(src)
+	camera.network = list("SS13")
+	camera.name = "Holopad Camera"
+	camera.c_tag = "Holopad"
 
 /obj/machinery/hologram/holopad/holobot/move_hologram()
 	if(hologram)
 		var/turf/movetarget = get_turf(master.eyeobj)
-		if(movetarget.density)
+		if(movetarget.density == 1)
 			clear_holo()
-		else
-			for(var/obj/D in movetarget.loc)
-				if(!D.density)			continue
-				else
-					clear_holo()
-					return 1
-			step_to(src, master.eyeobj) // So it turns.
-			src.loc = get_turf(master.eyeobj)
-			..()
+
+		if(abs(src.x - master.eyeobj.x) > 1 || abs(src.y) - master.eyeobj.y > 1)
+			clear_holo()
+			return 1
+		for(var/obj/D in get_turf(master.eyeobj))
+			if(D.density == 1)
+				clear_holo()
+				return 1
+		step_to(src, master.eyeobj) // So it turns.
+		src.loc = get_turf(master.eyeobj)
+		cameranet.removeCamera(camera)
+		cameranet.addCamera(camera)
+		..()
 	return 1
 
 /obj/machinery/hologram/holopad
@@ -58,8 +70,8 @@ var/const/HOLOPAD_MODE = 0
 	var/mob/living/silicon/ai/master//Which AI, if any, is controlling the object? Only one AI may control a hologram at any time.
 	var/last_request = 0 //to prevent request spam. ~Carn
 	var/holo_range = 5 // Change to change how far the AI can move away from the holopad before deactivating.
-	var/health = 5
-	var/maxhealth = 5
+	var/health = 20
+	var/maxhealth = 20
 	var/fire_dam_coeff = 1.0
 	var/brute_dam_coeff = 1.0
 
@@ -68,7 +80,12 @@ var/const/HOLOPAD_MODE = 0
 		src.explode()
 
 /obj/machinery/hologram/holopad/proc/explode()
-	clear_holo()
+	if(master)
+		clear_holo()
+	src.visible_message("\red <B>[src] blows apart!</B>", 1)
+	var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
+	s.set_up(3, 1, src)
+	s.start()
 	del(src)
 
 /obj/machinery/hologram/holopad/bullet_act(var/obj/item/projectile/Proj)
@@ -173,8 +190,9 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 /obj/machinery/hologram/holopad/proc/clear_holo()
 //	hologram.SetLuminosity(0)//Clear lighting.	//handled by the lighting controller when its ower is deleted
 	del(hologram)//Get rid of hologram.
-	if(master.current == src)
-		master.current = null
+	if(master)
+		if(master.current == src)
+			master.current = null
 	master = null//Null the master, since no-one is using it now.
 	SetLuminosity(0)			//pad lighting (hologram lighting will be handled automatically since its owner was deleted)
 	icon_state = "holopad0"

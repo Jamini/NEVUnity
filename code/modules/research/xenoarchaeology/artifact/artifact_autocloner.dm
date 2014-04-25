@@ -1,3 +1,13 @@
+/obj/machinery/auto_cloner/carp_nest
+	name = "A bubble of space carp eggs. Watch out!"
+	desc = "An oily sack of viscous liquid, inside you can see things moving around."
+	icon = 'biocraps.dmi'
+	density = 1
+
+/obj/machinery/auto_cloner/New()
+	..()
+	spawn_type = /mob/living/simple_animal/hostile/carp
+
 
 /obj/machinery/auto_cloner
 	name = "mysterious pod"

@@ -1,0 +1,66 @@
+"a" = (/turf/simulated/wall/cult,/area)
+"b" = (/obj/structure/morgue,/turf/simulated/floor/engine/cult,/area)
+"c" = (/turf/simulated/floor/engine/cult,/area)
+"d" = (/obj/structure/table/grungetable,/obj/item/weapon/melee/cultblade,/turf/simulated/floor/engine/cult,/area)
+"e" = (/obj/structure/cult/forge,/turf/simulated/floor/engine/cult,/area)
+"f" = (/obj/structure/cult/talisman,/turf/simulated/floor/engine/cult,/area)
+"g" = (/obj/structure/cult/pylon,/turf/simulated/floor/engine/cult,/area)
+"h" = (/obj/structure/cult/tome,/turf/simulated/floor/engine/cult,/area)
+"i" = (/obj/effect/decal/cleanable/blood/splatter,/turf/simulated/floor/engine/cult,/area)
+"j" = (/obj/structure/table/grungetable,/obj/item/device/soulstone,/obj/item/weapon/melee/cultblade,/turf/simulated/floor/engine/cult,/area)
+"k" = (/obj/structure/bookcase,/turf/simulated/floor/engine/cult,/area)
+"l" = (/obj/effect/decal/cleanable/blood,/obj/effect/landmark/corpse/cult,/turf/simulated/floor/engine/cult,/area)
+"m" = (/obj/item/weapon/ectoplasm,/turf/simulated/floor/engine/cult,/area)
+"n" = (/mob/living/simple_animal/hostile/retaliate/clown,/turf/simulated/floor/engine/cult,/area)
+"o" = (/obj/structure/table/grungetable,/obj/item/device/soulstone,/turf/simulated/floor/engine/cult,/area)
+"p" = (/obj/structure/table/grungetable,/turf/simulated/floor/engine/cult,/area)
+"q" = (/obj/structure/stool/bed/chair{dir = 1},/turf/simulated/floor/engine/cult,/area)
+"r" = (/obj/effect/decal/cleanable/blood,/turf/simulated/floor/engine/cult,/area)
+"s" = (/obj/effect/decal/cleanable/blood/splatter,/obj/effect/landmark/corpse/cult,/turf/simulated/floor/engine/cult,/area)
+"t" = (/obj/structure/table/grungetable,/obj/structure/constructshell,/turf/simulated/floor/engine/cult,/area)
+"u" = (/obj/effect/decal/cleanable/blood/gibs,/turf/simulated/floor/engine/cult,/area)
+"v" = (/obj/effect/decal/cleanable/blood/tracks,/obj/effect/decal/cleanable/blood/gibs,/obj/effect/decal/cleanable/blood/gibs,/obj/effect/landmark/corpse/cult,/turf/simulated/floor/engine/cult,/area)
+"w" = (/obj/effect/decal/cleanable/blood/tracks,/turf/simulated/floor/engine/cult,/area)
+"x" = (/obj/structure/mineral_door/wood,/turf/simulated/floor/engine/cult,/area)
+"y" = (/obj/structure/mineral_door/wood,/obj/effect/decal/cleanable/blood/tracks,/turf/simulated/floor/engine/cult,/area)
+"z" = (/obj/structure/table/grungetable,/obj/item/weapon/storage/backpack/cultpack,/obj/item/clothing/suit/cultrobes/alt,/obj/item/clothing/head/culthood/alt,/turf/simulated/floor/engine/cult,/area)
+"A" = (/obj/structure/table/grungetable,/obj/item/clothing/shoes/cult,/obj/item/clothing/suit/space/cult,/obj/item/clothing/head/helmet/space/cult,/obj/item/weapon/tank/oxygen,/turf/simulated/floor/engine/cult,/area)
+"B" = (/obj/machinery/bodyscanner,/obj/machinery/atmospherics/pipe/simple/supply/hidden{dir = 4},/obj/machinery/camera{c_tag = "Medical Treatment Centre"; dir = 4; network = list("SS13")},/turf/simulated/floor/engine/cult,/area)
+"C" = (/obj/machinery/body_scanconsole,/obj/machinery/atmospherics/pipe/simple/supply/hidden{dir = 4},/turf/simulated/floor/engine/cult,/area)
+"D" = (/obj/machinery/iv_drip,/turf/simulated/floor/engine/cult,/area)
+"E" = (/obj/item/weapon/reagent_containers/blood/AMinus,/obj/item/weapon/reagent_containers/blood/APlus,/obj/item/weapon/reagent_containers/blood/BMinus,/obj/item/weapon/reagent_containers/blood/BPlus,/obj/item/weapon/reagent_containers/blood/OMinus,/obj/item/weapon/reagent_containers/blood/OPlus,/obj/item/weapon/reagent_containers/blood/empty,/obj/structure/table/grungetable,/turf/simulated/floor/engine/cult,/area)
+"F" = (/obj/structure/stool/bed,/obj/item/weapon/bedsheet/brown,/obj/effect/decal/cleanable/blood/gibs,/obj/effect/decal/cleanable/blood/gibs,/obj/effect/decal/cleanable/blood/gibs/core,/turf/simulated/floor/engine/cult,/area)
+"G" = (/obj/machinery/sleeper,/turf/simulated/floor/engine/cult,/area)
+"H" = (/obj/machinery/sleep_console,/turf/simulated/floor/engine/cult,/area)
+"I" = (/obj/effect/decal/cleanable/blood/drip,/turf/simulated/floor/engine/cult,/area)
+"J" = (/obj/machinery/sleep_console{icon_state = "sleeperconsole-r"; orient = "RIGHT"},/turf/simulated/floor/engine/cult,/area)
+"K" = (/obj/machinery/sleeper{icon_state = "sleeper_0-r"; orient = "RIGHT"},/turf/simulated/floor/engine/cult,/area)
+"L" = (/obj/structure/stool/bed,/obj/item/weapon/bedsheet/brown,/obj/effect/decal/cleanable/blood/gibs/core,/turf/simulated/floor/engine/cult,/area)
+"M" = (/obj/structure/table/grungetable,/obj/item/weapon/FixOVein,/turf/simulated/floor/engine/cult,/area)
+"N" = (/obj/structure/table/grungetable,/obj/item/weapon/scalpel,/obj/item/weapon/cautery,/turf/simulated/floor/engine/cult,/area)
+"O" = (/obj/machinery/optable,/obj/effect/decal/cleanable/blood,/turf/simulated/floor/engine/cult,/area)
+"P" = (/obj/structure/table/grungetable,/obj/item/weapon/retractor,/obj/item/weapon/bonesetter,/turf/simulated/floor/engine/cult,/area)
+"Q" = (/obj/structure/table/grungetable,/obj/item/weapon/hemostat,/obj/item/weapon/surgicaldrill,/turf/simulated/floor/engine/cult,/area)
+
+(1,1,1) = {"
+aaaaaaaaaaaaaaaaaaaa
+abccccdaaefaagchhcga
+abicccjagccgaklcccka
+abmcnioaccccakcppcka
+abccccoaccmcakcqqrka
+absccmtaunucakcppcka
+abccmitauvucakcqqcka
+abcccctagwcgagmcccga
+aaaaxaaaayxaaaaxxaaa
+agccccgagwcgagccccga
+xcmccccxccccxcccccmx
+xcmncccxccccxcnccccx
+agccccgagccgagccccga
+aaaaxaaaaxxaaaaxxaaa
+azAccAzaccccaBCccDEa
+aFccccFaccccaGHIIJKa
+aagccgaamcncaccIIIca
+aLscccFaccccaIIllIIa
+azAccAzagcmgaMNOOPQa
+aaaaaaaaaxxaaaaaaaaa
+"}

@@ -1279,6 +1279,8 @@ datum
 					for(var/datum/organ/internal/I in C.internal_organs)
 						if(I.damage > 0)
 							I.damage -= 0.20
+						if(I.damage < 1)
+							I.damage = 0
 				..()
 				return
 
@@ -2546,6 +2548,18 @@ datum
 				M.sleeping = 0
 				if(M.getBruteLoss() && prob(20)) M.heal_organ_damage(1,0)
 				return
+		drink/coffee/unstable
+			name = "Unstable Hydrocarbon"
+			id = "unstable"
+			description = "It smells strongly of burning tires. Are you sure you want to drink that!?!"
+			color = "#664300"
+			adj_dizzy = -10
+			adj_drowsy = -10
+			adj_sleepy = -10
+			adj_temp = 40
+			on_mob_life(var/mob/living/M as mob)
+				..()
+				M.make_jittery(50)
 
 		drink/coffee/cafe_latte
 			name = "Cafe Latte"

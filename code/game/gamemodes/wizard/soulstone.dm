@@ -102,8 +102,8 @@
 			if(C.imprinted != "empty")
 				U << "\red <b>Capture failed!</b>: \black The soul stone has already been imprinted with [C.imprinted]'s mind!"
 			else
-				if (T.stat == 0)
-					U << "\red <b>Capture failed!</b>: \black Kill or maim the victim first!"
+				if (T.stat == 0 || T.stat == 1)
+					U << "\red <b>Capture failed!</b>: \black Kill the victim first!"
 				else
 					if(T.client == null)
 						U << "\red <b>Capture failed!</b>: \black The soul has already fled it's mortal frame."

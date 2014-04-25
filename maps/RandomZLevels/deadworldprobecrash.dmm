@@ -1,0 +1,30 @@
+"a" = (/turf/unsimulated/desert,/area/awaymission/habit)
+"b" = (/obj/item/weapon/shard,/turf/unsimulated/desert,/area/awaymission/habit)
+"c" = (/obj/item/stack/sheet/metal,/turf/unsimulated/desert,/area/awaymission/habit)
+"d" = (/turf/unsimulated/desert{icon_state = "desert_dug"},/area/awaymission/habit)
+"e" = (/turf/simulated/shuttle/wall{icon_state = "wall3"},/area/awaymission/habit)
+"f" = (/turf/simulated/floor/plating,/area/awaymission/habit)
+"g" = (/obj/item/weapon/shard,/turf/unsimulated/desert{icon_state = "desert_dug"},/area/awaymission/habit)
+
+(1,1,1) = {"
+aaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaabaaaaaa
+aaacaaabaaaaaaaaaaaa
+accaaaaaaaaaaaaaaaba
+aaaaaaaaaaaaaaaaaaaa
+addaaaaaaaaaabaaaaaa
+addddaaaaaaaaaaaaaaa
+aadddddddbaaaaaaaaaa
+aeeedddddddaaaaaaaaa
+affeeddddddddddaaaaa
+efffeeddddddddddddda
+efffeeddddddddddddda
+affeedddddddddddddaa
+aeeedddddddddddddaaa
+aadddddddddddgaaaaaa
+addddaddddaaaaaaaaaa
+acaaadddaabaaaaaaaaa
+aacabaaaaaaaaabaaaaa
+caaaaaaaaabaaaaaaaaa
+acaaaaaaaaaaaaaaabaa
+"}

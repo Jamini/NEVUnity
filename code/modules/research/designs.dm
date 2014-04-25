@@ -68,6 +68,15 @@ datum/design/proc/CalcReliability(var/list/temp_techs)
 
 ///////////////////Computer Boards///////////////////////////////////
 
+datum/design/holopad
+	name = "Circuit Design (Holopad)"
+	desc = "Allows for the construction of circuit boards used to build holopads"
+	id = "holopad"
+	req_tech = list("programming"=1,"powerstorage"=1)
+	build_type = IMPRINTER
+	materials = list("$glass" = 2000, "sacid" = 20)
+	build_path = "/obj/item/weapon/circuitboard/holopad"
+
 datum/design/seccamera
 	name = "Circuit Design (Security)"
 	desc = "Allows for the construction of circuit boards used to build security camera computers."

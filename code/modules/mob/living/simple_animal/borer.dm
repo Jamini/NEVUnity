@@ -183,6 +183,18 @@
 	host.reagents.add_reagent(chem, 15)
 	chemicals -= 50
 
+/mob/living/carbon/proc/pleasure_host()
+	set category = "Alien"
+	set name = "Reward host"
+	set desc = "Reward your host with pleasure."
+
+	if(!host)
+		src << "You are not inside a host body."
+		return
+	src << "\red <B>You send a reassuring wave of pleasure to your host/'s brain.</B>"
+	host << "\blue <B><FONT size=3>A soothing, reassuring wave of pleasure ripples across your mind!</FONT></B>"
+
+
 /mob/living/simple_animal/borer/verb/release_host()
 	set category = "Alien"
 	set name = "Release Host"

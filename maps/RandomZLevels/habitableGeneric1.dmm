@@ -1,8 +1,8 @@
-"a" = (/turf/unsimulated/floor/grass,/area/awaymission/beach{name = "Planet"})
-"b" = (/obj/structure/flora/ausbushes/sparsegrass,/turf/unsimulated/floor/grass,/area/awaymission/beach{name = "Planet"})
-"c" = (/turf/unsimulated/beach/water,/area/awaymission/beach{name = "Planet"})
-"d" = (/obj/structure/flora/ausbushes/fullgrass,/turf/unsimulated/floor/grass,/area/awaymission/beach{name = "Planet"})
-"e" = (/obj/structure/flora/ausbushes/reedbush,/turf/unsimulated/beach/water,/area/awaymission/beach{name = "Planet"})
+"a" = (/turf/unsimulated/floor/grass,/area/awaymission/habit)
+"b" = (/obj/structure/flora/ausbushes/sparsegrass,/turf/unsimulated/floor/grass,/area/awaymission/habit)
+"c" = (/turf/unsimulated/beach/water,/area/awaymission/habit)
+"d" = (/obj/structure/flora/ausbushes/fullgrass,/turf/unsimulated/floor/grass,/area/awaymission/habit)
+"e" = (/obj/structure/flora/ausbushes/reedbush,/turf/unsimulated/beach/water,/area/awaymission/habit)
 
 (1,1,1) = {"
 aaaaaaaaaaaaaaaaaaaa
