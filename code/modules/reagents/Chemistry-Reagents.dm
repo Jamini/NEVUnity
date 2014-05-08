@@ -1987,14 +1987,14 @@ datum
 				if(!duration) duration = 1
 				switch(duration)
 					if(1 to 15)
-						if(M.bodytemperature < BODYTEMP_HEAT_DAMAGE_LIMIT)
+						if(M.bodytemperature < 360)
 							M.bodytemperature += 5 * TEMPERATURE_DAMAGE_COEFFICIENT
 						if(holder.has_reagent("frostoil"))
 							holder.remove_reagent("frostoil", 5)
 						if(istype(M, /mob/living/carbon/slime))
 							M.bodytemperature += rand(5,20)
 					if(15 to INFINITY)
-						if(M.bodytemperature < BODYTEMP_HEAT_DAMAGE_LIMIT)
+						if(M.bodytemperature < 360)
 							M.bodytemperature += 10 * TEMPERATURE_DAMAGE_COEFFICIENT
 						if(istype(M, /mob/living/carbon/slime))
 							M.bodytemperature += rand(10,20)
@@ -2081,14 +2081,14 @@ datum
 				if(!duration) duration = 1
 				switch(duration)
 					if(1 to 15)
-						if(M.bodytemperature > BODYTEMP_COLD_DAMAGE_LIMIT)
+						if(M.bodytemperature > 260)
 							M.bodytemperature -= 5 * TEMPERATURE_DAMAGE_COEFFICIENT
 						if(holder.has_reagent("capsaicin"))
 							holder.remove_reagent("capsaicin", 5)
 						if(istype(M, /mob/living/carbon/slime))
 							M.bodytemperature -= rand(5,20)
 					if(15 to INFINITY)
-						if(M.bodytemperature > BODYTEMP_COLD_DAMAGE_LIMIT)
+						if(M.bodytemperature > 260)
 							M.bodytemperature -= 10 * TEMPERATURE_DAMAGE_COEFFICIENT
 						if(istype(M, /mob/living/carbon/slime))
 							M.bodytemperature -= rand(10,20)

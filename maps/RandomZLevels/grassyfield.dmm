@@ -13,7 +13,7 @@
 "m" = (/obj/structure/flora/ausbushes/fullgrass,/turf/unsimulated/floor/grass,/area/awaymission/habit{name = "Planet"})
 "n" = (/obj/structure/flora/ausbushes/stalkybush,/turf/unsimulated/floor/grass,/area/awaymission/habit{name = "Planet"})
 "o" = (/turf/space,/area/shuttle/mining/outpost)
-"p" = (/turf/simulated/floor/plating/airless/asteroid,/area)
+"p" = (/turf/simulated/floor/plating,/area)
 "q" = (/obj/structure/flora/ausbushes/grassybush,/turf/unsimulated/floor/grass,/area/awaymission/habit{name = "Planet"})
 "r" = (/turf/simulated/mineral/random,/area/awaymission/habit{name = "Planet"})
 "s" = (/obj/structure/flora/ausbushes/genericbush,/turf/unsimulated/floor/grass,/area/awaymission/habit{name = "Planet"})

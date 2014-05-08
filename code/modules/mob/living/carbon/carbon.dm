@@ -418,7 +418,7 @@
 
 /mob/living/carbon/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume)
 	..()
-	bodytemperature = max(bodytemperature, BODYTEMP_HEAT_DAMAGE_LIMIT+10)
+	bodytemperature = max(bodytemperature, 360+10)
 
 /mob/living/carbon/can_use_hands()
 	if(handcuffed)
