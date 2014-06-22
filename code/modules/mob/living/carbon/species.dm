@@ -38,6 +38,16 @@
 
 	var/flags = 0       // Various specific features.
 
+/datum/species/proc/handle_post_spawn(var/mob/living/carbon/human/H) //Handles anything not already covered by basic species assignment.
+
+	if(flags & IS_SYNTHETIC)
+//		for(var/datum/organ/external/E in H.external_organs)
+//			if(E.status & ORGAN_CUT_AWAY || E.status & ORGAN_DESTROYED) continue
+//			E.status |= ORGAN_ROBOT - Just... not right now
+		for(var/datum/organ/internal/I in H.internal_organs)
+			I.robotic = 2
+	return
+
 /datum/species/human
 	name = "Human"
 	primitive = /mob/living/carbon/monkey
@@ -134,3 +144,24 @@
 	heat_level_3 = 770
 
 	flags = NO_BREATHE | REQUIRE_LIGHT | NON_GENDERED | NO_SCAN | IS_PLANT | RAD_ABSORB
+/datum/species/machine
+	name = "Machine"
+	icobase = 'icons/mob/human_races/r_machine.dmi'
+	deform = 'icons/mob/human_races/r_machine.dmi'
+	language = "Tradeband"
+	punch_damage = 2
+
+	eyes = "blank_eyes"
+
+	warning_low_pressure = 50
+	hazard_low_pressure = 10
+
+	cold_level_1 = 50
+	cold_level_2 = -1
+	cold_level_3 = -1
+
+	heat_level_1 = 2000
+	heat_level_2 = 3000
+	heat_level_3 = 4000
+
+	flags = NO_BREATHE | NO_SCAN  | IS_SYNTHETIC //| NO_BLOOD | NO_PAIN - Someone else can implemnt this, or I can when I'm not feeling crap

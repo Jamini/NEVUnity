@@ -215,7 +215,8 @@
 			adjustCloneLoss(0.1)
 
 	proc/handle_mutations_and_radiation()
-
+		if(species.flags & IS_SYNTHETIC) //rebots don't suffer from radloss
+			return
 		if(getFireLoss())
 			if((COLD_RESISTANCE in mutations) || (prob(1)))
 				heal_organ_damage(0,1)
@@ -509,30 +510,24 @@
 			if(breath.temperature < src.species.cold_level_2)
 				if(prob(20))
 					src << "\red You feel your face freezing and an icicle forming in your lungs!"
+				apply_damage(COLD_GAS_DAMAGE_LEVEL_2, BURN, "head", used_weapon = "Excessive Cold")
+				fire_alert = max(fire_alert, 1)
+			if(breath.temperature < src.species.cold_level_3)
+				if(prob(20))
+					src << "\red Your whole body is freezing!"
+				apply_damage(COLD_GAS_DAMAGE_LEVEL_3, BURN, "head", used_weapon = "Excessive Cold")
 			if(breath.temperature > src.species.heat_level_1)
 				if(prob(20))
 					src << "\red You feel your face burning and a searing heat in your lungs!"
 			if(breath.temperature > src.species.heat_level_2)
 				if(prob(20))
-					src << "\red You feel your face burning and a searing heat in your lungs!"
-
-			switch(breath.temperature)
-				if(-INFINITY to src.species.cold_level_3)
-					apply_damage(COLD_GAS_DAMAGE_LEVEL_3, BURN, "head", used_weapon = "Excessive Cold")
-					fire_alert = max(fire_alert, 1)
-				if(src.species.cold_level_3 to src.species.cold_level_2)
-					apply_damage(COLD_GAS_DAMAGE_LEVEL_2, BURN, "head", used_weapon = "Excessive Cold")
-					fire_alert = max(fire_alert, 1)
-				if(src.species.cold_level_2 to src.species.cold_level_1)
-					fire_alert = max(fire_alert, 1)
-				if(src.species.heat_level_1 to src.species.heat_level_2)
-					fire_alert = max(fire_alert, 2)
-				if(src.species.heat_level_2 to src.species.heat_level_3)
-					apply_damage(HEAT_GAS_DAMAGE_LEVEL_2, BURN, "head", used_weapon = "Excessive Heat")
-					fire_alert = max(fire_alert, 2)
-				if(src.species.heat_level_3 to INFINITY)
+					src << "\red You feel your face burning and a choking heat in your lungs!"
+				apply_damage(HEAT_GAS_DAMAGE_LEVEL_2, BURN, "head", used_weapon = "Excessive Heat")
+				fire_alert = max(fire_alert, 2)
+			if(breath.temperature > src.species.heat_level_3)
+				if(prob(20))
+					src << "\red Your every breath burns! You are on fire!"
 					apply_damage(HEAT_GAS_DAMAGE_LEVEL_3, BURN, "head", used_weapon = "Excessive Heat")
-					fire_alert = max(fire_alert, 2)
 
 		//Temporary fixes to the alerts.
 
@@ -848,7 +843,8 @@
 	*/
 
 	proc/handle_chemicals_in_body()
-		if(reagents) reagents.metabolize(src)
+		if(reagents && !(species.flags & IS_SYNTHETIC)) //Synths don't process reagents.
+			reagents.metabolize(src)
 		var/total_plasmaloss = 0
 		for(var/obj/item/I in src)
 			if(I.contaminated)
@@ -937,7 +933,7 @@
 			dizziness = max(0, dizziness - 3)
 			jitteriness = max(0, jitteriness - 3)
 
-		handle_trace_chems()
+		if(!(species.flags & IS_SYNTHETIC)) handle_trace_chems()
 
 		var/datum/organ/internal/liver/liver = internal_organs["liver"]
 		liver.process()

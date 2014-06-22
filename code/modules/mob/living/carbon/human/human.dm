@@ -15,29 +15,30 @@
 	h_style = "Skrell Male Tentacles"
 	set_species("Skrell")
 	..()
-	remove_language("Sol Common")
 
 
 /mob/living/carbon/human/tajaran/New()
 	h_style = "Tajaran Ears"
 	set_species("Tajaran")
 	..()
-	remove_language("Sol Common")
 
 /mob/living/carbon/human/unathi/New()
 	h_style = "Unathi Horns"
 	set_species("Unathi")
 	..()
-	remove_language("Sol Common")
 
 /mob/living/carbon/human/vox/New()
 	h_style = "Short Vox Quills"
 	set_species("Vox")
 	..()
-	remove_language("Sol Common")
 
 /mob/living/carbon/human/diona/New()
 	species = new /datum/species/diona(src)
+	..()
+
+/mob/living/carbon/human/machine/New()
+	h_style = "blue IPC screen"
+	set_species("Machine")
 	..()
 
 /mob/living/carbon/human/New()
@@ -852,6 +853,8 @@
 	return
 
 /mob/living/carbon/human/proc/vomit()
+	if(species.flags & IS_SYNTHETIC)
+		return // Machines don't throw up
 	if(!lastpuke)
 		lastpuke = 1
 		src << "<spawn class='warning'>You feel nauseous..."

@@ -567,7 +567,19 @@ obj/structure/cable/proc/cablecolor(var/colorC)
 				user.visible_message("\red \The [user] repairs some burn damage on their [S.display_name] with \the [src]",\
 				"\red You repair some burn damage on your [S.display_name]",\
 				"You hear wires being cut.")
-		else
-			user << "Nothing to fix!"
+			return
+		if(istype(M,/mob/living/carbon/human))
+			var/mob/living/carbon/human/H = M
+			if(H.species.flags & IS_SYNTHETIC)
+				if(H.getFireLoss() > 0)
+					if(M == user)
+						user << "\red You can't repair damage to your own body - it's against OH&S."
+						return
+					user.visible_message("<span class='notice'>\The [user] repairs some burn damage on [M]  with \the [src]</span>",\
+						"<span class='notice'>\The [user] repairs some of your burn damage.</span>",\
+						"You hear wires being cut.")
+					H.heal_organ_damage(0,5)
+					return
+		user << "Nothing to fix!"
 	else
 		return ..()

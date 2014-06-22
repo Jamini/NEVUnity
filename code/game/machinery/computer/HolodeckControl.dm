@@ -40,6 +40,7 @@
 		dat += "<A href='?src=\ref[src];snowfield=1'>((Snow Field)</font>)</A><BR>"
 		dat += "<A href='?src=\ref[src];theatre=1'>((Theatre)</font>)</A><BR>"
 		dat += "<A href='?src=\ref[src];meetinghall=1'>((Meeting Hall)</font>)</A><BR>"
+		dat += "<A href='?src=\ref[src];shootingrange=1'>((Shooting Range)</font></A><BR>"
 //		dat += "<A href='?src=\ref[src];turnoff=1'>((Shutdown System)</font>)</A><BR>"
 
 		dat += "Please ensure that only holographic weapons are used in the holodeck if a combat simulation has been loaded.<BR>"
@@ -135,6 +136,12 @@
 				target = locate(/area/holodeck/source_meetinghall)
 				if(target)
 					loadProgram(target)
+
+			else if(href_list["shootingrange"])
+				target = locate(/area/holodeck/source_guns)
+				if(target)
+					loadProgram(target)
+
 
 			else if(href_list["turnoff"])
 				target = locate(/area/holodeck/source_plating)

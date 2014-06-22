@@ -143,10 +143,10 @@ datum/planet/New(var/typein)
 		possible_features = list("Water","Helium Banding","Ammonia Deposits","Deuterium","Methane Deposits","Rings", "Moon",  "Hotspot")
 	if(typein == "Habit")
 		temp = rand(245, 368)
-		possible_features = list("Mineral Deposits", "Caverns", "Desert", "Water", "Plant Life", "Animal Life",  "Intelligent Life",  "Ruins", "Volcanic Activity",  "Shipwreak",  "Mountains",  "Outpost",  "Moon")
+		possible_features = list("Mineral Deposits", "Caverns", "Desert", "Water", "Plant Life", "Animal Life",  "Intelligent Life",  "Ruins", "Volcanic Activity",  "Shipwreck",  "Mountains",  "Outpost",  "Moon")
 		visit = 1
 	if(typein == "Debris")
-		possible_features = list("Shipwreak","Shipwreak","Skipjack","Combat Drones","Water", "Garbled Transmission",  "Asteroids",  "Energy Signatures",  "Life Signs",  "Distress Beacon",  "Empty Space", "Meteors",  "Space Junk", "Space Carp")
+		possible_features = list("Shipwreck","Shipwreck","Skipjack","Combat Drones","Water", "Garbled Transmission",  "Asteroids",  "Energy Signatures",  "Life Signs",  "Distress Beacon",  "Empty Space", "Meteors",  "Space Junk", "Space Carp")
 		visit = 1
 	if(typein == "Dead")
 		possible_features = list("Mineral Deposits","Mineral Deposits","Mineral Deposits","Water", "Caverns", "Caverns", "Caverns", "Facility",  "Space Carp")

@@ -65,6 +65,8 @@
 
 /mob/living/carbon/human/adjustCloneLoss(var/amount)
 	..()
+//	if(species.flag & IS_SYNTHETIC)
+//		return //Machines don't suffer cloneloss - Not in the mood to fix this right now either.
 	var/heal_prob = max(0, 80 - getCloneLoss())
 	var/mut_prob = min(80, getCloneLoss()+10)
 	if (amount > 0)

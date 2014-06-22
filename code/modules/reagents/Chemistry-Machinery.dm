@@ -11,8 +11,8 @@
 	use_power = 0
 	idle_power_usage = 40
 	var/ui_name = "Chem Dispenser 5000"
-	var/energy = 100
-	var/max_energy = 100
+	var/energy = 50
+	var/max_energy = 50
 	var/amount = 30
 	var/accept_glass = 0
 	var/beaker = null
@@ -30,7 +30,7 @@
 	var/oldenergy = energy
 	energy = min(energy + addenergy, max_energy)
 	if(energy != oldenergy)
-		use_power(1500) // This thing uses up alot of power (this is still low as shit for creating reagents from thin air)
+		use_power(9000) // This thing uses up alot of power (this is still low as shit for creating reagents from thin air)
 		nanomanager.update_uis(src) // update all UIs attached to src
 
 /obj/machinery/chem_dispenser/power_change()

@@ -741,3 +741,5 @@ var/list/RESTRICTED_CAMERA_NETWORKS = list( //Those networks can only be accesse
 //Flags for Cybernetics - Prevents detonating on part
 
 #define EXPLODES 1
+
+#define IS_SYNTHETIC 8192

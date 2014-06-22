@@ -458,7 +458,7 @@
 	src.add_fingerprint(user)
 
 	//Synthetic human mob goes here.
-/*	if(istype(user,/mob/living/carbon/human))
+	if(istype(user,/mob/living/carbon/human))
 		var/mob/living/carbon/human/H = user
 		if(H.species.flags & IS_SYNTHETIC && H.a_intent == "grab")
 			if(emagged || stat & BROKEN)
@@ -469,24 +469,20 @@
 				H.adjustFireLoss(10,0)
 			else if(src.cell && src.cell.charge > 0)
 				if(H.nutrition < 450)
-
 					if(src.cell.charge >= 500)
 						H.nutrition += 50
 						src.cell.charge -= 500
 					else
 						H.nutrition += src.cell.charge/10
 						src.cell.charge = 0
-
 					user << "\blue You slot your fingers into the APC interface and siphon off some of the stored charge for your own use."
 					if(src.cell.charge < 0) src.cell.charge = 0
 					if(H.nutrition > 500) H.nutrition = 500
-
 				else
 					user << "\blue You are already fully charged."
 			else
 				user << "There is no charge to draw from that APC."
 			return
-*/
 	if(usr == user && opened && (!issilicon(user)))
 		if(cell)
 			user.put_in_hands(cell)

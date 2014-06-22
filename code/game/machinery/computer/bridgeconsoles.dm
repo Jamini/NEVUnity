@@ -16,3 +16,5 @@
 	icon_state = "bigsciconsole2"
 /obj/machinery/computer/message_monitor/bridge
 	icon_state = "bigsciconsole3"
+	hack_icon = "bigsciconsole3"
+	normal_icon = "bigsciconsole3"

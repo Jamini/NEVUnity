@@ -192,6 +192,17 @@
 		..()
 		reagents.add_reagent("condensedcapsaicin",1000)
 
+/obj/structure/reagent_dispensers/coffee_maker
+	name = "Coffee Machine"
+	desc = "Coffee!!"
+	amount_per_transfer_from_this = 25
+	icon = 'icons/obj/vending.dmi'
+	icon_state = "coffee2"
+	possible_transfer_amounts = null
+	anchored = 1
+	New()
+		..()
+		reagents.add_reagent("coffee",500)
 
 /obj/structure/reagent_dispensers/water_cooler
 	name = "Water-Cooler"
